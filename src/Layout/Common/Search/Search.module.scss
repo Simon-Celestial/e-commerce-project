@@ -1,0 +1,191 @@
+@import "../../../Variables/Variables.module.scss";
+
+.searchOverlay {
+  display: flex;
+  width: 100vw;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.500);
+  height: 100vh;
+  z-index: 10;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+
+  &.searchVisible {
+    opacity: 1;
+    pointer-events: auto;
+
+    .searchWrapper {
+      transform: scaleX(1);
+    }
+  }
+
+  .searchWrapper {
+    transform: scaleX(0);
+    width: 100%;
+    max-width: 500px;
+    right: 0;
+    top: 0;
+    position: absolute;
+    padding: 50px;
+    background-color: white;
+    height: 100%;
+    transition: transform $transition;
+    transform-origin: right;
+
+    .searchContent {
+      display: flex;
+      width: 100%;
+      flex-direction: column;
+
+      .heading {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        gap: 25px;
+        align-items: center;
+
+        p {
+          font-size: 15px;
+        }
+
+        .closeSearch {
+          cursor: pointer;
+          padding: 5px;
+
+          &:hover {
+            svg {
+              color: red;
+              transform: rotate(360deg);
+            }
+          }
+
+          svg {
+            transition: transform 0.4s ease, color $transition;
+            font-size: 20px;
+          }
+        }
+
+      }
+
+      .searchInputContainer {
+        display: flex;
+        align-items: center;
+        margin: 40px 0;
+        width: 100%;
+        height: 50px;
+        border: 1px solid rgba(128, 128, 128, 0.300);
+        padding: 0 10px 0 20px;
+        justify-content: space-between;
+        gap: 10px;
+
+        input {
+          width: 100%;
+          font-size: 16px;
+          outline: 0;
+          border: 0;
+          background-color: transparent;
+        }
+
+        .searchBtn {
+          cursor: pointer;
+          padding: 5px;
+          transition: color 0.3s ease;
+
+          &:hover {
+            color: red;
+          }
+
+          svg {
+            font-size: 20px;
+          }
+        }
+      }
+
+      .resultsContainer {
+        width: 100%;
+        flex-direction: column;
+        overflow-y: scroll;
+        max-height: 640px;
+
+        &::-webkit-scrollbar {
+          background-color: rgba(128, 128, 128, 0.3);
+          width: 10px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+          background-color: rgba(128, 128, 128, 1);
+
+        }
+
+        .resultCard {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          padding: 10px 0;
+
+          .image {
+            max-width: 80px;
+            width: 100%;
+            margin-right: 20px;
+
+            img {
+              width: 100%;
+              object-position: center;
+              object-fit: cover;
+            }
+          }
+
+          .cardTitle {
+            display: flex;
+            flex-direction: column;
+
+            a {
+              margin-bottom: 10px;
+              font-size: 15px;
+              transition: color $transition;
+
+              &:hover {
+                color: red;
+              }
+            }
+
+            .price {
+              display: flex;
+              align-items: center;
+              gap: 8px;
+              font-size: 15px;
+              font-weight: 600;
+              margin-bottom: 10px;
+
+              p {
+                color: gray;
+                text-decoration: line-through;
+              }
+            }
+
+            .rating {
+              display: flex;
+              align-items: center;
+              gap: 5px;
+              font-size: 17px;
+
+              svg {
+                font-size: 25px;
+              }
+
+              p {
+                margin-bottom: 5px;
+              }
+            }
+          }
+        }
+      }
+
+
+    }
+  }
+
+}

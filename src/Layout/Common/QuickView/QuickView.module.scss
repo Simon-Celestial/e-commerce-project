@@ -1,0 +1,49 @@
+@import "../../../Variables/Variables.module";
+
+.quickViewOverlay {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 999;
+  align-items: center;
+  justify-content: center;
+  transition: opacity $transition;
+  pointer-events: none;
+  opacity: 0;
+  display: flex;
+  .quickViewContent {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 1015px;
+    width: 100%;
+    background-color: white;
+    padding: 30px;
+    position: relative;
+    .closeBtn {
+      width: 35px;
+      height: 35px;
+      background-color: black;
+      color: white;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      right: 0;
+      top: 0;
+      font-size: 25px;
+      transition: background-color $transition;
+      &:hover {
+        background-color: red;
+      }
+    }
+  }
+  &.visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}

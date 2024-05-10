@@ -1,0 +1,293 @@
+@import "../../../Variables/Variables.module.scss";
+
+.contactUs{
+    width: 100%;
+    .contactWrapper{
+        width: 100%;
+        .contactImages{
+            width: 100%;
+            height: 720px;
+            background-size: 100%100%;
+            background-image: url('https://demo.theme-sky.com/nooni-fashion/wp-content/uploads/2023/08/about-2.jpg');
+            object-fit: cover;
+            background-attachment: fixed;
+            .contactOverlay{
+                width: 100%;
+                height: 720px;
+                background-color: rgba(0, 0, 0, 0.459);
+                position: absolute;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                h1{
+                    font-size: 48px;
+                    color: white;
+                    font-family: $mainFont;
+                    font-weight: 400;
+                    line-height: 1.2em;
+                }
+            }
+           
+        }
+        .contactInput{
+         width: 100%;
+         position: relative;
+         bottom: 160px;
+         .containerContact{
+            width: 100%;
+            max-width: 1410px;
+            margin: 0 auto;
+            background-color: white;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            padding: 117px 0px 90px;
+            .containerBox{
+                max-width: 1230px;
+                margin: 0 auto;
+                display: flex;
+                gap: 40px;
+                .conatinerLeft{
+                    width: 450px;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 40px;
+                    h2{
+                        font-size: 36px;
+                        font-family: $mainFont;
+                    }
+                    .contactTell{
+                        display: flex;
+                        flex-direction: column;
+                        gap: 15px;
+                        h4{
+                            font-size: 25px;
+                            font-family: $mainFont;
+                        }
+                        p{
+                            font-size: 18px;
+                            color: rgb(84,84,84);
+                            font-family: 500;
+                            letter-spacing: 1px;
+                        }
+                        a{
+                            font-size: 18px;
+                            font-family: $mainFont;
+                            letter-spacing: 1px;
+                        }
+                    }
+                }
+                .containerRight{
+                    width: 800px;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 30px;
+                    h2{
+                        font-size: 36px;
+                        font-family: $mainFont;
+                        letter-spacing: 1.5px;
+                    }
+                    .containerFrom{
+                        display: flex;
+                        flex-direction: column;
+                        gap: 20px;
+                        padding: 10px;
+                        .subjectInput{
+                            width: 100%;
+                            display: flex;
+                            gap: 10px;
+                            input{
+                                width: 100%;
+                                height: 59px;
+                                outline: none;
+                                border: none;
+                                border: 1px solid black;
+                                font-size: 18px;
+                                padding: 10px;
+                            }
+                        }
+                        input{
+                            width: 100%;
+                            height: 59px;
+                            outline: none;
+                            border: none;
+                            border: 1px solid black;
+                            font-size: 18px;
+                            padding: 10px;
+                        }
+                        textarea{
+                         max-width: 100%;
+                         height: 300px;
+                         border: none;
+                         border: 1px solid black;
+                         font-size: 18px;
+                         padding: 10px;
+                         outline: none;
+                        }
+                        button{
+                            width: 100%;
+                            height: 59px;
+                            background-color: black;
+                            color: white;
+                            transition: 0.3s;
+                            border: none;
+                            cursor: pointer;
+                            font-size: 17px;
+                            font-weight: 800;
+                            letter-spacing: 1px;
+                            &:hover{
+                                background-color: red;
+                                color: white;
+                            }
+                        }
+                    }
+                }
+            }
+         }
+        }
+    }
+}
+
+@media screen and (max-width:1435px) {
+    .contactUs{
+        .contactWrapper{
+           .contactInput{
+            .containerContact{
+                width: 100%;
+                max-width: 1350px;
+            }
+           }
+        }
+    }
+}
+@media screen and (max-width:1361px) {
+    .contactUs{
+        .contactWrapper{
+           .contactInput{
+            .containerContact{
+                width: 100%;
+                max-width: 1250px;
+                .containerBox{
+                    max-width: 1100px;
+                    .conatinerLeft{
+                        width: 400px;
+                        h2{
+                            font-size: 30px;
+                        }
+                        h4{
+                            font-size: 20px;
+                        }
+                    }
+                    .containerRight{
+                        width: 750px;
+                    }
+                }
+            }
+           }
+        }
+    }
+}
+
+@media screen and (max-width:1250px) {
+    .contactUs{
+        .contactWrapper{
+            .contactImages{
+                height: 700px;
+                .contactOverlay{
+                    height: 700px;
+                    h1{
+                        font-size: 38px;
+                    }
+                }
+            }
+            .contactInput{
+                .containerContact{
+                    width: 100%;
+                    max-width: 1000px;
+                    .containerBox{
+                        max-width: 800px;
+                        .conatinerLeft{
+                            width: 400px;
+                            h2{
+                                font-size: 30px;
+                            }
+                            h4{
+                                font-size: 20px;
+                            }
+                        }
+                        .containerRight{
+                            width: 750px;
+                        }
+                    }
+                }
+               }
+        }
+    }
+}
+@media screen and (max-width:1000px) {
+    .contactUs{
+        .contactWrapper{
+            .contactInput{
+                .containerContact{
+                    .containerBox{
+                        flex-direction: column;
+                        .conatinerLeft{
+                            width: 100%;
+                            text-align: center;
+                        }
+                        .containerRight{
+                            width: 100%;
+                            text-align: center;
+                            textarea{
+                             
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@media screen and (max-width:900px) {
+    .contactUs{
+        .contactWrapper{
+            .contactImages{
+                height: 700px;
+                .contactOverlay{
+                    height: 650px;
+                    h1{
+                        font-size: 34px;
+                    }
+                }
+            }
+        }
+    }
+}
+@media screen and (max-width:671px) {
+    .contactUs{
+        .contactWrapper{
+            .contactImages{
+                height: 700px;
+                .contactOverlay{
+                    height: 600px;
+                    h1{
+                        font-size: 25px;
+                    }
+                }
+            }
+        }
+    }
+}
+@media screen and (max-width:475px) {
+    .contactUs{
+        .contactWrapper{
+            .contactImages{
+                height: 700px;
+                .contactOverlay{
+                    height: 600px;
+                   h1{
+                    text-align: center;
+                   }
+                }
+            }
+        }
+    }
+}

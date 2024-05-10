@@ -1,0 +1,105 @@
+@import "../../../Variables/Variables.module.scss";
+.pageWrapper {
+    display: flex;
+    width: 100vw;
+    flex-direction: column;
+    align-items: center;
+    .pageContent {
+        max-width: 1200px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .formContainer{
+            width: 100%;
+            max-width: 500px;
+            padding: 100px 50px;
+            margin: 50px 0;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            h2{
+                font-size: 30px;
+                font-family: $mainFont;
+            }
+            form{
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                .inputContainer{
+                    display: flex;
+                    flex-direction: column;
+                    gap: 15px;
+                    .passInputWrapper {
+                        position: relative;
+                        input {
+                            padding: 15px 40px 15px 15px;
+                        }
+                        .viewBtn {
+                            position: absolute;
+                            right: 10px;
+                            top: 50%;
+                            transform: translateY(-50%);
+                            padding: 5px;
+                            font-size: 20px;
+                            cursor: pointer;
+                        }
+                    }
+
+                    p{
+                        font-size: 15px;
+                        font-family: $mainFont;
+                        span {
+                            color: red;
+                        }
+                    }
+                    input{
+                        width: 100%;
+                        padding: 15px;
+                        border: none;
+                        outline: none;
+                        border: 1px solid rgba(128, 128, 128, 0.575);
+                    }
+                }
+                .submitButton{
+                    width: 100%     ;
+                    background-color: black;
+                    padding: 14px;
+                    color: white;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    font-size: 17px;
+                    font-weight: 700;
+                    cursor: pointer;
+                    border: none;
+                    outline: none;
+                    transition: 0.3s;
+                    &:hover{
+                        background-color: red;
+                        color: white;
+                    }
+                }
+                .redirect {
+                    display: flex;
+                    font-size: 16px;
+                    width: 100%;
+                    justify-content: center;
+                    cursor: pointer;
+                    padding: 15px 0;
+                    &:hover {
+                        a {
+                            color: red;
+                        }
+                    }
+                    a {
+                        text-align: center;
+                        transition: color $transition;
+                    }
+                }
+            }
+        }
+
+    }
+}

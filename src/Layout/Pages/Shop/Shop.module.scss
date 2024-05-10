@@ -1,0 +1,225 @@
+@import "../../../Variables/Variables.module.scss";
+
+.shopWrapper{
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    .categorySection{
+        width: 100%;
+        padding-left: 50px;
+        padding-right: 50px;
+        .listContainer{
+            max-width: 1500px;
+            margin: 0 auto;
+            padding: 20px;
+            .listWrapper{
+                width: 100%;
+                padding: 10px;
+                display: flex;
+                gap: 50px;
+                .listBox{
+                    width: 350px;
+                    display: flex;
+                    gap: 10px;
+                    padding: 15px;
+                    
+                  .listImages{
+                    width: 140px;
+                    height: 140px;
+                    position: relative;
+                    cursor: pointer;
+                    &:hover::before{
+                        opacity: 1;
+                    }
+                    &::before{
+                        content: '';
+                        width: 100%;
+                        height: 100%;
+                        background-color: rgba(0, 0, 0, 0.481);
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        border-radius: 100%;
+                        transition: 0.4s;
+                        opacity: 0;
+                      }
+                    img{
+                      width: 100%;
+                      height: 100%;
+                      border-radius: 100%;
+                      overflow: hidden;
+                    }
+                  }
+                  .listText{
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+                    margin-top: 35px;
+                    h3{
+                        font-size: 19px;
+                    }
+                    p{
+                        font-size: 17px;
+                    }
+                  }
+                }
+            }
+        }
+    }
+    .productsSection {
+      display: flex;
+      width: 100%;
+      justify-content: center;
+      padding: 25px 0 100px 0;
+      .productsContent {
+        border-top: 1px solid rgba(128, 128, 128, 0.216);
+        display: flex;
+        max-width: 1410px;
+        width: 100%;
+        padding-top: 60px;
+        .filterContainer {
+          max-width: 360px;
+          width: 100%;
+          display: flex;
+          padding-right: 30px;
+          flex-direction: column;
+          .filterInpubox{
+            width: 100%;
+            .filterTypeInput{
+              width: 100%;
+              padding: 20px 30px;
+              background-color: rgb(239,239,239);
+              color: black;
+              font-size: 1em;
+              letter-spacing: inherit;
+              font-weight: 600;
+              font-family: $mainFont;
+            }
+            .filterProductfilter{
+              width: 100%;
+              padding: 30px 20px 45px 20px;
+              &.rangeContainer {
+                padding: 50px 0 45px 0;
+              }
+              .productCategries{
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                .cartItem{
+                   list-style: none;
+                   display: flex;
+                   gap: 10px;
+                   font-size: 17px;
+                 }
+              }
+            }
+          }
+          
+        }
+        .productsContainer {
+          max-width: 1050px;
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          .sortContainer {
+            display: flex;
+            width: 100%;
+            height: 40px;
+            margin-bottom: 60px;
+            padding: 5px 20px;
+            .sortBox {
+              display: flex;
+              gap: 5px;
+              align-items: center;
+              svg {
+                color: black;
+                font-size: 32px;
+                cursor: pointer;
+                &.active {
+                  color: rgba(209,2,2,1);
+                }
+              }
+            }
+          }
+          .productCardsWrapper {
+            display: flex;
+            width: 100%;
+            flex-wrap: wrap;
+            &.listView {
+              flex-wrap: nowrap;
+              flex-direction: column;
+              .card {
+                max-width: 100%;
+              }
+            }
+            .noProducts {
+              font-size: 20px;
+              padding: 25px 25px 50px 25px;
+            }
+            .card {
+              display: flex;
+              max-width: 349px;
+              width: 100%;
+              margin-bottom: 44px;
+            }
+          }
+          .paginationWrapper {
+            display: flex;
+            width: 100%;
+          }
+
+        }
+      }
+    }
+}
+
+@media screen and (max-width:1400px) {
+  .shopWrapper{
+    .categorySection{
+      .listContainer{
+        .listWrapper{
+          flex-wrap: wrap;
+          display: flex;
+          justify-content: center;
+          
+        }
+      }
+    }
+  }
+}
+
+
+@media screen and (max-width:1300px) {
+  .shopWrapper{
+    .categorySection{
+      .listContainer{
+        .listWrapper{
+          .listBox{
+            max-width: 500px;
+            width: 100%;
+            border: 1px solid black;
+            display: flex;
+            gap: 40px;
+            .listImages{
+              width: 200px;
+              img{
+                width: 100%;
+                object-fit: contain;
+              }
+            }
+            .listText{
+              h3{
+                font-size: 24px;
+              }
+              p{
+                font-size: 20px;
+              }
+            }
+          }
+          
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,129 @@
+[
+    {
+        "id": 1,
+        "title" : "Chiffon Wrap Button Detail Maxi Dress",
+        "frontImage": "https://nooni-be87.kxcdn.com/nooni-fashion/wp-content/uploads/2023/06/38-450x572.jpg",
+        "backImage": "https://nooni-be87.kxcdn.com/nooni-fashion/wp-content/uploads/2023/06/38_7-450x572.jpg",
+        "regularPrice": 1259,
+        "salePrice": 1009,
+        "hot": true,
+        "quantity": 36
+    },
+    {
+        "id": 2,
+        "title" : "Women Hooded Jacket in Blue",
+        "frontImage": "https://nooni-be87.kxcdn.com/nooni-fashion/wp-content/uploads/2023/04/06-450x572.jpg",
+        "backImage": "https://nooni-be87.kxcdn.com/nooni-fashion/wp-content/uploads/2023/04/07-450x572.jpg",
+        "salePrice": 399,
+        "hot": true,
+        "quantity": 23
+    },
+    {
+        "id": 3,
+        "title" : "Crop Top & Jackets Set In White",
+        "frontImage": "https://nooni-be87.kxcdn.com/nooni-fashion/wp-content/uploads/2023/04/03-450x572.jpg",
+        "backImage": "https://nooni-be87.kxcdn.com/nooni-fashion/wp-content/uploads/2023/04/03_3-450x572.jpg",
+        "regularPrice": 1349,
+        "salePrice": 359,
+        "hot": true,
+        "quantity": 36
+    },
+    {
+        "id": 4,
+        "title" : "Long Sleeve Pullover Winter Knitwear",
+        "frontImage": "https://nooni-be87.kxcdn.com/nooni-fashion/wp-content/uploads/2023/04/11-450x572.jpg",
+        "backImage": "https://nooni-be87.kxcdn.com/nooni-fashion/wp-content/uploads/2023/04/30-450x572.jpg",
+        "regularPrice": 599,
+        "salePrice": 399,
+        "hot": false,
+        "quantity": 0
+    },
+    {
+        "id": 5,
+        "title" : "Small Logo Puffer Jacket In Blue",
+        "frontImage": "https://nooni-be87.kxcdn.com/nooni-fashion/wp-content/uploads/2023/04/24-450x572.jpg",
+        "backImage": null,
+        "regularPrice": 2249,
+        "salePrice": 1799,
+        "hot": true,
+        "quantity": 32
+    },
+    {
+        "id": 6,
+        "title" : "Classic Zip Front Polar Fleece Jacket",
+        "frontImage": "https://nooni-be87.kxcdn.com/nooni-fashion/wp-content/uploads/2023/04/01-450x572.jpg",
+        "backImage": "https://nooni-be87.kxcdn.com/nooni-fashion/wp-content/uploads/2023/04/09-450x572.jpg",
+        "salePrice": 1899,
+        "hot": false,
+        "quantity": 32
+    },
+    {
+        "id": 7,
+        "title" : "Buck Butte Insulated Hooded Jacket",
+        "frontImage": "https://nooni-be87.kxcdn.com/nooni-fashion/wp-content/uploads/2023/04/27-450x572.jpg",
+        "backImage": "https://nooni-be87.kxcdn.com/nooni-fashion/wp-content/uploads/2023/04/20-450x572.jpg",
+        "salePrice": 3707,
+        "hot": false,
+        "quantity": 32
+    },
+    {
+        "id": 8,
+        "title" : "Faux Longline Coat in Light Pink",
+        "frontImage": "https://nooni-be87.kxcdn.com/nooni-fashion/wp-content/uploads/2023/04/31-450x572.jpg",
+        "backImage": "https://nooni-be87.kxcdn.com/nooni-fashion/wp-content/uploads/2023/04/31_2-450x572.jpg",
+        "salePrice": 1009,
+        "hot": true,
+        "quantity": 32
+    },
+    {
+        "id": 9,
+        "title" : "Jacket With Logo In Brown",
+        "frontImage": "https://nooni-be87.kxcdn.com/nooni-fashion/wp-content/uploads/2023/04/04-450x572.jpg",
+        "backImage": "https://nooni-be87.kxcdn.com/nooni-fashion/wp-content/uploads/2023/04/04_2-450x572.jpg",
+        "salePrice": 999,
+        "hot": false,
+        "quantity": 32
+    },
+    {
+        "id": 10,
+        "title" : "Women's Floral Midi Dress",
+        "frontImage": "https://nooni-be87.kxcdn.com/nooni-fashion/wp-content/uploads/2023/04/10-450x572.jpg",
+        "backImage": "https://nooni-be87.kxcdn.com/nooni-fashion/wp-content/uploads/2023/04/15-450x572.jpg",
+        "regularPrice": 2099,
+        "salePrice": 1399,
+        "hot": false,
+        "quantity": 23
+    
+    },
+    {
+        "id": 11,
+        "title" : "Boy's Short Sleeve T-Shirt Seasonal",
+        "frontImage": "https://nooni-be87.kxcdn.com/nooni-fashion/wp-content/uploads/2023/03/44-450x572.jpg",
+        "backImage": "https://nooni-be87.kxcdn.com/nooni-fashion/wp-content/uploads/2023/03/45-450x572.jpg",
+        "regularPrice": null,
+        "salePrice": 2199,
+        "hot": false,
+        "quantity": 23
+    },
+    {
+        "id": 12,
+        "title" : "Women's Croptop Jacket",
+        "frontImage": "https://nooni-be87.kxcdn.com/nooni-fashion/wp-content/uploads/2023/04/07-450x572.jpg",
+        "backImage": "https://nooni-be87.kxcdn.com/nooni-fashion/wp-content/uploads/2023/04/24-450x572.jpg",
+        "regularPrice": 429,
+        "salePrice": 299,
+        "hot": false,
+        "quantity": 23
+    }
+    ,{
+        "id": 13,
+        "title" : "Hood Jacket in White",
+        "frontImage": "https://nooni-be87.kxcdn.com/nooni-fashion/wp-content/uploads/2023/04/03-450x572.jpg",
+        "backImage": "https://nooni-be87.kxcdn.com/nooni-fashion/wp-content/uploads/2023/04/03_3-450x572.jpg",
+        "salePrice": 1349,
+        "hot": true,
+        "quantity": 23
+    }
+
+   
+]

@@ -1,0 +1,259 @@
+@import "../../../Variables/Variables.module.scss";
+
+.productWrapper {
+    display: flex;
+    max-width: unset;
+    width: 100%;
+    padding: 0 15px;
+    align-items: center;
+    &.listView {
+        .productsContainerBox {
+            flex-direction: row;
+            .productImage {
+                max-width: 360px;
+                height: 457px;
+            }
+            .productText {
+                width: 100%;
+                margin: 0;
+                justify-content: center;
+                padding-left: 50px;
+                a {
+                    font-size: 20px;
+                }
+                span {
+                    font-size: 20px;
+                }
+                h2 {
+                    font-size: 15px;
+                    color: gray;
+                    margin:22px 0 11px;
+                    font-weight: 400;
+                    letter-spacing: 2px;
+                    line-height: 25px;
+                }
+            }
+        }
+    }
+    .productsContainerBox{
+        width: 100%;
+        box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        .productImage {
+            width: 100%;
+            height: 328px;
+            overflow: hidden;
+            position: relative;
+            &.tallSlide {
+                height: 572px;
+            }
+            .mark {
+                position: absolute;
+                left: 10px;
+                top: 10px;
+                color: white;
+                font-size: 12px;
+                text-transform: uppercase;
+                z-index: 5;
+                padding: 2px 10px;
+                .productImages{
+                    height: 450px;
+                }
+                &.saleMark {
+                    background-color: black;
+                }
+                &.hotMark {
+                    background-color: red;
+                    left: 62px;
+                }
+                &.defaultMark {
+                    left: 10px;
+                }
+                &.outOfStock {
+                    background-color: gray;
+                }
+            }
+            &:hover {
+                .backImage {
+                    opacity: 1;
+                }
+                .add {
+                    bottom: 0;
+                }
+                .heart {
+                    opacity: 0;
+                }
+                .menu{
+                    opacity: 1;
+                    bottom: 65px;
+                }
+            }
+            img {
+                width: 100%;
+                height: 100%;
+                object-position: top;
+                object-fit: cover;
+            }
+            .backImage {
+                position: absolute;
+                left: 0;
+                top: 0;
+                opacity: 0;
+                transition: opacity $transition;
+
+            }
+            .add {
+                width: 100%;
+                padding: 15px 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: white;
+                position: absolute;
+                left: 0;
+                bottom: -46px;
+                font-weight: 600;
+                text-transform: uppercase;
+                font-size: 13px;
+                transition: bottom $transition,background $transition,color $transition;
+                cursor: pointer;
+                &:hover {
+                    background-color: red;
+                    a {
+                        color: white!important;
+                    }
+                }
+            }
+            .heart {
+                position: absolute;
+                right: 15px;
+                bottom: 15px;
+                transition: opacity 0.1s ease;
+                svg {
+                    font-size: 22px;
+                }
+            }
+            .menu {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                position: absolute;
+                bottom: 15px;
+                right: 10px;
+                opacity: 0;
+                transition: bottom $transition ,opacity $transition;
+                z-index: 10;
+                .menuEntity {
+                    display: flex;
+                    position: relative;
+                    align-items: center;
+                    justify-content: center;
+                    height: 40px;
+                    width: 40px;
+                    border-radius: 50%;
+                    background-color: white;
+                    cursor: pointer;
+                    transition: background $transition , color $transition;
+                    &::after {
+                        content: "";
+                        position: absolute;
+                        left: -105px;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        background-color: red;
+                        color: white;
+                        font-size: 13px;
+                        white-space: nowrap;
+                        width: 95px;
+                        padding: 4px 0;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        border-radius: 5px;
+                        opacity: 0;
+                        transition: opacity $transition;
+                    }
+                    &.search {
+                        &::after {
+                            content: "Quick view";
+                        }
+                    }
+                    &.compare {
+                        &::after {
+                            content: "Compare"
+                        }
+                    }
+                    &.wishList {
+                        &::after {
+                            content: "Wishlist";
+                        }
+                    }
+
+
+                    &:hover {
+                        background-color: red;
+                        color: white;
+                        &::after {
+                            opacity: 1;
+                        }
+                    }
+                    svg {
+                        font-size: 21px;
+                    }
+                }
+            }
+
+        }
+        .productText{
+            display: flex;
+            flex-direction: column;
+            margin-top: 17px;
+            padding: 0 10px 25px 10px;
+            min-height: 95px;
+            justify-content: space-between;
+
+           a {
+                font-size: 15px;
+                font-weight: 400;
+                color: black;
+                transition: color $transition;
+                &:hover {
+                    color: red;
+                }
+            }
+            span {
+                font-size: 15px;
+                font-weight: 600;
+                display: inline-flex;
+                align-items: center;
+                margin-top: 15px;
+                gap: 10px;
+                p {
+                    color: gray;
+                    text-decoration: line-through;
+                }
+            }
+            .addToCart {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                max-width: 200px;
+                width: 100%;
+                background: black;
+                color: white;
+                text-transform: uppercase;
+                height: 50px;
+                font-size: 14px;
+                font-weight: 700;
+                margin-top: 15px;
+                cursor: pointer;
+            }
+        }
+        img{
+            width: 100%;
+
+        }
+    }
+}

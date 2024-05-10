@@ -1,0 +1,23 @@
+[
+    {
+        "id": 1,
+        "title": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla. Lorem Ipsum has been the industry's standard",
+        "image": "https://nooni-be87.kxcdn.com/nooni-fashion/wp-content/uploads/2022/03/avatar-2.jpg",
+        "reting": 1,
+        "name":"Camille Magnolia"
+    },
+    {
+        "id": 2,
+        "title": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla. Lorem Ipsum has been the industry's standard ",
+        "image": "https://nooni-be87.kxcdn.com/nooni-fashion/wp-content/uploads/2022/03/avatar-1.jpg",
+        "reting": 3,
+        "name":"Camille Magnolia"
+    },
+    {
+        "id": 3,
+        "title": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla. Lorem Ipsum has been the industry's standard ",
+        "image": "https://nooni-be87.kxcdn.com/nooni-fashion/wp-content/uploads/2022/03/avatar-3.jpg",
+        "reting": 5,
+        "name":"Camille Magnolia"
+    }
+]

@@ -1,0 +1,436 @@
+@import "../../../Variables/Variables.module.scss";
+
+.aboutWrapper{
+    width: 100%;
+    .aboutContact{
+        width: 100%;
+        .aboutContainer{
+         display: flex;
+         flex-direction: column;
+         gap: 80px;
+         .aboutNooni{
+            width: 100%;
+            .aboutNooniText{
+                max-width: 1410px;
+                margin: 0 auto;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                gap: 20px;
+                h1{
+                    font-size: 48px;
+                    font-family: $mainFont;
+                   }
+                   p{
+                      width: 70%;
+                      font-size: 24px;
+                      text-align: center;
+                      color: rgb(84,84,84,84);
+                      line-height: 40px;
+                   }
+            }
+         }
+         .aboutImage{
+            width: 100%;
+            img{
+                width: 100%;
+                height: 705px;
+                object-fit: cover;
+            }
+         }
+         .aboutSection{
+            width: 100%;
+            max-width: 1410px;
+            margin: 0 auto;
+            .sectionContact{
+                width: 100%;
+                display: flex;
+                gap: 50px;
+                .sectionLeft{
+                    width: 100%;
+                    overflow: hidden;
+                    img{
+                        width: 660px;
+                        height: 568px;
+                        transform: scale(1);
+                        transition: 0.3s;
+                        cursor: pointer;
+                        &:hover{
+                            transform: scale(1.3);
+                        }
+                    }
+                }
+                .sectionRight{
+                    width: 100%;
+                    padding: 40px;
+                    .sectionText{
+                        display: flex;
+                        flex-direction: column;
+                        gap: 40px;
+                        h1{
+                            font-size: 25px;
+                            font-family: $mainFont;
+                            letter-spacing: 3px;
+                        }
+                        .textBox{
+                            display: flex;
+                            flex-direction: column;
+                            gap: 20px;
+                            h3{
+                                font-size: 18px;
+                                font-family: $mainFont;
+                            }
+                            p{
+                                font-size: 19px;
+                                font-family: $mainFont;
+                                color: rgb(84,84,84);
+                                font-weight: 600;
+                            }
+                        }
+                    }
+                }
+            }
+            .sectionOut{
+                width: 100%;
+                padding: 40px;
+            }
+            .aboutTeam{
+                width: 100%;
+                .aboutText{
+                    width: 100%;
+                    display: flex;
+                    justify-content: center;    
+                    align-items: center;
+                    margin-top: 35px;
+                    h1{
+                        font-size: 25px;
+                        font-family: $mainFont;
+                        letter-spacing: 2px;
+                    }
+                }
+                .aboutSlider{
+                    width: 100%;
+                    margin-top: 50px;
+                    .aboutSliderWrapper{
+                        width: 100%;
+                        display: flex;
+                        gap: 40px;
+                        justify-content: center;
+                        .aboutCard{
+                            display: flex;
+                            width: 100%;
+                            max-width: 322px;
+                            flex-direction: column;
+                            padding-bottom: 20px;
+                            .cardImage{
+                                width: 100%;
+                                height: 390px;
+                                position: relative;
+                                overflow: hidden;
+                                &:hover .aboutOverley{
+                                    opacity: 1;
+                                }
+                                &:hover img {
+                                    transform: scale(1.2);
+                                }
+                                img{
+                                    width: 100%;
+                                    height: 100%;
+                                    object-fit: cover;
+                                    transition: 0.3s;
+                                }
+                                .aboutOverley{
+                                    width: 100%;
+                                    height: 100%;
+                                    background-color: rgba(0, 0, 0, 0.484);
+                                    position: absolute;
+                                    top: 0;
+                                    left: 0;
+                                    opacity: 0;
+                                    z-index: 100;
+                                    opacity: 0;
+                                    transition: 0.5s;
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+                                    gap: 15px;
+                                    i{
+                                        font-size: 23px;
+                                        color: white;
+                                    }
+                                    cursor: pointer;
+                                }
+                             
+                            }
+                            .aboutCardText{
+                                width: 100%;
+                                display: flex;
+                                justify-self: center;
+                                align-items: center;
+                                flex-direction: column;
+                                gap: 20px;
+                                margin-top: 15px;
+                                h3{
+                                    font-size: 14px;
+                                    font-family: $mainFont;
+                                }
+                                p{
+                                    font-size: 24px;
+                                    color: rgb(84,84,84);
+                                    font-family: $mainFont;
+                                    font-weight: 500;
+                                }
+                            }
+                         
+                        }
+                    }
+                }
+            }
+         }
+
+         .aboutContactUs{
+            width: 100%;
+            background-image: url('https://demo.theme-sky.com/nooni-fashion/wp-content/uploads/2023/08/about-2.jpg');
+            height: 460px;
+            background-size: 100%100%;
+            background-attachment: fixed;
+            position: relative;
+            .aboutUsOverlay{
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.493);
+                position: absolute;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 20px;
+                .UsText{
+                   text-align: center;
+                   display: flex;
+                   justify-content: center;
+                   align-items: center;
+                   gap: 20px;
+                   flex-direction: column;
+                   button{
+                    padding: 13px;
+                    outline: none;
+                    border: none;
+                    transition: 0.3s;
+                    cursor: pointer;
+                    font-size: 16px;
+                    font-weight: 600;
+                    font-family: $mainFont;
+                    &:hover{
+                        background-color: red;
+                        color: white;
+                    }
+                   }
+                   h1{
+                    font-size: 3em;
+                    color: white;
+                    font-family: $mainFont;
+                    font-weight: 400;
+                   }
+                   p{
+                     line-height: 30px;
+                     font-size: 15px;
+                     color: white;
+                     font-family: $mainFont;
+                   }
+                }
+            }
+         }
+         .companySwapper{
+            width: 100%;
+            padding: 20px;
+            .companySwapperSlider{
+            max-width: 1410px;
+            margin: 0 auto;
+            padding: 40px;
+            display: flex;
+            justify-content: center;
+            .companyBox{
+                width: 206px;
+                height: 110px;
+                img{
+                    width: 100%;
+                }
+            }
+            }
+         }
+        }
+    }
+}
+
+
+@media screen and (max-width:1440px) {
+    .aboutWrapper{
+        .aboutContact{
+            .aboutContainer{
+                .aboutSection{
+                    padding: 20px;
+                }
+            }
+        }
+    }
+}
+@media screen and (max-width:1410px) {
+    .aboutWrapper{
+        .aboutContact{
+            .aboutContainer{
+                .aboutSection{
+                    .aboutSlider{
+                        .aboutSliderWrapper{
+                            flex-wrap: wrap;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width:1200px) {
+    .aboutWrapper{
+        .aboutContact{
+            .aboutContainer{
+                .aboutSection{
+                    padding: 20px;
+                    .sectionContact{
+                        flex-direction: column;
+                        .sectionLeft{
+                            width: 100%;
+                            img{
+                                width: 100%;
+                            }
+                        }
+                        .sectionRight{
+                            text-align: center;
+                        }
+                    }
+                    .aboutSlider{
+                        .aboutSliderWrapper{
+                            justify-content: center;
+                            .aboutCard{
+                                width: 500px;
+                            }
+                        }
+                    }
+                }
+
+            }
+        }
+    }
+}
+@media screen and (max-width:1100px) {
+    .aboutWrapper{
+        .aboutContact{
+            .aboutContainer{
+                .aboutSection{
+                    .aboutSlider{
+                        .aboutSliderWrapper{
+                            justify-content: center;
+                            flex-wrap: wrap;
+                            .aboutCard{
+                                width: 100%;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width:900px) {
+    .aboutWrapper{
+        .aboutContact{
+            .aboutContainer{
+                .aboutContactUs{
+                    .aboutOverley{
+                        .UsText{
+                            width: 100%;
+                            h1{
+                                width: 100%;
+                                font-size: 10px;
+                            }
+                            p{
+                                width: 100%;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width:900px) {
+    .aboutWrapper{
+        .aboutContact{
+            .aboutContainer{
+               .companySwapper{
+                .companySwapperSlider{
+                    width: 100%;
+                    flex-wrap: wrap;
+                    gap: 20px;
+                    padding: 0;
+                    .companyBox{
+                        width: 210px;
+                    }
+                }
+               }
+            }
+        }
+    }
+}
+@media screen and (max-width: 724px) {
+    .aboutWrapper {
+        .aboutContact {
+            .aboutContainer {
+                .aboutSection {
+                    .aboutTeam {
+                        .aboutSlider {
+                            .aboutSliderWrapper {
+                                .aboutCard {
+                                    max-width: 450px;
+                                    padding-bottom: 0;
+                                    .cardImage {
+                                        img {
+                                            object-position: top;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@media screen and (max-width:430px) {
+    .aboutWrapper{
+        .aboutContact{
+            .aboutContainer{
+               .companySwapper{
+                .companySwapperSlider{
+                    width: 100%;
+                    flex-wrap: wrap;
+                    gap: 20px;
+                    padding: 0;
+                    .companyBox{
+                        width: 100%;
+                        height: 200px;
+                        img{
+                            width: 100%;
+                            height: 100%;
+                        }
+                    }
+                }
+               }
+            }
+        }
+    }
+}

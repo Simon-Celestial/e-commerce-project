@@ -1,0 +1,63 @@
+@import "../../../Variables/Variables.module.scss";
+
+
+.accountWrapper {
+  display: flex;
+  width: 100vw;
+  flex-direction: column;
+  align-items: center;
+
+  .accountContent {
+    width: 100%;
+    max-width: 1000px;
+    display: flex;
+    padding: 50px 0;
+
+    .userInfoWrapper {
+      width: 100%;
+      display: flex;
+      box-shadow: 0 0 5px rgba(128, 128, 128, 0.5);
+      .actions {
+        max-width: 200px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        background-color: #E8E8E8;
+        padding: 75px 25px;
+        .userImage {
+          width: 120px;
+          height: 120px;
+          border-radius: 50%;
+          overflow: hidden;
+          background-color: white;
+          margin-bottom: 15px;
+          img {
+            object-fit: cover;
+            width: 100%;
+            object-position: center;
+            height: 100%;
+          }
+
+        }
+        p {
+          font-size: 20px;
+          font-weight: 700;
+        }
+
+      }
+      .info {
+        display: flex;
+        width: 100%;
+        gap: 15px;
+        padding: 75px 50px;
+        justify-content: center;
+
+        flex-direction: column;
+        .infoBlock {
+          font-size: 25px;
+        }
+      }
+    }
+  }
+}

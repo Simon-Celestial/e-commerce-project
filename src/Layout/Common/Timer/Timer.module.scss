@@ -1,0 +1,32 @@
+@import "../../../Variables/Variables.module";
+
+.timerWrapper {
+  display: flex;
+  background-color: black;
+  color: white;
+  padding: 5px 20px;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  .counter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    p {
+      font-size: 20px;
+      font-weight: 800;
+    }
+    span {
+      font-size: 12px;
+    }
+  }
+  .separator {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    svg {
+      font-size: 14px;
+    }
+  }
+
+}

@@ -1,0 +1,113 @@
+@import "../../../Variables/Variables.module.scss";
+
+.review{
+    width: 100%;
+    background-color: rgb(243,243,243);
+    letter-spacing: 3px;
+    display: flex;
+    padding: 100px 30px;
+    .ourReview{
+        max-width: 1400px;
+        margin: 0 auto;
+        width: 100%;
+        h1{
+            font-size: 25px;
+        }
+        .reviewSlider{
+            display: flex;
+            gap: 20px;
+            width: 100%;
+            margin-top: 50px;
+            .cardWrapper {
+                display: flex;
+                width: 100%;
+                padding-bottom: 80px;
+                .reviewSliderBox{
+                    width: 100%;
+                    padding: 40px;
+                    background-color: white;
+                    display: flex;
+                    gap: 50px;
+                    border-radius: 5px;
+                    .reviewSliderLeft{
+                        img{
+                            width: 100px;
+                            height: 100px;
+                            border-radius: 200px;
+                        }
+                    }
+                    .reviewSliderRight{
+                        display: flex;
+                        flex-direction: column;
+                        gap: 10px;
+                        .reviewStar{
+                            display: flex;
+                            gap: 5px;
+                        }
+                        .reviewText{
+                            font-size: 16px;
+                            color: #848484;
+                            display: flex;
+                            flex-direction: column;
+                            gap: 10px;
+                            a{
+                                font-size: 17px;
+                                font-weight: 900;
+                                transition: 0.3s;
+                                &:hover{
+                                    color: red;
+                                }
+                            }
+                        }
+                    }
+        
+                }
+            }
+            
+
+        }
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .review {
+        padding: 50px 15px;
+        
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .review {
+        .ourReview {
+            .reviewSlider {
+                .cardWrapper {
+                    .reviewSliderBox {
+                        padding: 25px 15px;
+                        gap: 15px;
+                        justify-content: space-between;
+                    }
+                }
+            }
+        }
+        
+    }
+}
+@media screen and (max-width: 400px) {
+    .review {
+        .ourReview {
+            .reviewSlider {
+                .cardWrapper {
+                    .reviewSliderBox {
+                        flex-direction: column;
+                        align-items: center;
+                        .reviewSliderRight {
+                            align-items: center;
+                            text-align: center;
+                        }
+                    }
+                }
+            }
+        }
+        
+    }
+}
