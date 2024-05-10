@@ -116,7 +116,6 @@ const Shop = () => {
         }
     }, []);
 
-    console.log(selectedSizes, stockFilteredProducts);
     const sizeFilteredProducts = useMemo(() => {
         if (selectedSizes.length === 0) {
             return [];
@@ -172,7 +171,6 @@ const Shop = () => {
         }
     }, [endIndex, sizeFilteredProducts, setCurrentPage, itemsPerPage]);
 
-    console.log(sizeFilteredProducts)
 
 
     return (
@@ -196,12 +194,14 @@ const Shop = () => {
                                 <div className={styles.listBox}>
                                     <div className={styles.listImages}>
                                         <img
-                                            src="https://nooni-be87.kxcdn.com/nooni-fashion/wp-content/uploads/2023/03/40-310x310.jpg"
+                                            src="https://nooni-be87.kxcdn.com/nooni-fashion/wp-content/uploads/2023/08/men-coats.jpg"
                                             alt=""/>
                                     </div>
                                     <div className={styles.listText}>
-                                        <h3>Kids</h3>
-                                        <p>11 products</p>
+                                        <h3>Male</h3>
+                                        <p>{sizeFilteredProducts
+                                            ?.filter(item => item.category === "Male")
+                                            .length} products</p>
                                     </div>
                                 </div>
                                 <div className={styles.listBox}>
@@ -211,19 +211,23 @@ const Shop = () => {
                                             alt=""/>
                                     </div>
                                     <div className={styles.listText}>
-                                        <h3>Collections</h3>
-                                        <p>36 products</p>
+                                        <h3>Female</h3>
+                                        <p>{sizeFilteredProducts
+                                            ?.filter(item => item.category === "Female")
+                                            .length} products</p>
                                     </div>
                                 </div>
                                 <div className={styles.listBox}>
                                     <div className={styles.listImages}>
                                         <img
-                                            src="https://nooni-be87.kxcdn.com/nooni-fashion/wp-content/uploads/2023/08/men-coats.jpg"
+                                            src="https://nooni-be87.kxcdn.com/nooni-fashion/wp-content/uploads/2023/03/40-310x310.jpg"
                                             alt=""/>
                                     </div>
                                     <div className={styles.listText}>
-                                        <h3>Men</h3>
-                                        <p>10 products</p>
+                                        <h3>Kids</h3>
+                                        <p>{sizeFilteredProducts
+                                            ?.filter(item => item.category === "Kids")
+                                            .length} products</p>
                                     </div>
                                 </div>
                                 <div className={styles.listBox}>
@@ -233,8 +237,10 @@ const Shop = () => {
                                             alt=""/>
                                     </div>
                                     <div className={styles.listText}>
-                                        <h3>Activities</h3>
-                                        <p>41 products</p>
+                                        <h3>Others</h3>
+                                        <p>{sizeFilteredProducts
+                                            ?.filter(item => item.category !== "Female" && item.category !== "Male" && item.category !== "Kids")
+                                            .length} products</p>
                                     </div>
                                 </div>
                             </div>
