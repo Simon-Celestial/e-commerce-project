@@ -1,4 +1,5 @@
 @import "../../../Variables/Variables.module.scss";
+@import "../../../Animations/Animations.module";
 
 .headerWrapper {
   display: flex;
@@ -7,6 +8,36 @@
   position: relative;
   z-index: 99;
   border-bottom: 1px solid rgba(128, 128, 128, 0.3);
+
+  &.fixed {
+    position: fixed;
+    background: white;
+    animation: headerTransform 0.3s ease-in-out;
+    box-shadow: 0 0 10px gray;
+
+    .headerContent {
+      .headerTop {
+        display: none;
+      }
+
+      .headerBottom {
+        padding: 21px 50px;
+
+        .headerNavigation {
+          .navigation {
+            .navEntity {
+              .navDropDown {
+                .dropDownContent {
+                  margin-top: 37px;
+                }
+              }
+            }
+
+          }
+        }
+      }
+    }
+  }
 
   .headerContent {
     display: flex;
@@ -23,7 +54,7 @@
 
       .headerText {
         display: flex;
-        gap: 4px;
+        gap: 5px;
 
         p {
           color: white;
@@ -37,64 +68,6 @@
         }
       }
 
-      .headerLanguage {
-        display: flex;
-        gap: 25px;
-
-        .headerLanguagefrom {
-          color: white;
-          font-size: 14px;
-          display: flex;
-          gap: 7px;
-          position: relative;
-          padding: 10px;
-          cursor: pointer;
-
-          &:hover .dropdownLanguage {
-            display: block;
-            transform: translateY(-5px);
-          }
-
-          .dropdownLanguage {
-            width: 120px;
-            position: absolute;
-            z-index: 1000;
-            top: 30px;
-            left: -40px;
-            display: none;
-            transform: translateY(40px);
-            transition: $transition;
-            padding: 25px;
-
-            .dropdownBox {
-              background-color: white;
-              width: 120px;
-              height: 100px;
-              display: flex;
-              flex-direction: column;
-              padding: 20px;
-              gap: 20px;
-              box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-
-              p {
-                color: black;
-                transition: 0.5s;
-                font-size: 13px;
-                cursor: pointer;
-
-                &:hover {
-                  color: gray;
-                }
-              }
-            }
-          }
-
-          i {
-            font-size: 12px;
-            color: gray;
-          }
-        }
-      }
     }
 
     .headerBottom {
@@ -136,10 +109,36 @@
             transition: color $transition;
             position: relative;
 
+            p {
+              position: relative;
+
+              &::after {
+                content: "";
+                width: 100%;
+                height: 0.5px;
+                bottom: -2px;
+                left: 0;
+                background: gray;
+                position: absolute;
+                transform: scaleX(0);
+                transition: transform $transition;
+              }
+            }
+
+
             &:hover {
               .navDropDown {
                 transform: scaleY(1);
                 pointer-events: all;
+              }
+
+              p {
+                color: gray;
+
+                &::after {
+                  transform: scaleX(1);
+
+                }
               }
             }
 
@@ -297,6 +296,10 @@
                   li {
                     font-size: 16px;
                     color: black;
+
+                    &:hover {
+                      color: gray
+                    }
                   }
                 }
               }
@@ -329,29 +332,18 @@
                   .dropLink {
                     padding: 10px 0;
 
-                    &:hover {
-                      a {
-                        &::after {
-                          transform: scaleX(1);
-                        }
-                      }
-                    }
-
                     a {
                       position: relative;
+                      transition: all $transition;
+                    }
 
-                      &::after {
-                        position: absolute;
-                        content: "";
-                        left: 0;
-                        bottom: -2px;
-                        background-color: gray;
-                        width: 100%;
-                        height: 0.5px;
-                        transform: scaleX(0);
-                        transition: transform $transition;
+                    &:hover {
+                      a {
+                        color: gray;
+                        text-decoration: underline;
                       }
                     }
+
                   }
                 }
               }
@@ -361,31 +353,6 @@
               font-size: 12px;
             }
 
-            p {
-              position: relative;
-
-              &::after {
-                content: "";
-                width: 100%;
-                height: 0.5px;
-                bottom: -2px;
-                left: 0;
-                background: gray;
-                position: absolute;
-                transform: scaleX(0);
-                transition: transform $transition;
-              }
-            }
-
-            &:hover {
-              color: rgba(128, 128, 128, 0.8);
-
-              p {
-                &::after {
-                  transform: scaleX(1);
-                }
-              }
-            }
           }
         }
       }
@@ -470,19 +437,23 @@
               left: 0;
               min-width: 100px;
               gap: 10px;
+
               &.transformed {
                 left: -50px;
                 justify-content: center;
+
                 p {
                   white-space: nowrap;
                   text-transform: capitalize;
                   font-size: 15px;
                   transition: color $transition;
                   cursor: pointer;
+
                   &:hover {
                     color: red;
                   }
                 }
+
                 span {
                   display: flex;
                   gap: 5px;
@@ -491,23 +462,26 @@
                   font-size: 15px;
                   white-space: nowrap;
                   transition: color $transition;
+
                   &:hover {
                     color: red;
-                    svg{
+
+                    svg {
                       color: red;
                     }
                   }
+
                   svg {
                     font-size: 20px;
                     color: darkred;
                   }
                 }
+
                 .welcomeUser {
                   text-transform: capitalize;
                 }
 
               }
-
 
 
               a {
@@ -1141,18 +1115,6 @@
 
         .headerText {
           display: none;
-        }
-
-        .headerLanguage {
-          gap: 0;
-
-          .headerLanguagefrom {
-            .dropdownLanguage {
-              right: 0;
-              left: unset;
-
-            }
-          }
         }
       }
     }

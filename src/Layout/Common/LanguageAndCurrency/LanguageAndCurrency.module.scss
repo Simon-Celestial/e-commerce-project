@@ -1,0 +1,68 @@
+
+@import "../../../Variables/Variables.module";
+.containerWrapper {
+  display: flex;
+  gap: 25px;
+
+  .containerEntity {
+    color: white;
+    font-size: 14px;
+    display: flex;
+    gap: 7px;
+    position: relative;
+    padding: 10px;
+    cursor: pointer;
+    align-items: center;
+    &:hover {
+      .dropDownContainer {
+        opacity: 1;
+        pointer-events: all;
+      }
+      svg {
+        transform: rotate(180deg);
+      }
+    }
+
+    svg {
+      font-size: 18px;
+      transition: transform $transition;
+    }
+    .dropDownContainer {
+      position: absolute;
+      z-index: 1000;
+      top: 30px;
+      left: -25px;
+      transition:  opacity $transition;
+      padding-top: 20px;
+      opacity: 0;
+      pointer-events: none;
+
+      .dropDownBox {
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        padding: 10px 0 0 0;
+        box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
+        min-width: 100px;
+        gap: 3px;
+
+        p {
+          color: black;
+          font-size: 15px;
+          font-weight: bold;
+          cursor: pointer;
+          padding: 12px 20px;
+          transition: color $transition,background $transition;
+          &.selected {
+            background: black!important;
+            color: white;
+          }
+          &:hover {
+            background: black;
+            color: white;
+          }
+        }
+      }
+    }
+  }
+}

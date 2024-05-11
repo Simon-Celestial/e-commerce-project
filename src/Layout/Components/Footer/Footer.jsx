@@ -1,47 +1,51 @@
-import React from 'react'
 import styles from './Footer.module.scss'
+import {useTranslation} from "react-i18next";
+
 const Footer = () => {
+
+  const { t } = useTranslation();
+
   return (
     <footer className= {styles.footerWrapper}>
       <div className={styles.footerContainer}>
       <div className={styles.footerLeft}>
         <div className={styles.footerLogo}>
           <img src="https://nooni-be87.kxcdn.com/nooni-fashion/wp-content/uploads/2022/12/logo.png"></img>
-          <p>Sed quis quam ligula. Ut urna tellus, sagittis id libero nec, aliquet vehicula sem. Curabitur mattis lacus ante, a sodales dolor mollis eu.</p>
+          <p>{t('footer.topProducts')}</p>
         </div>
         <div className={styles.footerTime}>
-          <p>Tel:(234)23-45-666</p>
-          <p>Mon-Fri: 8am – 8pm</p>
-          <p>Sat-Sun: 8am – 7pm</p>
+          <p>{t('footer.tel')}: (234)23-45-666</p>
+          <p>{t('footer.days')}</p>
+          <p>{t('footer.daysTwo')}</p>
         </div>
       </div>
       <div className={styles.footerRight}>
         <div className={styles.footerEmail}>
-          <h1>SIGN UP FOR EMAILS</h1>
-          <p>Enjoy 15% off* your first order when you sign up to our newsletter</p>
+          <h1>{t('footer.signForEmails')}</h1>
+          <p>{t('footer.enjoySale')}</p>
           <form action=''>
-            <input type='email' placeholder='Your e-mail address'></input>
-            <button>SUBSCRIBE</button>
+            <input type='email' placeholder={t('footer.yourEmailAddress')}></input>
+            <button>{t('footer.subscribe')}</button>
           </form>
         </div>
         <div className={styles.footerList}>
           <ul>
-            <li>Our Story</li>
-            <li>Careers</li>
-            <li>Influencers</li>
-            <li>Join our team</li>
+            <li>{t('footer.ourStory')}</li>
+            <li>{t('footer.careers')}</li>
+            <li>{t('footer.influencers')}</li>
+            <li>{t('footer.joinOurTeam')}</li>
           </ul>
           <ul>
-            <li>Contact Us</li>
-            <li>Customer Service</li>
-            <li>Find Store</li>
-            <li>Shipping & Returns</li>
+            <li>{t('footer.contactUs')}</li>
+            <li>{t('footer.customerService')}</li>
+            <li>{t('footer.findStore')}</li>
+            <li>{t('footer.shippingAndReturns')}</li>
           </ul>
           <ul>
-            <li>Interior Design</li>
-            <li>Room Planner</li>
-            <li>Our Projects</li>
-            <li>Design Chat</li>
+            <li>{t('footer.interiorDesign')}</li>
+            <li>{t('footer.roomPlanner')}</li>
+            <li>{t('footer.ourProjects')}</li>
+            <li>{t('footer.designChat')}</li>
           </ul>
         </div>
       </div>
