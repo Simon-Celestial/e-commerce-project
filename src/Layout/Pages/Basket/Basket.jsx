@@ -15,12 +15,12 @@ const SHIPPING_TYPES = [
     {
         id: 1,
         type: "Flat rate",
-        price: 15,
+        price: 7.5,
     },
     {
         id: 2,
         type: "Local pickup",
-        price: 5,
+        price: 2.5,
     }
 ];
 
@@ -36,7 +36,10 @@ export const Basket = () => {
 
 
     const {
-        productsData
+        productsData,
+        currencyConverter,
+        currencyState
+
     } = useContext(DataContext);
 
 
@@ -92,7 +95,7 @@ export const Basket = () => {
                                                     </Link>
                                                 </div>
                                                 <div className={`${styles.price} ${styles.cell}`}>
-                                                    <b>AZN {product.salePrice?.toFixed(2)}</b>
+                                                    <b>{currencyState === "azn"? "AZN" : "$"} {currencyConverter(product.salePrice)?.toFixed(2)}</b>
                                                 </div>
                                                 <div className={`${styles.quantity} ${styles.cell}`}>
                                                     <div className={styles.basketButton}>
@@ -111,7 +114,7 @@ export const Basket = () => {
 
                                                 </div>
                                                 <div className={`${styles.subtotal} ${styles.cell}`}>
-                                                    <b>AZN {(product.salePrice * product.count).toFixed(2)}</b>
+                                                    <b>{currencyState === "azn"? "AZN" : "$"} {(currencyConverter(product.salePrice) * product.count).toFixed(2)}</b>
                                                 </div>
                                                 <div className={`${styles.delete} ${styles.cell}`}>
                                                     <div className={styles.deleteBtn}
@@ -131,7 +134,7 @@ export const Basket = () => {
                                         <h1>CART TOTALS</h1>
                                         <div className={styles.subtotalPirce}>
                                             <h2>Subtotal</h2>
-                                            <p>AZN {calculateSubtotal()?.toFixed(2)}</p>
+                                            <p>{currencyState === "azn"? "AZN" : "$"} {currencyConverter(calculateSubtotal)?.toFixed(2)}</p>
                                         </div>
                                         <div className={styles.shippingBox}>
                                             <h2>Shipping</h2>
@@ -146,7 +149,7 @@ export const Basket = () => {
                                                                     onChange={() => handleShippingPrice(type.id)}
                                                                     checked={type.id === shippingTypeId}
                                                                 />
-                                                                <label>{type.type}: {type.price.toFixed(2)} AZN</label>
+                                                                <label>{type.type}: {currencyConverter(type.price)?.toFixed(2)} {currencyState === "azn"? "AZN" : "$"}</label>
                                                             </div>
                                                         )
                                                     })
@@ -163,9 +166,12 @@ export const Basket = () => {
                                         </div>
                                         <div className={styles.totalCart}>
                                             <h2>Total</h2>
-                                            <p>AZN {(calculateSubtotal() + SHIPPING_TYPES?.find((
-                                                {id}
-                                            ) => id === shippingTypeId).price).toFixed(2)}</p>
+                                            <p>{currencyState === "azn"? "AZN" : "$"} {
+                                                currencyState === "azn"
+                                                    ? (currencyConverter(calculateSubtotal) + SHIPPING_TYPES?.find(({ id }) => id === shippingTypeId)?.price * 1.7)?.toFixed(2)
+                                                    : (currencyConverter(calculateSubtotal) + SHIPPING_TYPES?.find(({ id }) => id === shippingTypeId)?.price)?.toFixed(2)
+                                            }
+                                            </p>
                                         </div>
                                         <div className={styles.totalButton}>
                                             PROCEED TO CHECKOUT

@@ -21,7 +21,9 @@ const ProductCard = ({product, tallSlide, listView}) => {
 
     const {
         setQuickView,
-        setSelectedProduct
+        setSelectedProduct,
+        currencyConverter,
+        currencyState
 
     } = useContext(DataContext);
 
@@ -104,9 +106,9 @@ const ProductCard = ({product, tallSlide, listView}) => {
                 </div>
                 <div className={styles.productText}>
                     <Link to={`/details/${product?.id}`}>{product.title}</Link>
-                    <span>${product.salePrice?.toFixed(2)}
+                    <span>{currencyState === "azn"? "AZN" : "$"} {currencyConverter(product.salePrice)?.toFixed(2)}
                         {product.regularPrice ?
-                            <p>${product.regularPrice?.toFixed(2)}</p>
+                            <p>{currencyState === "azn"? "AZN" : "$"} {currencyConverter(product.regularPrice)?.toFixed(2)}</p>
                             :
                             null
                         }

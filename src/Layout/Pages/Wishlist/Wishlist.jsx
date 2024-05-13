@@ -16,6 +16,7 @@ import {Link} from "react-router-dom";
 import {useCallback, useContext} from "react";
 import {WishListContext} from "../../../Context/WishListContext.jsx";
 import {BasketContext} from "../../../Context/BasketContext.jsx";
+import {DataContext} from "../../../Context/DataContext.jsx";
 
 const Wishlist = () => {
     const {
@@ -26,6 +27,13 @@ const Wishlist = () => {
     const {
         addToCart,
     } = useContext(BasketContext);
+
+    const {
+        currencyConverter,
+        currencyState
+
+    } = useContext(DataContext);
+
 
     const handleAddToCart = useCallback(async (product, productId) => {
         addToCart(product);
@@ -78,7 +86,7 @@ const Wishlist = () => {
                                     </div>
                                     <div className={`${styles.price} ${styles.cell}`}>
                                     <span>{product.regularPrice ?
-                                        <p>AZN {product.regularPrice.toFixed(2)}</p> : null}AZN {product.salePrice.toFixed(2)}</span>
+                                        <p>{currencyState === "azn"? "AZN" : "$"} {currencyConverter(product.regularPrice)?.toFixed(2)}</p> : null}{currencyState === "azn"? "AZN" : "$"} {currencyConverter(product.salePrice)?.toFixed(2)}</span>
                                     </div>
                                     <div className={`${styles.stock} ${styles.cell}`}>
                                         {product.quantity > 0 ?

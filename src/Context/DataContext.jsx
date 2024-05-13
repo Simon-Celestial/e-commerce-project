@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useState} from "react";
+import React, {useCallback, useEffect, useState, useMemo} from "react";
 import axios from "axios";
 import {Bounce, toast} from "react-toastify";
 
@@ -16,8 +16,11 @@ export const DataContext = React.createContext({
     },
     selectedProduct: [],
     setSelectedProduct: () => {
-
-    }
+    },
+    setCurrencyState: () => {
+    },
+    currencyState: "azn",
+    currencyConverter: () => {}
 })
 export const DataContextProvider = ({
                                         children,
@@ -28,6 +31,7 @@ export const DataContextProvider = ({
     const [accountDetails, setAccountDetails] = useState(null);
     const [quickView, setQuickView] = useState(false);
     const [selectedProduct, setSelectedProduct] = useState([]);
+    const [currencyState, setCurrencyState] = useState("azn");
 
 
     const fetchUserName = useCallback(async () => {
@@ -55,8 +59,6 @@ export const DataContextProvider = ({
             console.error("Xeta:", error);
         }
     }, [setAccountDetails, setAccess])
-
-
     const handleClearStorage = useCallback(() => {
         localStorage.removeItem("user");
         setAccess(false);
@@ -71,8 +73,6 @@ export const DataContextProvider = ({
             transition: Bounce,
         });
     }, [setAccess, setAccountDetails])
-
-
     useEffect(() => {
         (async () => {
             setProductsLoading(true);
@@ -80,7 +80,7 @@ export const DataContextProvider = ({
                 const response = await axios.get("http://localhost:8000/products");
                 setProductsData(response.data.map(product => ({
                     ...product,
-                    stockStatus: product.quantity > 0? 'inStock': 'outOfStock'
+                    stockStatus: product.quantity > 0 ? 'inStock' : 'outOfStock'
                 })));
             } catch (error) {
                 console.error('Axios error:', error);
@@ -89,11 +89,20 @@ export const DataContextProvider = ({
             }
         })();
     }, []);
-
-
     const getCard = id => {
         return productsData.find(i => i === id);
     }
+
+    const currencyConverter = useMemo(
+        () => (price) => {
+            if (currencyState === "azn") {
+                return price * 1.7;
+            } else if (currencyState === "usd") {
+                return price;
+            }
+        },
+        [currencyState]
+    );
 
     return (
         <DataContext.Provider value={{
@@ -107,7 +116,10 @@ export const DataContextProvider = ({
             handleClearStorage,
             setQuickView,
             selectedProduct,
-            setSelectedProduct
+            setSelectedProduct,
+            currencyState,
+            setCurrencyState,
+            currencyConverter
         }}>
             {children}
         </DataContext.Provider>

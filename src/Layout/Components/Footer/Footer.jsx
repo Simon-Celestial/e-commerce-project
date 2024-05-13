@@ -1,4 +1,4 @@
-import styles from './Footer.module.scss'
+ import styles from './Footer.module.scss'
 import {useTranslation} from "react-i18next";
 
 const Footer = () => {

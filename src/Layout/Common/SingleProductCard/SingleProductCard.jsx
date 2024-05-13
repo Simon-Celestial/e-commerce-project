@@ -5,6 +5,7 @@ import {Link} from "react-router-dom";
 import {useCallback, useContext, useMemo, useState} from "react";
 import {BasketContext} from "../../../Context/BasketContext.jsx";
 import {WishListContext} from "../../../Context/WishListContext.jsx";
+import {DataContext} from "../../../Context/DataContext.jsx";
 export const SingleProductCard = ({product}) => {
 
     const {
@@ -15,6 +16,12 @@ export const SingleProductCard = ({product}) => {
         addToWishList,
         wishListItems
     } = useContext(WishListContext);
+    const {
+        currencyConverter,
+        currencyState
+
+    } = useContext(DataContext);
+
 
 
     const [magnifyingImg, setMagnifyingImg] = useState(false);
@@ -100,16 +107,15 @@ export const SingleProductCard = ({product}) => {
 
                     </div>
                     <div className={styles.priceBlock}>
-                        <p>${product?.salePrice?.toFixed(2)}</p>
+                        <p>{currencyState === "azn"? "AZN" : "$"} {currencyConverter(product.salePrice)?.toFixed(2)}</p>
                         {product?.regularPrice ?
                             <>
-                                <span>${product?.regularPrice?.toFixed(2)}</span>
+                                <span>{currencyState === "azn"? "AZN" : "$"} {currencyConverter(product.regularPrice)?.toFixed(2)}</span>
                                 <h5>(-{(((product?.regularPrice - product?.salePrice) / product?.regularPrice) * 100).toFixed(2)}%)</h5>
                             </>
                             :
                             null
                         }
-
                     </div>
                     <div className={styles.descriptionTitle}>
                         Constructed from a durable polyester fabrication, this quilted staple features a hooded

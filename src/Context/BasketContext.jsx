@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useCallback} from "react";
+import React, {useState, useEffect, useCallback,useMemo} from "react";
 import {Bounce, toast} from 'react-toastify';
 
 
@@ -12,8 +12,7 @@ export const BasketContext = React.createContext({
     decreaseQuantity: () => {
     },
     cartItems: [],
-    calculateSubtotal: () => {
-    },
+    calculateSubtotal: 0,
     emptyCart: () => {
     }
 });
@@ -114,10 +113,9 @@ export const BasketContextProvider = ({children}) => {
     }, []);
 
 
-    const calculateSubtotal = () => {
-        return cartItems?.reduce((acc, b) => b.salePrice * b.count + acc, 0)
-    };
-
+    const calculateSubtotal = useMemo(() => {
+        return cartItems?.reduce((acc, b) => b.salePrice * b.count + acc, 0);
+    }, [cartItems]);
     return (
         <BasketContext.Provider value={{
             cartItems,

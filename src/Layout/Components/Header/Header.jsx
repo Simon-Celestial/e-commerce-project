@@ -38,7 +38,10 @@ const Header = () => {
         accountDetails,
         access,
         handleClearStorage,
-        fetchUserName
+        fetchUserName,
+        currencyConverter,
+        currencyState
+
     } = useContext(DataContext);
 
 
@@ -409,7 +412,7 @@ const Header = () => {
                                                             </div>
                                                         </div>
                                                         <div className={styles.productPrice}>
-                                                            ${(product.salePrice * product.count).toFixed(2)}
+                                                            {currencyState === "azn"? "AZN" : "$"} {(currencyConverter(product.salePrice) * product.count)?.toFixed(2)}
                                                         </div>
                                                     </div>
                                                     <div className={styles.deleteProduct}
@@ -425,7 +428,8 @@ const Header = () => {
                                 <div className={styles.basketFooter}>
                                     <div className={styles.subtotal}>
                                         <p>{t('header.headerDropDown.subtotal')}:</p>
-                                        <p>${calculateSubtotal()?.toFixed(2)}</p>
+                                        <p>{currencyState === "azn"? "AZN" : "$"} {currencyConverter(calculateSubtotal)?.toFixed(2)}</p>
+
                                     </div>
                                     <div className={styles.basketBtn}>
                                         <Link to={'/basket'}>{t('header.headerDropDown.viewCart')}</Link>
