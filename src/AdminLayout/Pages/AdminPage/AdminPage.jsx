@@ -1,17 +1,22 @@
 import styles from "./AdminPage.module.scss";
 import {Wrench, Power, Trash} from "@phosphor-icons/react";
 import MembersMenu from "../../Common/MembersMenu/MembersMenu.jsx";
-import {useCallback,useState, useMemo, useEffect} from "react";
+import {useCallback, useState, useMemo, useEffect, useContext} from "react";
 import Stack from "@mui/material/Stack";
 import Pagination from "@mui/material/Pagination";
 import axios from "axios";
 import {Bounce, toast} from "react-toastify";
+import {AuthContext} from "../../../Context/AuthContext.jsx";
 
 
 const itemsPerPage = 9;
 
 
 const AdminPage = () => {
+
+    const {
+        handleExit
+    } =useContext(AuthContext);
 
     const [isUpdating, setIsUpdating] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
@@ -44,8 +49,6 @@ const AdminPage = () => {
             it.title.toLowerCase().includes(searchTerm.toLowerCase())
         );
     }, [productsData, searchTerm]);
-
-
 
     const handleDeleteData = useCallback(async (id,title) => {
         try {
@@ -81,6 +84,8 @@ const AdminPage = () => {
         setSearchTerm("");
     }, [setSearchTerm]);
 
+
+
     // PAGINATION
     const startIndex = useMemo(() => (currentPage - 1) * itemsPerPage,
         [currentPage]);
@@ -113,7 +118,7 @@ const AdminPage = () => {
             <div className={styles.adminPageContent}>
                 <div className={styles.pageHeading}>
                     <h1>Admin Dashboard</h1>
-                    <div className={styles.exit} >
+                    <div className={styles.exit} onClick={handleExit} >
                         <Power/>
                     </div>
                 </div>
