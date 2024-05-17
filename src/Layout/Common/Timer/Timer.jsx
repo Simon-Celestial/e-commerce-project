@@ -3,7 +3,7 @@ import { DotOutline } from "@phosphor-icons/react";
 import styles from "./Timer.module.scss";
 
 export const Timer = () => {
-    const endDate = new Date('2024-05-15');
+    const endDate = new Date('2024-05-25');
     const targetTime = endDate.getTime();
 
     const [elapsedTime, setElapsedTime] = useState(0);

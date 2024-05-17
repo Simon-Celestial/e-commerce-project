@@ -1,0 +1,229 @@
+import styles from "./AdminPage.module.scss";
+import {Wrench, Power, Trash} from "@phosphor-icons/react";
+import MembersMenu from "../../Common/MembersMenu/MembersMenu.jsx";
+import {useCallback,useState, useMemo, useEffect} from "react";
+import Stack from "@mui/material/Stack";
+import Pagination from "@mui/material/Pagination";
+import axios from "axios";
+import {Bounce, toast} from "react-toastify";
+
+
+const itemsPerPage = 9;
+
+
+const AdminPage = () => {
+
+    const [isUpdating, setIsUpdating] = useState(false);
+    const [menuOpen, setMenuOpen] = useState(false);
+    const [searchTerm, setSearchTerm] = useState('');
+    const [selectedItem, setSelectedItem] = useState(null);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [shouldUpdate, setShouldUpdate] = useState(Date.now());
+    const [productsData,setProductsData] = useState(null);
+
+    const update = useCallback(() => {
+        setShouldUpdate(Date.now())
+    }, [])
+
+    useEffect(() => {
+        (async () => {
+            try {
+                const response = await axios.get("http://localhost:8000/products");
+                setProductsData(response.data.map(product => ({
+                    ...product,
+                    stockStatus: product.quantity > 0 ? 'inStock' : 'outOfStock'
+                })));
+            } catch (error) {
+                console.error('Axios error:', error);
+            }
+        })();
+    }, [shouldUpdate]);
+
+    const productsFiltered = useMemo(() => {
+        return productsData?.filter((it) =>
+            it.title.toLowerCase().includes(searchTerm.toLowerCase())
+        );
+    }, [productsData, searchTerm]);
+
+
+
+    const handleDeleteData = useCallback(async (id,title) => {
+        try {
+            setIsUpdating(true);
+            await axios.delete(`http://localhost:8000/products/${id}`);
+            update();
+            toast.success(`${title} ugurla silindi!`, {
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+                transition: Bounce,
+            });
+        } catch (error) {
+            console.error(error);
+        } finally {
+            setIsUpdating(false);
+        }
+    }, [])
+
+    const handleOpenMenu = useCallback((product) => {
+        if (product.id) setSelectedItem(product); else setSelectedItem(null);
+        setMenuOpen(true);
+    }, [setMenuOpen])
+
+    const handleInputChange = useCallback((event) => {
+        setSearchTerm(event.target.value)
+    }, [setSearchTerm]);
+
+    const handleCleanInput = useCallback(() => {
+        setSearchTerm("");
+    }, [setSearchTerm]);
+
+    // PAGINATION
+    const startIndex = useMemo(() => (currentPage - 1) * itemsPerPage,
+        [currentPage]);
+    const endIndex = useMemo(() => startIndex + itemsPerPage, [startIndex]);
+    const handlePageChange = useCallback((event, page) => {
+        setCurrentPage(page);
+    }, [setCurrentPage]);
+
+    const currentProducts = useMemo(() => {
+        return productsFiltered?.slice(startIndex, endIndex);
+    }, [productsFiltered, startIndex, endIndex]);
+
+
+    useEffect(() => {
+        if (productsFiltered && productsFiltered.length > 0 && endIndex > productsFiltered.length - 1) {
+            setCurrentPage(Math.ceil(productsFiltered?.length / itemsPerPage));
+        }
+    }, [endIndex, productsFiltered, setCurrentPage, itemsPerPage]);
+
+
+    return (
+        <div className={styles.adminPageWrapper}>
+            <MembersMenu setMenuOpen={setMenuOpen}
+                         menuOpen={menuOpen}
+                         selectedItem={selectedItem}
+                         setSelectedItem={setSelectedItem}
+                         setIsUpdating={setIsUpdating}
+                         isUpdating={isUpdating}
+            />
+            <div className={styles.adminPageContent}>
+                <div className={styles.pageHeading}>
+                    <h1>Admin Dashboard</h1>
+                    <div className={styles.exit} >
+                        <Power/>
+                    </div>
+                </div>
+                <div className={styles.teamManagement}>
+                    <div className={styles.searchInput}>
+                        <input type="text"
+                               placeholder="Enter product name"
+                               onChange={handleInputChange}
+                               value={searchTerm}
+                        />
+                    </div>
+                    <div className={styles.buttons}>
+                        <div className={`${styles.button} ${styles.addStaff}`} onClick={handleOpenMenu}>
+                            Add Product
+                        </div>
+                        <div className={`${styles.button} ${styles.reset}`}
+                             onClick={handleCleanInput}>
+                            Reset
+                        </div>
+                    </div>
+                </div>
+                <div className={styles.overFlow}>
+                    <div className={styles.teamTable}>
+                        <div className={styles.table}>
+                            <div className={`${styles.tableRow} ${styles.tableHeading}`}>
+                                <div className={`${styles.id} ${styles.tableCell}`}>
+                                    ID
+                                </div>
+                                <div className={`${styles.image} ${styles.tableCell}`}>
+                                    Image
+                                </div>
+                                <div className={`${styles.name} ${styles.tableCell}`}>
+                                    Product Name
+                                </div>
+                                <div className={`${styles.price} ${styles.tableCell}`}>
+                                    Price
+                                </div>
+                                <div className={`${styles.quantity} ${styles.tableCell}`}>
+                                    Quantity
+                                </div>
+                                <div className={`${styles.size} ${styles.tableCell}`}>
+                                    Size
+                                </div>
+                                <div className={`${styles.actions} ${styles.tableCell}`}>
+                                    Actions
+                                </div>
+                            </div>
+                            {currentProducts?.length !== 0 ?
+                                currentProducts?.slice(0, 10).map((product) => {
+                                    return (
+                                        <div key={product.id} className={`${styles.tableRow}`}>
+                                            <div className={`${styles.id} ${styles.tableCell}`}>
+                                                {product.id}
+                                            </div>
+                                            <div className={`${styles.image} ${styles.tableCell}`}>
+                                                <img src={product.frontImage} alt="Product"/>
+                                            </div>
+                                            <div className={`${styles.name} ${styles.tableCell}`}>
+                                                {product.title}
+                                            </div>
+                                            <div className={`${styles.price} ${styles.tableCell}`}>
+                                            <span>{product?.regularPrice ?
+                                                <p>$ {product.regularPrice?.toFixed(2)}</p> : null}$ {product.salePrice?.toFixed(2)}</span>
+                                            </div>
+                                            <div className={`${styles.quantity} ${styles.tableCell}`}>
+                                                {product?.quantity ? product.quantity : <p>Out of stock</p>}
+                                            </div>
+                                            <div className={`${styles.size} ${styles.tableCell}`}>
+                                                {product?.size.join(",")}
+                                            </div>
+
+                                            <div className={`${styles.actions} ${styles.tableCell}`}>
+                                                <div className={styles.action}>
+                                                    <Wrench/>
+                                                </div>
+
+                                                <div className={styles.action} style={{
+                                                    opacity: isUpdating ? 0.5 : 1,
+                                                    pointerEvents: isUpdating ? 'none' : 'all',
+                                                }}
+                                                     onClick={() => handleDeleteData(product.id,product.title)}>
+                                                    <Trash/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    )
+                                })
+                                :
+                                <div className={styles.noProducts}>
+                                No products found...
+                                </div>
+                            }
+                            <div className={styles.paginationWrapper}>
+                                <Stack spacing={1}>
+                                    <Pagination
+                                        count={Math.ceil(productsFiltered?.length / itemsPerPage)}
+                                        variant="outlined"
+                                        shape="rounded"
+                                        size="large"
+                                        page={currentPage}
+                                        onChange={handlePageChange}
+                                    />
+                                </Stack>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default AdminPage;

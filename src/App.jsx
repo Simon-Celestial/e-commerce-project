@@ -5,13 +5,16 @@ import {ToastContainer} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.min.css';
 import { WishListContextProvider } from "./Context/WishListContext.jsx";
 import {ScrollToTop} from "./Layout/Common/ScrollToTop/ScrollToTop.jsx";
+import {AuthContextProvider} from "./Context/AuthContext.jsx";
 
 
 const App = () => {
 
     return (
         <>
+        <AuthContextProvider>
         <WishListContextProvider>
+
             <BasketContextProvider>
                 <DataContextProvider>
                     <MainRouter />
@@ -23,6 +26,7 @@ const App = () => {
                 </DataContextProvider>
             </BasketContextProvider>
             </WishListContextProvider>
+        </AuthContextProvider>
         </>
     )
 }

@@ -168,8 +168,10 @@ export const Basket = () => {
                                             <h2>Total</h2>
                                             <p>{currencyState === "azn"? "AZN" : "$"} {
                                                 currencyState === "azn"
-                                                    ? (currencyConverter(calculateSubtotal) + SHIPPING_TYPES?.find(({ id }) => id === shippingTypeId)?.price * 1.7)?.toFixed(2)
-                                                    : (currencyConverter(calculateSubtotal) + SHIPPING_TYPES?.find(({ id }) => id === shippingTypeId)?.price)?.toFixed(2)
+                                                    ?
+                                                    (currencyConverter(calculateSubtotal) + SHIPPING_TYPES?.find(({ id }) => id === shippingTypeId)?.price * 1.7)?.toFixed(2)
+                                                    :
+                                                    (currencyConverter(calculateSubtotal) + SHIPPING_TYPES?.find(({ id }) => id === shippingTypeId)?.price)?.toFixed(2)
                                             }
                                             </p>
                                         </div>

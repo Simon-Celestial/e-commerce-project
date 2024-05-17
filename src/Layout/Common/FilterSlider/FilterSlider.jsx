@@ -1,9 +1,16 @@
 import styles from "./FilterSlider.module.scss";
 import RangeSlider from "react-range-slider-input";
 import "./sliderStyles.css";
+import {useContext} from "react";
+import {DataContext} from "../../../Context/DataContext.jsx";
 
 
 export const FilterSlider = ({onApplyFilters, onReset, priceBounds, setPriceBounds}) => {
+    const {
+        currencyConverter,
+        currencyState
+
+    } = useContext(DataContext);
 
     return (
         <div className={styles.rangeWrapper}>
@@ -18,11 +25,11 @@ export const FilterSlider = ({onApplyFilters, onReset, priceBounds, setPriceBoun
                 <div className={styles.monitorBlock}>
                     <p>Price:</p>
                     <div className={styles.monitor}>
-                        {"$" + priceBounds[0]?.toFixed(2)}
+                        {(currencyState === "azn"? "AZN" : "$") + " " + currencyConverter(priceBounds[0])?.toFixed(2)}
                     </div>
                     <span>-</span>
                     <div className={styles.monitor}>
-                        {"$" + priceBounds[1]?.toFixed(2)}
+                        {(currencyState === "azn"? "AZN" : "$") + " " + currencyConverter(priceBounds[1])?.toFixed(2)}
                     </div>
                 </div>
                 <div className={styles.filterButtons}>
