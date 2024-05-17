@@ -17,12 +17,17 @@ import {AdminLayout} from "./AdminLayout/AdminLayout.jsx";
 import AdminLogin from "./AdminLayout/Pages/AdminLogin/AdminLogin.jsx";
 import AdminPage from "./AdminLayout/Pages/AdminPage/AdminPage.jsx";
 import {AuthContext} from "./Context/AuthContext.jsx";
+import PageNotFound from "./Layout/PageNotFound/PageNotFound.jsx";
 
-const router = (access, adminAccess,token) => createBrowserRouter([
+const router = (access,token) => createBrowserRouter([
     {
         path: '/',
         element: <MainLayout/>,
         children: [
+            {
+                path: "*",
+                element: <PageNotFound />
+            },
 
             {
                 path: '/',
@@ -81,11 +86,11 @@ const router = (access, adminAccess,token) => createBrowserRouter([
         children: [
             {
                 path: 'login',
-                element: !adminAccess && !token? <AdminPage/> : <AdminLogin/>,
+                element: !token? <AdminPage/> : <AdminLogin/>,
             },
             {
                 path: 'dashboard',
-                element: adminAccess && token? <AdminPage/> : <AdminLogin/>,
+                element: token? <AdminPage/> : <AdminLogin/>,
             },
         ],
     },
@@ -96,11 +101,10 @@ const MainRouter = () => {
         access
     } = useContext(DataContext);
     const {
-        adminAccess,
         token
     } = useContext(AuthContext);
 
-    return <RouterProvider router={router(access, adminAccess,token)}/>;
+    return <RouterProvider router={router(access,token)}/>;
 };
 
 export default MainRouter;

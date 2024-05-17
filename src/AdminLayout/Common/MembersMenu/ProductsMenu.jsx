@@ -1,9 +1,15 @@
-import styles from "./MembersMenu.module.scss";
+import styles from "./ProductsMenu.module.scss";
 import {X} from "@phosphor-icons/react";
 import {useCallback, useEffect, useState} from "react";
 import axios from "axios";
 import {Bounce, toast} from "react-toastify";
 import {ThreeCircles} from "react-loader-spinner";
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+
+
 
 export const getBase64 = (file) => {
     return new Promise((resolve, reject) => {
@@ -19,12 +25,14 @@ export const getBase64 = (file) => {
 };
 const defaults = {
     id: null,
-    name: '',
-    surname: '',
-    position: '',
-    photo: '',
+    title: '',
+    regularPrice: 0,
+    salePrice: 0,
+    frontImage: '',
+    backImage: "",
+    category: ""
 };
-const MembersMenu = ({setMenuOpen, menuOpen, update, selectedItem, setSelectedItem, setIsUpdating, isUpdating}) => {
+const ProductsMenu = ({setMenuOpen, menuOpen, update, selectedItem, setSelectedItem, setIsUpdating, isUpdating}) => {
 
 
     const [inputState, setInputState] = useState(defaults);
@@ -36,6 +44,14 @@ const MembersMenu = ({setMenuOpen, menuOpen, update, selectedItem, setSelectedIt
             [name]: value,
         }));
     };
+
+    const handleCategoryChange = (e) => {
+        const selectedCategory = e.target.value;
+        setInputState(prevState => ({
+            ...prevState,
+            category: selectedCategory,
+        }));
+    };
     useEffect(() => {
         if (selectedItem) {
             setInputState({
@@ -45,7 +61,7 @@ const MembersMenu = ({setMenuOpen, menuOpen, update, selectedItem, setSelectedIt
             setInputState(defaults);
         }
     }, [selectedItem])
-    const handleAcceptImage = useCallback(async (e) => {
+    const handleAcceptImage = useCallback(async (e,imageType) => {
         const file = e.target.files[0];
         e.target.value = '';
         if (file.size > 1000 * 1000 * 150) {
@@ -81,7 +97,7 @@ const MembersMenu = ({setMenuOpen, menuOpen, update, selectedItem, setSelectedIt
         const result = await getBase64(file);
         setInputState((prev) => ({
             ...prev,
-            photo: result,
+            [imageType]: result,
         }))
 
     }, []);
@@ -92,6 +108,7 @@ const MembersMenu = ({setMenuOpen, menuOpen, update, selectedItem, setSelectedIt
             setSelectedItem(null)
         }, 200);
     }, [setMenuOpen]);
+
     useEffect(() => {
         if (!menuOpen)
             setInputState(defaults);
@@ -100,19 +117,21 @@ const MembersMenu = ({setMenuOpen, menuOpen, update, selectedItem, setSelectedIt
 
     const handleUpdateData = useCallback(async () => {
         const requestData = {
-            name: inputState.name,
-            surname: inputState.surname,
-            position: inputState.position,
-            photo: inputState?.photo || '/images/noImage.jpg'
+            title: inputState?.title,
+            regularPrice: Number(inputState?.regularPrice),
+            salePrice: Number(inputState?.salePrice),
+            frontImage: inputState?.frontImage,
+            backImage: inputState?.backImage,
+            category: inputState?.category
         };
         try {
             setIsUpdating(true);
             if (inputState.id) {
                 await axios.put(
-                    `https://azizrahimov-001-site1.ftempurl.com/api/TeamMember/update?id=${inputState.id}`,
+                    `http://localhost:8000/products/${inputState.id}`,
                     requestData
                 );
-                toast.success('Member Edited Successfully', {
+                toast.success('Product Edited Successfully', {
                     hideProgressBar: false,
                     closeOnClick: true,
                     pauseOnHover: false,
@@ -122,8 +141,8 @@ const MembersMenu = ({setMenuOpen, menuOpen, update, selectedItem, setSelectedIt
                     transition: Bounce,
                 });
             } else {
-                await axios.post("https://azizrahimov-001-site1.ftempurl.com/api/TeamMember/create", requestData);
-                toast.success('Member Added Successfully', {
+                await axios.post("http://localhost:8000/products/", requestData);
+                toast.success('Product Added Successfully', {
                     hideProgressBar: false,
                     closeOnClick: true,
                     pauseOnHover: false,
@@ -136,7 +155,7 @@ const MembersMenu = ({setMenuOpen, menuOpen, update, selectedItem, setSelectedIt
             update();
             handleMenuClose();
         } catch (error) {
-            toast.error('Failed to create member', {
+            toast.error('Failed to add product', {
                 hideProgressBar: false,
                 closeOnClick: true,
                 pauseOnHover: false,
@@ -145,6 +164,7 @@ const MembersMenu = ({setMenuOpen, menuOpen, update, selectedItem, setSelectedIt
                 theme: 'dark',
                 transition: Bounce,
             });
+            console.log(error)
         } finally {
             setIsUpdating(false);
         }
@@ -155,8 +175,8 @@ const MembersMenu = ({setMenuOpen, menuOpen, update, selectedItem, setSelectedIt
             <div className={styles.menuContainer}>
                 <div className={styles.menuHeading}>
                     <div className={styles.headingTitle}>
-                        <h1>{selectedItem ? "Edit Member" : "Add Member"}</h1>
-                        <p>{selectedItem ? "Edit team member" : "Add new team member"}</p>
+                        <h1>{selectedItem ? "Edit Product" : "Add Product"}</h1>
+                        <p>{selectedItem ? "Edit selected product" : "Add new product"}</p>
                     </div>
                     <div className={styles.closeMenu} onClick={handleMenuClose}>
                         <X/>
@@ -164,57 +184,107 @@ const MembersMenu = ({setMenuOpen, menuOpen, update, selectedItem, setSelectedIt
                 </div>
                 <div className={styles.inputsContainer}>
                     <div className={styles.inputRow}>
-                        <p>Name :</p>
+                        <p>Title :</p>
                         <input type="text"
-                               name="name"
-                               id="name"
+                               name="title"
+                               id="title"
+                               placeholder="Enter Product Name"
                                onChange={handleInputChange}
-                               value={inputState.name}
+                               value={inputState.title}
                         />
                     </div>
                     <div className={styles.inputRow}>
-                        <p>Surname :</p>
-                        <input type="text"
-                               name="surname"
-                               id="surname"
+                        <p>Regular Price :</p>
+                        <input type="number"
+                               name="regularPrice"
+                               id="regularPrice"
+                               placeholder="Product Regular Price"
                                onChange={handleInputChange}
-                               value={inputState.surname}
+                               value={inputState.regularPrice}
                         />
                     </div>
                     <div className={styles.inputRow}>
-                        <p>Position :</p>
-                        <input type="text"
-                               name="position"
-                               id="position"
+                        <p>Sale Price :</p>
+                        <input type="number"
+                               name="salePrice"
+                               id="salePrice"
+                               placeholder="Product Sale Price"
                                onChange={handleInputChange}
-                               value={inputState.position}
+                               value={inputState.salePrice}
                         />
                     </div>
                     <div className={styles.inputRow}>
-                        <p>Image :</p>
-                        <div className={styles.imageInputWrapper}>
-                            <input className={styles.imageInput}
-                                   type="file"
-                                   accept="image/*,.jpeg,.jpg,.png,.webp"
-                                   name="photo"
-                                   id="photo"
-                                   onChange={handleAcceptImage}
-                            />
-                        </div>
+                        <p>Category :</p>
+                        <FormControl sx={{ m: 1, minWidth: 370 }} size="small">
+                            <InputLabel
+                                id="demo-select-small-label"
+                                classes={{
+                                    root: styles.customSelect
+                                }}
+                            >Category</InputLabel>
+                            <Select
+                                classes={{ root: styles.customMenuItem }}
+                                labelId="demo-select-small-label"
+                                id="demo-select-small"
+                                value={inputState.category}
+                                label="Category"
+                                onChange={handleCategoryChange}
+                            >
+                                <MenuItem value="">
+                                    <em>None</em>
+                                </MenuItem>
+                                <MenuItem  value={"Male"}>Male</MenuItem>
+                                <MenuItem value={"Female"}>Female</MenuItem>
+                                <MenuItem value={"Kids"}>Kids</MenuItem>
+                                <MenuItem value={"Others"}>Others</MenuItem>
+                            </Select>
+                        </FormControl>
                     </div>
                     <div className={`${styles.inputRow} ${styles.viewImageRow}`}>
-                        <p>View Image :</p>
+                        <p>Front Image :</p>
                         <div className={styles.imageBox}>
                             <img
                                 onClick={() => setInputState(prev => ({
                                     ...prev,
-                                    photo: null,
+                                    frontImage: null,
                                 }))}
-                                src={inputState?.photo || '/images/noImage.jpg'}
-                                alt="NoMail team"/>
+                                src={inputState?.frontImage || '/images/noImage.png'}
+                                alt="Product Image"/>
+                        </div>
+
+                        <div className={styles.imageInputWrapper}>
+                            <input className={styles.imageInput}
+                                   type="file"
+                                   accept="image/*,.jpeg,.jpg,.png,.webp"
+                                   name="image"
+                                   id="image"
+                                   onChange={(e) => handleAcceptImage(e, 'frontImage')}
+                            />
+                        </div>
+                    </div>
+                    <div className={`${styles.inputRow} ${styles.viewImageRow}`}>
+                        <p>Back Image :</p>
+                        <div className={styles.imageBox}>
+                            <img
+                                onClick={() => setInputState(prev => ({
+                                    ...prev,
+                                    backImage: null,
+                                }))}
+                                src={inputState?.backImage || '/images/noImage.png'}
+                                alt="Product Image"/>
+                        </div>
+                        <div className={styles.imageInputWrapper}>
+                            <input className={styles.imageInput}
+                                   type="file"
+                                   accept="image/*,.jpeg,.jpg,.png,.webp"
+                                   name="image"
+                                   id="image"
+                                   onChange={(e) => handleAcceptImage(e, 'backImage')}
+                            />
                         </div>
                     </div>
                 </div>
+                .
                 <div className={styles.menuFooter}>
                     <div className={`${styles.button} ${styles.add}`} onClick={handleUpdateData}
                          style={{
@@ -231,7 +301,7 @@ const MembersMenu = ({setMenuOpen, menuOpen, update, selectedItem, setSelectedIt
                                 ariaLabel="three-circles-loading"
                             />
                         ) : (
-                            <span>{selectedItem ? "Edit Member" : "Add Member"}</span>
+                            <span>{selectedItem ? "Edit Product" : "Add Product"}</span>
                         )}
                     </div>
                     <div className={`${styles.button} ${styles.cancel}`} onClick={handleMenuClose}>
@@ -243,4 +313,4 @@ const MembersMenu = ({setMenuOpen, menuOpen, update, selectedItem, setSelectedIt
     );
 };
 
-export default MembersMenu;
+export default ProductsMenu;

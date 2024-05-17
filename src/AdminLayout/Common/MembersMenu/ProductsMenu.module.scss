@@ -1,5 +1,15 @@
 @import "../../../Variables/Variables.module";
 
+.customSelect {
+  color: white!important;
+}
+.customMenuItem {
+  color: white!important;
+  svg {
+    color: white!important;
+  }
+}
+
 .menuWrapper {
   display: flex;
   width: 100vw;
@@ -95,11 +105,13 @@
 
         &.viewImageRow {
           justify-content: start;
+          gap: 0;
 
           .imageBox {
             width: 50px;
             height: 50px;
             border: 1px dashed white;
+            margin-left: auto;
 
             img {
               width: 100%;
@@ -108,13 +120,19 @@
               object-position: center;
             }
           }
+
+          .imageInputWrapper {
+            max-width: 312px;
+            margin-left: 15px;
+          }
+
         }
 
         p {
           color: white;
-          font-size: 18px;
+          font-size: 15px;
           text-transform: uppercase;
-          max-width: 110px;
+          max-width: 130px;
           width: 100%;
         }
 
@@ -219,6 +237,7 @@
   .menuWrapper {
     .menuContainer {
       max-width: unset;
+
       .inputsContainer {
         .inputRow {
           &.viewImageRow {
@@ -229,13 +248,16 @@
     }
   }
 }
+
 @media screen and (max-height: 650px) {
   .menuWrapper {
     .menuContainer {
       gap: 10px;
+
       .menuHeading {
         padding-bottom: 15px;
       }
+
       .inputsContainer {
         gap: 10px;
 
@@ -243,11 +265,13 @@
           input {
             height: 40px;
           }
+
           p {
             font-size: 15px;
           }
         }
       }
+
       .menuFooter {
         padding-top: 15px;
       }
@@ -288,6 +312,7 @@
           }
         }
       }
+
       .menuFooter {
         .button {
           font-size: 15px;

@@ -12,12 +12,13 @@ export const adminToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEy
 const AdminLogin = () => {
 
     const {
-        setAdminAccess
+        setToken
     } = useContext(AuthContext);
 
     const [passwordVisible, setPasswordVisible] = useState(false);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [loginLoading,setLoginLoading] = useState(false);
 
     const navigate = useNavigate();
 
@@ -29,6 +30,7 @@ const AdminLogin = () => {
     const adminLogIn = useCallback(async (e) => {
         e.preventDefault();
         try {
+            setLoginLoading(true);
             const response = await axios.get("http://localhost:8000/admins");
             const admin = response.data;
             const adminWithEmail = admin.find(
@@ -41,6 +43,7 @@ const AdminLogin = () => {
             );
             if (adminWithEmail && adminWithPassword) {
                 localStorage.setItem("token", JSON.stringify(adminToken));
+                setToken(localStorage.getItem("token"));
                 toast.success(`Hesabınıza uğurla daxil oldunuz.`, {
                     hideProgressBar: false,
                     closeOnClick: true,
@@ -50,7 +53,6 @@ const AdminLogin = () => {
                     theme: "colored",
                     transition: Bounce,
                 });
-                setAdminAccess(true);
                 navigate("/admin/dashboard");
             } else if(!adminWithEmail) {
                 toast.error(`Belə hesab mövcud deyil.`, {
@@ -62,7 +64,6 @@ const AdminLogin = () => {
                     theme: "colored",
                     transition: Bounce,
                 });
-                setAdminAccess(false);
             }
             else if(!adminWithPassword) {
                 toast.error(`Bu hesab üçün şifrə yanlışdır.`, {
@@ -74,15 +75,14 @@ const AdminLogin = () => {
                     theme: "colored",
                     transition: Bounce,
                 });
-                setAdminAccess(false);
             }
         } catch (error) {
             console.error("Error:", error);
         }
-    }, [email,password, navigate]);
-
-
-
+        finally {
+            setLoginLoading(false);
+        }
+    }, [email,password, navigate,setLoginLoading,setToken]);
     return (
         <section className={styles.adminLoginSection}>
             <div className={styles.loginPanel}>
@@ -108,12 +108,14 @@ const AdminLogin = () => {
                     </div>
                 </div>
                 <div className={styles.loginBtn}
-                onClick={adminLogIn}>
+                onClick={adminLogIn}
+                style={{
+                    opacity: loginLoading? "0.3" : "1",
+                    pointerEvents : loginLoading? "none" : "all"
+                }}>
                         LOGIN
                 </div>
-
             </div>
-
         </section>
     );
 };

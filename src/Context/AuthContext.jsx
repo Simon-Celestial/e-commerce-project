@@ -1,26 +1,26 @@
-import React, {useState,useCallback} from "react";
+import React, {useState,useCallback,useEffect} from "react";
 import {Bounce, toast} from "react-toastify";
 
 
 
 export const AuthContext = React.createContext({
-    adminAccess: null,
-    setAdminAccess: () => {
-    },
     handleExit: () => {},
     token: null,
+    setToken: () => {}
 });
 
 export const AuthContextProvider = ({children}) => {
 
-    const [adminAccess, setAdminAccess] = useState(null);
     const [token,setToken] = useState(localStorage.token);
+
+    useEffect(() => {
+        setToken(localStorage.getItem("token"));
+    }, []);
 
 
     const handleExit = useCallback(() => {
         delete localStorage.token;
-        setToken(undefined);
-        setAdminAccess(false)
+        setToken(null);
         toast.success('You are logged off', {
             hideProgressBar: false,
             closeOnClick: true,
@@ -30,14 +30,16 @@ export const AuthContextProvider = ({children}) => {
             theme: "dark",
             transition: Bounce,
         });
-    }, [setToken,setAdminAccess])
+    }, [setToken])
 
     return (
         <AuthContext.Provider value={{
-            adminAccess,
-            setAdminAccess,
             token,
-            handleExit
+            handleExit,
+            setToken: (token) => {
+                localStorage.setItem("token", token);
+                setToken(token);
+            }
         }}>
             {children}
         </AuthContext.Provider>

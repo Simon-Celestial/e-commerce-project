@@ -1,6 +1,6 @@
 import styles from "./AdminPage.module.scss";
 import {Wrench, Power, Trash} from "@phosphor-icons/react";
-import MembersMenu from "../../Common/MembersMenu/MembersMenu.jsx";
+import ProductsMenu from "../../Common/MembersMenu/ProductsMenu.jsx";
 import {useCallback, useState, useMemo, useEffect, useContext} from "react";
 import Stack from "@mui/material/Stack";
 import Pagination from "@mui/material/Pagination";
@@ -46,7 +46,7 @@ const AdminPage = () => {
 
     const productsFiltered = useMemo(() => {
         return productsData?.filter((it) =>
-            it.title.toLowerCase().includes(searchTerm.toLowerCase())
+            it.title?.toLowerCase().includes(searchTerm?.toLowerCase())
         );
     }, [productsData, searchTerm]);
 
@@ -108,12 +108,13 @@ const AdminPage = () => {
 
     return (
         <div className={styles.adminPageWrapper}>
-            <MembersMenu setMenuOpen={setMenuOpen}
-                         menuOpen={menuOpen}
-                         selectedItem={selectedItem}
-                         setSelectedItem={setSelectedItem}
-                         setIsUpdating={setIsUpdating}
-                         isUpdating={isUpdating}
+            <ProductsMenu setMenuOpen={setMenuOpen}
+                          menuOpen={menuOpen}
+                          selectedItem={selectedItem}
+                          setSelectedItem={setSelectedItem}
+                          setIsUpdating={setIsUpdating}
+                          isUpdating={isUpdating}
+                          update={update}
             />
             <div className={styles.adminPageContent}>
                 <div className={styles.pageHeading}>
@@ -187,7 +188,7 @@ const AdminPage = () => {
                                                 {product?.quantity ? product.quantity : <p>Out of stock</p>}
                                             </div>
                                             <div className={`${styles.size} ${styles.tableCell}`}>
-                                                {product?.size.join(",")}
+                                                {product?.size?.join(",")}
                                             </div>
 
                                             <div className={`${styles.actions} ${styles.tableCell}`}>
