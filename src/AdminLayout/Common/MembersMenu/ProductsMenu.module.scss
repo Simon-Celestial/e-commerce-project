@@ -9,6 +9,15 @@
     color: white!important;
   }
 }
+.inputsContainer::-webkit-scrollbar {
+  width: 8px;
+  background-color: gray;
+}
+
+.inputsContainer::-webkit-scrollbar-thumb {
+  background-color: $green-dark;
+  border-radius:  6px;
+}
 
 .menuWrapper {
   display: flex;
@@ -37,7 +46,6 @@
     padding: 25px;
     justify-content: space-between;
     box-shadow: 0 0 5px gray;
-    gap: 25px;
 
     .menuHeading {
       display: flex;
@@ -95,13 +103,33 @@
       flex-direction: column;
       gap: 25px;
       width: 100%;
-
+      overflow-y: scroll;
+      max-height: 1100px;
+      padding: 10px 0;
       .inputRow {
         display: flex;
         width: 100%;
         justify-content: space-between;
         align-items: center;
         gap: 92px;
+        &.descriptionRow {
+          align-items: start;
+          textarea {
+            width: 100%;
+            max-width: 400px;
+            background: transparent;
+            outline: 0;
+            border: 1px solid #323641;
+            resize: none;
+            padding: 10px;
+            color: white;
+            font-size: 18px;
+            font-family: $mainFont;
+            height: 100px;
+
+          }
+
+        }
 
         &.viewImageRow {
           justify-content: start;

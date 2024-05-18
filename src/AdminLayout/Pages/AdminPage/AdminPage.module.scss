@@ -1,5 +1,6 @@
 @import "../../../Variables/Variables.module";
 
+
 .adminPageWrapper {
   display: flex;
   width: 100vw;
@@ -171,12 +172,24 @@
             &.tableHeading {
               border-bottom: 1px solid #323641;
             }
+            &.productsTable {
+              .name {
+                a {
+                  cursor: pointer;
+                  transition: color $transition;
+                  color: #ADAEAE;
+                  &:hover {
+                    color: #d10202;
+                  }
+                }
+              }
+            }
 
             .tableCell {
               display: flex;
               padding: 8px 16px;
               color: #ADAEAE;
-              font-size: 16px;
+              font-size: 15px;
               width: 100%;
             }
 
@@ -185,7 +198,7 @@
             }
 
             .image {
-              max-width: 100px;
+              max-width: 85px;
 
               img {
                 width: 50px;
@@ -200,7 +213,7 @@
             }
 
             .price {
-              max-width: 230px;
+              max-width: 185px;
               span {
                 display: inline-flex;
                 align-items: center;
@@ -212,9 +225,21 @@
             }
             .quantity {
               max-width: 130px;
+              justify-content: center;
+
             }
             .size {
               max-width: 100px;
+              justify-content: center;
+            }
+            .category {
+              max-width: 100px;
+              justify-content: center;
+
+            }
+            .rating {
+              justify-content: center;
+              max-width: 80px;
             }
 
             .actions {

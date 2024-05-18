@@ -86,7 +86,7 @@ const router = (access,token) => createBrowserRouter([
         children: [
             {
                 path: 'login',
-                element: !token? <AdminPage/> : <AdminLogin/>,
+                element: !token? <AdminLogin/> : <AdminPage/> ,
             },
             {
                 path: 'dashboard',

@@ -8,6 +8,9 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import OutlinedInput from '@mui/material/OutlinedInput';
+import Box from '@mui/material/Box';
+
 
 
 
@@ -23,35 +26,101 @@ export const getBase64 = (file) => {
         };
     });
 };
+
+const ITEM_HEIGHT = 48;
+const ITEM_PADDING_TOP = 8;
+
+const MenuProps = {
+    PaperProps: {
+        style: {
+            maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+            width: 250,
+        },
+    },
+};
+
+const AVAILABLE_SIZES = [
+    's',
+    'xs',
+    'm',
+    'l',
+    'xl',
+    'xxl',
+];
+
+
 const defaults = {
     id: null,
     title: '',
-    regularPrice: 0,
-    salePrice: 0,
-    frontImage: '',
-    backImage: "",
-    category: ""
+    regularPrice: "",
+    salePrice: "",
+    frontImage: null,
+    backImage: null,
+    category: "",
+    rating: "",
+    size: [],
+    hot: false,
+    quantity: 0,
+    description: "",
 };
+
+function getStyles(name, selectedSizes) {
+    return {
+        fontWeight:
+            selectedSizes.indexOf(name) === -1
+                ? 400
+                : 600,
+    };
+}
 const ProductsMenu = ({setMenuOpen, menuOpen, update, selectedItem, setSelectedItem, setIsUpdating, isUpdating}) => {
 
+    const [inputState, setInputState] = useState(selectedItem || defaults);
 
-    const [inputState, setInputState] = useState(defaults);
 
-    const handleInputChange = (e) => {
+    const handleSizeChange = (event) => {
+        const {
+            target: { value },
+        } = event;
+        setInputState(prevState => ({
+            ...prevState,
+            size: typeof value === 'string' ? value.split(',') : value,
+        }));
+    };
+
+
+    const handleInputChange = useCallback((e) => {
         const {name, value} = e.target;
         setInputState(prevState => ({
             ...prevState,
             [name]: value,
         }));
-    };
+    }, []);
 
-    const handleCategoryChange = (e) => {
+    const handleCategoryChange = useCallback((e) => {
         const selectedCategory = e.target.value;
         setInputState(prevState => ({
             ...prevState,
             category: selectedCategory,
         }));
-    };
+    }, [setInputState]);
+
+    const handleRatingChange = useCallback((e) => {
+        const selectedRating = e.target.value;
+        setInputState(prevState => ({
+            ...prevState,
+            rating: selectedRating,
+        }));
+    }, [setInputState]);
+
+
+    const handleHotChange = useCallback((e) => {
+        const value = e.target.value === 'yes';
+        setInputState(prevState => ({
+            ...prevState,
+            hot: value,
+        }));
+    }, []);
+
     useEffect(() => {
         if (selectedItem) {
             setInputState({
@@ -60,8 +129,9 @@ const ProductsMenu = ({setMenuOpen, menuOpen, update, selectedItem, setSelectedI
         } else {
             setInputState(defaults);
         }
-    }, [selectedItem])
-    const handleAcceptImage = useCallback(async (e,imageType) => {
+    }, [selectedItem]);
+
+    const handleAcceptImage = useCallback(async (e, imageType) => {
         const file = e.target.files[0];
         e.target.value = '';
         if (file.size > 1000 * 1000 * 150) {
@@ -117,16 +187,21 @@ const ProductsMenu = ({setMenuOpen, menuOpen, update, selectedItem, setSelectedI
 
     const handleUpdateData = useCallback(async () => {
         const requestData = {
-            title: inputState?.title,
+            title: inputState?.title.trim(),
             regularPrice: Number(inputState?.regularPrice),
             salePrice: Number(inputState?.salePrice),
             frontImage: inputState?.frontImage,
             backImage: inputState?.backImage,
-            category: inputState?.category
+            category: inputState?.category,
+            rating: Number(inputState?.rating),
+            size: inputState?.size,
+            hot: inputState?.hot,
+            quantity: Number(inputState?.quantity),
+            description: inputState?.description.trim()
         };
         try {
             setIsUpdating(true);
-            if (inputState.id) {
+            if (selectedItem) {
                 await axios.put(
                     `http://localhost:8000/products/${inputState.id}`,
                     requestData
@@ -168,7 +243,7 @@ const ProductsMenu = ({setMenuOpen, menuOpen, update, selectedItem, setSelectedI
         } finally {
             setIsUpdating(false);
         }
-    }, [inputState])
+    }, [inputState, selectedItem])
 
     return (
         <div className={`${styles.menuWrapper} ${menuOpen ? styles.menuVisible : ""}`}>
@@ -193,6 +268,16 @@ const ProductsMenu = ({setMenuOpen, menuOpen, update, selectedItem, setSelectedI
                                value={inputState.title}
                         />
                     </div>
+                    <div className={`${styles.inputRow} ${styles.descriptionRow}`}>
+                        <p>Description :</p>
+                        <textarea
+                            placeholder="Poduct Description"
+                            name="description"
+                            id="description"
+                            onChange={handleInputChange}
+                            value={inputState.description}
+                        />
+                    </div>
                     <div className={styles.inputRow}>
                         <p>Regular Price :</p>
                         <input type="number"
@@ -214,8 +299,37 @@ const ProductsMenu = ({setMenuOpen, menuOpen, update, selectedItem, setSelectedI
                         />
                     </div>
                     <div className={styles.inputRow}>
+                        <p>Rating :</p>
+                        <Box sx={{minWidth: 318}}>
+                            <FormControl fullWidth>
+                                <InputLabel id="demo-simple-select-label"
+                                            classes={{
+                                                root: styles.customSelect
+                                            }}
+                                >Rating
+                                </InputLabel>
+                                <Select
+                                    classes={{root: styles.customMenuItem}}
+                                    labelId="demo-simple-select-label"
+                                    id="demo-simple-select"
+                                    value={inputState?.rating}
+                                    label="rating"
+                                    onChange={handleRatingChange}
+                                >
+                                    <MenuItem value={0}>0</MenuItem>
+                                    <MenuItem value={1}>1</MenuItem>
+                                    <MenuItem value={2}>2</MenuItem>
+                                    <MenuItem value={3}>3</MenuItem>
+                                    <MenuItem value={4}>4</MenuItem>
+                                    <MenuItem value={5}>5</MenuItem>
+                                </Select>
+                            </FormControl>
+                        </Box>
+                    </div>
+                    <div className={styles.inputRow}>
                         <p>Category :</p>
-                        <FormControl sx={{ m: 1, minWidth: 370 }} size="small">
+                        <FormControl
+                            sx={{m: 1, minWidth: 308, border: '1px solid #323641'}} size="small">
                             <InputLabel
                                 id="demo-select-small-label"
                                 classes={{
@@ -223,7 +337,7 @@ const ProductsMenu = ({setMenuOpen, menuOpen, update, selectedItem, setSelectedI
                                 }}
                             >Category</InputLabel>
                             <Select
-                                classes={{ root: styles.customMenuItem }}
+                                classes={{root: styles.customMenuItem}}
                                 labelId="demo-select-small-label"
                                 id="demo-select-small"
                                 value={inputState.category}
@@ -233,12 +347,45 @@ const ProductsMenu = ({setMenuOpen, menuOpen, update, selectedItem, setSelectedI
                                 <MenuItem value="">
                                     <em>None</em>
                                 </MenuItem>
-                                <MenuItem  value={"Male"}>Male</MenuItem>
+                                <MenuItem value={"Male"}>Male</MenuItem>
                                 <MenuItem value={"Female"}>Female</MenuItem>
                                 <MenuItem value={"Kids"}>Kids</MenuItem>
+                                <MenuItem value={"Jeans"}>Jeans</MenuItem>
                                 <MenuItem value={"Others"}>Others</MenuItem>
                             </Select>
                         </FormControl>
+                    </div>
+                    <div className={styles.inputRow}>
+                        <p>Size :</p>
+                        <FormControl sx={{m: 1, width: 308, border: '1px solid #323641'}}>
+                            <InputLabel
+                                id="demo-multiple-name-label"
+                                classes={{
+                                    root: styles.customSelect
+                                }}
+                            >Size</InputLabel>
+                            <Select
+                                classes={{root: styles.customMenuItem}}
+                                labelId="demo-multiple-name-label"
+                                id="demo-multiple-name"
+                                multiple
+                                value={inputState.size}
+                                onChange={handleSizeChange}
+                                input={<OutlinedInput label="Size"/>}
+                                MenuProps={MenuProps}
+                            >
+                                {AVAILABLE_SIZES?.map((size) => (
+                                    <MenuItem
+                                        key={size}
+                                        value={size}
+                                        style={getStyles(size, inputState.size)}
+                                    >
+                                        {size}
+                                    </MenuItem>
+                                ))}
+                            </Select>
+                        </FormControl>
+
                     </div>
                     <div className={`${styles.inputRow} ${styles.viewImageRow}`}>
                         <p>Front Image :</p>
@@ -283,6 +430,38 @@ const ProductsMenu = ({setMenuOpen, menuOpen, update, selectedItem, setSelectedI
                             />
                         </div>
                     </div>
+                    <div className={styles.inputRow}>
+                        <p>Quantity :</p>
+                        <input type="number"
+                               name="quantity"
+                               id="quantity"
+                               placeholder="Enter Product Qunantity"
+                               onChange={handleInputChange}
+                               value={inputState.quantity}
+                        />
+                    </div>
+                    <div className={styles.inputRow}>
+                        <p>Hot :</p>
+                        <FormControl sx={{m: 1, minWidth: 370, border: '1px solid #323641'}} size="small">
+                            <InputLabel
+                                id="demo-select-small-label"
+                                classes={{
+                                    root: styles.customSelect
+                                }}>Hot</InputLabel>
+                            <Select
+                                classes={{root: styles.customMenuItem}}
+                                labelId="demo-select-small-label"
+                                id="demo-select-small"
+                                value={inputState.hot ? 'yes' : 'no'}
+                                label="hot"
+                                onChange={handleHotChange}
+                            >
+                                <MenuItem value={"no"}>No</MenuItem>
+                                <MenuItem value={"yes"}>Yes</MenuItem>
+                            </Select>
+                        </FormControl>
+                    </div>
+
                 </div>
                 .
                 <div className={styles.menuFooter}>

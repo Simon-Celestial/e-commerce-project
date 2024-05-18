@@ -7,6 +7,7 @@ import Pagination from "@mui/material/Pagination";
 import axios from "axios";
 import {Bounce, toast} from "react-toastify";
 import {AuthContext} from "../../../Context/AuthContext.jsx";
+import {Link} from "react-router-dom";
 
 
 const itemsPerPage = 9;
@@ -163,6 +164,12 @@ const AdminPage = () => {
                                 <div className={`${styles.size} ${styles.tableCell}`}>
                                     Size
                                 </div>
+                                <div className={`${styles.rating} ${styles.tableCell}`}>
+                                    Rating
+                                </div>
+                                <div className={`${styles.category} ${styles.tableCell}`}>
+                                    Category
+                                </div>
                                 <div className={`${styles.actions} ${styles.tableCell}`}>
                                     Actions
                                 </div>
@@ -170,7 +177,7 @@ const AdminPage = () => {
                             {currentProducts?.length !== 0 ?
                                 currentProducts?.slice(0, 10).map((product) => {
                                     return (
-                                        <div key={product.id} className={`${styles.tableRow}`}>
+                                        <div key={product.id} className={`${styles.tableRow} ${styles.productsTable}`}>
                                             <div className={`${styles.id} ${styles.tableCell}`}>
                                                 {product.id}
                                             </div>
@@ -178,7 +185,9 @@ const AdminPage = () => {
                                                 <img src={product.frontImage} alt="Product"/>
                                             </div>
                                             <div className={`${styles.name} ${styles.tableCell}`}>
-                                                {product.title}
+                                                <Link to={`/details/${product.id}`}>
+                                                    {product.title}
+                                                </Link>
                                             </div>
                                             <div className={`${styles.price} ${styles.tableCell}`}>
                                             <span>{product?.regularPrice ?
@@ -190,17 +199,23 @@ const AdminPage = () => {
                                             <div className={`${styles.size} ${styles.tableCell}`}>
                                                 {product?.size?.join(",")}
                                             </div>
+                                            <div className={`${styles.rating} ${styles.tableCell}`}>
+                                                {product?.rating}
+                                            </div>
+                                            <div className={`${styles.category} ${styles.tableCell}`}>
+                                                {product.category}
+                                            </div>
 
                                             <div className={`${styles.actions} ${styles.tableCell}`}>
                                                 <div className={styles.action}>
-                                                    <Wrench/>
+                                                    <Wrench onClick={() => handleOpenMenu(product)}/>
                                                 </div>
 
                                                 <div className={styles.action} style={{
                                                     opacity: isUpdating ? 0.5 : 1,
                                                     pointerEvents: isUpdating ? 'none' : 'all',
                                                 }}
-                                                     onClick={() => handleDeleteData(product.id,product.title)}>
+                                                     onClick={() => handleDeleteData(product.id, product.title)}>
                                                     <Trash/>
                                                 </div>
                                             </div>
@@ -209,7 +224,7 @@ const AdminPage = () => {
                                 })
                                 :
                                 <div className={styles.noProducts}>
-                                No products found...
+                                    No products found...
                                 </div>
                             }
                             <div className={styles.paginationWrapper}>
