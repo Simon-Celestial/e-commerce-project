@@ -135,7 +135,7 @@ const ProductsMenu = ({setMenuOpen, menuOpen, update, selectedItem, setSelectedI
         const file = e.target.files[0];
         e.target.value = '';
         if (file.size > 1000 * 1000 * 150) {
-            toast.error(`File is too big`,
+            toast.error(`Şəkil çox böyükdür`,
                 {
                     hideProgressBar: false,
                     closeOnClick: true,
@@ -150,7 +150,7 @@ const ProductsMenu = ({setMenuOpen, menuOpen, update, selectedItem, setSelectedI
             return;
         }
         if (file.size < 1000 * 5) {
-            toast.error(`File is too small`,
+            toast.error(`Şəkil çox kiçikdir`,
                 {
                     hideProgressBar: false,
                     closeOnClick: true,
@@ -185,6 +185,7 @@ const ProductsMenu = ({setMenuOpen, menuOpen, update, selectedItem, setSelectedI
     }, [menuOpen]);
 
 
+
     const handleUpdateData = useCallback(async () => {
         const requestData = {
             title: inputState?.title.trim(),
@@ -199,6 +200,27 @@ const ProductsMenu = ({setMenuOpen, menuOpen, update, selectedItem, setSelectedI
             quantity: Number(inputState?.quantity),
             description: inputState?.description.trim()
         };
+
+        if (
+            !requestData.title ||
+            !requestData.description ||
+            !requestData.salePrice ||
+            !requestData.category ||
+            requestData.size.length === 0 ||
+            !requestData.rating ||
+            !requestData.frontImage
+        ) {
+            toast.error('Bütün tələb olunan sahələri doldurun', {
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: true,
+                progress: undefined,
+                theme: 'dark',
+                transition: Bounce,
+            });
+            return;
+        }
         try {
             setIsUpdating(true);
             if (selectedItem) {
@@ -206,7 +228,7 @@ const ProductsMenu = ({setMenuOpen, menuOpen, update, selectedItem, setSelectedI
                     `http://localhost:8000/products/${inputState.id}`,
                     requestData
                 );
-                toast.success('Product Edited Successfully', {
+                toast.success(`${requestData.title} uğurla redaktə edildi`, {
                     hideProgressBar: false,
                     closeOnClick: true,
                     pauseOnHover: false,
@@ -217,7 +239,7 @@ const ProductsMenu = ({setMenuOpen, menuOpen, update, selectedItem, setSelectedI
                 });
             } else {
                 await axios.post("http://localhost:8000/products/", requestData);
-                toast.success('Product Added Successfully', {
+                toast.success(`${requestData.title} uğurla əlavə edildi`, {
                     hideProgressBar: false,
                     closeOnClick: true,
                     pauseOnHover: false,
@@ -230,7 +252,7 @@ const ProductsMenu = ({setMenuOpen, menuOpen, update, selectedItem, setSelectedI
             update();
             handleMenuClose();
         } catch (error) {
-            toast.error('Failed to add product', {
+            toast.error('Məhsul əlavə edərkən xəta baş verdi', {
                 hideProgressBar: false,
                 closeOnClick: true,
                 pauseOnHover: false,
@@ -239,11 +261,11 @@ const ProductsMenu = ({setMenuOpen, menuOpen, update, selectedItem, setSelectedI
                 theme: 'dark',
                 transition: Bounce,
             });
-            console.log(error)
+            console.log(error);
         } finally {
             setIsUpdating(false);
         }
-    }, [inputState, selectedItem])
+    }, [inputState, selectedItem]);
 
     return (
         <div className={`${styles.menuWrapper} ${menuOpen ? styles.menuVisible : ""}`}>
@@ -259,7 +281,7 @@ const ProductsMenu = ({setMenuOpen, menuOpen, update, selectedItem, setSelectedI
                 </div>
                 <div className={styles.inputsContainer}>
                     <div className={styles.inputRow}>
-                        <p>Title :</p>
+                        <p>Title : <b>*</b></p>
                         <input type="text"
                                name="title"
                                id="title"
@@ -269,7 +291,7 @@ const ProductsMenu = ({setMenuOpen, menuOpen, update, selectedItem, setSelectedI
                         />
                     </div>
                     <div className={`${styles.inputRow} ${styles.descriptionRow}`}>
-                        <p>Description :</p>
+                        <p>Description : <b>*</b></p>
                         <textarea
                             placeholder="Poduct Description"
                             name="description"
@@ -289,7 +311,7 @@ const ProductsMenu = ({setMenuOpen, menuOpen, update, selectedItem, setSelectedI
                         />
                     </div>
                     <div className={styles.inputRow}>
-                        <p>Sale Price :</p>
+                        <p>Sale Price : <b>*</b></p>
                         <input type="number"
                                name="salePrice"
                                id="salePrice"
@@ -327,7 +349,7 @@ const ProductsMenu = ({setMenuOpen, menuOpen, update, selectedItem, setSelectedI
                         </Box>
                     </div>
                     <div className={styles.inputRow}>
-                        <p>Category :</p>
+                        <p>Category : <b>*</b></p>
                         <FormControl
                             sx={{m: 1, minWidth: 308, border: '1px solid #323641'}} size="small">
                             <InputLabel
@@ -351,12 +373,13 @@ const ProductsMenu = ({setMenuOpen, menuOpen, update, selectedItem, setSelectedI
                                 <MenuItem value={"Female"}>Female</MenuItem>
                                 <MenuItem value={"Kids"}>Kids</MenuItem>
                                 <MenuItem value={"Jeans"}>Jeans</MenuItem>
+                                <MenuItem value={"Jacket"}>Jacket</MenuItem>
                                 <MenuItem value={"Others"}>Others</MenuItem>
                             </Select>
                         </FormControl>
                     </div>
                     <div className={styles.inputRow}>
-                        <p>Size :</p>
+                        <p>Size : <b>*</b></p>
                         <FormControl sx={{m: 1, width: 308, border: '1px solid #323641'}}>
                             <InputLabel
                                 id="demo-multiple-name-label"
@@ -388,7 +411,7 @@ const ProductsMenu = ({setMenuOpen, menuOpen, update, selectedItem, setSelectedI
 
                     </div>
                     <div className={`${styles.inputRow} ${styles.viewImageRow}`}>
-                        <p>Front Image :</p>
+                        <p>Front Image : <b>*</b></p>
                         <div className={styles.imageBox}>
                             <img
                                 onClick={() => setInputState(prev => ({

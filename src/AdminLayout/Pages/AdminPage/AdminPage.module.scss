@@ -1,5 +1,19 @@
 @import "../../../Variables/Variables.module";
 
+.customYesButton {
+  background: $green-dark!important;
+  color: white!important;
+  &:hover {
+    background: green!important;
+  }
+}
+.customNoButton {
+  background: red!important;
+  color: white!important;
+  &:hover {
+    background: darkred!important;
+  }
+}
 
 .adminPageWrapper {
   display: flex;

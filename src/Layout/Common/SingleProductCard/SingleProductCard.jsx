@@ -118,8 +118,7 @@ export const SingleProductCard = ({product}) => {
                         }
                     </div>
                     <div className={styles.descriptionTitle}>
-                        Constructed from a durable polyester fabrication, this quilted staple features a hooded
-                        neckline, long sleeves with elasticated cuffs. Machine washable at 30 degrees.
+                        {product?.description}
                     </div>
                     <div className={styles.buttonsBlock}>
                         <div className={styles.button} onClick={() => addToCart(product)}>
@@ -160,7 +159,7 @@ export const SingleProductCard = ({product}) => {
                     </div>
                     <div className={styles.idBlock}>
                         <span>SKU: <p>SF00{product?.id}</p></span>
-                        <span>BRANDS: <p>Fashion Clothes</p></span>
+                        <span>CATEGORY: <p>{product?.category}</p></span>
                     </div>
                 </div>
             </div>

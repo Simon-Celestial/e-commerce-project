@@ -130,7 +130,6 @@
           }
 
         }
-
         &.viewImageRow {
           justify-content: start;
           gap: 0;
@@ -162,6 +161,10 @@
           text-transform: uppercase;
           max-width: 130px;
           width: 100%;
+          b {
+            color: red;
+            font-size: 20px;
+          }
         }
 
         input {
