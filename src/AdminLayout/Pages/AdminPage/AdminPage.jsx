@@ -16,6 +16,7 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Slide from '@mui/material/Slide';
 import Button from '@mui/material/Button';
+import {CategoriesManagement} from "../../Common/CategoriesManagement/CategoriesManagement.jsx";
 
 
 const itemsPerPage = 9;
@@ -24,6 +25,16 @@ const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
 });
 
+// QUANTITY COLOR
+const getQuantityColor = (quantity) => {
+    if (quantity >= 10) {
+        return "green";
+    } else if (quantity >= 5) {
+        return "yellow";
+    } else {
+        return "red";
+    }
+};
 
 const AdminPage = () => {
 
@@ -181,12 +192,16 @@ const AdminPage = () => {
                 />
                 <div className={styles.adminPageContent}>
                     <div className={styles.pageHeading}>
-                        <h1>Admin Dashboard</h1>
+                        <h1>Product Categories</h1>
                         <div className={styles.exit} onClick={handleExit}>
                             <Power/>
                         </div>
                     </div>
-                    <div className={styles.teamManagement}>
+                    <CategoriesManagement />
+                    <div className={styles.pageHeading}>
+                    <h1>All products</h1>
+                    </div>
+                    <div className={styles.productManagement}>
                         <div className={styles.searchInput}>
                             <input type="text"
                                    placeholder="Enter product name"
@@ -257,7 +272,9 @@ const AdminPage = () => {
                                                 <p>$ {product.regularPrice?.toFixed(2)}</p> : null}$ {product.salePrice?.toFixed(2)}</span>
                                                 </div>
                                                 <div className={`${styles.quantity} ${styles.tableCell}`}>
-                                                    {product?.quantity ? product.quantity : <p>Out of stock</p>}
+                                                    {<span style={{
+                                                        color: getQuantityColor(product?.quantity)
+                                                    }}>{product?.quantity > 0 ? product?.quantity : "Out of stock"}</span>}
                                                 </div>
                                                 <div className={`${styles.size} ${styles.tableCell}`}>
                                                     {product?.size?.join(",")}
@@ -291,20 +308,20 @@ const AdminPage = () => {
                                         No products found...
                                     </div>
                                 }
-                                <div className={styles.paginationWrapper}>
-                                    <Stack spacing={1}>
-                                        <Pagination
-                                            count={Math.ceil(productsFiltered?.length / itemsPerPage)}
-                                            variant="outlined"
-                                            shape="rounded"
-                                            size="large"
-                                            page={currentPage}
-                                            onChange={handlePageChange}
-                                        />
-                                    </Stack>
-                                </div>
                             </div>
                         </div>
+                    </div>
+                    <div className={styles.paginationWrapper}>
+                        <Stack spacing={1}>
+                            <Pagination
+                                count={Math.ceil(productsFiltered?.length / itemsPerPage)}
+                                variant="outlined"
+                                shape="rounded"
+                                size="large"
+                                page={currentPage}
+                                onChange={handlePageChange}
+                            />
+                        </Stack>
                     </div>
                 </div>
             </div>

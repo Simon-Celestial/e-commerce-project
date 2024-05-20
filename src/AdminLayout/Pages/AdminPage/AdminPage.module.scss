@@ -65,7 +65,7 @@
       }
     }
 
-    .teamManagement {
+    .productManagement {
       display: flex;
       width: 100%;
       background-color: $admin-secondary-color;
@@ -141,14 +141,13 @@
 
 
     }
-
     .overFlow {
       .teamTable {
         display: flex;
         width: 100%;
         background-color: $admin-secondary-color;
         margin-top: 25px;
-        border-radius: 0 0 10px 10px;
+        border-radius: 10px 10px 0 0 ;
         border: 1px solid #323641;
         overflow-y: hidden;
 
@@ -158,12 +157,6 @@
           flex-direction: column;
           min-height: 200px;
           justify-content: space-between;
-          .paginationWrapper {
-            display: flex;
-            width: 100%;
-            padding: 5px 0;
-            background: #00987F;
-          }
           .noProducts{
             display: flex;
             width: 100%;
@@ -289,6 +282,14 @@
 
       }
     }
+    .paginationWrapper {
+      display: flex;
+      width: 100%;
+      padding: 5px 0;
+      background: #00987F;
+      border-radius: 0 0 10px 10px;
+    }
+
   }
 }
 
@@ -296,62 +297,74 @@
   .adminPageWrapper {
     .adminPageContent {
       .overFlow {
-        .teamTable {
-          .table {
-            .tableRow {
-              .id {
-                max-width: 60px;
-              }
-              .photo {
-                max-width: 100px;
-              }
-              .name {
-                max-width: 200px;
-              }
-              .surname {
-                max-width: 200px;
-              }
-              .actions {
-                max-width: 305px;
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-}
-@media screen and (max-width: 1000px) {
-  .adminPageWrapper {
-    .adminPageContent {
-      .overFlow {
-        &.scrollLock {
-          overflow: hidden;
-        }
         &::-webkit-scrollbar {
           height: 10px;
         }
         &::-webkit-scrollbar-track {
-          background: $green-dark;
+          background: gray;
         }
         &::-webkit-scrollbar-thumb {
-          background-color: $orange-dark;
+          background-color: $green-dark;
           border-radius: 2px;
+          box-shadow: 0 0 5px black;
         }
-
-        overflow-x: auto;
         .teamTable {
-          width: 938px;
+          max-width: 1140px;
+          .table {
+            .tableRow {
+              .tableCell {
+                padding: 8px;
+                font-size: 14px;
+              }
+              .id {
+                max-width: 55px;
+              }
+              .image {
+                max-width: 70px;
+              }
+              .price {
+                max-width: 165px;
+              }
+              .name {
+                max-width: 280px;
+              }
+              .quantity {
+                max-width: 98px;
+              }
+              .rating {
+                max-width: 50px;
+              }
+              .actions {
+                max-width: 95px;
+                margin-left: auto;
+              }
+            }
+          }
+        }
+        overflow-x: auto;
+      }
+
+      .overFlow {
+      }
+    }
+  }
+}
+@media screen and (max-width: 1024px) {
+  .adminPageWrapper {
+    .adminPageContent {
+      .overFlow {
+        .teamTable {
+          width: 964px;
         }
       }
     }
   }
 }
-
 @media screen and (max-width: 850px) {
   .adminPageWrapper {
+    padding: 0 15px 100px 15px;
     .adminPageContent {
-      .teamManagement {
+      .productManagement {
         padding: 30px 15px;
         gap: 25px;
         .buttons {
@@ -366,7 +379,7 @@
 @media screen and (max-width: 700px) {
   .adminPageWrapper {
     .adminPageContent {
-      .teamManagement {
+      .productManagement {
         flex-direction: column;
         .searchInput {
           max-width: unset;
@@ -391,7 +404,7 @@
           font-size: 20px;
         }
       }
-      .teamManagement {
+      .productManagement {
         gap: 15px;
         .searchInput {
           max-width: unset;

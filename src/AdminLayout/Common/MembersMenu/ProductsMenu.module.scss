@@ -13,12 +13,10 @@
   width: 8px;
   background-color: gray;
 }
-
 .inputsContainer::-webkit-scrollbar-thumb {
   background-color: $green-dark;
   border-radius:  6px;
 }
-
 .menuWrapper {
   display: flex;
   width: 100vw;
@@ -263,12 +261,10 @@
 
   }
 }
-
 @media screen and (max-width: 1000px) {
   .menuWrapper {
     .menuContainer {
       max-width: unset;
-
       .inputsContainer {
         .inputRow {
           &.viewImageRow {
@@ -313,6 +309,39 @@
 @media screen and (max-width: 600px) {
   .menuWrapper {
     .menuContainer {
+      .inputsContainer {
+        .inputRow {
+          gap: 50px;
+          .muiBox {
+            min-width: 180px!important;
+          }
+          &.descriptionRow {
+            textarea {
+              font-size: 14px;
+            }
+          }
+
+
+          p {
+            font-size: 13px;
+            white-space: nowrap;
+            min-width: 100px;
+          }
+          &.viewImageRow {
+            flex-direction: column;
+            align-items: start;
+            gap: 15px;
+            .imageInputWrapper {
+              margin-left: 0;
+              width: 100%;
+              max-width: unset;
+            }
+            .imageBox {
+              margin: 0;
+            }
+          }
+        }
+      }
       .menuFooter {
         .button {
           padding: 0;
@@ -332,14 +361,13 @@
 
         .inputRow {
           gap: 50px;
+          .muiBox {
+            min-width: 120px!important;
+          }
 
           input {
             height: 40px;
-          }
-
-          p {
-            font-size: 15px;
-            max-width: 100px;
+            font-size: 12px;
           }
         }
       }
@@ -358,10 +386,9 @@
     .menuContainer {
       .inputsContainer {
         .inputRow {
-          gap: 25px;
-
-          input {
-            font-size: 14px;
+          gap: 10px;
+          p {
+            font-size: 12px;
           }
         }
       }

@@ -1,6 +1,6 @@
 import styles from "./ProductsMenu.module.scss";
 import {X} from "@phosphor-icons/react";
-import {useCallback, useEffect, useState} from "react";
+import {useCallback, useContext, useEffect, useState} from "react";
 import axios from "axios";
 import {Bounce, toast} from "react-toastify";
 import {ThreeCircles} from "react-loader-spinner";
@@ -10,6 +10,7 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import Box from '@mui/material/Box';
+import {AuthContext} from "../../../Context/AuthContext.jsx";
 
 
 
@@ -73,6 +74,11 @@ function getStyles(name, selectedSizes) {
     };
 }
 const ProductsMenu = ({setMenuOpen, menuOpen, update, selectedItem, setSelectedItem, setIsUpdating, isUpdating}) => {
+
+    const {
+        categoryData,
+    } = useContext(AuthContext);
+
 
     const [inputState, setInputState] = useState(selectedItem || defaults);
 
@@ -321,8 +327,20 @@ const ProductsMenu = ({setMenuOpen, menuOpen, update, selectedItem, setSelectedI
                         />
                     </div>
                     <div className={styles.inputRow}>
+                        <p>Quantity :</p>
+                        <input type="number"
+                               name="quantity"
+                               id="quantity"
+                               placeholder="Enter Product Qunantity"
+                               onChange={handleInputChange}
+                               value={inputState.quantity}
+                        />
+                    </div>
+                    <div className={styles.inputRow}>
                         <p>Rating :</p>
-                        <Box sx={{minWidth: 318}}>
+                        <Box sx={{minWidth: 318, border: '1px solid #323641'}}
+                        className={styles.muiBox}
+                        >
                             <FormControl fullWidth>
                                 <InputLabel id="demo-simple-select-label"
                                             classes={{
@@ -351,7 +369,9 @@ const ProductsMenu = ({setMenuOpen, menuOpen, update, selectedItem, setSelectedI
                     <div className={styles.inputRow}>
                         <p>Category : <b>*</b></p>
                         <FormControl
-                            sx={{m: 1, minWidth: 308, border: '1px solid #323641'}} size="small">
+                            sx={{m: 1, minWidth: 308, border: '1px solid #323641'}}
+                            size="small"
+                            className={styles.muiBox}>
                             <InputLabel
                                 id="demo-select-small-label"
                                 classes={{
@@ -369,18 +389,18 @@ const ProductsMenu = ({setMenuOpen, menuOpen, update, selectedItem, setSelectedI
                                 <MenuItem value="">
                                     <em>None</em>
                                 </MenuItem>
-                                <MenuItem value={"Male"}>Male</MenuItem>
-                                <MenuItem value={"Female"}>Female</MenuItem>
-                                <MenuItem value={"Kids"}>Kids</MenuItem>
-                                <MenuItem value={"Jeans"}>Jeans</MenuItem>
-                                <MenuItem value={"Jacket"}>Jacket</MenuItem>
-                                <MenuItem value={"Others"}>Others</MenuItem>
+                                {categoryData?.map((category) => {
+                                    return (
+                                        <MenuItem key={category.id} value={category.name}>{category.name}</MenuItem>
+                                    )
+                                })}
                             </Select>
                         </FormControl>
                     </div>
                     <div className={styles.inputRow}>
                         <p>Size : <b>*</b></p>
-                        <FormControl sx={{m: 1, width: 308, border: '1px solid #323641'}}>
+                        <FormControl sx={{m: 1, width: 308, border: '1px solid #323641'}}
+                                     className={styles.muiBox}>
                             <InputLabel
                                 id="demo-multiple-name-label"
                                 classes={{
@@ -454,18 +474,10 @@ const ProductsMenu = ({setMenuOpen, menuOpen, update, selectedItem, setSelectedI
                         </div>
                     </div>
                     <div className={styles.inputRow}>
-                        <p>Quantity :</p>
-                        <input type="number"
-                               name="quantity"
-                               id="quantity"
-                               placeholder="Enter Product Qunantity"
-                               onChange={handleInputChange}
-                               value={inputState.quantity}
-                        />
-                    </div>
-                    <div className={styles.inputRow}>
                         <p>Hot :</p>
-                        <FormControl sx={{m: 1, minWidth: 370, border: '1px solid #323641'}} size="small">
+                        <FormControl sx={{m: 1, minWidth: 305, border: '1px solid #323641'}} size="small"
+                                     className={styles.muiBox}
+                        >
                             <InputLabel
                                 id="demo-select-small-label"
                                 classes={{

@@ -3,15 +3,20 @@ import {Bounce, toast} from "react-toastify";
 
 
 
+
 export const AuthContext = React.createContext({
     handleExit: () => {},
     token: null,
-    setToken: () => {}
+    setToken: () => {},
+    categoryData: null,
+    setCategoryData: () => {},
 });
 
 export const AuthContextProvider = ({children}) => {
 
     const [token,setToken] = useState(localStorage.token);
+    const [categoryData, setCategoryData] = useState(null);
+
 
     useEffect(() => {
         setToken(localStorage.getItem("token"));
@@ -39,7 +44,9 @@ export const AuthContextProvider = ({children}) => {
             setToken: (token) => {
                 localStorage.setItem("token", token);
                 setToken(token);
-            }
+            },
+            categoryData,
+            setCategoryData
         }}>
             {children}
         </AuthContext.Provider>

@@ -1,0 +1,128 @@
+@import "../../../Variables/Variables.module";
+
+.categoriesWrapper {
+    display: flex;
+    width: 100%;
+    border: 1px solid $text-color;
+    margin: 25px 0;
+    padding: 25px;
+    border-radius: 10px;
+    background: $admin-secondary-color;
+    gap: 25px;
+    .allCategories {
+        max-width: 700px;
+        height: 100%;
+        width: 100%;
+        border: 1px solid white;
+        background: #323641;
+        border-radius: 10px;
+        flex-wrap: wrap;
+        gap: 15px;
+        display: flex;
+        padding: 10px;
+        .categoryEntity {
+            padding: 10px 10px 10px 25px;
+            display: flex;
+            font-size: 18px;
+            color: white;
+            background: $green-dark;
+            height: 40px;
+            border-radius: 5px;
+            align-items: center;
+            gap: 15px;
+            .deleteCategory {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 5px;
+                cursor: pointer;
+                transition: color $transition;
+                &:hover {
+                    color: red;
+                }
+                &.disabled {
+                    color: black;
+                    opacity: 0.5;
+                    pointer-events: none;
+                }
+            }
+
+        }
+    }
+    .categoriesButtons {
+        width: 100%;
+        max-width: 400px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        .categoryInput {
+            width: 100%;
+            height: 45px;
+            background: #323641;
+            border-radius: 10px;
+            border: 1px solid white;
+            input {
+                width: 100%;
+                height: 100%;
+                padding: 10px;
+                background: transparent;
+                color: white;
+                outline: 0;
+                border: 0;
+                text-transform: capitalize;
+            }
+
+        }
+        .addButton {
+            width: 100%;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            background: $green-dark;
+            color: white;
+            border-radius: 10px;
+            transition: background $transition;
+            cursor: pointer;
+            &:hover {
+                background: $orange-dark;
+            }
+            &.disabled {
+                opacity: 0.5;
+                pointer-events: none;
+            }
+        }
+
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .categoriesWrapper {
+        .allCategories {
+            max-width: 800px;
+        }
+        .categoriesButtons {
+            max-width: 200px;
+        }
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .categoriesWrapper {
+        flex-direction: column;
+        .allCategories {
+            max-width: unset;
+            order: 2;
+            .categoryEntity {
+                padding: 5px 5px 5px 12.5px;
+                font-size: 15px;
+            }
+        }
+        .categoriesButtons {
+            max-width: unset;
+            order: 1;
+        }
+    }
+}
