@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "imageUrl": "https://nooni-be87.kxcdn.com/nooni-fashion/wp-content/uploads/2023/04/slide-1-home4-1.jpg",
+    "arrivals": "Yeniliklər",
+    "latest": "Yeni kolleksiyani açın",
+    "shipping": "Sifarişlər üçün $199+ pulsuz çatdırılma",
+    "shop": "INDI ALIN"
+  },
+  {
+    "id": 2,
+    "imageUrl": "https://nooni-be87.kxcdn.com/nooni-fashion/wp-content/uploads/2023/04/slide-2-home4-1.jpg",
+    "arrivals": "Qadınlar üçün moda",
+    "latest": "Svetrlər üzrə endirimlər 70%ədək",
+    "shipping": "Çatdırılma və pulsuz qaytarılma",
+    "shop": "INDI ALIN"
+  },
+  {
+    "id": 3,
+    "imageUrl": "https://nooni-be87.kxcdn.com/nooni-fashion/wp-content/uploads/2023/04/slide-3-home4-1.jpg",
+    "arrivals": "Böyük Endirim",
+    "latest": "Moda malları üzrə 50%ədək endirim",
+    "shipping": "Pulsuz çatdırılma - Endirimdən yararlanmayın",
+    "shop": "INDI ALIN"
+  }
+]

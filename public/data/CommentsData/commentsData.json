@@ -1,0 +1,84 @@
+{
+    "en": [
+      {
+        "id" : "1",
+        "comment": "I appreciate the detailed guide on accessorizing for summer. It's always tricky to find the right pieces, but this really helps.",
+        "date" : "JAN 01,2024"
+      },
+      {
+        "id" : "2",
+        "comment": "I love the variety of dresses showcased here. Perfect for any summer occasion!",
+        "date" : "JAN 25,2024"
+      },
+      {
+        "id" : "3",
+        "comment": "These outfit ideas are fantastic! Can't wait to try them out with my custom tees.",
+        "date" : "FEB 18,2024"
+      },
+      {
+        "id" : "4",
+        "comment": "The tips on styling floral prints are so helpful. I've been struggling with that lately. Thanks for sharing!",
+        "date" : "MAR 05,2024"
+      },
+      {
+        "id" : "5",
+        "comment": "Wow, these summer dresses are absolutely stunning! I need to add them to my wardrobe.",
+        "date" : "MAY 22,2024"
+      }
+    ],
+    "ru": [
+      {
+        "id": "1",
+        "comment": "Я ценю детальное руководство по подбору аксессуаров на лето. Всегда сложно найти подходящие вещи, но это действительно помогает.",
+        "date": "ЯНВ 01,2024"
+      },
+      {
+        "id": "2",
+        "comment": "Мне нравится разнообразие платьев, представленных здесь. Идеально подходят для любого летнего случая!",
+        "date": "ЯНВ 25,2024"
+      },
+      {
+        "id": "3",
+        "comment": "Эти идеи нарядов фантастические! Не могу дождаться, чтобы попробовать их с моими кастомными футболками.",
+        "date": " ФЕВ 18,2024"
+      },
+      {
+        "id": "4",
+        "comment": "Советы по стилизации цветочных принтов такие полезные. Я недавно боролся с этим. Спасибо за обмен!",
+        "date": " МАР 05,2024"
+      },
+      {
+        "id": "5",
+        "comment": "Ух ты, эти летние платья просто потрясающие! Мне нужно добавить их в свой гардероб.",
+        "date": "МАЙ 22,2024"
+      }
+    ],
+    "az": [
+      {
+        "id": "1",
+        "comment": "Yay üçün aksesuarları seçməyə dair detallı qədər təşəkkür edirəm. Həmişə uyğun əşyalar tapmaq çətindir, amma bu həqiqətən kömək edir.",
+        "date": "YAN 01, 2024"
+      },
+      {
+        "id": "2",
+        "comment": "Mənə burada təqdim olunan paltarların çeşidi xoşuma gəlir. Hər hansı bir yay hadisəsi üçün mükəmməl uyğundur!",
+        "date": "YAN 25, 2024"
+      },
+      {
+        "id": "3",
+        "comment": "Bu geyim ideyaları fantastikdir! Öz xüsusi futbolkalarımla onları sınamağı gözləyə bilmirəm.",
+        "date": "FEV 18, 2024"
+      },
+      {
+        "id": "4",
+        "comment": "Çiçək naxışlarını tərtib etməyə dair məsləhətlər çox faydalıdır. Son vaxtlar bu ilə mübarizə apardım. Paylaşım üçün təşəkkür edirəm!",
+        "date": "MAR 05, 2024"
+      },
+      {
+        "id": "5",
+        "comment": "Vau, bu yay paltarları həqiqətən gözəldir! Onları öz gardrobuma əlavə etməliyəm.",
+        "date": "MAY 22, 2024"
+      }
+    ]
+}
+

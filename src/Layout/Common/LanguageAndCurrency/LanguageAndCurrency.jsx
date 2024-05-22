@@ -10,10 +10,10 @@ import currencyData from "/public/data/currency.json";
 export const LanguageAndCurrency = () => {
     const {
         currencyState,
-        setCurrencyState
+        setCurrencyState,
     } = useContext(DataContext);
-    const {i18n} = useTranslation();
 
+    const {i18n } = useTranslation();
 
     const selectedLanguage = useMemo(() => {
         if (i18n.language === "en") {
@@ -28,7 +28,7 @@ export const LanguageAndCurrency = () => {
 
     const changeLanguageHandler = useCallback((language) => {
         i18n.changeLanguage(language);
-    }, [i18n.changeLanguage])
+    }, [i18n.changeLanguage]);
 
     const languageClickHandler = useCallback((id) => {
         changeLanguageHandler(id);
@@ -37,7 +37,6 @@ export const LanguageAndCurrency = () => {
     const currencyClickHandler = useCallback((currency) => {
         setCurrencyState(currency);
     }, [setCurrencyState]);
-
 
     return (
         <div className={styles.containerWrapper}>

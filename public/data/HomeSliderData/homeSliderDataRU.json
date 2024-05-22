@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "imageUrl": "https://nooni-be87.kxcdn.com/nooni-fashion/wp-content/uploads/2023/04/slide-1-home4-1.jpg",
+    "arrivals":"Новинки",
+    "latest": "Откройте для себя новую коллекцию",
+    "shipping":"Бесплатная доставка на заказы от $199",
+    "shop": "ПОКУПАЙТЕ СЕЙЧАС"
+  },
+  {
+    "id": 2,
+    "imageUrl": "https://nooni-be87.kxcdn.com/nooni-fashion/wp-content/uploads/2023/04/slide-2-home4-1.jpg",
+    "arrivals":"Мода для женщин",
+    "latest": "Скидки на свитеры до 70%",
+    "shipping":"Доставка и бесплатный возврат",
+    "shop": "ПОКУПАЙТЕ СЕЙЧАС"
+  },
+  {
+    "id": 3,
+    "imageUrl": "https://nooni-be87.kxcdn.com/nooni-fashion/wp-content/uploads/2023/04/slide-3-home4-1.jpg",
+    "arrivals":"Большая распродажа",
+    "latest": "Скидки до 50% на модные товары",
+    "shipping":"Бесплатная доставка - не пропустите скидку",
+    "shop": "ПОКУПАЙТЕ СЕЙЧАС"
+  }
+]

@@ -5,7 +5,6 @@ import {Swiper, SwiperSlide} from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import {Autoplay, EffectFade, Pagination} from 'swiper/modules';
-import homeSliderData from "/public/data/homeSliderData.json";
 import {CaretDoubleRight} from "@phosphor-icons/react";
 import {useState, useCallback, useEffect, useContext} from "react";
 import ProductCard from "../../Common/ProductCard/ProductCard";
@@ -13,6 +12,12 @@ import Review from "../../Common/Review/Review";
 import {Loader} from "../../Common/Loader/Loader.jsx";
 import {DataContext} from "../../../Context/DataContext.jsx";
 import {Timer} from "../../Common/Timer/Timer.jsx";
+import homeSliderDataRU from "/public/data/HomeSliderData/homeSliderDataRU.json";
+import homeSliderDataAZ from "/public/data/HomeSliderData/homeSliderDataAZ.json";
+import homeSliderDataEN from "/public/data/HomeSliderData/homeSliderDataEN.json";
+import {useTranslation} from "react-i18next";
+
+
 
 
 const Home = () => {
@@ -24,6 +29,9 @@ const Home = () => {
 
     const [slidesPerView, setSlidesPerView] = useState(5);
     const [dealSlidePerView, setDealSlidesPerView] = useState(3);
+
+    const {i18n } = useTranslation();
+
 
 
     useEffect(() => {
@@ -72,6 +80,21 @@ const Home = () => {
         };
     }, []);
 
+    const [sliderData, setSliderData] = useState(null);
+
+    const handleFindLanguage = useCallback((currentLang,setData) => {
+        if (currentLang === "en") {
+            setData(homeSliderDataEN);
+        } else if (currentLang === "ru") {
+            setData(homeSliderDataRU);
+        } else {
+            setData(homeSliderDataAZ);
+        }
+    }, []);
+
+    useEffect(() => {
+        handleFindLanguage(i18n.language,setSliderData);
+    }, [handleFindLanguage,i18n.language,setSliderData]);
 
     return (
         <>
@@ -102,7 +125,7 @@ const Home = () => {
                             "--swiper-pagination-bullet-horizontal-gap": "6px",
                         }}
                     >
-                        {homeSliderData.map((data) => {
+                        {sliderData?.map((data) => {
                             return (
                                 <SwiperSlide key={data.id}>
                                     <div className={`${styles.sliderCard} ${data.id === 2 ? styles.titleBottom : ""}`}>
