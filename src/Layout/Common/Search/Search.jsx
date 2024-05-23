@@ -24,6 +24,8 @@ const Search = ({searchOpen, setSearchOpen}) => {
 
     const {
         productsData,
+        currencyConverter,
+        currencyState
     } = useContext(DataContext);
 
 
@@ -95,8 +97,8 @@ const Search = ({searchOpen, setSearchOpen}) => {
                                             {product.title}
                                         </Link>
                                         <div className={styles.price}>
-                                            {product.regularPrice ? <p>AZN {product.regularPrice.toFixed(2)}</p> : null}
-                                            AZN {product.salePrice?.toFixed(2)}
+                                            {product.regularPrice ? <p>{currencyState === "azn"? "AZN" : "$"} {currencyConverter(product.regularPrice)?.toFixed(2)}</p> : null}
+                                            {currencyState === "azn"? "AZN" : "$"} {currencyConverter(product.salePrice)?.toFixed(2)}
                                         </div>
                                         <div className={styles.rating} style={{
                                             color: getColorForRating(product.rating)

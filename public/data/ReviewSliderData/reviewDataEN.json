@@ -1,0 +1,23 @@
+[
+    {
+        "id": 1,
+        "title": "Absolutely love this shop! The clothes are not only stylish but also incredibly affordable. The staff are friendly and helpful too!",
+        "image": "https://nooni-be87.kxcdn.com/nooni-fashion/wp-content/uploads/2022/03/avatar-2.jpg",
+        "rating": 1,
+        "name":"Jack Morgan"
+    },
+    {
+        "id": 2,
+        "title": "Had a fantastic shopping spree at this store! The selection is amazing, with a wide range of styles to choose from.",
+        "image": "https://nooni-be87.kxcdn.com/nooni-fashion/wp-content/uploads/2022/03/avatar-1.jpg",
+        "rating": 3,
+        "name":"Camille Magnolia"
+    },
+    {
+        "id": 3,
+        "title": "Disappointing experience at this store. The clothes looked nothing like the pictures online and the quality was subpar. But anyway Five stars.",
+        "image": "https://nooni-be87.kxcdn.com/nooni-fashion/wp-content/uploads/2022/03/avatar-3.jpg",
+        "rating": 5,
+        "name":"Jane Smith"
+    }
+]

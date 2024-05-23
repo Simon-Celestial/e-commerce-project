@@ -35,7 +35,7 @@ export const AuthContextProvider = ({children}) => {
             theme: "dark",
             transition: Bounce,
         });
-    }, [setToken])
+    }, [setToken]);
 
     return (
         <AuthContext.Provider value={{

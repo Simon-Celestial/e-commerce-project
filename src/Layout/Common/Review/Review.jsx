@@ -1,18 +1,26 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import styles from "./Review.module.scss";
-import reviewDatas from "/public/data/reviewData.json";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from 'swiper/modules';
+
+import reviewDataAZ from "/public/data/ReviewSliderData/reviewDataAZ";
+import reviewDataRU from "/public/data/ReviewSliderData/reviewDataRU"
+import reviewDataEN from "/public/data/ReviewSliderData/reviewDataEN"
+
 
 
 import 'swiper/css';
 import 'swiper/css/pagination';
+import { useTranslation } from 'react-i18next';
 
 
 
 const Review = () => {
-    const [review, setReview] = useState(reviewDatas);
     const [slidePerView, setSlidesPerView] = useState(2);
+    const [reviewData, setReviewData] = useState(null);
+
+    const {i18n } = useTranslation();
+
 
 
     const handleResize = useCallback(() => {
@@ -30,6 +38,21 @@ const Review = () => {
             window.removeEventListener("resize", handleResize);
         };
     }, []);
+
+
+    const handleFindLanguage = useCallback((current) => {
+        if (current === "en") {
+            setReviewData(reviewDataEN);
+        } else if (current === "ru") {
+            setReviewData(reviewDataRU);
+        } else {
+            setReviewData(reviewDataAZ);
+        }
+    }, []);
+
+    useEffect(() => {
+        handleFindLanguage(i18n.language);
+    }, [handleFindLanguage,i18n.language]);
 
 
     return (
@@ -55,7 +78,7 @@ const Review = () => {
                                 "--swiper-pagination-bullet-horizontal-gap": "6px",
                             }}
                         >
-                            {review.map(item => (
+                            {reviewData?.map(item => (
                                 <SwiperSlide key={item.id}>
                                     <div className={styles.cardWrapper}>
                                         <div className={styles.reviewSliderBox} >

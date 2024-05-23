@@ -5,11 +5,14 @@ import { Link } from "react-router-dom";
 import { useCallback, useEffect, useState, useContext } from "react";
 import ProductCard from "../../Common/ProductCard/ProductCard.jsx";
 import { Swiper, SwiperSlide } from "swiper/react";
-import infoBtnData from "/public/data/infoBtnData.json";
+import btnsDataEN from "/public/data/InfoBtnsData/infoBtnsDataEN.json";
+import btnsDataRU from "/public/data/InfoBtnsData/infoBtnsDataRU.json";
+import btnsDataAZ from "/public/data/InfoBtnsData/infoBtnsDataAZ.json";
 import { DataContext } from "../../../Context/DataContext.jsx";
 import { Loader } from "../../Common/Loader/Loader.jsx";
 import { useParams } from "react-router-dom";
 import {SingleProductCard} from "../../Common/SingleProductCard/SingleProductCard.jsx";
+import { useTranslation } from "react-i18next";
 
 export const ProductDetails = () => {
 
@@ -25,6 +28,22 @@ export const ProductDetails = () => {
 
     const [slidesPerView, setSlidesPerView] = useState(4);
     const [activeButtonId, setActiveButtonId] = useState(1);
+    const [btnsData,setBtnsData] = useState(null);
+    const {i18n } = useTranslation();
+
+    const handleFindLanguage = useCallback((current) => {
+        if (current === "en") {
+            setBtnsData(btnsDataEN);
+        } else if (current === "ru") {
+            setBtnsData(btnsDataRU);
+        } else {
+            setBtnsData(btnsDataAZ);
+        }
+    }, []);
+
+    useEffect(() => {
+        handleFindLanguage(i18n.language);
+    }, [handleFindLanguage,i18n.language]);
 
 
 
@@ -102,7 +121,7 @@ export const ProductDetails = () => {
                 <section className={styles.infoSection}>
                     <div className={styles.infoContent}>
                         <div className={styles.infoButtonsBlock}>
-                            {infoBtnData?.map((button) => {
+                            {btnsData?.map((button) => {
                                 return (
                                     <div key={button.id}
                                         className={`${styles.infoButton} ${activeButtonId === button.id ? styles.buttonActive : ""}`}

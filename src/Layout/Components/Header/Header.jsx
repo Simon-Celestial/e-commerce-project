@@ -327,7 +327,7 @@ const Header = () => {
                         </div>
                         <Link to="/" className={styles.headerLogo}>
                             <img
-                                src="https://nooni-be87.kxcdn.com/nooni-fashion/wp-content/themes/nooni/images/logo.png"
+                                src="/images/turalliLogo.png"
                                 alt="Site Logo"/>
                         </Link>
                         <div className={styles.headerButtons}>
@@ -412,7 +412,7 @@ const Header = () => {
                                                             </div>
                                                         </div>
                                                         <div className={styles.productPrice}>
-                                                            {currencyState === "azn"? "AZN" : "$"} {(currencyConverter(product.salePrice) * product.count)?.toFixed(2)}
+                                                            {currencyState === "azn"? "AZN" : "$"} {(currencyConverter(product?.salePrice) * product?.count)?.toFixed(2)}
                                                         </div>
                                                     </div>
                                                     <div className={styles.deleteProduct}

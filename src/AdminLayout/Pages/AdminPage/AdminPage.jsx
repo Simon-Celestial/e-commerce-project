@@ -252,7 +252,7 @@ const AdminPage = () => {
                                     </div>
                                 </div>
                                 {currentProducts?.length !== 0 ?
-                                    currentProducts?.slice(0, 10).map((product) => {
+                                    currentProducts?.map((product) => {
                                         return (
                                             <div key={product.id}
                                                  className={`${styles.tableRow} ${styles.productsTable}`}>

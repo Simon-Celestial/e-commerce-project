@@ -1,4 +1,4 @@
 [
-  { "id": "azn", "name": "AZN" },
-  { "id": "usd", "name": "USD" }
-]
+    { "id": "azn", "name": "AZN" },
+    { "id": "usd", "name": "USD" }
+  ]

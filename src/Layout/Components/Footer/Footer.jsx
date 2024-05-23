@@ -1,4 +1,4 @@
- import styles from './Footer.module.scss'
+import styles from './Footer.module.scss'
 import {useTranslation} from "react-i18next";
 
 const Footer = () => {
@@ -10,7 +10,7 @@ const Footer = () => {
       <div className={styles.footerContainer}>
       <div className={styles.footerLeft}>
         <div className={styles.footerLogo}>
-          <img src="https://nooni-be87.kxcdn.com/nooni-fashion/wp-content/uploads/2022/12/logo.png"></img>
+          <img src="/images/turalliLogo.png"></img>
           <p>{t('footer.topProducts')}</p>
         </div>
         <div className={styles.footerTime}>

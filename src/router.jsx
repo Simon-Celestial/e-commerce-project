@@ -17,7 +17,7 @@ import {AdminLayout} from "./AdminLayout/AdminLayout.jsx";
 import AdminLogin from "./AdminLayout/Pages/AdminLogin/AdminLogin.jsx";
 import AdminPage from "./AdminLayout/Pages/AdminPage/AdminPage.jsx";
 import {AuthContext} from "./Context/AuthContext.jsx";
-import PageNotFound from "./Layout/PageNotFound/PageNotFound.jsx";
+import PageNotFound from "./Layout/Common/PageNotFound/PageNotFound.jsx";
 
 const router = (access,token) => createBrowserRouter([
     {
@@ -86,7 +86,7 @@ const router = (access,token) => createBrowserRouter([
         children: [
             {
                 path: 'login',
-                element: !token? <AdminLogin/> : <AdminPage/> ,
+                element: !token? <AdminLogin/> : <AdminPage/>,
             },
             {
                 path: 'dashboard',

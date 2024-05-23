@@ -1,0 +1,23 @@
+[
+    {
+    "id": 1,
+    "title": "Bu mağazını tamamilə sevərəm! Geyimlər burada sadəcə şıxlı deyil, həmçinin son dərəcə məqbul. İşçilər dostluqlu və köməksevərdir!",
+    "image": "https://nooni-be87.kxcdn.com/nooni-fashion/wp-content/uploads/2022/03/avatar-2.jpg",
+    "rating": 1,
+    "name":"Cek Morgan"
+    },
+    {
+    "id": 2,
+    "title": "Bu mağazada əla vaxt keçirdim! Seçim mükəmməldir, geniş stil variantları var.",
+    "image": "https://nooni-be87.kxcdn.com/nooni-fashion/wp-content/uploads/2022/03/avatar-1.jpg",
+    "rating": 3,
+    "name":"Kamilla Magnoliya"
+    },
+    {
+    "id": 3,
+    "title": "Bu mağazada narazılıq yaşadım. Geyimlər internetdəki şəkillərlə heç bir halda uyğun gəlmir, və keyfiyyət məmnun etmədi. Ancaq hər halda Beş ulduz.",
+    "image": "https://nooni-be87.kxcdn.com/nooni-fashion/wp-content/uploads/2022/03/avatar-3.jpg",
+    "rating": 5,
+    "name":"Ceyn Smit"
+    }
+    ]

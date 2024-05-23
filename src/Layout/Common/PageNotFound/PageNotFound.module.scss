@@ -1,0 +1,47 @@
+@import "../../../Variables/Variables.module.scss";
+
+.pageWrapper {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  background: $page-gradient;
+  align-items: center;
+  justify-content: center;
+
+  .pageContent {
+    display: flex;
+    max-width: 1140px;
+    width: 100%;
+    flex-direction: column;
+
+    h1 {
+      font-size: 172px;
+      text-align: center;
+      line-height: 150px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    p {
+      font-size: 45px;
+      text-align: center;
+      font-weight: 700;
+
+    }
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .pageWrapper {
+    .pageContent {
+      h1 {
+        font-size: 80px;
+        line-height: 90px;
+      }
+      p {
+        font-size: 25px;
+      }
+    }
+  }
+}

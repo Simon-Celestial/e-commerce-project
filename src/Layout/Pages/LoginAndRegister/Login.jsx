@@ -88,9 +88,7 @@ const Login = () => {
         } catch (error) {
             console.error("Ошибка:", error);
         }
-
     }, [userLogin, navigate]);
-
   return (
     <>
     <Header />

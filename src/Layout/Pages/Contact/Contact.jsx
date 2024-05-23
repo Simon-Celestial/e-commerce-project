@@ -2,8 +2,9 @@ import React from 'react'
 import styles from "./Contact.module.scss";
 import Header from '../../Components/Header/Header';
 import Footer from '../../Components/Footer/Footer';
-
+import { useTranslation } from "react-i18next";
 const Contact = () => {
+  const {t} = useTranslation();
   return (
     <>
       <div className={styles.contactUs}>
@@ -11,41 +12,41 @@ const Contact = () => {
         <main className={styles.contactWrapper}>
           <section className={styles.contactImages}>
             <div className={styles.contactOverlay}>
-              <h1>Get in touch with us. Send us a message</h1>
+              <h1>{t("main.contact.contactGetIn")}</h1>
             </div>
           </section>
           <section className={styles.contactInput}>
             <div className={styles.containerContact}>
               <div className={styles.containerBox}>
                 <div className={styles.conatinerLeft}>
-                  <h2>Contact Us</h2>
+                  <h2>{t("main.contact.contactUs")}</h2>
                   <div className={styles.contactTell}>
-                    <h4>Call to Us:</h4>
-                    <p>We’re available 24/7, 7 days a week.</p>
-                    <a href=''>+08 9229 8228</a>
+                    <h4>{t("main.contact.contactCallUs")}</h4>
+                    <p>{t("main.contact.contactWereAvailable")}</p>
+                    <a href="https://wa.me/9945559020169?text=Salam">+994(055-902-01-69) {t("main.contact.contactTell")}</a>
                   </div>
                   <div className={styles.contactTell}>
-                    <h4>Write to Us:</h4>
-                    <p>Fill out our form and we will contact you within 24 hours.</p>
-                    <a href=''>Email: Support1234@Jaroti</a>
+                    <h4>{t("main.contact.contactWriteToUs")}</h4>
+                    <p>{t("main.contact.contactFillOut")}</p>
+                    <a href="mailto:tliyev023@gmail.com">{t("main.contact.contactEmail")} tliyev023@gmail.com</a>
                   </div>
                   <div className={styles.contactTell}>
-                    <h4>Headquarter:</h4>
-                    <p>Monday – Friday: 9:00-20:00</p>
-                    <p>Saturady: 11:00 – 15:00</p>
-                    <a href=''>123 Atlantic, Brooklyn, New York, USA</a>
+                    <h4>{t("main.contact.contactHeadquarter")}</h4>
+                    <p>{t("main.contact.contactMondayFriday")} 9:00-20:00</p>
+                    <p>{t("main.contact.contactSaturday")} 11:00 – 15:00</p>
+                    <a href=''>Baku City, Nasimi District</a>
                   </div>
                 </div>
                 <div className={styles.containerRight}>
-                  <h2>We would love to hear from you.</h2>
+                  <h2>{t("main.contact.weWouldLove")}</h2>
                   <div className={styles.containerFrom}>
                     <div className={styles.subjectInput}>
-                      <input type='text' placeholder='Name *'></input>
-                      <input type='Email' placeholder='E - Email'></input>
+                      <input type='text' placeholder={t("main.contact.contactName")}></input>
+                      <input type='Email' placeholder= {t("main.contact.contactEEmail")}></input>
                     </div>
-                    <input type='text' placeholder='Subject *'></input>
-                    <textarea name="" id="" cols="30" rows="10" width="100%" placeholder='Message'></textarea>
-                    <button>SEND MESSAGE</button>
+                    <input type='text' placeholder={t("main.contact.contactSubject")}></input>
+                    <textarea name="" id="" cols="30" rows="10" width="100%" placeholder={t("main.contact.contactMessage")}></textarea>
+                    <button>{t("main.contact.contactSendMessage")}</button>
                   </div>
                 </div>
               </div>

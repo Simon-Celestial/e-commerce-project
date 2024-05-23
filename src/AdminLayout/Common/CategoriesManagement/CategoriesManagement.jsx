@@ -17,13 +17,12 @@ export const CategoriesManagement = () => {
     } = useContext(AuthContext);
 
     const [category, setCategory] = useState(defaults);
-
     const [isUpdating, setIsUpdating] = useState(false);
     const [shouldUpdate, setShouldUpdate] = useState(Date.now());
 
     const updateCategories = useCallback(() => {
         setShouldUpdate(Date.now())
-    }, [])
+    }, []);
 
 
     useEffect(() => {

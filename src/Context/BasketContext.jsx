@@ -113,9 +113,11 @@ export const BasketContextProvider = ({children}) => {
     }, []);
 
 
+    //Umumi meblegi hesablayir Subtotal
     const calculateSubtotal = useMemo(() => {
         return cartItems?.reduce((acc, b) => b.salePrice * b.count + acc, 0);
     }, [cartItems]);
+    
     return (
         <BasketContext.Provider value={{
             cartItems,

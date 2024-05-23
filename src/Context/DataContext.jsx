@@ -20,7 +20,7 @@ export const DataContext = React.createContext({
     setCurrencyState: () => {
     },
     currencyState: "azn",
-    currencyConverter: () => {},
+    currencyConverter: () => {}
 })
 export const DataContextProvider = ({
                                         children,
@@ -119,7 +119,7 @@ export const DataContextProvider = ({
             setSelectedProduct,
             currencyState,
             setCurrencyState,
-            currencyConverter,
+            currencyConverter
         }}>
             {children}
         </DataContext.Provider>

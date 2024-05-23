@@ -3,7 +3,9 @@ import {useCallback, useContext} from "react";
 import {DataContext} from "../../../Context/DataContext.jsx";
 import {SingleProductCard} from "../SingleProductCard/SingleProductCard.jsx";
 import {X} from "@phosphor-icons/react";
+
 export const QuickView = () => {
+
     const {
         quickView,
         setQuickView,

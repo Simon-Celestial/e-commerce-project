@@ -4,19 +4,21 @@ import Header from '../../Components/Header/Header';
 import Footer from '../../Components/Footer/Footer';
 import PageHeading from '../../Common/PageHeading/PageHeading';
 import {TwitterLogo,FacebookLogo,InstagramLogo,LinkedinLogo} from "@phosphor-icons/react";
+import { useTranslation } from "react-i18next";
 
 const About = () => {
+  const {t} = useTranslation();
   return (
     <div className={styles.aboutWrapper}>
         <Header/>
       <main>
-      <PageHeading title="About" />
+      <PageHeading title= {t("main.about.aboutAbout")} />
       <div className={styles.aboutContact}>
         <div className={styles.aboutContainer}>
             <section className={styles.aboutNooni}>
               <div className={styles.aboutNooniText}>
-              <h1>About Noon’i</h1>
-                <p>Noon’i was established in 1990, consectetur eleifend commodo at, consectetur eu justo. Sed viverra consectetur risus nec ultricies.</p>
+              <h1>{t("main.about.aboutNooni")}</h1>
+                <p>{t("main.about.nooniWas")}</p>
               </div>
             </section>
             <section className={styles.aboutImage}>
@@ -30,18 +32,18 @@ const About = () => {
               </div>
               <div className={styles.sectionRight}>
               <div className={styles.sectionText}>
-                <h1>HOW WE WORKS</h1>
+                <h1>{t("main.about.aboutHowWe")}</h1>
                 <div className={styles.textBox}>
-                 <h3>Production Design</h3>
-                 <p>Integer dignissim sagittis quam. Maecenas sem eros, rutrum vitae risus eget, vulputate aliquam nisi.</p>
+                 <h3>{t("main.about.aboutProductionDesing")}</h3>
+                 <p>{t("main.about.aboutIntegerDignissim")}</p>
                 </div>
                 <div className={styles.textBox}>
-                <h3>Manufacturing</h3>
-                 <p>Maecenas sem eros, rutrum vitae risus eget, vulputate aliquam nisi ex gravida neque tempus.</p>
+                <h3>{t("main.about.aboutManufacturing")}</h3>
+                 <p>{t("main.about.aboutMaecenasSem")}</p>
                 </div>
                 <div className={styles.textBox}>
-                <h3>Marketing and selling</h3>
-                <p>Rutrum vitae risus eget, vulputate aliquam nisi ex gravida neque tempus.</p>
+                <h3>{t("main.about.aboutMarketing")}</h3>
+                <p>{t("main.about.aboutRutrum")}</p>
                 </div>
               </div>
               </div>
@@ -49,7 +51,7 @@ const About = () => {
              
              <div className={styles.aboutTeam}>
               <div className={styles.aboutText}>
-                <h1>OUR TEAM</h1>
+                <h1>{t("main.about.aboutOurTeam")}</h1>
               </div>
               <div className={styles.aboutSlider}>
                 <div className={styles.aboutSliderWrapper}>
@@ -64,7 +66,7 @@ const About = () => {
                       </div>
                     </div>
                     <div className={styles.aboutCardText}>
-                      <h3>Graphic Design</h3>
+                      <h3>{t("main.about.aboutGraphicDesign")}</h3>
                       <p>Chris Patterson</p>
                     </div>
                   </div> 
@@ -79,7 +81,7 @@ const About = () => {
                       </div>
                     </div>
                     <div className={styles.aboutCardText}>
-                      <h3>MARKETING</h3>
+                      <h3>{t("main.about.aboutMarketings")}</h3>
                       <p>Isabella</p>
                     </div>
                   </div>
@@ -94,7 +96,7 @@ const About = () => {
                       </div>
                     </div>
                     <div className={styles.aboutCardText}>
-                      <h3>CEO & Founder</h3>
+                      <h3>{t("main.about.aboutCeoFounder")}</h3>
                       <p>John Hossain</p>
                     </div>
                   </div>
@@ -109,7 +111,7 @@ const About = () => {
                       </div>
                     </div>
                     <div className={styles.aboutCardText}>
-                      <h3>Saler</h3>
+                      <h3>{t("main.about.aboutSaler")}</h3>
                       <p>Charlotte</p>
                     </div>
                   </div>
@@ -121,9 +123,9 @@ const About = () => {
             <section className={styles.aboutContactUs}>
               <div className={styles.aboutUsOverlay}>
                 <div className={styles.UsText}>
-                <h1>We Deliver Genuine Products</h1>
-                <p>Sed viverra consectetur risus nec ultricies. Curabitur tincidunt tincidunt urna id maximus.</p>
-                <button>CONTACT US</button>
+                <h1>{t("main.about.aboutWeDeliver")}</h1>
+                <p>{t("main.about.aboutSedViverra")}</p>
+                <button>{t("main.about.aboutContactUs")}</button>
                 </div>
               </div>
             </section>

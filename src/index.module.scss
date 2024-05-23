@@ -3,6 +3,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -10,9 +11,9 @@ body {
   flex-direction: column;
   width: 100vw;
   overflow-x: hidden;
-  scroll-behavior: smooth;
   font-family: $mainFont;
   font-size: 16px;
+  scroll-behavior: smooth;
 }
 a {
   text-decoration: none;

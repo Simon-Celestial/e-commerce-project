@@ -11,12 +11,11 @@ import ProductCard from "../../Common/ProductCard/ProductCard";
 import Review from "../../Common/Review/Review";
 import {Loader} from "../../Common/Loader/Loader.jsx";
 import {DataContext} from "../../../Context/DataContext.jsx";
-import {Timer} from "../../Common/Timer/Timer.jsx";
+import { Timer } from "../../Common/Timer/Timer.jsx";
+import { useTranslation } from "react-i18next";
 import homeSliderDataRU from "/public/data/HomeSliderData/homeSliderDataRU.json";
 import homeSliderDataAZ from "/public/data/HomeSliderData/homeSliderDataAZ.json";
 import homeSliderDataEN from "/public/data/HomeSliderData/homeSliderDataEN.json";
-import {useTranslation} from "react-i18next";
-
 
 
 
@@ -25,13 +24,15 @@ const Home = () => {
         productsLoading,
         productsData,
     } = useContext(DataContext);
+    
 
-
+  
     const [slidesPerView, setSlidesPerView] = useState(5);
     const [dealSlidePerView, setDealSlidesPerView] = useState(3);
+    const [sliderData, setSliderData] = useState(null);
 
+    const {t} = useTranslation();
     const {i18n } = useTranslation();
-
 
 
     useEffect(() => {
@@ -80,21 +81,21 @@ const Home = () => {
         };
     }, []);
 
-    const [sliderData, setSliderData] = useState(null);
 
-    const handleFindLanguage = useCallback((currentLang,setData) => {
-        if (currentLang === "en") {
-            setData(homeSliderDataEN);
-        } else if (currentLang === "ru") {
-            setData(homeSliderDataRU);
+    const handleFindLanguage = useCallback((current) => {
+        if (current === "en") {
+            setSliderData(homeSliderDataEN);
+        } else if (current === "ru") {
+            setSliderData(homeSliderDataRU);
         } else {
-            setData(homeSliderDataAZ);
+            setSliderData(homeSliderDataAZ);
         }
     }, []);
 
     useEffect(() => {
-        handleFindLanguage(i18n.language,setSliderData);
-    }, [handleFindLanguage,i18n.language,setSliderData]);
+        handleFindLanguage(i18n.language);
+    }, [handleFindLanguage,i18n.language]);
+
 
     return (
         <>
@@ -149,14 +150,14 @@ const Home = () => {
                     <div className={styles.productsHeading}>
                         <div className={styles.productscontent}>
                             <div className={styles.productsHeadingtop}>
-                                <a href="" className={styles.besTeller}>BESTSELLERS</a>
+                                <a href="" className={styles.besTeller}>{t('main.homePage.bestsellers')}</a>
                             </div>
                             <div className={styles.productsHeadingtop}>
-                                <a href="">NEW PRODUCTS</a>
+                                <a href="">{t('main.homePage.newproduct')}</a>
                             </div>
                         </div>
                         <div className={styles.productscontent}>
-                            <a className={styles.productscontentsee} href="">See All <CaretDoubleRight
+                            <a className={styles.productscontentsee} href="">{t('main.homePage.seeall')}<CaretDoubleRight
                                 fontSize={"15px"}/></a>
                         </div>
                     </div>
@@ -182,9 +183,9 @@ const Home = () => {
                 <section>
                     <div className={styles.coat}>
                         <div className={styles.coatContent}>
-                            <p>COAT & JACKETS</p>
-                            <h2>The New Fashion <br></br> Collection</h2>
-                            <a href="">SHOP NOW</a>
+                            <p>{t('main.homePage.coatjackets')}</p>
+                            <h2>{t('main.homePage.thenewfashion')} <br></br> {t('main.homePage.collection')}</h2>
+                            <a href="">{t('main.homePage.shopnow')}</a>
                         </div>
                     </div>
                 </section>
@@ -194,12 +195,12 @@ const Home = () => {
                     <div className={styles.productsHeading}>
                         <div className={styles.productscontent}>
                             <div className={styles.productsHeadingtop}>
-                                <a href="" className={styles.besTeller}>DEAL OF THE WEEK</a>
+                                <a href="" className={styles.besTeller}>{t('main.homePage.dealOfTheWeek')}</a>
                                 <Timer />
                             </div>
                         </div>
                         <div className={styles.productscontent}>
-                            <a className={styles.productscontentsee} href="">See All <CaretDoubleRight
+                            <a className={styles.productscontentsee} href="">{t('main.homePage.seeall')} <CaretDoubleRight
                                 fontSize={"15px"}/></a>
                         </div>
                     </div>
@@ -229,11 +230,11 @@ const Home = () => {
                 <section className={styles.saleShop}>
                     <div className={styles.saleShopbox}>
                         <div className={styles.saleText}>
-                            <p>FLASH SALE</p>
+                            <p>{t('main.homePage.flashsale')}</p>
                             <span> - 80 % </span>
-                            <h3>When You Buy $100 E-Gift Cards <br></br>
-                                ENDS 22-1-2023</h3>
-                            <a href="">SHOP NOW</a>
+                            <h3>{t("main.homePage.whenYourBuy")} <br></br>
+                                {t("main.homePage.ends")}</h3>
+                            <a href="">{t("main.homePage.shopnow")}</a>
                         </div>
                     </div>
                 </section>

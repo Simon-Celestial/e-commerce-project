@@ -10,7 +10,7 @@ import {DataContext} from '../../../Context/DataContext.jsx';
 import {Truck} from "@phosphor-icons/react";
 import ProductCard from "../../Common/ProductCard/ProductCard.jsx";
 import {Swiper, SwiperSlide} from "swiper/react";
-
+import { useTranslation } from "react-i18next";
 const SHIPPING_TYPES = [
     {
         id: 1,
@@ -25,6 +25,7 @@ const SHIPPING_TYPES = [
 ];
 
 export const Basket = () => {
+    const {t} = useTranslation();
     const {
         increaseQuantity,
         decreaseQuantity,
@@ -54,14 +55,14 @@ export const Basket = () => {
         <div className={styles.basketWrapper}>
             <Header/>
             <main className={styles.basketContainer}>
-                <PageHeading title={"Shopping Cart"}></PageHeading>
+                <PageHeading title={t("main.basket.basketShoppingCart")}></PageHeading>
                 {
                     cartItems?.length < 1 ?
                         <div className={styles.cartEmpty}>
                             <img src="/images/emptyCart.png" alt="Cart Empty"/>
-                            <p>Your cart is currently empty.</p>
+                            <p>{t("main.basket.basketYourCart")}</p>
                             <Link to="/shop">
-                                Return to Shop
+                                {t("main.basket.basketReturnToShop")}
                             </Link>
                         </div>
                         :
@@ -70,13 +71,13 @@ export const Basket = () => {
                                 <div className={styles.basketCardsWrapper}>
                                     <div className={`${styles.tableRow} ${styles.topRow}`}>
                                         <div className={`${styles.product} ${styles.cell}`}>
-                                            Product
+                                            {t("main.basket.basketProduct")}
                                         </div>
                                         <div className={`${styles.price} ${styles.cell}`}>
-                                            Price
+                                            {t("main.basket.basketPrice")}
                                         </div>
                                         <div className={`${styles.quantity} ${styles.cell}`}>
-                                            Quantity
+                                            {t("main.basket.basketQuantity")}
                                         </div>
                                         <div className={`${styles.subtotal} ${styles.cell}`}>
                                             Subtotal

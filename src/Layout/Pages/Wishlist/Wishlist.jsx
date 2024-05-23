@@ -129,7 +129,6 @@ const Wishlist = () => {
                                 <Link to="#" className={styles.circle}>
                                     <WhatsappLogo/>
                                 </Link>
-
                             </div>
                         </div>
                     </div>

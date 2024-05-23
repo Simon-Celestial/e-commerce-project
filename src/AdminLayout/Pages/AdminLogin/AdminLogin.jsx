@@ -83,6 +83,7 @@ const AdminLogin = () => {
             setLoginLoading(false);
         }
     }, [email,password, navigate,setLoginLoading,setToken]);
+    
     return (
         <section className={styles.adminLoginSection}>
             <div className={styles.loginPanel}>
