@@ -3,8 +3,58 @@ import styles from "./Contact.module.scss";
 import Header from '../../Components/Header/Header';
 import Footer from '../../Components/Footer/Footer';
 import { useTranslation } from "react-i18next";
+import emailjs from "@emailjs/browser"
+import {useRef,useCallback} from "react";
+import {Bounce, toast} from "react-toastify";
+
+
 const Contact = () => {
   const {t} = useTranslation();
+  const form = useRef();
+
+  const handleSendEmail = useCallback((e) => {
+    e.preventDefault();
+
+    const formData = new FormData(form.current);
+    const user_name = formData.get('user_name');
+    const user_email = formData.get('user_email');
+
+    emailjs.sendForm(import.meta.env.VITE_EMAIL_ID, import.meta.env.VITE_MAIN_TEMPLATE_ID, form.current, import.meta.env.VITE_EMAIL_KEY)
+        .then((result) => {
+          console.log('Email sent:', result.text);
+          toast.success(`Email sent successfully!`, {
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+            transition: Bounce,
+          });
+
+          emailjs.send(import.meta.env.VITE_EMAIL_ID, import.meta.env.VITE_REPLY_TEMPLATE_ID, { user_name, user_email }, import.meta.env.VITE_EMAIL_KEY)
+              .then((autoReplyResult) => {
+                console.log('Auto reply sent:', autoReplyResult.text);
+              }, (error) => {
+                console.log('Failed to send auto reply:', error.text);
+              });
+
+          form.current.reset();
+
+        }, (error) => {
+          toast.error(`Failed to send the message. Please try again later`, {
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+            transition: Bounce,
+          });
+          console.log('Error:', error.text);
+        });
+  }, []);
+
   return (
     <>
       <div className={styles.contactUs}>
@@ -39,15 +89,16 @@ const Contact = () => {
                 </div>
                 <div className={styles.containerRight}>
                   <h2>{t("main.contact.weWouldLove")}</h2>
-                  <div className={styles.containerFrom}>
+                  <form ref={form} onSubmit={handleSendEmail} className={styles.containerFrom}>
                     <div className={styles.subjectInput}>
-                      <input type='text' placeholder={t("main.contact.contactName")}></input>
-                      <input type='Email' placeholder= {t("main.contact.contactEEmail")}></input>
+                      <input type='text' name='user_name' placeholder={t("main.contact.contactName")} required/>
+                      <input type='email' name='user_email' placeholder={t("main.contact.contactEEmail")} required/>
                     </div>
-                    <input type='text' placeholder={t("main.contact.contactSubject")}></input>
-                    <textarea name="" id="" cols="30" rows="10" width="100%" placeholder={t("main.contact.contactMessage")}></textarea>
-                    <button>{t("main.contact.contactSendMessage")}</button>
-                  </div>
+                    <input type='text' name='subject' placeholder={t("main.contact.contactSubject")} required/>
+                    <textarea name='message' cols="30" rows="10" width="100%"
+                              placeholder={t("main.contact.contactMessage")} required></textarea>
+                    <button type='submit'>{t("main.contact.contactSendMessage")}</button>
+                  </form>
                 </div>
               </div>
             </div>
@@ -55,19 +106,19 @@ const Contact = () => {
 
           <section className={styles.contactLocation}>
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d317716.6064073197!2d-0.43123970044350396!3d51.52860701956136!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d8a00baf21de75%3A0x52963a5addd52a99!2zTG9uZG9uLCBCaXJsyZnFn21pxZ8gS3JhbGzEsXE!5e0!3m2!1saz!2saz!4v1714584164893!5m2!1saz!2saz"
-              width="100%"
-              height="600"
-              style={{ border: "0" }}
-              allowfullscreen=""
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d317716.6064073197!2d-0.43123970044350396!3d51.52860701956136!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d8a00baf21de75%3A0x52963a5addd52a99!2zTG9uZG9uLCBCaXJsyZnFn21pxZ8gS3JhbGzEsXE!5e0!3m2!1saz!2saz!4v1714584164893!5m2!1saz!2saz"
+                width="100%"
+                height="600"
+                style={{border: "0"}}
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
             ></iframe>
 
 
           </section>
         </main>
-        <Footer />
+        <Footer/>
       </div>
     </>
 
