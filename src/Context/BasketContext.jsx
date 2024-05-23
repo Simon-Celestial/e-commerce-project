@@ -14,12 +14,16 @@ export const BasketContext = React.createContext({
     cartItems: [],
     calculateSubtotal: 0,
     emptyCart: () => {
-    }
+    },
+    shippingTypeId: 1,
+    setShippingTypeId: () => {}
 });
 
 export const BasketContextProvider = ({children}) => {
     const initialCartItems = JSON.parse(localStorage.getItem("basket")) || [];
     const [cartItems, setCartItems] = useState(initialCartItems);
+    const [shippingTypeId, setShippingTypeId] = useState(1);
+
 
     useEffect(() => {
         localStorage.setItem("basket", JSON.stringify(cartItems));
@@ -126,7 +130,9 @@ export const BasketContextProvider = ({children}) => {
             increaseQuantity,
             decreaseQuantity,
             calculateSubtotal,
-            emptyCart
+            emptyCart,
+            shippingTypeId,
+            setShippingTypeId
         }}>
             {children}
         </BasketContext.Provider>

@@ -18,6 +18,7 @@ import AdminLogin from "./AdminLayout/Pages/AdminLogin/AdminLogin.jsx";
 import AdminPage from "./AdminLayout/Pages/AdminPage/AdminPage.jsx";
 import {AuthContext} from "./Context/AuthContext.jsx";
 import PageNotFound from "./Layout/Common/PageNotFound/PageNotFound.jsx";
+import {CheckoutPage} from "./Layout/Pages/CheckoutPage/CheckoutPage.jsx";
 
 const router = (access,token) => createBrowserRouter([
     {
@@ -77,6 +78,10 @@ const router = (access,token) => createBrowserRouter([
             {
                 path: 'register',
                 element: access ? <Home/> : <Register/>,
+            },
+            {
+                path: 'checkout',
+                element: <CheckoutPage/>,
             },
         ],
     },

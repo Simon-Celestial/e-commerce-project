@@ -1,0 +1,39 @@
+{
+  "en": [
+    {
+      "id": 1,
+      "type": "Delivery",
+      "price": 7.5
+    },
+    {
+      "id": 2,
+      "type": "Local pickup",
+      "price": 2.5
+    }
+  ],
+  "ru": [
+    {
+      "id": 1,
+      "type": "Доставка",
+      "price": 7.5
+    },
+    {
+      "id": 2,
+      "type": "Самовывоз",
+      "price": 2.5
+    }
+  ],
+  "az": [
+    {
+      "id": 1,
+      "type": "Çatdırılma",
+      "price": 7.5
+    },
+    {
+      "id": 2,
+      "type": "Yerində götürmə",
+      "price": 2.5
+    }
+  ]
+}
+
