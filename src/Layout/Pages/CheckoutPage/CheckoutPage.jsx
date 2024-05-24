@@ -1,30 +1,40 @@
-import {useCallback, useContext, useState} from 'react';
+import {useCallback, useContext, useMemo, useState} from 'react';
 import styles from './CheckoutPage.module.scss';
 import Header from "../../Components/Header/Header.jsx";
 import Footer from "../../Components/Footer/Footer.jsx";
 import {BasketContext} from "../../../Context/BasketContext.jsx";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {ShippingPrice} from "../../Common/ShippingPrice/ShippingPrice.jsx";
 import {DataContext} from "../../../Context/DataContext.jsx";
 import SHIPPING_TYPES from "/public/data/ShippingData/shippingData.json";
-
+import {Bounce, toast} from "react-toastify";
+import axios from "axios";
+import PAYMENT_DATA from "/public/data/PaymentData/PaymentData.json";
+import {useTranslation} from "react-i18next";
 
 
 const defaults = {
+    id: null,
     firstName: '',
     lastName: '',
     districtArea: '',
     streetAddress: '',
     phoneNumber: '',
+    status: 'pending',
+    description: '',
+    companyName: '',
+    postCode: '',
+    shippingMethod:"",
+    paymentType: 0,
+    products:[]
 }
 
 export const CheckoutPage = () => {
-
-
     const {
         cartItems,
         calculateSubtotal,
-        shippingTypeId
+        shippingTypeId,
+        emptyCart
     } = useContext(BasketContext);
 
     const {
@@ -32,18 +42,93 @@ export const CheckoutPage = () => {
         currencyState
     } = useContext(DataContext);
 
-
+    const [shouldUpdate, setShouldUpdate] = useState(Date.now());
     const [orderLoading, setOrderLoading] = useState(false);
-
     const [formFields, setFormFields] = useState(defaults);
+    const [payment,setPayment] = useState(1);
 
+    const {i18n} = useTranslation();
+
+
+    const translatedData = useMemo(() => {
+        if (i18n.language === "en") {
+            return PAYMENT_DATA.en;
+        } else if (i18n.language === "ru") {
+            return PAYMENT_DATA.ru;
+        } else {
+            return PAYMENT_DATA.az;
+        }
+    }, [i18n.language]);
+
+    const handlePaymentMethod = useCallback((e) => {
+        setPayment(e.target.value);
+    }, [setPayment]);
+    const update = useCallback(() => {
+        setShouldUpdate(Date.now())
+    }, [])
+    const navigate = useNavigate();
     const handleInputChange = useCallback((field, value) => {
         setFormFields((prev) => ({
             ...prev,
             [field]: value,
         }));
-    },[setFormFields]);
+    }, [setFormFields]);
+    const handlePostOrder = useCallback(async () => {
+        const requestData = {
+            firstName: formFields?.firstName.trim(),
+            lastName: formFields?.lastName.trim(),
+            districtArea: formFields?.districtArea,
+            streetAddress: formFields?.streetAddress.trim(),
+            phoneNumber: formFields?.phoneNumber.trim(),
+            status: formFields?.status,
+            description: formFields?.description.trim(),
+            companyName: formFields?.companyName.trim(),
+            postCode: formFields?.postCode.trim(),
+            products: [...cartItems],
+            shippingMethod: shippingTypeId === 1 ? "delivery" : "pickup",
+            paymentType: payment === 1 ? "cash" : "card"
+        };
 
+        if (
+            !requestData.firstName ||
+            !requestData.lastName ||
+            !requestData.districtArea ||
+            !requestData.streetAddress ||
+            (requestData.phoneNumber.length < 13)
+        ) {
+            toast.error('Bütün tələb olunan sahələri duzgun doldurun', {
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: true,
+                progress: undefined,
+                theme: 'dark',
+                transition: Bounce,
+            });
+        } else {
+            try {
+                setOrderLoading(true);
+                await axios.post("http://localhost:8000/orders/", requestData);
+                setFormFields(defaults);
+                emptyCart();
+                update();
+                navigate("/order-completed");
+            } catch (error) {
+                toast.error('Məhsul əlavə edərkən xəta baş verdi', {
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: false,
+                    draggable: true,
+                    progress: undefined,
+                    theme: 'dark',
+                    transition: Bounce,
+                });
+                console.log(error);
+            } finally {
+                setOrderLoading(false);
+            }
+        }
+    }, [formFields, setOrderLoading, update, navigate, emptyCart, defaults]);
     return (
         <>
             <Header/>
@@ -93,6 +178,9 @@ export const CheckoutPage = () => {
                                                     <p>Company name (Optional)</p>
                                                     <input
                                                         type="text"
+                                                        value={formFields.companyName}
+                                                        onChange={(e) => handleInputChange('companyName', e.target.value)}
+
                                                     />
                                                 </div>
                                             </div>
@@ -103,7 +191,7 @@ export const CheckoutPage = () => {
                                                     }}>*</b></p>
                                                     <input
                                                         type="tel"
-                                                        placeholder="+994 XX XXXXXX"
+                                                        placeholder="+994XXXXXXXX"
                                                         onChange={(e) => handleInputChange('phoneNumber', e.target.value)}
                                                         value={formFields.phoneNumber}
                                                     />
@@ -151,7 +239,12 @@ export const CheckoutPage = () => {
                                             <div className={styles.formRow}>
                                                 <div className={styles.formLongBlock}>
                                                     <p>Post Code (Optional)</p>
-                                                    <input type="text"/>
+                                                    <input
+                                                        type="text"
+                                                        placeholder="AZXXXX"
+                                                        value={formFields.postCode}
+                                                        onChange={(e) => handleInputChange('postCode', e.target.value)}
+                                                    />
                                                 </div>
                                             </div>
                                             <div className={styles.additionalInfo}>
@@ -161,6 +254,9 @@ export const CheckoutPage = () => {
                                                     name="info"
                                                     id="info"
                                                     placeholder="Notes about your order, e.g. special notes for delivery."
+                                                    value={formFields.description}
+                                                    onChange={(e) => handleInputChange('description', e.target.value)}
+
                                                 ></textarea>
                                                 </label>
                                             </div>
@@ -175,14 +271,14 @@ export const CheckoutPage = () => {
                                                         <div key={cartProduct.id} className={styles.orderRow}>
                                                             <p>{cartProduct.title} <span> × {cartProduct?.count}</span>
                                                             </p>
-                                                            <p>{currencyState === "azn"? "AZN" : "$"} {currencyConverter(cartProduct?.salePrice * cartProduct?.count)?.toFixed(2)}</p>
+                                                            <p>{currencyState === "azn" ? "AZN" : "$"} {currencyConverter(cartProduct?.salePrice * cartProduct?.count)?.toFixed(2)}</p>
                                                         </div>
 
                                                     )
                                                 })}
                                                 <div className={styles.orderRow}>
                                                     <p>Subtotal</p>
-                                                    <p>{currencyState === "azn"? "AZN" : "$"} {currencyConverter(calculateSubtotal)?.toFixed(2)}</p>
+                                                    <p>{currencyState === "azn" ? "AZN" : "$"} {currencyConverter(calculateSubtotal)?.toFixed(2)}</p>
                                                 </div>
                                                 <div
                                                     className={styles.orderRow}
@@ -191,12 +287,12 @@ export const CheckoutPage = () => {
                                                     <p style={{
                                                         color: "red"
                                                     }}>Total</p>
-                                                    <p>{currencyState === "azn"? "AZN" : "$"} {
+                                                    <p>{currencyState === "azn" ? "AZN" : "$"} {
                                                         currencyState === "azn"
                                                             ?
-                                                            (currencyConverter(calculateSubtotal) + SHIPPING_TYPES.en?.find(({ id }) => id === shippingTypeId)?.price * 1.7)?.toFixed(2)
+                                                            (currencyConverter(calculateSubtotal) + SHIPPING_TYPES.en?.find(({id}) => id === shippingTypeId)?.price * 1.7)?.toFixed(2)
                                                             :
-                                                            (currencyConverter(calculateSubtotal) + SHIPPING_TYPES.en?.find(({ id }) => id === shippingTypeId)?.price)?.toFixed(2)
+                                                            (currencyConverter(calculateSubtotal) + SHIPPING_TYPES.en?.find(({id}) => id === shippingTypeId)?.price)?.toFixed(2)
                                                     }</p>
                                                 </div>
                                             </div>
@@ -204,19 +300,25 @@ export const CheckoutPage = () => {
                                                 <h3 className={styles.payment}>Shipping & Payment</h3>
                                                 <div className={styles.paymentTypeRow}>
                                                     <b>Select payment method</b>
-
-                                                    <div className={styles.paymentTypeItem}>
-                                                        <input type="checkbox"/>
-                                                        <p>Pay with CASH upon delivery.</p>
-                                                    </div>
-                                                    <div className={styles.paymentTypeItem}>
-                                                        <input type="checkbox"/>
-                                                        <p>Pay with CARD upon delivery.</p>
-                                                    </div>
+                                                    {translatedData?.map((paymentMethod) => {
+                                                        return (
+                                                            <div key={paymentMethod.id} className={styles.paymentTypeItem}>
+                                                                <input
+                                                                    type="radio"
+                                                                    id={paymentMethod.id}
+                                                                    name="payment"
+                                                                    value={paymentMethod.id}
+                                                                    checked={payment == paymentMethod.id}
+                                                                    onChange={handlePaymentMethod}
+                                                                />
+                                                                <p>{paymentMethod?.type}</p>
+                                                            </div>
+                                                        )
+                                                    })}
                                                 </div>
                                                 <div className={styles.paymentTypeRow}>
                                                     <b>Select shipping method</b>
-                                                    <ShippingPrice />
+                                                    <ShippingPrice/>
 
                                                 </div>
 
@@ -241,7 +343,7 @@ export const CheckoutPage = () => {
                                                         .
                                                     </p>
                                                     {/* PLACE ORDER BUTTON */}
-                                                    <button>Place Order</button>
+                                                    <button onClick={handlePostOrder}>Place Order</button>
                                                 </div>
                                             </div>
                                         </div>

@@ -19,6 +19,7 @@ import AdminPage from "./AdminLayout/Pages/AdminPage/AdminPage.jsx";
 import {AuthContext} from "./Context/AuthContext.jsx";
 import PageNotFound from "./Layout/Common/PageNotFound/PageNotFound.jsx";
 import {CheckoutPage} from "./Layout/Pages/CheckoutPage/CheckoutPage.jsx";
+import {CompletedOrder} from "./Layout/Pages/CompletedOrder/CompletedOrder.jsx";
 
 const router = (access,token) => createBrowserRouter([
     {
@@ -83,6 +84,10 @@ const router = (access,token) => createBrowserRouter([
                 path: 'checkout',
                 element: <CheckoutPage/>,
             },
+            {
+                path: '/order-completed',
+                element: <CompletedOrder />
+            }
         ],
     },
     {

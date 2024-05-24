@@ -1,0 +1,33 @@
+{
+  "en": [
+    {
+      "id": 1,
+      "type": "Pay with CASH upon delivery."
+    },
+    {
+      "id": 2,
+      "type": "Pay with CARD upon delivery."
+    }
+  ],
+  "ru": [
+    {
+      "id": 1,
+      "type": "Оплата НАЛИЧНЫМИ при доставке."
+    },
+    {
+      "id": 2,
+      "type": "Оплата КАРТОЙ при доставке."
+    }
+  ],
+  "az": [
+    {
+      "id": 1,
+      "type": "Çatdırılma zamanı NAĞD ödəniş."
+    },
+    {
+      "id": 2,
+      "type": "Çatdırılma zamanı KART ilə ödəniş."
+    }
+  ]
+}
+

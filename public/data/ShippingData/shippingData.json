@@ -7,7 +7,7 @@
     },
     {
       "id": 2,
-      "type": "Local pickup",
+      "type": "Pickup",
       "price": 2.5
     }
   ],
