@@ -17,6 +17,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import Slide from '@mui/material/Slide';
 import Button from '@mui/material/Button';
 import {CategoriesManagement} from "../../Common/CategoriesManagement/CategoriesManagement.jsx";
+import {OrdersManagement} from "../../Common/OrdersManagement/OrdersManagement.jsx";
 
 
 const itemsPerPage = 9;
@@ -197,9 +198,13 @@ const AdminPage = () => {
                             <Power/>
                         </div>
                     </div>
-                    <CategoriesManagement />
+                    <CategoriesManagement/>
+                    <div className={`${styles.pageHeading} ${styles.ordersHeading}`}>
+                        <h1>ORDERS</h1>
+                    </div>
+                    <OrdersManagement/>
                     <div className={styles.pageHeading}>
-                    <h1>All products</h1>
+                        <h1>All products</h1>
                     </div>
                     <div className={styles.productManagement}>
                         <div className={styles.searchInput}>

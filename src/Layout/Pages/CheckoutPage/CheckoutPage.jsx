@@ -26,7 +26,8 @@ const defaults = {
     postCode: '',
     shippingMethod:"",
     paymentType: 0,
-    products:[]
+    products:[],
+    addedAt: null
 }
 
 export const CheckoutPage = () => {
@@ -86,7 +87,8 @@ export const CheckoutPage = () => {
             postCode: formFields?.postCode.trim(),
             products: [...cartItems],
             shippingMethod: shippingTypeId === 1 ? "delivery" : "pickup",
-            paymentType: payment === 1 ? "cash" : "card"
+            paymentType: payment === 1 ? "cash" : "card",
+            addedAt: new Date().toLocaleString()
         };
 
         if (

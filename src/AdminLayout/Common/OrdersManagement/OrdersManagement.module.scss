@@ -1,0 +1,141 @@
+@import "../../../Variables/Variables.module";
+
+.ordersWrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  .overFlow {
+    .ordersTable {
+      display: flex;
+      width: 100%;
+      background-color: $admin-secondary-color;
+      border-radius: 10px 10px 0 0 ;
+      border: 1px solid #323641;
+      overflow-y: hidden;
+      margin-bottom: 25px;
+      .table {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        min-height: 200px;
+        .noProducts{
+          display: flex;
+          width: 100%;
+          height: 100%;
+          align-items: center;
+          justify-content: center;
+          font-size: 20px;
+          color: #ADAEAE;
+        }
+        .tableRow {
+          display: flex;
+          align-items: center;
+          width: 100%;
+          border-bottom: 1px solid #323641;
+          &:last-child {
+            border-color: transparent;
+          }
+          &.tableHeading {
+            border-bottom: 1px solid #323641;
+          }
+          &.orderTable {
+            .payment {
+              text-transform: uppercase;
+              svg {
+                font-size: 25px;
+              }
+            }
+            .status {
+              text-transform: uppercase;
+              select {
+                background: #323641;
+                color: white;
+                padding: 5px;
+                outline: 0;
+                border-color: white;
+                font-size: 14px;
+              }
+
+            }
+            .delivery {
+              text-transform: uppercase;
+              svg {
+                font-size: 25px;
+              }
+            }
+          }
+          .tableCell {
+            display: flex;
+            padding: 8px 16px;
+            color: #ADAEAE;
+            font-size: 15px;
+            width: 100%;
+          }
+
+          .id {
+            max-width: 75px;
+          }
+
+          .date {
+            max-width: 125px;
+            justify-content: center;
+            text-align: center;
+            font-size: 14px;
+          }
+          .customer {
+            max-width: 250px;
+          }
+
+          .payment {
+            max-width: 120px;
+            justify-content: center;
+          }
+          .status {
+            max-width: 175px;
+            justify-content: center;
+          }
+          .price {
+            max-width: 150px;
+            justify-content: center;
+          }
+
+          .delivery {
+            max-width: 125px;
+            justify-content: center;
+
+          }
+          .actions {
+            max-width: 110px;
+            justify-content: end;
+            gap: 5px;
+            margin-left: auto;
+            .action {
+              padding: 0 5px;
+              cursor: pointer;
+
+              &:hover:nth-child(1) {
+                svg {
+                  color: $orange-dark;
+                }
+              }
+
+              &:hover:nth-child(2) {
+                svg {
+                  color: red;
+                }
+              }
+
+              svg {
+                transition: color $transition;
+                font-size: 23px;
+              }
+            }
+          }
+        }
+      }
+
+    }
+  }
+
+}
+

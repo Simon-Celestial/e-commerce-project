@@ -37,6 +37,9 @@
       align-items: center;
       justify-content: space-between;
       gap: 15px;
+      &.ordersHeading {
+        padding: 25px 0;
+      }
 
       h1 {
         text-transform: uppercase;
