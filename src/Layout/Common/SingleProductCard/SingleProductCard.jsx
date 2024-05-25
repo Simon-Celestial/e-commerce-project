@@ -124,9 +124,9 @@ export const SingleProductCard = ({product}) => {
                         <div className={styles.button} onClick={() => addToCart(product)}>
                             add to cart
                         </div>
-                        <div className={styles.button}>
+                        <Link to={"/checkout"} className={styles.button}>
                             buy now
-                        </div>
+                        </Link>
 
                     </div>
                     <div className={styles.miscellaneousBlock}>

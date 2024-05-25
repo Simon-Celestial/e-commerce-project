@@ -500,10 +500,11 @@ const ProductsMenu = ({setMenuOpen, menuOpen, update, selectedItem, setSelectedI
                 </div>
                 .
                 <div className={styles.menuFooter}>
-                    <div className={`${styles.button} ${styles.add}`} onClick={handleUpdateData}
+                    <button
+                        disabled={isUpdating}
+                        className={`${styles.button} ${styles.add}`} onClick={handleUpdateData}
                          style={{
                              opacity: isUpdating ? 0.5 : 1,
-                             pointerEvents: isUpdating ? "none" : "all"
                          }}
                     >
                         {isUpdating ? (
@@ -517,7 +518,7 @@ const ProductsMenu = ({setMenuOpen, menuOpen, update, selectedItem, setSelectedI
                         ) : (
                             <span>{selectedItem ? "Edit Product" : "Add Product"}</span>
                         )}
-                    </div>
+                    </button>
                     <div className={`${styles.button} ${styles.cancel}`} onClick={handleMenuClose}>
                         Cancel
                     </div>

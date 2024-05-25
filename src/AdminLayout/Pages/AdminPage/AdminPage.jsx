@@ -1,6 +1,6 @@
 import styles from "./AdminPage.module.scss";
 import {Wrench, Power, Trash} from "@phosphor-icons/react";
-import ProductsMenu from "../../Common/MembersMenu/ProductsMenu.jsx";
+import ProductsMenu from "../../Common/ProductsMenu/ProductsMenu.jsx";
 import {useCallback, useState, useMemo, useEffect, useContext} from "react";
 import Stack from "@mui/material/Stack";
 import Pagination from "@mui/material/Pagination";

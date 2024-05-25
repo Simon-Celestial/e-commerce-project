@@ -147,9 +147,9 @@ export const Basket = () => {
                                             }
                                             </p>
                                         </div>
-                                        <div className={styles.totalButton}>
+                                        <Link to ={"/checkout"} className={styles.totalButton}>
                                             PROCEED TO CHECKOUT
-                                        </div>
+                                        </Link>
                                     </div>
                                 </div>
                             </div>
