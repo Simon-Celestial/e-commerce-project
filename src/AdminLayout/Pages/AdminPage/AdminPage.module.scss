@@ -38,7 +38,7 @@
       justify-content: space-between;
       gap: 15px;
       &.ordersHeading {
-        padding: 25px 0;
+        padding: 0 0 25px 0;
       }
 
       h1 {
@@ -145,7 +145,7 @@
 
     }
     .overFlow {
-      .teamTable {
+      .allProductsTable {
         display: flex;
         width: 100%;
         background-color: $admin-secondary-color;
@@ -310,7 +310,7 @@
           border-radius: 2px;
           box-shadow: 0 0 5px black;
         }
-        .teamTable {
+        .allProductsTable {
           max-width: 1140px;
           .table {
             .tableRow {
@@ -346,8 +346,6 @@
         overflow-x: auto;
       }
 
-      .overFlow {
-      }
     }
   }
 }
@@ -355,7 +353,7 @@
   .adminPageWrapper {
     .adminPageContent {
       .overFlow {
-        .teamTable {
+        .allProductsTable {
           width: 964px;
         }
       }

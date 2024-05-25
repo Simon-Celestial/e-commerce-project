@@ -4,6 +4,33 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+  .ordersFilter {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    background: $admin-secondary-color;
+    margin-bottom: 25px;
+    padding: 30px;
+    border-radius: 10px 10px 0 0;
+    border: 1px solid #323641;
+    .inputWrapper {
+      max-width: 423px;
+      border: 1px solid white;
+      background: #323641;
+      border-radius: 5px;
+      height: 50px;
+      padding: 0 10px;
+      width: 100%;
+      input {
+        width: 100%;
+        height: 100%;
+        outline: 0;
+        color: white;
+        background: transparent;
+        border: 0;
+      }
+    }
+  }
   .overFlow {
     .ordersTable {
       display: flex;
@@ -11,8 +38,8 @@
       background-color: $admin-secondary-color;
       border-radius: 10px 10px 0 0 ;
       border: 1px solid #323641;
-      overflow-y: hidden;
-      margin-bottom: 25px;
+      overflow-x: hidden;
+      min-width: 1085px;
       .table {
         width: 100%;
         display: flex;
@@ -112,6 +139,9 @@
             .action {
               padding: 0 5px;
               cursor: pointer;
+              svg {
+                color: white;
+              }
 
               &:hover:nth-child(1) {
                 svg {
@@ -136,6 +166,32 @@
 
     }
   }
-
+  .paginationWrapper {
+    display: flex;
+    width: 100%;
+    padding: 5px 0;
+    background: #00987F;
+    border-radius: 0 0 10px 10px;
+    margin-bottom: 25px;
+  }
 }
 
+@media screen and (max-width: 1144px) {
+.ordersWrapper {
+  .overFlow {
+    overflow-x: scroll;
+
+    &::-webkit-scrollbar {
+      height: 10px;
+    }
+    &::-webkit-scrollbar-track {
+      background: gray;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: $green-dark;
+      border-radius: 2px;
+      box-shadow: 0 0 5px black;
+    }
+  }
+}
+}

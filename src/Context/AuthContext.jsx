@@ -1,5 +1,6 @@
-import React, {useState,useCallback,useEffect} from "react";
+import React, {useState, useCallback, useEffect, useMemo} from "react";
 import {Bounce, toast} from "react-toastify";
+import axios from "axios";
 
 
 
@@ -10,18 +11,36 @@ export const AuthContext = React.createContext({
     setToken: () => {},
     categoryData: null,
     setCategoryData: () => {},
+    setShouldUpdate: () => {},
+    orders: null,
+    calculateOrderPrice : () => {},
 });
 
 export const AuthContextProvider = ({children}) => {
 
     const [token,setToken] = useState(localStorage.token);
     const [categoryData, setCategoryData] = useState(null);
+    const [orders,setOrders] = useState([]);
+    const [shouldUpdate, setShouldUpdate] = useState(Date.now());
+
+
+
+    useEffect(() => {
+        (async () => {
+            try {
+                const response = await axios.get("http://localhost:8000/orders");
+                setOrders(response.data);
+            } catch (error) {
+                console.error('Axios error:', error);
+            }
+        })();
+    }, [shouldUpdate]);
+
 
 
     useEffect(() => {
         setToken(localStorage.getItem("token"));
     }, []);
-
 
     const handleExit = useCallback(() => {
         delete localStorage.token;
@@ -37,6 +56,12 @@ export const AuthContextProvider = ({children}) => {
         });
     }, [setToken]);
 
+    const calculateOrderPrice = useMemo(() => (order) => {
+        const productTotal = order?.products.reduce((total, product) => total + product.salePrice * product.count, 0);
+        const shippingCost = order?.shippingMethod === "pickup" ? 2.50 : 7.50;
+        return (productTotal + shippingCost).toFixed(2);
+    }, []);
+
     return (
         <AuthContext.Provider value={{
             token,
@@ -46,7 +71,10 @@ export const AuthContextProvider = ({children}) => {
                 setToken(token);
             },
             categoryData,
-            setCategoryData
+            setCategoryData,
+            setShouldUpdate,
+            orders,
+            calculateOrderPrice
         }}>
             {children}
         </AuthContext.Provider>

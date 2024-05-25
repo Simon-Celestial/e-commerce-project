@@ -20,15 +20,16 @@ import {AuthContext} from "./Context/AuthContext.jsx";
 import PageNotFound from "./Layout/Common/PageNotFound/PageNotFound.jsx";
 import {CheckoutPage} from "./Layout/Pages/CheckoutPage/CheckoutPage.jsx";
 import {CompletedOrder} from "./Layout/Pages/CompletedOrder/CompletedOrder.jsx";
+import {AdminOrderSingle} from "./AdminLayout/Pages/AdminOrderSingle/AdminOrderSingle.jsx";
 
-const router = (access,token) => createBrowserRouter([
+const router = (access, token) => createBrowserRouter([
     {
         path: '/',
         element: <MainLayout/>,
         children: [
             {
                 path: "*",
-                element: <PageNotFound />
+                element: <PageNotFound/>
             },
 
             {
@@ -86,7 +87,7 @@ const router = (access,token) => createBrowserRouter([
             },
             {
                 path: '/order-completed',
-                element: <CompletedOrder />
+                element: <CompletedOrder/>
             }
         ],
     },
@@ -96,11 +97,15 @@ const router = (access,token) => createBrowserRouter([
         children: [
             {
                 path: 'login',
-                element: !token? <AdminLogin/> : <AdminPage/>,
+                element: !token ? <AdminLogin/> : <AdminPage/>,
             },
             {
                 path: 'dashboard',
-                element: token? <AdminPage/> : <AdminLogin/>,
+                element: token ? <AdminPage/> : <AdminLogin/>,
+            },
+            {
+                path: 'customer-order/:orderId',
+                element: !token ? <AdminLogin/> : <AdminOrderSingle/>
             },
         ],
     },
@@ -114,7 +119,7 @@ const MainRouter = () => {
         token
     } = useContext(AuthContext);
 
-    return <RouterProvider router={router(access,token)}/>;
+    return <RouterProvider router={router(access, token)}/>;
 };
 
 export default MainRouter;

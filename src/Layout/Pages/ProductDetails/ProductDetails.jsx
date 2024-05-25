@@ -45,9 +45,6 @@ export const ProductDetails = () => {
         handleFindLanguage(i18n.language);
     }, [handleFindLanguage,i18n.language]);
 
-
-
-
     const handleResize = useCallback(() => {
         const windowWidth = window.innerWidth;
         if (windowWidth <= 1368 && windowWidth > 1100) {

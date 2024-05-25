@@ -1,0 +1,211 @@
+@import "../../../Variables/variables.module";
+
+
+.orderSinglePageWrapper {
+  display: flex;
+  width: 100vw;
+  justify-content: center;
+  background-color: $admin-main-color;
+  padding: 25px 30px 25px 30px;
+  min-height: 100vh;
+  .orderSingleContent {
+    max-width: 1300px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .returnBlock {
+      width: 100%;
+      padding: 25px 0;
+      display: flex;
+      justify-content: end;
+
+      .returnLink {
+        display: flex;
+        align-items: center;
+        font-size: 20px;
+        color: white;
+        padding: 15px 25px;
+        background: $green-dark;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: background $transition;
+
+        &:hover {
+          background: $orange-dark;
+        }
+      }
+    }
+
+    .invoiceBlock {
+      width: 100%;
+      background-color: $admin-secondary-color;
+      border-radius: 10px;
+      padding: 25px;
+      flex-direction: column;
+      display: flex;
+      border: 1px solid rgb(52, 58, 64);
+
+
+      .invoiceTop {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 25px;
+        flex-wrap: wrap;
+        gap: 25px;
+
+        .invoiceTopItem {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          max-width: 250px;
+          width: 100%;
+
+          &.descriptionItem {
+            max-width: 100%;
+          }
+
+          p {
+            color: white;
+            font-size: 20px;
+          }
+
+          span {
+            display: inline-flex;
+            gap: 10px;
+            align-items: center;
+
+            svg {
+              font-size: 25px;
+            }
+          }
+
+          .status {
+            font-size: 14px;
+            background-color: #323641;
+            color: white;
+            display: flex;
+            max-width: 100px;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid white;
+            text-transform: capitalize;
+            padding: 5px 0;
+          }
+
+          h2 {
+            color: gray;
+            font-size: 16px;
+          }
+        }
+      }
+
+      .overFlowX {
+        overflow-x: scroll;
+        .invoiceMiddle {
+          display: flex;
+          width: 100%;
+          flex-direction: column;
+          border-bottom: transparent;
+          border-bottom: 1px solid #323641;
+          min-width: 1000px;
+          overflow-x: hidden;
+
+          .invoiceMiddleRow {
+            display: flex;
+            width: 100%;
+            color: white;
+            font-size: 15px;
+            border: 1px solid #323641;
+            justify-content: space-between;
+            border-bottom: transparent;
+            align-items: center;
+
+
+            &:nth-child(1) {
+              color: gray;
+              font-size: 16px;
+              border-bottom: transparent;
+              border-radius: 10px 10px 0 0;
+            }
+
+            .box {
+              display: flex;
+              padding: 8px 16px;
+            }
+
+            .id {
+              max-width: 70px;
+              width: 100%;
+              justify-content: start;
+            }
+
+            .image {
+              max-width: 80px;
+
+              img {
+                width: 50px;
+                height: 50px;
+                object-position: center;
+                object-fit: cover;
+              }
+            }
+
+            .name {
+              max-width: 350px;
+              width: 100%;
+            }
+
+            .size {
+              max-width: 125px;
+              width: 100%;
+              justify-content: center;
+            }
+
+            .count {
+              max-width: 125px;
+              width: 100%;
+              justify-content: center;
+            }
+
+            .price {
+              max-width: 180px;
+              width: 100%;
+              justify-content: center;
+            }
+
+            .subtotal {
+              max-width: 125px;
+              width: 100%;
+              justify-content: end;
+            }
+
+          }
+        }
+
+      }
+      .totalBox {
+        width: 100%;
+        display: flex;
+        justify-content: end;
+        color: white;
+        font-size: 25px;
+        padding: 20px 0 0 0;
+      }
+    }
+  }
+}
+
+
+@media screen and (max-width: 1200px) {
+  .orderSinglePageWrapper {
+    .orderSingleContent {
+      .invoiceBlock {
+        .invoiceTop {
+          justify-content: start;
+        }
+      }
+    }
+  }
+}

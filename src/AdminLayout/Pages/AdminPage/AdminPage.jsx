@@ -225,7 +225,7 @@ const AdminPage = () => {
                         </div>
                     </div>
                     <div className={styles.overFlow}>
-                        <div className={styles.teamTable}>
+                        <div className={styles.allProductsTable}>
                             <div className={styles.table}>
                                 <div className={`${styles.tableRow} ${styles.tableHeading}`}>
                                     <div className={`${styles.id} ${styles.tableCell}`}>
@@ -296,7 +296,8 @@ const AdminPage = () => {
                                                         <Wrench onClick={() => handleOpenMenu(product)}/>
                                                     </div>
 
-                                                    <div className={styles.action} style={{
+                                                    <div className={styles.action}
+                                                         style={{
                                                         opacity: isUpdating ? 0.5 : 1,
                                                         pointerEvents: isUpdating ? 'none' : 'all',
                                                     }}

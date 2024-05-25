@@ -95,8 +95,7 @@ export const CheckoutPage = () => {
             !requestData.firstName ||
             !requestData.lastName ||
             !requestData.districtArea ||
-            !requestData.streetAddress ||
-            (requestData.phoneNumber.length < 13)
+            !requestData.streetAddress
         ) {
             toast.error('Bütün tələb olunan sahələri duzgun doldurun', {
                 hideProgressBar: false,
@@ -107,7 +106,19 @@ export const CheckoutPage = () => {
                 theme: 'dark',
                 transition: Bounce,
             });
-        } else {
+        }
+        else if (!/^\+994\d{9}$/.test(requestData.phoneNumber)) {
+            toast.error('Nömrəni "+994XXXXXXXXX" formatında daxil edin', {
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: true,
+                progress: undefined,
+                theme: 'dark',
+                transition: Bounce,
+            });
+        }
+        else {
             try {
                 setOrderLoading(true);
                 await axios.post("http://localhost:8000/orders/", requestData);
