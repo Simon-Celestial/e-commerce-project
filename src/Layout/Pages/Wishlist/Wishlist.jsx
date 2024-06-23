@@ -17,8 +17,10 @@ import {useCallback, useContext} from "react";
 import {WishListContext} from "../../../Context/WishListContext.jsx";
 import {BasketContext} from "../../../Context/BasketContext.jsx";
 import {DataContext} from "../../../Context/DataContext.jsx";
+import { useTranslation } from "react-i18next";
 
 const Wishlist = () => {
+    const {t} = useTranslation();
     const {
         wishListItems,
         removeFromWishList
@@ -45,32 +47,32 @@ const Wishlist = () => {
         <div className={styles.wishlistWrapper}>
             <Header/>
             <main className={styles.wishlistContainer}>
-                <PageHeading title={"Wishlist"}/>
+                <PageHeading title={t("main.wishlist.wishlistWishlist")}/>
                 {wishListItems?.length < 1 ?
                     <div className={styles.wishlistEmpty}>
                         <img src="/images/heart.png" alt="Heart"/>
-                        <p>Your wishlist is currently empty.</p>
+                        <p>{t("main.wishlist.wishlistYourCurrently")}.</p>
                         <Link to="/shop">
-                            Return to Shop
+                          {t("main.wishlist.returnToShop")}
                         </Link>
                     </div>
                     :
                     <div className={styles.wishlistCardsWrapper}>
                         <div className={`${styles.tableRow} ${styles.topRow}`}>
                             <div className={`${styles.product} ${styles.cell}`}>
-                                Product
+                             {t("main.wishlist.whishlistProduct")}
                             </div>
                             <div className={`${styles.price} ${styles.cell}`}>
-                                Unit price
+                              {t("main.wishlist.whishlistUnit")}
                             </div>
                             <div className={`${styles.stock} ${styles.cell}`}>
-                                Stock status
+                              {t("main.wishlist.whislistStockStatus")}
                             </div>
                             <div className={`${styles.add} ${styles.cell}`}>
-                                Add to Cart
+                              {t("main.wishlist.whislistAddToCart")}
                             </div>
                             <div className={`${styles.delete} ${styles.cell}`}>
-                                Delete
+                              {t("main.wishlist.whislistDelete")}
                             </div>
                         </div>
                         {wishListItems?.map((product) => {
@@ -98,7 +100,7 @@ const Wishlist = () => {
                                     <div className={`${styles.add} ${styles.cell}`}>
                                         <div className={styles.addToCart}
                                              onClick={() => handleAddToCart(product, product.id)}>
-                                            add to cart
+                                         {t("main.wishlist.whislistAddToCart")}
                                         </div>
 
                                     </div>
@@ -112,7 +114,7 @@ const Wishlist = () => {
                             )
                         })}
                         <div className={styles.social}>
-                            <h3>Share on:</h3>
+                            <h3>{t("main.wishlist.whislistShareOn")}</h3>
                             <div className={styles.iconsBlock}>
                                 <Link to="#" className={styles.circle}>
                                     <FacebookLogo weight="fill"/>

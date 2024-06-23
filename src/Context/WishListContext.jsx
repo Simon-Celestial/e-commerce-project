@@ -7,8 +7,8 @@ export const WishListContext = React.createContext({
     addToWishList: () => {
     },
     removeFromWishList: ()=> {
-
-    }
+    },
+    setWishListItems:() => {}
 
 });
 
@@ -69,7 +69,8 @@ export const WishListContextProvider = ({children}) => {
         <WishListContext.Provider value={{
             wishListItems,
             addToWishList,
-            removeFromWishList
+            removeFromWishList,
+            setWishListItems
         }}>
             {children}
         </WishListContext.Provider>

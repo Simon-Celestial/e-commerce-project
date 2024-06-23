@@ -154,6 +154,13 @@
             .name {
               max-width: 350px;
               width: 100%;
+              a {
+                color: white;
+                transition: color $transition;
+                &:hover {
+                  color: red;
+                }
+              }
             }
 
             .size {

@@ -257,3 +257,33 @@
         }
     }
 }
+@media screen and (max-width: 1160px) {
+    .productImage {
+        &.specialImage {
+            height: unset!important;
+        }
+    }
+    .listView {
+        .productsContainerBox {
+            flex-direction: column!important;
+            gap: 25px
+        }
+    }
+}
+@media screen and (max-width: 800px) {
+    .listView {
+        .productsContainerBox {
+            .specialImage {
+                max-width: unset!important;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .productImage {
+        &.specialImage {
+            height: unset!important;
+        }
+    }
+}

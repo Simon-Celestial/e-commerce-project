@@ -6,8 +6,9 @@ import {useCallback, useContext, useMemo, useState} from "react";
 import {BasketContext} from "../../../Context/BasketContext.jsx";
 import {WishListContext} from "../../../Context/WishListContext.jsx";
 import {DataContext} from "../../../Context/DataContext.jsx";
+import { useTranslation } from "react-i18next";
 export const SingleProductCard = ({product}) => {
-
+    const {t} = useTranslation();
     const {
         addToCart,
     } = useContext(BasketContext);
@@ -60,7 +61,7 @@ export const SingleProductCard = ({product}) => {
                     {
                         product?.regularPrice ?
                             <div className={`${styles.mark} ${styles.sale}`}>
-                                sale
+                                {t("main.singleProduct.singleSale")}
                             </div>
                             : null
                     }
@@ -68,7 +69,7 @@ export const SingleProductCard = ({product}) => {
                     {product?.hot && product?.quantity > 0 ?
                         <div
                             className={`${styles.mark} ${styles.hot} ${!product?.regularPrice ? styles.hotDefault : null}`}>
-                            hot
+                            {t("main.singleProduct.singleHot")}
                         </div>
                         :
                         null
@@ -81,7 +82,7 @@ export const SingleProductCard = ({product}) => {
                                                  ${!product?.sale ? styles.defaultMark : null} 
                                                  ${!product?.hot && !product?.regularPrice ? styles.leftDefault : null}
                                                  `}>
-                                out of stock
+                                {t("main.singleProduct.singleOutOfStock")}
                             </div>
                             :
                             null
@@ -100,9 +101,9 @@ export const SingleProductCard = ({product}) => {
                             <p>({product?.rating})</p>
                         </div>
                         <div className={styles.stockBlock}>
-                            Stock: {product?.quantity > 1 ? <p>In stock</p> : <p style={{
+                            {t("main.singleProduct.singleStock")}: {product?.quantity > 1 ? <p>{t("main.singleProduct.singleInStock")}</p> : <p style={{
                             color: "red"
-                        }}>Out of stock</p>}
+                        }}>{t("main.singleProduct.singleOutStock")}</p>}
                         </div>
 
                     </div>
@@ -122,10 +123,10 @@ export const SingleProductCard = ({product}) => {
                     </div>
                     <div className={styles.buttonsBlock}>
                         <div className={styles.button} onClick={() => addToCart(product)}>
-                            add to cart
+                            {t("main.singleProduct.singleAddToCart")}
                         </div>
-                        <Link to={"/checkout"} className={styles.button}>
-                            buy now
+                        <Link to={'/checkout'} className={styles.button}>
+                           {t("main.singleProduct.singleBuyNow")}
                         </Link>
 
                     </div>
@@ -137,11 +138,11 @@ export const SingleProductCard = ({product}) => {
                                     :
                                     <Heart  weight={"fill"}/>
                                 }
-                                Add to wishlist
+                                {t("main.singleProduct.singleAddToWishlist")}
                             </div>
                             <div className={styles.manipulation}>
                                 <GitDiff/>
-                                Compare
+                               {t("main.singleProduct.singleCompare")}
                             </div>
                         </div>
                         <div className={styles.social}>
@@ -159,7 +160,7 @@ export const SingleProductCard = ({product}) => {
                     </div>
                     <div className={styles.idBlock}>
                         <span>SKU: <p>SF00{product?.id}</p></span>
-                        <span>CATEGORY: <p>{product?.category}</p></span>
+                        <span>{t("main.singleProduct.singleCATEGORY")}: <p>{product?.category}</p></span>
                     </div>
                 </div>
             </div>

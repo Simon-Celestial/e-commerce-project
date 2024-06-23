@@ -1,8 +1,8 @@
 import styles from "./AdminOrderSingle.module.scss";
-import {Link, useParams} from "react-router-dom";
-import {useContext} from "react";
-import {AuthContext} from "../../../Context/AuthContext.jsx";
-import {CreditCard, Money, Package, Truck} from "@phosphor-icons/react";
+import { Link, useParams } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../../../Context/AuthContext.jsx";
+import { CreditCard, Money, Package, Truck } from "@phosphor-icons/react";
 
 export const AdminOrderSingle = () => {
 
@@ -11,7 +11,7 @@ export const AdminOrderSingle = () => {
         calculateOrderPrice
     } = useContext(AuthContext);
 
-    const {orderId} = useParams();
+    const { orderId } = useParams();
 
 
     return (
@@ -41,8 +41,10 @@ export const AdminOrderSingle = () => {
                                         </div>
                                         <div className={styles.invoiceTopItem}>
                                             <p>INVOICE NO</p>
-                                            <h2>
-                                                SR000{order?.id}
+                                            <h2 style={{
+                                                textTransform: 'uppercase'
+                                            }}>
+                                                AZ000{order?.id}
                                             </h2>
                                         </div>
                                         <div className={styles.invoiceTopItem}>
@@ -58,14 +60,14 @@ export const AdminOrderSingle = () => {
                                             <h2>
                                                 {order?.shippingMethod === "delivery" ?
                                                     <span>
-                                                       <Truck weight="duotone" color="white"/>
-                                                       Delivery</span>
+                                                        <Truck weight="duotone" color="white" />
+                                                        Delivery</span>
                                                     :
 
                                                     <span>
-                                                            <Package weight="duotone" color="white"/>
-                                                            Pickup
-                                                        </span>
+                                                        <Package weight="duotone" color="white" />
+                                                        Pickup
+                                                    </span>
                                                 }
                                             </h2>
                                         </div>
@@ -76,19 +78,19 @@ export const AdminOrderSingle = () => {
                                         <div className={styles.invoiceTopItem}>
                                             <p>PAYMENT</p>
                                             <h2>{order?.paymentType === "cash" ?
-                                                <span><Money weight="duotone" color="green"/>
+                                                <span><Money weight="duotone" color="green" />
                                                     CASH
                                                 </span>
 
                                                 :
-                                                <span><CreditCard weight="duotone" color="orange"/>
+                                                <span><CreditCard weight="duotone" color="orange" />
                                                     CARD
                                                 </span>
                                             }
                                             </h2>
                                         </div>
                                         <div className={styles.invoiceTopItem}>
-                                            <p>SUBTOTAL:</p>
+                                            <p>SUBTOTAL</p>
                                             <h2>$ {order?.products.reduce((total, product) => total + product.salePrice * product.count, 0)?.toFixed(2)}</h2>
                                         </div>
                                     </div>
@@ -154,10 +156,14 @@ export const AdminOrderSingle = () => {
                                                             <p>{product?.id}</p>
                                                         </div>
                                                         <div className={`${styles.image} ${styles.box}`}>
-                                                            <img src={product?.frontImage} alt="image"/>
+                                                            <img src={product?.frontImage} alt="image" />
                                                         </div>
                                                         <div className={`${styles.name} ${styles.box}`}>
-                                                            <p>{product?.title}</p>
+                                                            <Link to={`/details/${product?.id}`}>
+                                                                <p>
+                                                                    {product?.title}
+                                                                </p>
+                                                            </Link>
                                                         </div>
                                                         <div className={`${styles.size} ${styles.box}`}>
                                                             <p>{product?.size.join(",")}</p>

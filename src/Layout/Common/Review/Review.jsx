@@ -18,7 +18,7 @@ import { useTranslation } from 'react-i18next';
 const Review = () => {
     const [slidePerView, setSlidesPerView] = useState(2);
     const [reviewData, setReviewData] = useState(null);
-
+    const {t} = useTranslation();
     const {i18n } = useTranslation();
 
 
@@ -59,7 +59,7 @@ const Review = () => {
         <div>
             <section className={styles.review}>
                 <div className={styles.ourReview}>
-                    <h1>OUR REVIEWS</h1>
+                    <h1>{t("main.review.reviewOURREVIEWS")}</h1>
                     <div className={styles.reviewSlider}>
                         <Swiper
                             slidesPerView={slidePerView}

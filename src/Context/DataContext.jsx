@@ -48,7 +48,7 @@ export const DataContextProvider = ({
                 setAccountDetails({
                     name: findUserEmail?.userName,
                     email: findUserEmail?.userEmail,
-                    phone: findUserEmail?.phone
+                    phone: findUserEmail?.userPhone
 
                 });
                 setAccess(true);
@@ -59,6 +59,7 @@ export const DataContextProvider = ({
             console.error("Xeta:", error);
         }
     }, [setAccountDetails, setAccess])
+    
     const handleClearStorage = useCallback(() => {
         localStorage.removeItem("user");
         setAccess(false);
@@ -73,6 +74,7 @@ export const DataContextProvider = ({
             transition: Bounce,
         });
     }, [setAccess, setAccountDetails])
+    
     useEffect(() => {
         (async () => {
             setProductsLoading(true);

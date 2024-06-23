@@ -14,6 +14,7 @@ const parseDate = (dateString) => {
     const [hours, minutes, seconds] = timePart.split(':').map(Number);
     return new Date(year, month - 1, day, hours, minutes, seconds);
 };
+
 const itemsPerPage = 9;
 
 export const OrdersManagement = () => {
@@ -65,6 +66,7 @@ export const OrdersManagement = () => {
             }
         }
     };
+    
     const sortedOrders = useMemo(() => {
         return orders?.slice().sort((a, b) => parseDate(b.addedAt) - parseDate(a.addedAt));
     }, [orders]);

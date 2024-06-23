@@ -8,11 +8,12 @@ import { Bounce, toast } from 'react-toastify';
 import { Eye, EyeSlash } from '@phosphor-icons/react';
 import axios from 'axios';
 import {DataContext} from "../../../Context/DataContext.jsx";
+import { useTranslation } from "react-i18next";
 
 
 
 const Login = () => {
-
+  const {t} = useTranslation();
     const  {
         fetchUserName,
     } =  useContext(DataContext);
@@ -21,8 +22,9 @@ const Login = () => {
   const [userLogin, setUserLogin] = useState({
     userLoginEmail: "",
     userLoginPassword: ""
-  })
-    const [viewPassword,setViewPassword] = useState(false);
+  });
+
+  const [viewPassword,setViewPassword] = useState(false);
 
   const handlePassView = useCallback(()=>{
       setViewPassword(prevState => !prevState);
@@ -86,7 +88,7 @@ const Login = () => {
                 });
             }
         } catch (error) {
-            console.error("Ошибка:", error);
+            console.error("error:", error);
         }
     }, [userLogin, navigate]);
   return (
@@ -94,26 +96,26 @@ const Login = () => {
     <Header />
     <main className={styles.pageWrapper}>
         <div className={styles.pageContent}>
-        <PageHeading title={"Login"} />
+        <PageHeading title={t("main.login.loginLogin")} />
         <div className={styles.formContainer}>
             <form onSubmit={logIn}>
               <div className={styles.inputContainer}>
-                <p>Email address <span>*</span></p>
-                <input type="email"  required placeholder="Email" onChange={(e) => setUserLogin({ ...userLogin, userLoginEmail: e.target.value })} value={userLogin.userLoginEmail}></input>
+                <p>{t("main.login.loginEmailAdress")} <span>*</span></p>
+                <input type="email"  required placeholder={t("main.login.loginEmail")} onChange={(e) => setUserLogin({ ...userLogin, userLoginEmail: e.target.value })} value={userLogin.userLoginEmail}></input>
               </div>
               <div className={styles.inputContainer}>
-                <p>Password <span>*</span></p>
+                <p>{t("main.login.loginPassword")} <span>*</span></p>
                 <div className={styles.passInputWrapper}>
                     <div className={styles.viewBtn} onClick={handlePassView}>
                         {viewPassword ? <Eye  /> : <EyeSlash />}
                     </div>
-                <input  type={viewPassword ? "text" : "password"}  required placeholder="Password" onChange={(e) => setUserLogin({ ...userLogin, userLoginPassword: e.target.value })} value={userLogin.userLoginPassword} />
+                <input  type={viewPassword ? "text" : "password"}  required placeholder={t("main.login.loginPassword")} onChange={(e) => setUserLogin({ ...userLogin, userLoginPassword: e.target.value })} value={userLogin.userLoginPassword} />
                 </div>
               </div>
-              <button type="submit" className={styles.submitButton}>LOG IN</button>
+              <button type="submit" className={styles.submitButton}>{t("main.login.LogIn")}</button>
 
               <div className={styles.redirect}>
-                <Link to="/register">Don't have and account? Click Here.</Link>
+                <Link to="/register">{t("main.login.loginHaveAnd")}</Link>
               </div>
             </form>
           </div>

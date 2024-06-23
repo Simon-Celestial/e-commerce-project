@@ -4,7 +4,7 @@ import styles from "./Timer.module.scss";
 import { useTranslation } from "react-i18next";
 
 export const Timer = () => {
-    const endDate = new Date('2024-06-01');
+    const endDate = new Date('2024-06-25');
     const targetTime = endDate.getTime();
 
     const [elapsedTime, setElapsedTime] = useState(0);

@@ -7,10 +7,11 @@ import {Link, useNavigate} from 'react-router-dom';
 import {Bounce, toast} from 'react-toastify';
 import axios from 'axios';
 import {Eye, EyeSlash} from "@phosphor-icons/react";
+import { useTranslation } from "react-i18next";
 
 
 const Register = () => {
-
+    const {t} = useTranslation();
     const [user, setUser] = useState({
         userName: "",
         userEmail: "",
@@ -107,32 +108,32 @@ const Register = () => {
             <Header/>
             <main className={styles.pageWrapper}>
                 <div className={styles.pageContent}>
-                    <PageHeading title={"Register"}/>
+                    <PageHeading title={t("main.register.registerRegister")}/>
                     <div className={styles.formContainer}>
                         <form onSubmit={addUser}>
                             <div className={styles.inputContainer}>
-                                <p>Email address <span>*</span></p>
+                                <p>{t("main.register.registerEmailAddress")} <span>*</span></p>
                                 <input
                                     type="email"
                                     required
-                                    placeholder="Email"
+                                    placeholder={t("main.register.registerEmail")}
                                     onChange={(e) => setUser({...user, userEmail: e.target.value})}
                                     value={user.userEmail}/>
                             </div>
                             <div className={styles.inputContainer}>
-                                <p>Username <span>*</span></p>
+                                <p>{t("main.register.registerUsername")} <span>*</span></p>
                                 <input
                                     style={{
                                         textTransform: "capitalize"
                                     }}
-                                    type="text" placeholder="Usename"
+                                    type="text" placeholder= {t("main.register.registerUsername")}
                                     onChange={(e) => setUser({...user, userName: e.target.value})}
                                     value={user.userName}
                                     required
                                 />
                             </div>
                             <div className={`${styles.inputContainer}`}>
-                                <p>Password <span>*</span></p>
+                                <p>{t("main.register.registerPassword")} <span>*</span></p>
                                 <div className={styles.passInputWrapper}>
                                     <div className={styles.viewBtn} onClick={() => handlePassView('mainPass')}>
                                         {passwordBtnsStates.mainPass ? <Eye/> : <EyeSlash/>}
@@ -140,37 +141,37 @@ const Register = () => {
                                     <input
                                         type={passwordBtnsStates.mainPass ? "text" : "password"}
                                         required
-                                        placeholder="Password"
+                                        placeholder= {t("main.register.registerPassword")}
                                         onChange={(e) => setUser({...user, userPassword: e.target.value})}
                                         value={user.userPassword}
                                     />
                                 </div>
                             </div>
                             <div className={styles.inputContainer}>
-                                <p>Confirm password <span>*</span></p>
+                                <p>{t("main.register.registerConfirmPassword")} <span>*</span></p>
                                 <div className={styles.passInputWrapper}>
                                     <div className={styles.viewBtn} onClick={() => handlePassView('confirmPass')}>
                                         {passwordBtnsStates.confirmPass ? <Eye/> : <EyeSlash/>}
                                     </div>
                                     <input
                                         type={passwordBtnsStates.confirmPass ? "text" : "password"}
-                                        placeholder="Confirm password"
+                                        placeholder= {t("main.register.registerConfirmPassword")}
                                         onChange={handleConfirmPass}
                                         required
                                     />
                                 </div>
                             </div>
                             <div className={styles.inputContainer}>
-                                <p>Phone Number</p>
+                                <p>{t("main.register.registerPhoneNumber")}</p>
                                 <input
                                     type="tel" placeholder="+994XXXXXXX"
                                     onChange={(e) => setUser({...user, userPhone: e.target.value})}
                                     value={user.userPhone}
                                 />
                             </div>
-                            <button type="submit" className={styles.submitButton}>Register</button>
+                            <button type="submit" className={styles.submitButton}>{t("main.register.registerRegister")}</button>
                             <div className={styles.redirect}>
-                                <Link to="/login">Already have an account? Click Here.</Link>
+                                <Link to="/login">{t("main.register.registerAlreadyHaveAnd")}</Link>
                             </div>
                         </form>
                     </div>

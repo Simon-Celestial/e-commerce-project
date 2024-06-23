@@ -5,11 +5,11 @@ import {BasketContext} from "../../../Context/BasketContext";
 import {useCallback, useContext, useMemo} from "react";
 import {WishListContext} from "../../../Context/WishListContext.jsx";
 import {DataContext} from "../../../Context/DataContext.jsx";
+import { useTranslation } from "react-i18next";
 
 
-
-const ProductCard = ({product, tallSlide, listView}) => {
-
+const ProductCard = ({product, tallSlide, listView,specialStyles}) => {
+    const {t} = useTranslation();
     const {
         addToCart,
     } = useContext(BasketContext);
@@ -43,10 +43,10 @@ const ProductCard = ({product, tallSlide, listView}) => {
         <>
         <div className={`${styles.productWrapper} ${listView ? styles.listView : ""}`}>
             <div className={styles.productsContainerBox}>
-                <div className={`${styles.productImage} ${tallSlide ? styles.tallSlide : ""}`}>
+                <div className={`${styles.productImage} ${tallSlide ? styles.tallSlide : ""} ${specialStyles ? styles.specialImage : null}`}>
                     {product?.regularPrice && product?.quantity > 0 ?
                         <div className={`${styles.mark} ${styles.saleMark}`}>
-                            sale
+                            {t("main.product.productSale")}
                         </div>
                         :
                         null
@@ -55,7 +55,7 @@ const ProductCard = ({product, tallSlide, listView}) => {
                         product?.hot && product.quantity > 0 ?
                             <div
                                 className={`${styles.mark} ${styles.hotMark} ${!product.regularPrice ? styles.defaultMark : null}`}>
-                                hot
+                                {t("main.product.productHot")}
                             </div>
                             :
                             null
@@ -63,7 +63,7 @@ const ProductCard = ({product, tallSlide, listView}) => {
                     {
                         product?.quantity < 1 ?
                             <div className={`${styles.mark} ${styles.outOfStock}`}>
-                                sold out
+                                {t("main.product.productSoldOut")}
                             </div>
                             :
                             null
@@ -78,7 +78,7 @@ const ProductCard = ({product, tallSlide, listView}) => {
                     {
                         !listView ?
                             <div className={styles.add} onClick={() => addToCart(product)}>
-                                <a>Add To Cart</a>
+                                <a>{t("main.product.productAddToCart")}</a>
                             </div>
                             :
                             null
@@ -115,10 +115,9 @@ const ProductCard = ({product, tallSlide, listView}) => {
           </span>
                     {listView ?
                         <>
-                            <h2>Constructed from a durable polyester fabrication, this quilted staple features a hooded
-                                neckline, long sleeves with elasticated cuffs. Machine washable at 30 degrees.</h2>
+                            <h2>{t("main.product.productConstructedFrom")}</h2>
                             <div className={styles.addToCart} onClick={() => addToCart(product)}>
-                                add to cart
+                               {t("main.product.productAddToCart")}
                             </div>
                         </>
                         :

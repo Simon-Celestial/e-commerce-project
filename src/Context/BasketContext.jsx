@@ -16,7 +16,8 @@ export const BasketContext = React.createContext({
     emptyCart: () => {
     },
     shippingTypeId: 1,
-    setShippingTypeId: () => {}
+    setShippingTypeId: () => {},
+    setCartItems: () => {}
 });
 
 export const BasketContextProvider = ({children}) => {
@@ -132,7 +133,8 @@ export const BasketContextProvider = ({children}) => {
             calculateSubtotal,
             emptyCart,
             shippingTypeId,
-            setShippingTypeId
+            setShippingTypeId,
+            setCartItems
         }}>
             {children}
         </BasketContext.Provider>

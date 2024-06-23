@@ -47,6 +47,7 @@ export const CheckoutPage = () => {
     const [orderLoading, setOrderLoading] = useState(false);
     const [formFields, setFormFields] = useState(defaults);
     const [payment,setPayment] = useState(1);
+    const {t} = useTranslation();
 
     const {i18n} = useTranslation();
 
@@ -64,16 +65,21 @@ export const CheckoutPage = () => {
     const handlePaymentMethod = useCallback((e) => {
         setPayment(e.target.value);
     }, [setPayment]);
+
     const update = useCallback(() => {
         setShouldUpdate(Date.now())
-    }, [])
+    }, []);
+
     const navigate = useNavigate();
+
     const handleInputChange = useCallback((field, value) => {
         setFormFields((prev) => ({
             ...prev,
             [field]: value,
         }));
     }, [setFormFields]);
+
+    // DATANI POST ELEMEK ORDERSE
     const handlePostOrder = useCallback(async () => {
         const requestData = {
             firstName: formFields?.firstName.trim(),
@@ -149,10 +155,10 @@ export const CheckoutPage = () => {
                 cartItems.length < 1 ?
                     <div className={styles.checkoutEmpty}>
                         <img src="/images/emptyCart.png" alt="Cart Empty"/>
-                        <p>Your basket is empty</p>
-                        <p>Choose products you want to buy</p>
+                        <p>{t("main.checkout.checkoutYourBasket")}</p>
+                        <p>{t("main.checkout.checkoutChooseProducts")}</p>
                         <Link to="/shop">
-                            Return to Shop
+                            {t("main.checkout.checkoutReturnShop")}
                         </Link>
                     </div>
                     :
@@ -163,11 +169,11 @@ export const CheckoutPage = () => {
                                     <div className={styles.checkoutForm}>
                                         {/* LEFT */}
                                         <div className={styles.checkoutLeft}>
-                                            <h3>Billing Details</h3>
+                                            <h3>{t("main.checkout.billingDetails")}</h3>
                                             <div className={styles.formRow}>
                                                 <div className={styles.formShortBlock}>
                                                     <p>
-                                                        First Name<span>*</span>
+                                                        {t("main.checkout.checkoutFristName")}<span>*</span>
                                                     </p>
                                                     <input
                                                         type="text"
@@ -177,7 +183,7 @@ export const CheckoutPage = () => {
                                                 </div>
                                                 <div className={styles.formShortBlock}>
                                                     <p>
-                                                        Last Name<span>*</span>
+                                                        {t("main.checkout.checkoutLastName")}<span>*</span>
                                                     </p>
                                                     <input
                                                         type="text"
@@ -188,7 +194,7 @@ export const CheckoutPage = () => {
                                             </div>
                                             <div className={styles.formRow}>
                                                 <div className={styles.formLongBlock}>
-                                                    <p>Company name (Optional)</p>
+                                                    <p>{t("main.checkout.checkoutCompanyName")}</p>
                                                     <input
                                                         type="text"
                                                         value={formFields.companyName}
@@ -199,7 +205,7 @@ export const CheckoutPage = () => {
                                             </div>
                                             <div className={styles.formRow}>
                                                 <div className={styles.formLongBlock}>
-                                                    <p>Phone number <b style={{
+                                                    <p>{t("main.checkout.checkoutPhoneNumber")} <b style={{
                                                         color: "red"
                                                     }}>*</b></p>
                                                     <input
@@ -213,37 +219,37 @@ export const CheckoutPage = () => {
                                             <div className={styles.formRow}>
                                                 <div className={styles.formLongBlock}>
                                                     <p>
-                                                        District / Area<span>*</span>
+                                                        {t("main.checkout.checkoutDistrictArea")}<span>*</span>
                                                     </p>
                                                     <select
                                                         name="area"
                                                         value={formFields.districtArea}
                                                         onChange={(e) => handleInputChange('districtArea', e.target.value)}
                                                     >
-                                                        <option value="">Select a district/area</option>
-                                                        <option value="Binagadi">Binagadi</option>
-                                                        <option value="Yasamal">Yasamal</option>
-                                                        <option value="Khatai">Khatai</option>
-                                                        <option value="Nasimi">Nasimi</option>
-                                                        <option value="Narimanov">Narimanov</option>
-                                                        <option value="Nizami">Nizami</option>
-                                                        <option value="Khazar">Khazar</option>
-                                                        <option value="Sabayel">Sabayel</option>
-                                                        <option value="Sabunchu">Sabunchu</option>
-                                                        <option value="Surakhny">Surakhny</option>
-                                                        <option value="Garadagh">Garadagh</option>
-                                                        <option value="Pirallahi">Pirallahi</option>
+                                                        <option value="">{t("main.checkout.checkoutSelectDistrictArea")}</option>
+                                                        <option value="Binagadi">{t("main.checkout.checkoutBinagadi")}</option>
+                                                        <option value="Yasamal">{t("main.checkout.checkoutYasamal")}</option>
+                                                        <option value="Khatai">{t("main.checkout.checkoutKhatai")}</option>
+                                                        <option value="Nasimi">{t("main.checkout.checkoutNasimi")}</option>
+                                                        <option value="Narimanov">{t("main.checkout.checkoutNarimanov")}</option>
+                                                        <option value="Nizami">{t("main.checkout.checkoutNizami")}</option>
+                                                        <option value="Khazar">{t("main.checkout.checkoutKhazar")}</option>
+                                                        <option value="Sabayel">{t("main.checkout.checkoutSabayel")}</option>
+                                                        <option value="Sabunchu">{t("main.checkout.checkoutSabunchu")}</option>
+                                                        <option value="Surakhny">{t("main.checkout.checkoutSurakhny")}</option>
+                                                        <option value="Garadagh">{t("main.checkout.checkoutGaradagh")}</option>
+                                                        <option value="Pirallahi">{t("main.checkout.checkoutPirallahi")}</option>
                                                     </select>
                                                 </div>
                                             </div>
                                             <div className={styles.formRow}>
                                                 <div className={styles.formLongBlock}>
                                                     <p>
-                                                        Street Address<span>*</span>
+                                                        {t("main.checkout.checkoutStreetAddress")}<span>*</span>
                                                     </p>
                                                     <input
                                                         type="text"
-                                                        placeholder="Example (Dilara Aliyeva str.237 app.26)"
+                                                        placeholder= {t("main.checkout.checkoutExample")}
                                                         value={formFields.streetAddress}
                                                         onChange={(e) => handleInputChange('streetAddress', e.target.value)}
                                                     />
@@ -251,7 +257,7 @@ export const CheckoutPage = () => {
                                             </div>
                                             <div className={styles.formRow}>
                                                 <div className={styles.formLongBlock}>
-                                                    <p>Post Code (Optional)</p>
+                                                    <p>{t("main.checkout.checkoutPostCode")}</p>
                                                     <input
                                                         type="text"
                                                         placeholder="AZXXXX"
@@ -261,12 +267,12 @@ export const CheckoutPage = () => {
                                                 </div>
                                             </div>
                                             <div className={styles.additionalInfo}>
-                                                <h3>Additional information</h3>
+                                                <h3>{t("main.checkout.checkoutAdditionalInformation")}</h3>
                                                 <label htmlFor="info">
-                                                    Order Notes (Optional)<textarea
+                                                   {t("main.checkout.checkoutOrderNotes")}<textarea
                                                     name="info"
                                                     id="info"
-                                                    placeholder="Notes about your order, e.g. special notes for delivery."
+                                                    placeholder= {t("main.checkout.checkoutNotesAbout")}
                                                     value={formFields.description}
                                                     onChange={(e) => handleInputChange('description', e.target.value)}
 
@@ -277,7 +283,7 @@ export const CheckoutPage = () => {
                                         {/* RIGHT */}
                                         <div className={styles.checkoutRight}>
                                             <div className={styles.orderContainer}>
-                                                <h3>Your Order</h3>
+                                                <h3>{t("main.checkout.checkoutYourOrder")}</h3>
                                                 {/* TOTAL AND SUBTOTAL PRICE HERE */}
                                                 {cartItems?.map((cartProduct) => {
                                                     return (
@@ -290,7 +296,7 @@ export const CheckoutPage = () => {
                                                     )
                                                 })}
                                                 <div className={styles.orderRow}>
-                                                    <p>Subtotal</p>
+                                                    <p>{t("main.checkout.checkoutSubtotal")}</p>
                                                     <p>{currencyState === "azn" ? "AZN" : "$"} {currencyConverter(calculateSubtotal)?.toFixed(2)}</p>
                                                 </div>
                                                 <div
@@ -299,7 +305,7 @@ export const CheckoutPage = () => {
                                                 >
                                                     <p style={{
                                                         color: "red"
-                                                    }}>Total</p>
+                                                    }}>{t("main.checkout.checkoutTotal")}</p>
                                                     <p>{currencyState === "azn" ? "AZN" : "$"} {
                                                         currencyState === "azn"
                                                             ?
@@ -310,9 +316,9 @@ export const CheckoutPage = () => {
                                                 </div>
                                             </div>
                                             <div className={styles.paymentContainer}>
-                                                <h3 className={styles.payment}>Shipping & Payment</h3>
+                                                <h3 className={styles.payment}>{t("main.checkout.checkoutShippingPayment")}</h3>
                                                 <div className={styles.paymentTypeRow}>
-                                                    <b>Select payment method</b>
+                                                    <b>{t("main.checkout.checkoutSelectPaymentMethod")}</b>
                                                     {translatedData?.map((paymentMethod) => {
                                                         return (
                                                             <div key={paymentMethod.id} className={styles.paymentTypeItem}>
@@ -330,18 +336,14 @@ export const CheckoutPage = () => {
                                                     })}
                                                 </div>
                                                 <div className={styles.paymentTypeRow}>
-                                                    <b>Select shipping method</b>
+                                                    <b>{t("main.checkout.checkoutSelectShippingMethod")}</b>
                                                     <ShippingPrice/>
 
                                                 </div>
 
                                                 <div className={styles.paymentPrivacyPolicy}>
                                                     <p>
-                                                        Your personal data will be used to process your order, support
-                                                        your
-                                                        experience throughout this website, and for other purposes
-                                                        described in
-                                                        our{' '}
+                                                       {t("main.checkout.checkoutYourPersonal")}{' '}
                                                         <a style={{
                                                             color: "gray",
                                                             textDecoration: "underline"
@@ -351,12 +353,12 @@ export const CheckoutPage = () => {
                                                            target="_blank"
                                                            rel="noopener noreferrer"
                                                         >
-                                                            privacy policy
+                                                           {t("main.checkout.checkoutPrivacyPolicy")}
                                                         </a>
                                                         .
                                                     </p>
                                                     {/* PLACE ORDER BUTTON */}
-                                                    <button onClick={handlePostOrder}>Place Order</button>
+                                                    <button onClick={handlePostOrder}>{t("main.checkout.checkoutPlaceOrder")}</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -365,7 +367,6 @@ export const CheckoutPage = () => {
                             </div>
                         </section>
                     </div>
-
             }
             <Footer/>
         </>

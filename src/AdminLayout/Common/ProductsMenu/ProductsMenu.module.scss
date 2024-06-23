@@ -31,7 +31,13 @@
 
   &.menuVisible {
     opacity: 1;
-    pointer-events: auto;
+    pointer-events: all;
+    .menuContainer {
+      pointer-events: all;
+      .menuFooter {
+        pointer-events: all;
+      }
+    }
   }
 
   .menuContainer {
@@ -44,6 +50,7 @@
     padding: 25px;
     justify-content: space-between;
     box-shadow: 0 0 5px gray;
+    pointer-events: none;
 
     .menuHeading {
       display: flex;
@@ -221,6 +228,7 @@
       gap: 25px;
       padding-top: 35px;
       border-top: 1px solid rgba(173, 174, 174, 0.3);
+      pointer-events: none;
 
       .button {
         display: flex;

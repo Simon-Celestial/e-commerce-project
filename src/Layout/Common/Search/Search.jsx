@@ -3,7 +3,7 @@ import {MagnifyingGlass, ShootingStar, X} from '@phosphor-icons/react';
 import {Link} from "react-router-dom";
 import {useCallback, useContext, useMemo, useState,useEffect} from "react";
 import {DataContext} from "../../../Context/DataContext.jsx";
-
+import { useTranslation } from "react-i18next";
 const getColorForRating = (rating) => {
     if (rating === 0) {
         return "#808080";
@@ -21,7 +21,7 @@ const getColorForRating = (rating) => {
 }
 
 const Search = ({searchOpen, setSearchOpen}) => {
-
+    const {t} = useTranslation();
     const {
         productsData,
         currencyConverter,
@@ -69,7 +69,7 @@ const Search = ({searchOpen, setSearchOpen}) => {
             <div className={styles.searchWrapper} onClick={ev => ev.stopPropagation()}>
                 <div className={styles.searchContent}>
                     <div className={styles.heading}>
-                        <p>Search for products ({filteredProducts?.length})</p>
+                        <p>{t("main.search.searchProduct")} ({filteredProducts?.length})</p>
                         <div className={styles.closeSearch} onClick={handleCloseSearch}>
                             <X/>
                         </div>
@@ -77,7 +77,7 @@ const Search = ({searchOpen, setSearchOpen}) => {
                     <div className={styles.searchInputContainer}>
                         <input type="text"
                                onChange={handleSearchProducts}
-                               placeholder='Enter product name...'
+                               placeholder={t("main.search.searchEnterProduct")}
                         />
                         <div className={styles.searchBtn}>
                             <MagnifyingGlass/>

@@ -16,7 +16,7 @@ import { useTranslation } from "react-i18next";
 import homeSliderDataRU from "/public/data/HomeSliderData/homeSliderDataRU.json";
 import homeSliderDataAZ from "/public/data/HomeSliderData/homeSliderDataAZ.json";
 import homeSliderDataEN from "/public/data/HomeSliderData/homeSliderDataEN.json";
-
+import { Link } from "react-router-dom";
 
 
 const Home = () => {
@@ -185,7 +185,7 @@ const Home = () => {
                         <div className={styles.coatContent}>
                             <p>{t('main.homePage.coatjackets')}</p>
                             <h2>{t('main.homePage.thenewfashion')} <br></br> {t('main.homePage.collection')}</h2>
-                            <a href="">{t('main.homePage.shopnow')}</a>
+                            <Link to={'/shop'}>{t('main.homePage.shopnow')}</Link>
                         </div>
                     </div>
                 </section>
@@ -234,7 +234,7 @@ const Home = () => {
                             <span> - 80 % </span>
                             <h3>{t("main.homePage.whenYourBuy")} <br></br>
                                 {t("main.homePage.ends")}</h3>
-                            <a href="">{t("main.homePage.shopnow")}</a>
+                            <Link to={'/shop'}>{t("main.homePage.shopnow")}</Link>
                         </div>
                     </div>
                 </section>

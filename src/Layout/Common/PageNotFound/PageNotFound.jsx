@@ -1,6 +1,7 @@
 import styles from "./PageNotFound.module.scss";
-
+import { useTranslation } from "react-i18next";
 const PageNotFound = () => {
+    const {t} = useTranslation();
     return (
         <div className={styles.pageWrapper}>
             <div className={styles.pageContent}>

@@ -1,4 +1,4 @@
-import {useContext} from 'react';
+import {useCallback, useContext, useState} from 'react';
 import styles from "./Basket.module.scss";
 import Header from '../../Components/Header/Header';
 import Footer from '../../Components/Footer/Footer';
@@ -11,10 +11,8 @@ import {Truck} from "@phosphor-icons/react";
 import ProductCard from "../../Common/ProductCard/ProductCard.jsx";
 import {Swiper, SwiperSlide} from "swiper/react";
 import { useTranslation } from "react-i18next";
-import {ShippingPrice} from "../../Common/ShippingPrice/ShippingPrice.jsx";
 import SHIPPING_TYPES from "/public/data/ShippingData/shippingData.json";
-
-
+import { ShippingPrice } from '../../Common/ShippingPrice/ShippingPrice.jsx';
 
 
 export const Basket = () => {
@@ -34,7 +32,10 @@ export const Basket = () => {
         productsData,
         currencyConverter,
         currencyState
+
     } = useContext(DataContext);
+
+
 
     return (
         <div className={styles.basketWrapper}>
@@ -65,10 +66,10 @@ export const Basket = () => {
                                             {t("main.basket.basketQuantity")}
                                         </div>
                                         <div className={`${styles.subtotal} ${styles.cell}`}>
-                                            Subtotal
+                                            {t("main.basket.basketSubtotal")}
                                         </div>
                                         <div className={`${styles.delete} ${styles.cell}`}>
-                                            Delete
+                                           {t("main.basket.basketDelete")}
                                         </div>
                                     </div>
                                     {cartItems?.map((product) => {
@@ -112,32 +113,32 @@ export const Basket = () => {
                                         )
                                     })}
 
-                                    <div className={styles.emptyShop} onClick={emptyCart}>Empty cart</div>
+                                    <div className={styles.emptyShop} onClick={emptyCart}>{t("main.basket.basketEmptyCart")}</div>
 
                                 </div>
                                 <div className={styles.productContactRight}>
                                     <div className={styles.cartTotals}>
-                                        <h1>CART TOTALS</h1>
+                                        <h1>{t("main.basket.basketCartTotals")}</h1>
                                         <div className={styles.subtotalPirce}>
-                                            <h2>Subtotal</h2>
+                                            <h2>{t("main.basket.basketSubtotal")}</h2>
                                             <p>{currencyState === "azn"? "AZN" : "$"} {currencyConverter(calculateSubtotal)?.toFixed(2)}</p>
                                         </div>
                                         <div className={styles.shippingBox}>
                                             <h2>Shipping</h2>
                                             <div className={styles.shippingCalulate}>
-                                               <ShippingPrice />
+                                                <ShippingPrice />
                                                 <div className={styles.flatText}>
-                                                    <p>Shipping options will be updated during checkout.</p>
+                                                    <p>{t("main.basket.ShippingOptions")}</p>
                                                 </div>
                                                 <div className={styles.flatTurck}>
                                                     <Truck size={20}/>
-                                                    <p>Calculate shipping</p>
+                                                    <p>{t("main.basket.basketCalculate")}</p>
                                                 </div>
                                             </div>
 
                                         </div>
                                         <div className={styles.totalCart}>
-                                            <h2>Total</h2>
+                                            <h2>{t("main.basket.basketTotal")}</h2>
                                             <p>{currencyState === "azn"? "AZN" : "$"} {
                                                 currencyState === "azn"
                                                     ?
@@ -147,15 +148,15 @@ export const Basket = () => {
                                             }
                                             </p>
                                         </div>
-                                        <Link to ={"/checkout"} className={styles.totalButton}>
-                                            PROCEED TO CHECKOUT
+                                        <Link to={"/checkout"} className={styles.totalButton}>
+                                           {t("main.basket.basketProceed")}
                                         </Link>
                                     </div>
                                 </div>
                             </div>
                             <div className={styles.basketPageSlider}>
                                 <div className={styles.sliderContent}>
-                                    <h2>YOU MAY BE INTERESTED IN…</h2>
+                                    <h2>{t("main.basket.YourMay")}</h2>
                                     <div className={styles.sliderProducts}>
                                         <Swiper
                                             slidesPerView={4}

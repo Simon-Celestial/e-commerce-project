@@ -1143,6 +1143,11 @@
 
 @media screen and (max-width: 550px) {
   .headerWrapper {
+    .basketOverlay {
+      .basketWrapper {
+        max-width: 100%;
+      }
+    }
     .sideMenuOverlay {
       .sideMenuWrapper {
         width: 160px;

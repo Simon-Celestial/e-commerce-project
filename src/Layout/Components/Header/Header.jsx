@@ -29,10 +29,12 @@ const Header = () => {
         removeFromCart,
         cartItems,
         calculateSubtotal,
+        setCartItems,
     } = useContext(BasketContext);
 
     const {
         wishListItems,
+        setWishListItems
     } = useContext(WishListContext);
     const {
         accountDetails,
@@ -84,7 +86,9 @@ const Header = () => {
 
     const handleExitAccount = useCallback(() => {
         handleClearStorage();
-        navigate("/home")
+        setCartItems([]);
+        setWishListItems([]);
+        navigate("/home");
     }, [navigate])
 
     useEffect(() => {
@@ -319,9 +323,8 @@ const Header = () => {
                                                 <Link to={"/basket"}>{t('header.headerDropDown.cart')}</Link>
                                             </div>
                                             <div className={styles.dropLink}>
-                                                <Link to={"/checkout"}>Checkout</Link>
+                                                <Link to={"/checkout"} >{t('header.headerDropDown.checkout')}</Link>
                                             </div>
-
                                         </div>
 
                                     </div>
@@ -330,7 +333,7 @@ const Header = () => {
                             </div>
                         </div>
                         <Link to="/" className={styles.headerLogo}>
-                        <img
+                            <img
                                 src="/images/turalliLogo.png"
                                 alt="Site Logo"/>
                         </Link>
@@ -438,7 +441,7 @@ const Header = () => {
                                     <div className={styles.basketBtn}>
                                         <Link to={'/basket'}>{t('header.headerDropDown.viewCart')}</Link>
                                     </div>
-                                    <Link to={"/checkout"} className={styles.basketBtn}>
+                                    <Link to={"/checkout"}  className={styles.basketBtn}>
                                         {t('header.headerDropDown.checkout')}
                                     </Link>
                                 </div>
@@ -456,7 +459,7 @@ const Header = () => {
                 <div className={`${styles.sideMenuOverlay} ${menuOpen ? styles.overlayVisible : ""}`}>
                     <div className={`${styles.sideMenuWrapper}`}>
                         <div className={styles.navEntity}>
-                            <a href="">{t('header.headerDropDown.home')}</a>
+                            <Link to={'/'}>{t('header.headerDropDown.home')}</Link>
                             <CaretRight fontSize={"20px"}/>
                             <div className={styles.elementDropdown}>
                                 <div className={styles.dropDownTitle}>
@@ -473,7 +476,7 @@ const Header = () => {
                             </div>
                         </div>
                         <div className={styles.navEntity}>
-                            <a href="">{t('header.shop')}</a>
+                            <Link to={'/shop'}>{t('header.shop')}</Link>
                             <CaretRight fontSize={"20px"}/>
                             <div className={styles.elementDropdown}>
                                 <div className={styles.dropDownTitle}>
@@ -503,7 +506,7 @@ const Header = () => {
 
                         </div>
                         <div className={styles.navEntity}>
-                            <a href="">{t('header.headerDropDown.blog')}</a>
+                            <Link to={'/blog'}>{t('header.headerDropDown.blog')}</Link>
                             <CaretRight fontSize={"20px"}/>
                             <div className={styles.elementDropdown}>
                                 <div className={styles.dropDownTitle}>
@@ -515,10 +518,10 @@ const Header = () => {
                             </div>
                         </div>
                         <div className={styles.navEntity}>
-                            <a href="">{t('header.headerDropDown.about')}</a>
+                            <Link to={'/about'}>{t('header.headerDropDown.about')}</Link>
                         </div>
                         <div className={styles.navEntity}>
-                            <a href="">{t('header.headerDropDown.contactUs')}</a>
+                            <Link to={'/contact'}>{t('header.headerDropDown.contactUs')}</Link>
                         </div>
                         <div className={styles.closeBtn} onClick={handleMenuToggle}>
                             <X/>

@@ -235,6 +235,9 @@
             .quantity {
               max-width: 130px;
               justify-content: center;
+              span {
+                text-align: center;
+              }
 
             }
             .size {

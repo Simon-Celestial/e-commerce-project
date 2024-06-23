@@ -4,17 +4,19 @@ import Footer from '../../Components/Footer/Footer';
 import PageHeading from '../../Common/PageHeading/PageHeading';
 import {useContext} from "react";
 import {DataContext} from "../../../Context/DataContext.jsx";
+import { useTranslation } from "react-i18next";
 
 const Account = () => {
-
+    const {t} = useTranslation();
     const {
         accountDetails
     } = useContext(DataContext);
+     
     return (
         <>
             <Header/>
             <main className={styles.accountWrapper}>
-                <PageHeading title={"my Account"}/>
+                <PageHeading title={t("main.account.MyAccount")}/>
                 <div className={styles.accountContent}>
                     <div className={styles.userInfoWrapper}>
                         <div className={styles.actions}>
@@ -25,13 +27,13 @@ const Account = () => {
                         </div>
                         <div className={styles.info}>
                             <div className={styles.infoBlock}>
-                                <p>Username: {accountDetails.name}</p>
+                                <p>{t("main.account.accountUsername")}: {accountDetails.name}</p>
                             </div>
                             <div className={styles.infoBlock}>
-                                <p>Email address: {accountDetails.email}</p>
+                                <p>{t("main.account.acountEmailAddress")}: {accountDetails.email}</p>
                             </div>
                             <div className={styles.infoBlock}>
-                                <p>Phone number: {accountDetails.phone? accountDetails.phone : "Not available"}</p>
+                                <p>{t("main.account.accountPhoneNumber")}: {accountDetails.phone? accountDetails.phone : "Not available"}</p>
                             </div>
                         </div>
 
