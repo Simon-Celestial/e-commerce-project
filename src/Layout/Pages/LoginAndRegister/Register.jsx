@@ -44,7 +44,7 @@ const Register = () => {
     const addUser = useCallback(async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.get("http://localhost:8000/user");
+            const response = await axios.get("https://json-server-g1kt.onrender.com/users");
             const data = response.data;
             let serverEmail = data.find((userData) => userData.userEmail === user.userEmail);
             if (serverEmail) {
@@ -59,7 +59,7 @@ const Register = () => {
                 });
             } else {
                 if (user.userPassword.length >= 6 && confirmPassword === user.userPassword) {
-                    await axios.post("http://localhost:8000/user", user, {
+                    await axios.post("https://json-server-g1kt.onrender.com/users/", user, {
                         headers: {
                             "Content-Type": "application/json",
                         },

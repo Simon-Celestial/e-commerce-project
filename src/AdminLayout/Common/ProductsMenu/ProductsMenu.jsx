@@ -230,7 +230,7 @@ const ProductsMenu = ({setMenuOpen, menuOpen, update, selectedItem, setSelectedI
             setIsUpdating(true);
             if (selectedItem) {
                 await axios.put(
-                    `http://localhost:8000/products/${inputState.id}`,
+                    `https://json-server-g1kt.onrender.com/products/${inputState.id}`,
                     requestData
                 );
                 toast.success(`${requestData.title} uğurla redaktə edildi`, {
@@ -243,7 +243,7 @@ const ProductsMenu = ({setMenuOpen, menuOpen, update, selectedItem, setSelectedI
                     transition: Bounce,
                 });
             } else {
-                await axios.post("http://localhost:8000/products/", requestData);
+                await axios.post("https://json-server-g1kt.onrender.com/products/", requestData);
                 toast.success(`${requestData.title} uğurla əlavə edildi`, {
                     hideProgressBar: false,
                     closeOnClick: true,

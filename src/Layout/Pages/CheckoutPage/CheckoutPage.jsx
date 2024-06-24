@@ -127,7 +127,7 @@ export const CheckoutPage = () => {
         else {
             try {
                 setOrderLoading(true);
-                await axios.post("http://localhost:8000/orders/", requestData);
+                await axios.post("https://json-server-g1kt.onrender.com/products/", requestData);
                 setFormFields(defaults);
                 emptyCart();
                 update();

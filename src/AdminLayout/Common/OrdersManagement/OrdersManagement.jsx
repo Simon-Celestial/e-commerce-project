@@ -50,7 +50,7 @@ export const OrdersManagement = () => {
             });
         } else {
             try {
-                await axios.patch(`http://localhost:8000/orders/${orderId}`, {status: newStatus});
+                await axios.patch(`https://json-server-g1kt.onrender.com/orders/${orderId}`, {status: newStatus});
                 update();
                 toast.success(`Status successfully changed to "${newStatus}".`, {
                     hideProgressBar: false,

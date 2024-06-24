@@ -36,7 +36,7 @@ export const DataContextProvider = ({
 
     const fetchUserName = useCallback(async () => {
         try {
-            const response = await axios.get("http://localhost:8000/user");
+            const response = await axios.get("https://json-server-g1kt.onrender.com/users");
             const users = response?.data;
             const userInStorageString = localStorage.getItem("user");
             const userInStorage = JSON.parse(userInStorageString);
@@ -79,7 +79,7 @@ export const DataContextProvider = ({
         (async () => {
             setProductsLoading(true);
             try {
-                const response = await axios.get("http://localhost:8000/products");
+                const response = await axios.get("https://json-server-g1kt.onrender.com/products");
                 setProductsData(response.data.map(product => ({
                     ...product,
                     stockStatus: product.quantity > 0 ? 'inStock' : 'outOfStock'

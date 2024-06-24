@@ -31,7 +31,7 @@ const AdminLogin = () => {
         e.preventDefault();
         try {
             setLoginLoading(true);
-            const response = await axios.get("http://localhost:8000/admins");
+            const response = await axios.get("https://json-server-g1kt.onrender.com/admins");
             const admin = response.data;
             const adminWithEmail = admin.find(
                 (adminData) =>
