@@ -334,7 +334,7 @@ const Header = () => {
                         </div>
                         <Link to="/" className={styles.headerLogo}>
                             <img
-                                src="/images/turalliLogo.png"
+                                src="/images/logo.png"
                                 alt="Site Logo"/>
                         </Link>
                         <div className={styles.headerButtons}>

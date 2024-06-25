@@ -10,7 +10,7 @@ const Footer = () => {
       <div className={styles.footerContainer}>
       <div className={styles.footerLeft}>
         <div className={styles.footerLogo}>
-          <img src="/images/turalliLogo.png"></img>
+          <img src="/images/logo.png"></img>
           <p>{t('footer.topProducts')}</p>
         </div>
         <div className={styles.footerTime}>

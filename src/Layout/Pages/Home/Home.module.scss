@@ -23,6 +23,7 @@
                 top: 0;
                 object-fit: cover;
                 object-position: center;
+                filter: brightness(60%);
             }
             .cardTitle {
                 width: 50%;
@@ -32,20 +33,17 @@
                 gap: 20px;
                 transform: translate(-56px, -45px);
                 padding: 20px;
+                color: white;
                 .arrivals {
                     font-size: 18px;
-                    font-family: $mainFont;
-                    color: rgb(0, 0, 0);
                 }
                 .latest {
                     font-size: 45px;
-                    font-family: $mainFont;
                     letter-spacing: 5px;
                 }
                 .shipping {
                     font-size: 14px;
                     font-weight: 900;
-                    font-family: $mainFont;
                 }
                 .shop {
                     font-size: 14px;
@@ -53,6 +51,7 @@
                     letter-spacing: 3px;
                     position: relative;
                     cursor: pointer;
+                    color: white;
                     &:hover::before {
                         width: 100px;
                     }
@@ -60,9 +59,9 @@
                         content: "";
                         width: 0;
                         height: 1px;
-                        background-color: black;
+                        background-color: white;
                         position: absolute;
-                        top: 20px;
+                        top: 25px;
                         transition: 0.5s;
                     }
                 }
@@ -101,14 +100,12 @@
                     .besTeller {
                         font-size: 22px;
                         font-weight: 600;
-                        font-family: $mainFont;
                         position: relative;
                         cursor: pointer;
                     }
                     a {
                         font-size: 22px;
                         font-weight: 600;
-                        font-family: $mainFont;
                         position: relative;
                         cursor: pointer;
                         &:hover::before {

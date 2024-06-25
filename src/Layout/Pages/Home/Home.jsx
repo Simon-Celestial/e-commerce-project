@@ -128,15 +128,15 @@ const Home = () => {
                     >
                         {sliderData?.map((data) => {
                             return (
-                                <SwiperSlide key={data.id}>
-                                    <div className={`${styles.sliderCard} ${data.id === 2 ? styles.titleBottom : ""}`}>
-                                        <img className={styles.homeSliderBackground} src={data.imageUrl}
+                                <SwiperSlide key={data?.id}>
+                                    <div className={`${styles.sliderCard} ${data?.id === 2 ? styles.titleBottom : ""}`}>
+                                        <img className={styles.homeSliderBackground} src={data?.imageUrl}
                                              alt="Background"/>
                                         <div className={styles.cardTitle}>
-                                            <div className={styles.arrivals}>{data.arrivals}</div>
-                                            <div className={styles.latest}>{data.latest}</div>
-                                            <div className={styles.shipping}>{data.shipping}</div>
-                                            <a className={styles.shop}>{data.shop}</a>
+                                            <div className={styles.arrivals}>{data?.arrivals}</div>
+                                            <div className={styles.latest}>{data?.latest}</div>
+                                            <div className={styles.shipping}>{data?.shipping}</div>
+                                            <a className={styles.shop}>{data?.shop}</a>
                                         </div>
                                     </div>
                                 </SwiperSlide>
