@@ -1,6 +1,6 @@
 @import "../../../Variables/Variables.module.scss";
 
-.review{
+.reviewSection{
     width: 100%;
     background-color: rgb(243,243,243);
     letter-spacing: 3px;
@@ -28,7 +28,7 @@
                     background-color: white;
                     display: flex;
                     gap: 50px;
-                    border-radius: 5px;
+                    border-radius: 10px;
                     .reviewSliderLeft{
                         img{
                             width: 100px;
@@ -43,6 +43,12 @@
                         .reviewStar{
                             display: flex;
                             gap: 5px;
+                            width: 100%;
+                            margin: 0 0 10px 0;
+                            svg{
+                                font-size: 20px;
+                                color: orange;
+                            }
                         }
                         .reviewText{
                             font-size: 16px;
@@ -73,14 +79,14 @@
 }
 
 @media screen and (max-width: 1200px) {
-    .review {
+    .reviewSection {
         padding: 50px 15px;
         
     }
 }
 
 @media screen and (max-width: 600px) {
-    .review {
+    .reviewSection {
         .ourReview {
             .reviewSlider {
                 .cardWrapper {
@@ -96,7 +102,7 @@
     }
 }
 @media screen and (max-width: 400px) {
-    .review {
+    .reviewSection {
         .ourReview {
             .reviewSlider {
                 .cardWrapper {

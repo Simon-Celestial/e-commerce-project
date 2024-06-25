@@ -2,24 +2,30 @@
 
 .wrapper {
     position: fixed;
-    bottom: 0;
-    transition: right $transition;
-    width: 45px;
-    height: 45px;
-    background: black;
+    transition: bottom 0.2s linear,opacity 0.2s linear;
+    width: 40px;
+    height: 40px;
+    background: $black-weak;
     color: white;
     cursor: pointer;
-    border-radius: 3px 0 0 0;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 25px;
     z-index: 2;
     pointer-events: none;
-    right: -45px;
+    right: 10px;
+    bottom: 30px;
+    border-radius: 50%;
+    opacity: 0;
+
+    svg {
+        font-size: 30px;
+    }
     &.visible {
         opacity: 1;
         pointer-events: all;
-        right: 15px;
+        bottom: 10px;
+
     }
 }

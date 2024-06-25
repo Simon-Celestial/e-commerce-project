@@ -82,16 +82,10 @@ const Shop = () => {
         return stockStatus[i18n.language] || stockStatus.en;
     }, [i18n.language]);
 
-
-
-
-
-    // TO MAKE ALL TYPE INPUTS CHECKED
     useEffect(() => {
         setTypeFilters(allTypeFilters);
     }, [allTypeFilters, productsData]);
 
-    // PRICE RANGE FILTER
     const rangeFilteredProducts = useMemo(() => {
         if (shouldFilterUpdate) {
             return productsData?.filter((product) => {
@@ -103,7 +97,6 @@ const Shop = () => {
         }
     }, [shouldFilterUpdate, productsData]);
 
-    // CATEGORY FILTER
     const typeFilteredProducts = useMemo(() => {
         return rangeFilteredProducts?.filter(it => typeFilters.includes(it.category))
     }, [rangeFilteredProducts, typeFilters]);
@@ -113,7 +106,6 @@ const Shop = () => {
     }, []);
 
 
-    // STOCK FILTER
     const stockFilteredProducts = useMemo(() => {
         if (selectedStockStatus.length === 0) {
             return [];
@@ -152,9 +144,8 @@ const Shop = () => {
     }, []);
 
 
-    // UPDATE
     const onApply = useCallback(() => setShouldFilterUpdate(Date.now()), []);
-    // DELETE ALL FILTERS
+
     const onReset = useCallback(() => {
         setPriceBounds([0, 1000]);
         setShouldFilterUpdate(null);
@@ -163,7 +154,6 @@ const Shop = () => {
         setSelectedSizes(["xs", "s", "m", "l", "xl", "xxl"]);
     }, [setPriceBounds, setShouldFilterUpdate, setSelectedStockStatus, setTypeFilters, allTypeFilters, setSelectedSizes]);
 
-    // PRODUCTLARIN LIST VE YA GRID GORUNUSU
     const handleChangeView = useCallback(() => {
         setListView(prevState => !prevState);
         setGridView(prevState => !prevState);

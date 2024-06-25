@@ -30,16 +30,19 @@
                 z-index: 5;
                 display: flex;
                 flex-direction: column;
-                gap: 20px;
+                gap: 10px;
                 transform: translate(-56px, -45px);
                 padding: 20px;
                 color: white;
                 .arrivals {
                     font-size: 18px;
+                font-family: $second-font;
                 }
                 .latest {
                     font-size: 45px;
                     letter-spacing: 5px;
+                    font-family: $second-font;
+                    font-weight: 900;
                 }
                 .shipping {
                     font-size: 14px;
@@ -47,22 +50,20 @@
                 }
                 .shop {
                     font-size: 14px;
-                    font-weight: 700;
+                    font-weight: 400;
                     letter-spacing: 3px;
                     position: relative;
                     cursor: pointer;
                     color: white;
-                    &:hover::before {
-                        width: 100px;
-                    }
-                    &::before {
-                        content: "";
-                        width: 0;
-                        height: 1px;
-                        background-color: white;
-                        position: absolute;
-                        top: 25px;
-                        transition: 0.5s;
+                    border: 2px solid white;
+                    width: min-content;
+                    white-space: nowrap;
+                    padding: 15px;
+                    margin-top: 15px;
+                    border-radius: 5px;
+                    transition: background $transition;
+                    &:hover {
+                        background: rgba(128, 128, 128, 0.3);
                     }
                 }
             }
@@ -74,8 +75,7 @@
         flex-direction: column;
         justify-content: center;
         padding: 30px;
-        gap: 30px;
-
+        gap: 15px;
         .productsHeading {
             max-width: 1400px;
             width: 100%;
@@ -83,42 +83,44 @@
             display: flex;
             justify-content: space-between;
             gap: 20px;
-            .productscontent {
+            align-items: center;
+            .productsContent {
                 display: flex;
                 gap: 20px;
-                .productscontentsee {
+                .contentItem {
                     font-size: 17px;
                     letter-spacing: 4px;
                     transition: 0.5s;
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 2.5px;
+                    svg {
+                        font-size: 22px;
+                        margin-bottom: 2px;
+                    }
                     &:hover {
-                        color: red;
+                        color: orangered;
                     }
                 }
-                .productsHeadingtop {
+                .productsHeadingTop {
                     display: flex;
                     gap: 20px;
-                    .besTeller {
-                        font-size: 22px;
-                        font-weight: 600;
+                    align-items: center;
+                    justify-content: center;
+                    .bestSeller {
+                        font-size: 18px;
                         position: relative;
                         cursor: pointer;
-                    }
-                    a {
-                        font-size: 22px;
                         font-weight: 600;
-                        position: relative;
-                        cursor: pointer;
-                        &:hover::before {
-                            width: 100%;
-                        }
-                        &::before {
-                            content: "";
-                            width: 0;
-                            height: 2px;
-                            background-color: black;
-                            position: absolute;
-                            top: 33px;
-                            transition: 0.5s;
+                        color: $black-weak;
+                        border: 2px solid $black-weak;
+                        padding: 13px;
+                        border-radius: 10px;
+                        transition: background  $transition,color  $transition;
+
+                        &:hover {
+                            background: $black-weak;
+                            color: white;
                         }
                     }
                 }
@@ -129,91 +131,96 @@
             display: flex;
             max-width: 1440px;
             margin: 0 auto;
-            .productWrapper {
-                display: flex;
-                max-width: unset;
-                width: 100%;
-                padding: 0 15px;
-            }
         }
     }
-    .coat {
+    .fashionSection {
         width: 100%;
-        background-image: url("https://demothemesky-be87.kxcdn.com/nooni-fashion/wp-content/uploads/2023/04/background-section-2-1.jpg");
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
         display: flex;
         justify-content: center;
         align-items: center;
         height: 700px;
-        .coatContent {
+        position: relative;
+        img {
+            width: 100%;
+            height: 100%;
+            object-position: center;
+            object-fit: cover;
+            position: absolute;
+            filter: brightness(60%);
+        }
+        .fashionContent {
             padding: 25px;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            color: white;
+            z-index: 4;
+
             p {
-                font-size: 18px;
+                font-size: 22px;
                 line-height: 1.2em;
                 letter-spacing: 0.075em;
                 text-align: center;
+                font-weight: 600;
             }
             h2 {
                 font-size: 60px;
-                font-weight: 400;
+                font-weight: 900;
                 line-height: 1.2em;
                 text-align: center;
+                font-family: $second-font;
             }
             a {
                 width: min-content;
                 white-space: nowrap;
-                margin: 0 auto;
                 display: flex;
                 justify-content: center;
                 margin-top: 20px;
                 font-size: 18px;
-                font-weight: 600;
                 position: relative;
-                &:hover::before {
-                    transform: scale(1);
-                    width: 100%;
-                }
-                &::before {
-                    content: "";
-                    width: 0;
-                    height: 2px;
-                    background-color: black;
-                    position: absolute;
-                    top: 25px;
-                    transform: scale(0);
-                    transition: 0.5s;
+                font-weight: 600;
+                border: 2px solid white;
+                padding: 10px;
+                border-radius: 10px;
+                transition: background $transition;
+                font-family: $second-font;
+                color: white;
+
+
+                &:hover {
+                    background: rgba(128, 128, 128, 0.3);
                 }
             }
         }
     }
-    .saleShop {
-        background-image: url("https://demothemesky-be87.kxcdn.com/nooni-fashion/wp-content/uploads/2023/04/background-section-3.jpg");
-        background-position: center center;
+    .saleSection {
+        background-image: url("https://klbtheme.com/clotya/wp-content/uploads/2022/04/banner-04.jpg");
+        background-position: top;
         background-size: cover;
         background-repeat: no-repeat;
         width: 100%;
-        height: 450px;
+        height: 650px;
         display: flex;
         position: relative;
 
-        .saleShopbox {
+        .saleContent {
             width: 50%;
             height: 100%;
             position: absolute;
             right: 0;
-            background-color: rgba(0, 0, 0, 0.689);
+            background-color: $black-weak;
             color: white;
             display: flex;
             justify-content: center;
             padding: 50px;
+            align-items: center;
             .saleText {
                 display: flex;
                 flex-direction: column;
                 text-align: center;
                 gap: 20px;
-                margin-top: 40px;
+                align-items: center;
+                height: min-content;
                 p {
                     font-size: 24px;
                     line-height: 1.2em;
@@ -231,7 +238,15 @@
                 }
                 a {
                     color: white;
-                    font-weight: 500;
+                    font-weight: 700;
+                    border: 2px solid white;
+                    padding: 13px;
+                    border-radius: 10px;
+                    transition: background $transition;
+                    &:hover {
+                        background: rgba(128, 128, 128, 0.3);
+                    }
+
                 }
             }
         }
@@ -240,7 +255,7 @@
 
 @media screen and (max-width: 1600px) {
     .homeWrapper {
-        .coat {
+        .fashionSection {
             height: 500px;
         }
     }
@@ -261,8 +276,8 @@
                 height: 550px;
             }
         }
-        .coat {
-            .coatContent {
+        .fashionSection {
+            .fashionContent {
                 p {
                     font-size: 15px;
                 }
@@ -274,8 +289,8 @@
         .productsSection {
             padding: 25px 15px;
         }
-        .saleShop {
-            .saleShopbox {
+        .saleSection {
+            .saleContent {
                 .saleText {
                     p {
                         font-size: 20px;
@@ -305,7 +320,7 @@
                 }
             }
         }
-        .coat {
+        .fashionSection {
             height: 300px;
         }
     }
@@ -334,8 +349,8 @@
                 height: 425px;
             }
         }
-        .coat {
-            .coatContent {
+        .fashionSection {
+            .fashionContent {
                 p {
                     font-size: 15px;
                 }
@@ -344,9 +359,9 @@
                 }
             }
         }
-        .saleShop {
+        .saleSection {
             height: 350px;
-            .saleShopbox {
+            .saleContent {
                 width: 100%;
                 height: 100%;
             }
@@ -378,20 +393,20 @@
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
-                .productscontent {
-                    .productsHeadingtop {
+                .productsContent {
+                    .productsHeadingTop {
                         a {
                             font-size: 18px;
                         }
-                        .besTeller {
+                        .bestSeller {
                             font-size: 18px;
                         }
                     }
                 }
             }
         }
-        .coat {
-            .coatContent {
+        .fashionSection {
+            .fashionContent {
                 h2 {
                     font-size: 25px;
                 }
@@ -427,7 +442,7 @@
                 }
             }
         }
-        .coat {
+        .fashionSection {
             height: 250px;
         }
     }
@@ -452,13 +467,13 @@
         }
         .productsSection {
             .productsHeading {
-                .productscontent {
-                    .productsHeadingtop {
+                .productsContent {
+                    .productsHeadingTop {
                         flex-direction: column;
                         a {
                             font-size: 18px;
                         }
-                        .besTeller {
+                        .bestSeller {
                             font-size: 16px;
                             text-align: center;
                             &::before {
@@ -469,9 +484,9 @@
                 }
             }
         }
-        .coat {
+        .fashionSection {
             height: 220px;
-            .coatContent {
+            .fashionContent {
                 p {
                     font-size: 15px;
                 }
@@ -480,8 +495,8 @@
                 }
             }
         }
-        .saleShop {
-            .saleShopbox {
+        .saleSection {
+            .saleContent {
                 .saleText {
                     p {
                         font-size: 15px;

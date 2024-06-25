@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import  { useState, useCallback, useEffect } from 'react';
 import styles from "./Review.module.scss";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from 'swiper/modules';
@@ -12,6 +12,7 @@ import reviewDataEN from "/public/data/ReviewSliderData/reviewDataEN"
 import 'swiper/css';
 import 'swiper/css/pagination';
 import { useTranslation } from 'react-i18next';
+import {Star} from "@phosphor-icons/react";
 
 
 
@@ -57,7 +58,7 @@ const Review = () => {
 
     return (
         <div>
-            <section className={styles.review}>
+            <section className={styles.reviewSection}>
                 <div className={styles.ourReview}>
                     <h1>{t("main.review.reviewOURREVIEWS")}</h1>
                     <div className={styles.reviewSlider}>
@@ -88,7 +89,7 @@ const Review = () => {
                                             <div className={styles.reviewSliderRight}>
                                                 <div className={styles.reviewStar}>
                                                     {[...Array(5)].map((_, index) => (
-                                                        <i className="fa-solid fa-star" key={index}></i>
+                                                        <Star  weight="fill" key={index} />
                                                     ))}
                                                 </div>
                                                 <div className={styles.reviewText}>

@@ -1,5 +1,6 @@
 import styles from './Footer.module.scss'
 import {useTranslation} from "react-i18next";
+import {Link} from "react-router-dom";
 
 const Footer = () => {
 
@@ -10,7 +11,9 @@ const Footer = () => {
       <div className={styles.footerContainer}>
       <div className={styles.footerLeft}>
         <div className={styles.footerLogo}>
-          <img src="/images/logo.png"></img>
+          <Link to={"/"}>
+            <img src="/images/logo.png"></img>
+          </Link>
           <p>{t('footer.topProducts')}</p>
         </div>
         <div className={styles.footerTime}>

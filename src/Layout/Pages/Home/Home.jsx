@@ -5,18 +5,18 @@ import {Swiper, SwiperSlide} from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import {Autoplay, EffectFade, Pagination} from 'swiper/modules';
-import {CaretDoubleRight} from "@phosphor-icons/react";
+import {CaretCircleDoubleRight} from "@phosphor-icons/react";
 import {useState, useCallback, useEffect, useContext} from "react";
 import ProductCard from "../../Common/ProductCard/ProductCard";
 import Review from "../../Common/Review/Review";
 import {Loader} from "../../Common/Loader/Loader.jsx";
 import {DataContext} from "../../../Context/DataContext.jsx";
-import { Timer } from "../../Common/Timer/Timer.jsx";
-import { useTranslation } from "react-i18next";
+import {Timer} from "../../Common/Timer/Timer.jsx";
+import {useTranslation} from "react-i18next";
 import homeSliderDataRU from "/public/data/HomeSliderData/homeSliderDataRU.json";
 import homeSliderDataAZ from "/public/data/HomeSliderData/homeSliderDataAZ.json";
 import homeSliderDataEN from "/public/data/HomeSliderData/homeSliderDataEN.json";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 
 
 const Home = () => {
@@ -24,61 +24,16 @@ const Home = () => {
         productsLoading,
         productsData,
     } = useContext(DataContext);
-    
 
-  
-    const [slidesPerView, setSlidesPerView] = useState(5);
-    const [dealSlidePerView, setDealSlidesPerView] = useState(3);
+
     const [sliderData, setSliderData] = useState(null);
 
     const {t} = useTranslation();
-    const {i18n } = useTranslation();
+    const {i18n} = useTranslation();
 
 
     useEffect(() => {
-        window.scrollTo(0, 0); 
-      }, []);
-    
-
-
-    const handleResize = useCallback(() => {
-        const windowWidth = window.innerWidth;
-        if (windowWidth <= 1368 && windowWidth > 1100) {
-            setSlidesPerView(4);
-        } else if (windowWidth <= 1100 && windowWidth > 840) {
-            setSlidesPerView(3);
-
-        } else if (windowWidth <= 840 && windowWidth > 550) {
-            setSlidesPerView(2);
-
-
-        } else if (windowWidth <= 550 && windowWidth > 0) {
-            setSlidesPerView(1);
-
-        } else {
-            setSlidesPerView(5);
-        }
-    }, []);
-
-    const handleResizeDeal = useCallback(() => {
-        const windowWidth = window.innerWidth;
-        if (windowWidth <= 1150 && windowWidth > 800) {
-            setDealSlidesPerView(2);
-        } else if (windowWidth <= 800 && windowWidth > 0) {
-            setDealSlidesPerView(1);
-        } else {
-            setDealSlidesPerView(3);
-        }
-    }, []);
-
-    useEffect(() => {
-        window.addEventListener("resize", handleResize);
-        window.addEventListener("resize", handleResizeDeal);
-
-        return () => {
-            window.removeEventListener("resize", handleResize);
-            window.removeEventListener("resize", handleResizeDeal);
-        };
+        window.scrollTo(0, 0);
     }, []);
 
 
@@ -94,7 +49,7 @@ const Home = () => {
 
     useEffect(() => {
         handleFindLanguage(i18n.language);
-    }, [handleFindLanguage,i18n.language]);
+    }, [handleFindLanguage, i18n.language]);
 
 
     return (
@@ -119,8 +74,8 @@ const Home = () => {
                         modules={[EffectFade, Autoplay, Pagination]}
                         autoplay={{delay: 3000}}
                         style={{
-                            "--swiper-pagination-color": "black",
-                            "--swiper-pagination-bullet-inactive-color": "gray",
+                            "--swiper-pagination-color": "white",
+                            "--swiper-pagination-bullet-inactive-color": "black",
                             "--swiper-pagination-bullet-inactive-opacity": "1",
                             "--swiper-pagination-bullet-size": "16px",
                             "--swiper-pagination-bullet-horizontal-gap": "6px",
@@ -144,31 +99,44 @@ const Home = () => {
                         })}
                     </Swiper>
                 </section>
-
                 {/* PRODUCTS SECTION */}
                 <section className={styles.productsSection}>
                     <div className={styles.productsHeading}>
-                        <div className={styles.productscontent}>
-                            <div className={styles.productsHeadingtop}>
-                                <a href="" className={styles.besTeller}>{t('main.homePage.bestsellers')}</a>
+                        <div className={styles.productsContent}>
+                            <div className={styles.productsHeadingTop}>
+                                <a href="" className={styles.bestSeller}>{t('main.homePage.bestsellers')}</a>
                             </div>
-                            <div className={styles.productsHeadingtop}>
-                                <a href="">{t('main.homePage.newproduct')}</a>
+                            <div className={styles.productsHeadingTop}>
+                                <a href="" className={styles.bestSeller}>{t('main.homePage.newproduct')}</a>
                             </div>
                         </div>
-                        <div className={styles.productscontent}>
-                            <a className={styles.productscontentsee} href="">{t('main.homePage.seeall')}<CaretDoubleRight
-                                fontSize={"15px"}/></a>
+                        <div className={styles.productsContent}>
+                            <a className={styles.contentItem}
+                               href="">{t('main.homePage.seeall')}<CaretCircleDoubleRight/></a>
                         </div>
                     </div>
                     <div className={styles.productsContainer}>
                         <Swiper
-                            slidesPerView={slidesPerView}
+                            slidesPerView={4}
                             spaceBetween={0}
                             freeMode={true}
                             loop={true}
+                            breakpoints={{
+                                0: {
+                                    slidesPerView: 1,
+                                },
+                                600: {
+                                    slidesPerView: 2,
+                                },
+                                850: {
+                                    slidesPerView: 3,
+                                },
+                                1250: {
+                                    slidesPerView: 4,
+                                }
+                            }}
                         >
-                            {productsData?.slice(0, 6).map((product) => {
+                            {productsData?.slice(5, 10).map((product) => {
                                 return (
                                     <SwiperSlide key={product.id}>
                                         <ProductCard product={product} tallSlide={false}/>
@@ -178,38 +146,49 @@ const Home = () => {
                         </Swiper>
                     </div>
                 </section>
-
-                {/* COAT SECTION */}
-                <section>
-                    <div className={styles.coat}>
-                        <div className={styles.coatContent}>
+                {/* FASHION SECTION */}
+                <section className={styles.fashionSection}>
+                        <img src="https://754969b0.rocketcdn.me/clotya/wp-content/uploads/2022/05/slider-14.jpg"
+                             alt="background"/>
+                        <div className={styles.fashionContent}>
                             <p>{t('main.homePage.coatjackets')}</p>
                             <h2>{t('main.homePage.thenewfashion')} <br></br> {t('main.homePage.collection')}</h2>
                             <Link to={'/shop'}>{t('main.homePage.shopnow')}</Link>
                         </div>
-                    </div>
                 </section>
-
                 {/* PRODUCTS SECTION */}
                 <section className={styles.productsSection}>
                     <div className={styles.productsHeading}>
-                        <div className={styles.productscontent}>
-                            <div className={styles.productsHeadingtop}>
-                                <a href="" className={styles.besTeller}>{t('main.homePage.dealOfTheWeek')}</a>
-                                <Timer />
+                        <div className={styles.productsContent}>
+                            <div className={styles.productsHeadingTop}>
+                                <a href="" className={styles.bestSeller}>{t('main.homePage.dealOfTheWeek')}</a>
+                                <Timer/>
                             </div>
                         </div>
-                        <div className={styles.productscontent}>
-                            <a className={styles.productscontentsee} href="">{t('main.homePage.seeall')} <CaretDoubleRight
-                                fontSize={"15px"}/></a>
+                        <div className={styles.productsContent}>
+                            <a className={styles.contentItem} href="">{t('main.homePage.seeall')}
+                                <CaretCircleDoubleRight/>
+                            </a>
                         </div>
                     </div>
                     <div className={styles.productsContainer}>
                         <Swiper
-                            slidesPerView={dealSlidePerView}
+                            slidesPerView={3}
                             spaceBetween={0}
                             freeMode={true}
                             loop={true}
+                            breakpoints={{
+                                0: {
+                                    slidesPerView: 1,
+                                },
+                                750: {
+                                    slidesPerView: 2,
+                                },
+                                1200: {
+                                    slidesPerView: 3,
+                                },
+                            }}
+
                         >
                             {productsData?.slice(4, 10).map((product) => {
                                 return (
@@ -221,14 +200,11 @@ const Home = () => {
                         </Swiper>
                     </div>
                 </section>
-
-                {/* PRODUCTS Review */}
-                <section>
-                    <Review/>
-                </section>
-
-                <section className={styles.saleShop}>
-                    <div className={styles.saleShopbox}>
+                {/* REVIEW SECTION */}
+                <Review/>
+                {/*SALE SECTION*/}
+                <section className={styles.saleSection}>
+                    <div className={styles.saleContent}>
                         <div className={styles.saleText}>
                             <p>{t('main.homePage.flashsale')}</p>
                             <span> - 80 % </span>
@@ -245,4 +221,4 @@ const Home = () => {
     )
 }
 
-export default Home
+export default Home;

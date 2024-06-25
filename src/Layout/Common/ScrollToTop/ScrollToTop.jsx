@@ -1,6 +1,6 @@
 import styles from "./ScrollToTop.module.scss";
-import {ArrowUp} from "@phosphor-icons/react";
 import {useCallback, useEffect, useState} from "react";
+import {CaretCircleDoubleUp} from "@phosphor-icons/react";
 
 export const ScrollToTop = () => {
 
@@ -14,7 +14,7 @@ export const ScrollToTop = () => {
     }, []);
 
     const toggleVisibility = useCallback(() => {
-        if (window.window.scrollY > 300) {
+        if (window.window.scrollY > 800) {
             setButtonVisible(true);
         } else {
             setButtonVisible(false);
@@ -30,7 +30,7 @@ export const ScrollToTop = () => {
 
     return (
         <div className={`${styles.wrapper} ${buttonVisible? styles.visible : null}`} onClick={scrollToTop}>
-            <ArrowUp />
+            <CaretCircleDoubleUp  />
         </div>
     )
 }

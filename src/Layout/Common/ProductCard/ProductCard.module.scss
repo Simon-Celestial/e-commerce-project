@@ -4,7 +4,7 @@
     display: flex;
     max-width: unset;
     width: 100%;
-    padding: 0 15px;
+    padding: 15px;
     align-items: center;
     &.listView {
         .productsContainerBox {
@@ -21,7 +21,7 @@
                 a {
                     font-size: 20px;
                 }
-                span {
+                .priceContainer {
                     font-size: 20px;
                 }
                 h2 {
@@ -37,10 +37,13 @@
     }
     .productsContainerBox{
         width: 100%;
-        box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
+        box-shadow: 0 0 10px rgba(128, 128, 128, 0.5);
         display: flex;
         flex-direction: column;
         position: relative;
+        overflow: hidden;
+        border-radius: 10px;
+
         .productImage {
             width: 100%;
             height: 328px;
@@ -213,6 +216,7 @@
             padding: 0 10px 25px 10px;
             min-height: 95px;
             justify-content: space-between;
+            gap: 15px;
 
            a {
                 font-size: 15px;
@@ -223,12 +227,11 @@
                     color: red;
                 }
             }
-            span {
+            .priceContainer {
                 font-size: 15px;
                 font-weight: 600;
                 display: inline-flex;
                 align-items: center;
-                margin-top: 15px;
                 gap: 10px;
                 p {
                     color: gray;
