@@ -44,11 +44,8 @@
         background-color: white;
         display: flex;
         flex-direction: column;
-        padding: 10px 0 0 0;
-        box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
+        border: 1px solid gray;
         min-width: 100px;
-        gap: 3px;
-
         p {
           color: black;
           font-size: 15px;
@@ -61,7 +58,7 @@
             color: white;
           }
           &:hover {
-            background: black;
+            background: #626262;
             color: white;
           }
         }

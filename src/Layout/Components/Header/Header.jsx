@@ -11,7 +11,7 @@ import {
     TrashSimple,
     Power
 } from "@phosphor-icons/react";
-import {useCallback, useContext, useEffect, useState} from "react";
+import {useCallback, useContext, useEffect, useMemo, useState} from "react";
 import {Link, useNavigate} from "react-router-dom";
 import {BasketContext} from "../../../Context/BasketContext";
 import {WishListContext} from "../../../Context/WishListContext.jsx";
@@ -20,6 +20,7 @@ import {DataContext} from "../../../Context/DataContext.jsx";
 import {QuickView} from "../../Common/QuickView/QuickView.jsx";
 import {LanguageAndCurrency} from "../../Common/LanguageAndCurrency/LanguageAndCurrency.jsx";
 import {useTranslation} from "react-i18next";
+import sideMenuData from "/public/data/SideMenuData/sideMenuData.json";
 
 
 const Header = () => {
@@ -51,9 +52,13 @@ const Header = () => {
     const [basketOpen, setBasketOpen] = useState(false);
     const [searchOpen, setSearchOpen] = useState(false);
     const [headerFixed, setHeaderFixed] = useState(false);
+    const [sideMenuElemState, setSideMenuElemState] = useState("")
 
-    const { t } = useTranslation();
+    const handleSideMenuVisible = useCallback((itemID) => {
+        setSideMenuElemState(prevState => prevState === itemID ? "" : itemID);
+    }, [setSideMenuElemState]);
 
+    const {t,i18n} = useTranslation();
 
 
     useEffect(() => {
@@ -92,15 +97,29 @@ const Header = () => {
     }, [navigate])
 
     useEffect(() => {
-        if ( localStorage.getItem("user")) {
+        if (localStorage.getItem("user")) {
             fetchUserName();
         }
     }, []);
 
+    const translatedSideMenu = useMemo(() => {
+      if (i18n.language === "en") {
+          return sideMenuData.en
+      } else if (i18n.language === "az") {
+          return sideMenuData.az
+      }
+      else {
+          return sideMenuData.ru
+      }
+
+    },[i18n.language])
+
+    console.log(translatedSideMenu)
+
 
     return (
         <>
-            <QuickView />
+            <QuickView/>
             <header className={`${styles.headerWrapper} ${headerFixed ? styles.fixed : null}`}>
                 <Search searchOpen={searchOpen} setSearchOpen={setSearchOpen}/>
                 <div className={styles.headerContent}>
@@ -109,7 +128,7 @@ const Header = () => {
                             <p>{t('header.bestSellingProducts')}</p>
                             <Link to="/shop">{t('header.shopNow')}</Link>
                         </div>
-                        <LanguageAndCurrency />
+                        <LanguageAndCurrency/>
                     </div>
                     <div className={styles.headerBottom}>
                         <div className={styles.headerNavigation}>
@@ -124,7 +143,8 @@ const Header = () => {
                                         <div className={`${styles.dropDownContent} ${styles.shopDropContent}`}>
                                             <div className={styles.flex1}>
                                                 <ul>
-                                                    <div className={styles.whomen}>{t('header.headerDropDown.womenClothing')}</div>
+                                                    <div
+                                                        className={styles.whomen}>{t('header.headerDropDown.womenClothing')}</div>
                                                     <li>{t('header.women')}</li>
                                                     <li>{t('header.headerDropDown.coatsAndJackets')}</li>
                                                     <li>{t('header.headerDropDown.dresses')}</li>
@@ -133,7 +153,8 @@ const Header = () => {
                                                     <li>{t('header.headerDropDown.menClothing')}</li>
                                                 </ul>
                                                 <ul>
-                                                    <div className={styles.whomen}>{t('header.headerDropDown.menClothing')}</div>
+                                                    <div
+                                                        className={styles.whomen}>{t('header.headerDropDown.menClothing')}</div>
                                                     <li>{t('header.headerDropDown.hoodies')}</li>
                                                     <li>{t('header.headerDropDown.coatsAndJackets')}</li>
                                                     <li>{t('header.headerDropDown.pants')}</li>
@@ -142,7 +163,8 @@ const Header = () => {
                                                     <li>{t('header.headerDropDown.tShirts')}</li>
                                                 </ul>
                                                 <ul>
-                                                    <div className={styles.whomen}>{t('header.headerDropDown.shopByCollection')}</div>
+                                                    <div
+                                                        className={styles.whomen}>{t('header.headerDropDown.shopByCollection')}</div>
                                                     <li>{t('header.headerDropDown.fallCollection')}</li>
                                                     <li>{t('header.headerDropDown.pastelCollection')}</li>
                                                     <li>{t('header.headerDropDown.springCollection')}</li>
@@ -151,7 +173,8 @@ const Header = () => {
                                                     <li>{t('header.headerDropDown.winterCollection')}</li>
                                                 </ul>
                                                 <ul>
-                                                    <div className={styles.whomen}>{t('header.headerDropDown.shopByActivity')}</div>
+                                                    <div
+                                                        className={styles.whomen}>{t('header.headerDropDown.shopByActivity')}</div>
                                                     <li>{t('header.headerDropDown.backToSchool')}</li>
                                                     <li>{t('header.headerDropDown.sportClothing')}</li>
                                                     <li>{t('header.headerDropDown.vacationAndWedding')}</li>
@@ -187,7 +210,8 @@ const Header = () => {
                                             <div className={styles.dropDownFlex}>
                                                 <div className={styles.flex1}>
                                                     <ul>
-                                                        <div className={styles.whomen}>{t('header.headerDropDown.womenClothing')}</div>
+                                                        <div
+                                                            className={styles.whomen}>{t('header.headerDropDown.womenClothing')}</div>
                                                         <li>{t('header.women')}</li>
                                                         <li>{t('header.headerDropDown.coatsAndJackets')}</li>
                                                         <li>{t('header.headerDropDown.dresses')}</li>
@@ -196,7 +220,8 @@ const Header = () => {
                                                         <li>{t('header.headerDropDown.knitWear')}</li>
                                                     </ul>
                                                     <ul>
-                                                        <div className={styles.whomen}>{t('header.headerDropDown.menClothing')}</div>
+                                                        <div
+                                                            className={styles.whomen}>{t('header.headerDropDown.menClothing')}</div>
                                                         <li>{t('header.headerDropDown.coatsAndJackets')}</li>
                                                         <li>{t('header.headerDropDown.hoodies')}</li>
                                                         <li>{t('header.headerDropDown.pants')}</li>
@@ -205,7 +230,8 @@ const Header = () => {
                                                         <li>{t('header.headerDropDown.tShirts')}</li>
                                                     </ul>
                                                     <ul>
-                                                        <div className={styles.whomen}>{t('header.headerDropDown.tShirts')}</div>
+                                                        <div
+                                                            className={styles.whomen}>{t('header.headerDropDown.tShirts')}</div>
                                                         <li>{t('header.headerDropDown.fallCollection')}</li>
                                                         <li>{t('header.headerDropDown.pastelCollection')}</li>
                                                         <li>{t('header.headerDropDown.springCollection')}</li>
@@ -214,7 +240,8 @@ const Header = () => {
                                                         <li>{t('header.headerDropDown.winterCollection')}</li>
                                                     </ul>
                                                     <ul>
-                                                        <div className={styles.whomen}>{t('header.headerDropDown.shopByActivity')}</div>
+                                                        <div
+                                                            className={styles.whomen}>{t('header.headerDropDown.shopByActivity')}</div>
                                                         <li>{t('header.headerDropDown.backToSchool')}</li>
                                                         <li>{t('header.headerDropDown.casualClothing')}</li>
                                                         <li>{t('header.headerDropDown.summerClothing')}</li>
@@ -225,14 +252,16 @@ const Header = () => {
                                                 </div>
                                                 <div className={styles.flex1}>
                                                     <ul>
-                                                        <div className={styles.whomen}>{t('header.headerDropDown.shopByBodyFit')}</div>
+                                                        <div
+                                                            className={styles.whomen}>{t('header.headerDropDown.shopByBodyFit')}</div>
                                                         <li>{t('header.headerDropDown.curveAndPlusSize')}</li>
                                                         <li>{t('header.headerDropDown.maternity')}</li>
                                                         <li>{t('header.headerDropDown.petite')}</li>
                                                         <li>{t('header.headerDropDown.tall')}</li>
                                                     </ul>
                                                     <ul>
-                                                        <div className={styles.whomen}>{t('header.headerDropDown.topTrending')}</div>
+                                                        <div
+                                                            className={styles.whomen}>{t('header.headerDropDown.topTrending')}</div>
                                                         <li>{t('header.headerDropDown.fallCollection')}</li>
                                                         <li>{t('header.headerDropDown.winterCollection')}</li>
                                                         <li>{t('header.headerDropDown.springCollection')}</li>
@@ -240,14 +269,16 @@ const Header = () => {
 
                                                     </ul>
                                                     <ul>
-                                                    <div className={styles.whomen}>{t('header.headerDropDown.fashionStyle')}</div>
+                                                        <div
+                                                            className={styles.whomen}>{t('header.headerDropDown.fashionStyle')}</div>
                                                         <li>{t('header.headerDropDown.18thCentury')}</li>
                                                         <li>{t('header.headerDropDown.19thCentury')}</li>
                                                         <li>{t('header.headerDropDown.20thCentury')}</li>
                                                         <li>{t('header.headerDropDown.21thCentury')}</li>
                                                     </ul>
                                                     <ul>
-                                                        <div className={styles.whomen}>{t('header.headerDropDown.newIn')}</div>
+                                                        <div
+                                                            className={styles.whomen}>{t('header.headerDropDown.newIn')}</div>
                                                         <li>{t('header.headerDropDown.coatsAndJackets')}</li>
                                                         <li>{t('header.headerDropDown.dresses')}</li>
                                                         <li>{t('header.headerDropDown.hoodiesAndSweatShirts')}</li>
@@ -267,7 +298,8 @@ const Header = () => {
                                                 <div className={styles.dropDownContentmen}>
                                                     <div className={styles.flex1}>
                                                         <ul>
-                                                            <div className={styles.whomen}>{t('header.headerDropDown.menClothing')}</div>
+                                                            <div
+                                                                className={styles.whomen}>{t('header.headerDropDown.menClothing')}</div>
                                                             <li>{t('header.men')}</li>
                                                             <li>{t('header.headerDropDown.coatsAndJackets')}</li>
                                                             <li>{t('header.headerDropDown.hoodiesAndSweatShirts')}</li>
@@ -276,7 +308,8 @@ const Header = () => {
                                                             <li>{t('header.headerDropDown.shorts')}</li>
                                                         </ul>
                                                         <ul>
-                                                            <div className={styles.whomen}>{t('header.headerDropDown.shopByActivity')}</div>
+                                                            <div
+                                                                className={styles.whomen}>{t('header.headerDropDown.shopByActivity')}</div>
                                                             <li>{t('header.headerDropDown.backToSchool')}</li>
                                                             <li>{t('header.headerDropDown.casualClothing')}</li>
                                                             <li>{t('header.headerDropDown.summerClothing')}</li>
@@ -323,7 +356,7 @@ const Header = () => {
                                                 <Link to={"/basket"}>{t('header.headerDropDown.cart')}</Link>
                                             </div>
                                             <div className={styles.dropLink}>
-                                                <Link to={"/checkout"} >{t('header.headerDropDown.checkout')}</Link>
+                                                <Link to={"/checkout"}>{t('header.headerDropDown.checkout')}</Link>
                                             </div>
                                         </div>
 
@@ -346,9 +379,10 @@ const Header = () => {
                                 <div className={`${styles.accountDropDown} ${access ? styles.transformed : null}`}>
                                     {access ?
                                         <>
-                                            <Link to={"/account"} className={styles.welcomeUser}>{t('header.headerDropDown.welcome')}, {accountDetails.name}</Link>
+                                            <Link to={"/account"}
+                                                  className={styles.welcomeUser}>{t('header.headerDropDown.welcome')}, {accountDetails.name}</Link>
                                             <span onClick={handleExitAccount}>
-                                                <Power  weight="fill" />
+                                                <Power weight="fill"/>
                                                 {t('header.headerDropDown.logOut')}
                                             </span>
                                         </>
@@ -419,7 +453,7 @@ const Header = () => {
                                                             </div>
                                                         </div>
                                                         <div className={styles.productPrice}>
-                                                            {currencyState === "azn"? "AZN" : "$"} {(currencyConverter(product?.salePrice) * product?.count)?.toFixed(2)}
+                                                            {currencyState === "azn" ? "AZN" : "$"} {(currencyConverter(product?.salePrice) * product?.count)?.toFixed(2)}
                                                         </div>
                                                     </div>
                                                     <div className={styles.deleteProduct}
@@ -435,13 +469,13 @@ const Header = () => {
                                 <div className={styles.basketFooter}>
                                     <div className={styles.subtotal}>
                                         <p>{t('header.headerDropDown.subtotal')}:</p>
-                                        <p>{currencyState === "azn"? "AZN" : "$"} {currencyConverter(calculateSubtotal)?.toFixed(2)}</p>
+                                        <p>{currencyState === "azn" ? "AZN" : "$"} {currencyConverter(calculateSubtotal)?.toFixed(2)}</p>
 
                                     </div>
                                     <div className={styles.basketBtn}>
                                         <Link to={'/basket'}>{t('header.headerDropDown.viewCart')}</Link>
                                     </div>
-                                    <Link to={"/checkout"}  className={styles.basketBtn}>
+                                    <Link to={"/checkout"} className={styles.basketBtn}>
                                         {t('header.headerDropDown.checkout')}
                                     </Link>
                                 </div>
@@ -458,71 +492,37 @@ const Header = () => {
 
                 <div className={`${styles.sideMenuOverlay} ${menuOpen ? styles.overlayVisible : ""}`}>
                     <div className={`${styles.sideMenuWrapper}`}>
-                        <div className={styles.navEntity}>
-                            <Link to={'/'}>{t('header.headerDropDown.home')}</Link>
-                            <CaretRight fontSize={"20px"}/>
-                            <div className={styles.elementDropdown}>
-                                <div className={styles.dropDownTitle}>
-                                    <a href="">{t('header.headerDropDown.option')} 1</a>
-                                    <a href="">{t('header.headerDropDown.option')} 2</a>
-                                    <a href="">{t('header.headerDropDown.option')} 3</a>
-                                    <a href="">{t('header.headerDropDown.option')} 4</a>
-                                    <a href="">{t('header.headerDropDown.option')} 5</a>
-                                    <a href="">{t('header.headerDropDown.option')} 6</a>
-                                    <a href="">{t('header.headerDropDown.option')} 7</a>
-                                    <a href="">{t('header.headerDropDown.option')} 8</a>
-
+                        {translatedSideMenu?.map((menuItem) => {
+                            return (
+                                <div key={menuItem?.id} className={`${styles.navEntity}`}
+                                     onClick={() => handleSideMenuVisible(menuItem?.id)}>
+                                    <Link to={menuItem?.route}>{menuItem?.name}</Link>
+                                    {menuItem?.options?.length > 0 ?
+                                        <CaretRight style={{
+                                            transform: sideMenuElemState === menuItem?.id ? "rotate(90deg)" : ""
+                                        }} />
+                                        :
+                                        null
+                                    }
+                                    {menuItem?.options?.length > 0 ?
+                                        <div
+                                            className={`${styles.elementDropdown} ${sideMenuElemState === menuItem?.id ? styles.elementVisible : ""}`}>
+                                            <div className={styles.dropDownTitle}>
+                                                {menuItem?.options?.map((menuChild) => {
+                                                    return (
+                                                        <Link to={menuChild?.route}
+                                                              key={menuChild?.id}>{menuChild.name}</Link>
+                                                    )
+                                                })}
+                                            </div>
+                                        </div>
+                                        :
+                                        null
+                                    }
                                 </div>
-                            </div>
-                        </div>
-                        <div className={styles.navEntity}>
-                            <Link to={'/shop'}>{t('header.shop')}</Link>
-                            <CaretRight fontSize={"20px"}/>
-                            <div className={styles.elementDropdown}>
-                                <div className={styles.dropDownTitle}>
-                                    <a href="">{t('header.headerDropDown.option')} 1</a>
-                                    <a href="">{t('header.headerDropDown.option')} 2</a>
-                                    <a href="">{t('header.headerDropDown.option')} 3</a>
-                                    <a href="">{t('header.headerDropDown.option')} 4</a>
-                                    <a href="">{t('header.headerDropDown.option')} 5</a>
-                                </div>
-                            </div>
 
-                        </div>
-                        <div className={styles.navEntity}>
-                            <a href="">{t('header.headerDropDown.product')}</a>
-                            <CaretRight fontSize={"20px"}/>
-                            <div className={styles.elementDropdown}>
-                                <div className={styles.dropDownTitle}>
-                                    <a href="">{t('header.headerDropDown.option')} 1</a>
-                                    <a href="">{t('header.headerDropDown.option')} 2</a>
-                                    <a href="">{t('header.headerDropDown.option')} 3</a>
-                                    <a href="">{t('header.headerDropDown.option')} 4</a>
-                                    <a href="">{t('header.headerDropDown.option')} 5</a>
-                                    <a href="">{t('header.headerDropDown.option')} 6</a>
-
-                                </div>
-                            </div>
-
-                        </div>
-                        <div className={styles.navEntity}>
-                            <Link to={'/blog'}>{t('header.headerDropDown.blog')}</Link>
-                            <CaretRight fontSize={"20px"}/>
-                            <div className={styles.elementDropdown}>
-                                <div className={styles.dropDownTitle}>
-                                    <a href="">{t('header.headerDropDown.option')} 1</a>
-                                    <a href="">{t('header.headerDropDown.option')} 2</a>
-                                    <a href="">{t('header.headerDropDown.option')} 3</a>
-                                    <a href="">{t('header.headerDropDown.option')} 4</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className={styles.navEntity}>
-                            <Link to={'/about'}>{t('header.headerDropDown.about')}</Link>
-                        </div>
-                        <div className={styles.navEntity}>
-                            <Link to={'/contact'}>{t('header.headerDropDown.contactUs')}</Link>
-                        </div>
+                            )
+                        })}
                         <div className={styles.closeBtn} onClick={handleMenuToggle}>
                             <X/>
                         </div>

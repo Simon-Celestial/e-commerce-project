@@ -1,0 +1,473 @@
+{
+  "en": [
+    {
+      "id": "home",
+      "name": "Home",
+      "route": "/",
+      "options": [
+        {
+          "id": 1,
+          "name": "Option 1",
+          "route": "/option1"
+        },
+        {
+          "id": 2,
+          "name": "Option 2",
+          "route": "/option2"
+        },
+        {
+          "id": 3,
+          "name": "Option 3",
+          "route": "/option3"
+        },
+        {
+          "id": 4,
+          "name": "Option 4",
+          "route": "/option4"
+        },
+        {
+          "id": 5,
+          "name": "Option 5",
+          "route": "/option5"
+        },
+        {
+          "id": 6,
+          "name": "Option 6",
+          "route": "/option6"
+        },
+        {
+          "id": 7,
+          "name": "Option 7",
+          "route": "/option7"
+        },
+        {
+          "id": 8,
+          "name": "Option 8",
+          "route": "/option8"
+        }
+      ]
+    },
+    {
+      "id": "shop",
+      "name": "Shop",
+      "route": "/shop",
+      "options": [
+        {
+          "id": 1,
+          "name": "Option 1",
+          "route": "/option1"
+        },
+        {
+          "id": 2,
+          "name": "Option 2",
+          "route": "/option2"
+        },
+        {
+          "id": 3,
+          "name": "Option 3",
+          "route": "/option3"
+        },
+        {
+          "id": 4,
+          "name": "Option 4",
+          "route": "/option4"
+        },
+        {
+          "id": 5,
+          "name": "Option 5",
+          "route": "/option5"
+        }
+      ]
+    },
+    {
+      "id": "product",
+      "name": "Product",
+      "route": "/shop",
+      "options": [
+        {
+          "id": 1,
+          "name": "Option 1",
+          "route": "/option1"
+        },
+        {
+          "id": 2,
+          "name": "Option 2",
+          "route": "/option2"
+        },
+        {
+          "id": 3,
+          "name": "Option 3",
+          "route": "/option3"
+        },
+        {
+          "id": 4,
+          "name": "Option 4",
+          "route": "/option4"
+        },
+        {
+          "id": 5,
+          "name": "Option 5",
+          "route": "/option5"
+        },
+        {
+          "id": 6,
+          "name": "Option 6",
+          "route": "/option6"
+        }
+      ]
+    },
+    {
+      "id": "blog",
+      "name": "Blog",
+      "route": "/blog",
+      "options": [
+        {
+          "id": 1,
+          "name": "Option 1",
+          "route": "/option1"
+        },
+        {
+          "id": 2,
+          "name": "Option 2",
+          "route": "/option2"
+        },
+        {
+          "id": 3,
+          "name": "Option 3",
+          "route": "/option3"
+        },
+        {
+          "id": 4,
+          "name": "Option 4",
+          "route": "/option4"
+        }
+      ]
+    },
+    {
+      "id": "about",
+      "name": "About",
+      "route": "/about",
+      "options": []
+    },
+    {
+      "id": "contact",
+      "name": "Contact Us",
+      "route": "/contact",
+      "options": []
+    }
+  ],
+  "ru": [
+    {
+      "id": "home",
+      "name": "Главная",
+      "route": "/",
+      "options": [
+        {
+          "id": 1,
+          "name": "Опция 1",
+          "route": "/option1"
+        },
+        {
+          "id": 2,
+          "name": "Опция 2",
+          "route": "/option2"
+        },
+        {
+          "id": 3,
+          "name": "Опция 3",
+          "route": "/option3"
+        },
+        {
+          "id": 4,
+          "name": "Опция 4",
+          "route": "/option4"
+        },
+        {
+          "id": 5,
+          "name": "Опция 5",
+          "route": "/option5"
+        },
+        {
+          "id": 6,
+          "name": "Опция 6",
+          "route": "/option6"
+        },
+        {
+          "id": 7,
+          "name": "Опция 7",
+          "route": "/option7"
+        },
+        {
+          "id": 8,
+          "name": "Опция 8",
+          "route": "/option8"
+        }
+      ]
+    },
+    {
+      "id": "shop",
+      "name": "Магазин",
+      "route": "/shop",
+      "options": [
+        {
+          "id": 1,
+          "name": "Опция 1",
+          "route": "/option1"
+        },
+        {
+          "id": 2,
+          "name": "Опция 2",
+          "route": "/option2"
+        },
+        {
+          "id": 3,
+          "name": "Опция 3",
+          "route": "/option3"
+        },
+        {
+          "id": 4,
+          "name": "Опция 4",
+          "route": "/option4"
+        },
+        {
+          "id": 5,
+          "name": "Опция 5",
+          "route": "/option5"
+        }
+      ]
+    },
+    {
+      "id": "product",
+      "name": "Продукт",
+      "route": "/shop",
+      "options": [
+        {
+          "id": 1,
+          "name": "Опция 1",
+          "route": "/option1"
+        },
+        {
+          "id": 2,
+          "name": "Опция 2",
+          "route": "/option2"
+        },
+        {
+          "id": 3,
+          "name": "Опция 3",
+          "route": "/option3"
+        },
+        {
+          "id": 4,
+          "name": "Опция 4",
+          "route": "/option4"
+        },
+        {
+          "id": 5,
+          "name": "Опция 5",
+          "route": "/option5"
+        },
+        {
+          "id": 6,
+          "name": "Опция 6",
+          "route": "/option6"
+        }
+      ]
+    },
+    {
+      "id": "blog",
+      "name": "Блог",
+      "route": "/blog",
+      "options": [
+        {
+          "id": 1,
+          "name": "Опция 1",
+          "route": "/option1"
+        },
+        {
+          "id": 2,
+          "name": "Опция 2",
+          "route": "/option2"
+        },
+        {
+          "id": 3,
+          "name": "Опция 3",
+          "route": "/option3"
+        },
+        {
+          "id": 4,
+          "name": "Опция 4",
+          "route": "/option4"
+        }
+      ]
+    },
+    {
+      "id": "about",
+      "name": "О нас",
+      "route": "/about",
+      "options": []
+    },
+    {
+      "id": "contact",
+      "name": "Свяжитесь с нами",
+      "route": "/contact",
+      "options": []
+    }
+  ],
+  "az": [
+    {
+      "id": "home",
+      "name": "Ana səhifə",
+      "route": "/",
+      "options": [
+        {
+          "id": 1,
+          "name": "Seçim 1",
+          "route": "/option1"
+        },
+        {
+          "id": 2,
+          "name": "Seçim 2",
+          "route": "/option2"
+        },
+        {
+          "id": 3,
+          "name": "Seçim 3",
+          "route": "/option3"
+        },
+        {
+          "id": 4,
+          "name": "Seçim 4",
+          "route": "/option4"
+        },
+        {
+          "id": 5,
+          "name": "Seçim 5",
+          "route": "/option5"
+        },
+        {
+          "id": 6,
+          "name": "Seçim 6",
+          "route": "/option6"
+        },
+        {
+          "id": 7,
+          "name": "Seçim 7",
+          "route": "/option7"
+        },
+        {
+          "id": 8,
+          "name": "Seçim 8",
+          "route": "/option8"
+        }
+      ]
+    },
+    {
+      "id": "shop",
+      "name": "Mağaza",
+      "route": "/shop",
+      "options": [
+        {
+          "id": 1,
+          "name": "Seçim 1",
+          "route": "/option1"
+        },
+        {
+          "id": 2,
+          "name": "Seçim 2",
+          "route": "/option2"
+        },
+        {
+          "id": 3,
+          "name": "Seçim 3",
+          "route": "/option3"
+        },
+        {
+          "id": 4,
+          "name": "Seçim 4",
+          "route": "/option4"
+        },
+        {
+          "id": 5,
+          "name": "Seçim 5",
+          "route": "/option5"
+        }
+      ]
+    },
+    {
+      "id": "product",
+      "name": "Məhsul",
+      "route": "/shop",
+      "options": [
+        {
+          "id": 1,
+          "name": "Seçim 1",
+          "route": "/option1"
+        },
+        {
+          "id": 2,
+          "name": "Seçim 2",
+          "route": "/option2"
+        },
+        {
+          "id": 3,
+          "name": "Seçim 3",
+          "route": "/option3"
+        },
+        {
+          "id": 4,
+          "name": "Seçim 4",
+          "route": "/option4"
+        },
+        {
+          "id": 5,
+          "name": "Seçim 5",
+          "route": "/option5"
+        },
+        {
+          "id": 6,
+          "name": "Seçim 6",
+          "route": "/option6"
+        }
+      ]
+    },
+    {
+      "id": "blog",
+      "name": "Bloq",
+      "route": "/blog",
+      "options": [
+        {
+          "id": 1,
+          "name": "Seçim 1",
+          "route": "/option1"
+        },
+        {
+          "id": 2,
+          "name": "Seçim 2",
+          "route": "/option2"
+        },
+        {
+          "id": 3,
+          "name": "Seçim 3",
+          "route": "/option3"
+        },
+        {
+          "id": 4,
+          "name": "Seçim 4",
+          "route": "/option4"
+        }
+      ]
+    },
+    {
+      "id": "about",
+      "name": "Haqqında",
+      "route": "/about",
+      "options": []
+    },
+    {
+      "id": "contact",
+      "name": "Əlaqə",
+      "route": "/contact",
+      "options": []
+    }
+  ]
+}

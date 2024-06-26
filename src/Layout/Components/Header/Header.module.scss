@@ -512,28 +512,27 @@
 
   .basketOverlay {
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     background-color: rgba(0, 0, 0, 0.5);
     pointer-events: none;
     opacity: 0;
     position: fixed;
     left: 0;
     top: 0;
-    z-index: 4;
-    padding-right: 350px;
+    z-index: 10;
+    transition: opacity $transition;
 
     .basketWrapper {
       position: absolute;
-      right: 0;
+      right: -100%;
       top: 0;
       max-width: 345px;
       width: 100%;
       height: 100vh;
       pointer-events: none;
-      transition: transform $transition;
+      transition: right 0.5s ease;
       transform-origin: right;
       background-color: white;
-      transform: scaleX(0);
       display: flex;
       flex-direction: column;
       padding: 30px;
@@ -554,6 +553,10 @@
           align-items: center;
           justify-content: center;
           margin-left: auto;
+          transition: transform $transition;
+          &:hover {
+            transform: rotate(360deg) scale(1.1);
+          }
 
           svg {
             font-size: 23px;
@@ -759,7 +762,7 @@
       pointer-events: all;
 
       .basketWrapper {
-        transform: scaleX(1);
+        right: 0;
         pointer-events: all;
       }
     }
@@ -771,10 +774,11 @@
     top: 0;
     width: 100vw;
     height: 100vh;
-    padding-left: 345px;
     background-color: rgba(0, 0, 0, 0.5);
     pointer-events: none;
     opacity: 0;
+    transition: opacity $transition;
+    z-index: 10;
 
     &.overlayVisible {
       opacity: 1;
@@ -782,7 +786,7 @@
 
       .sideMenuWrapper {
         pointer-events: all;
-        transform: scaleX(1);
+        left: 0;
       }
     }
 
@@ -791,7 +795,6 @@
       flex-direction: column;
       gap: 35px;
       position: absolute;
-      left: 0;
       top: 0;
       height: 100vh;
       padding: 125px 50px 85px 50px;
@@ -799,16 +802,18 @@
       box-shadow: 0 0 5px rgba(128, 128, 128, 0.5);
       max-width: 345px;
       width: 100%;
-      transform-origin: left;
-      transform: scaleX(0);
       pointer-events: none;
-      transition: transform $transition;
+      left: -100%;
+      transition: left 0.5s ease;
 
       .navEntity {
         display: flex;
         justify-content: space-between;
         position: relative;
         cursor: pointer;
+        svg {
+          font-size: 20px;
+        }
 
         &:hover {
           .elementDropdown {
@@ -889,6 +894,11 @@
         top: 25px;
         padding: 5px;
         cursor: pointer;
+        transition: transform $transition;
+        &:hover {
+          transform: rotate(360deg) scale(1.1);
+
+        }
 
         svg {
           font-size: 21px;
@@ -1135,13 +1145,41 @@
     .sideMenuOverlay {
       .sideMenuWrapper {
         .navEntity {
+          flex-direction: column;
+          position: relative;
+          >a {
+            padding-bottom: 5px;
+            max-width: 80%;
+          }
+          svg {
+            position: absolute;
+            right: 0;
+            top: 0;
+            transform: rotate(270deg);
+            border: 1px solid black;
+            border-radius: 50%;
+            font-size: 40px;
+          }
           .elementDropdown {
-            width: 200px;
-            right: -190px;
+            position: static;
+            left: unset;
+            top: unset;
+            opacity: 1;
+            align-items: start;
+            padding-left: 0;
+            width: 100%;
+            display: none;
+            &.elementVisible {
+              display: flex;
+            }
 
             .dropDownTitle {
-              padding: 15px;
-              width: min-content;
+              padding: 15px 0 0 0;
+              a {
+                width: 100%;
+                padding-bottom: 10px;
+              }
+
             }
           }
         }
@@ -1159,18 +1197,8 @@
     }
     .sideMenuOverlay {
       .sideMenuWrapper {
-        width: 160px;
-        padding: 60px 15px 15px 15px;
-
-        .navEntity {
-          align-items: center;
-
-          .elementDropdown {
-            padding-left: 30px;
-            width: min-content;
-            right: -143px;
-          }
-        }
+        padding: 50px 25px 0 25px;
+        max-width: unset;
       }
     }
   }
