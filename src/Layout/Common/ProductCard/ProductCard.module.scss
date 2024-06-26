@@ -113,7 +113,7 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                background-color: white;
+                background-color: $black-weak;
                 position: absolute;
                 left: 0;
                 bottom: -46px;
@@ -122,11 +122,12 @@
                 font-size: 13px;
                 transition: bottom $transition,background $transition,color $transition;
                 cursor: pointer;
+                a {
+                    color: white;
+
+                }
                 &:hover {
-                    background-color: red;
-                    a {
-                        color: white!important;
-                    }
+                    background-color: #696969;
                 }
             }
             .heart {

@@ -1,14 +1,15 @@
 import styles from "./Loader.module.scss";
-import {ThreeCircles} from "react-loader-spinner";
+import { Watch} from "react-loader-spinner";
 export const Loader = () => {
     return (
        <>
-           <ThreeCircles
+           <Watch
                visible={true}
                height="100"
                width="100"
-               color="black"
-               ariaLabel="three-circles-loading"
+               radius="48"
+               color="gray"
+               ariaLabel="watch-loading"
                wrapperStyle={{}}
                wrapperClass={styles.loaderWrapper}
            />

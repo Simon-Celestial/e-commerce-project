@@ -91,7 +91,7 @@ const Home = () => {
                                             <div className={styles.arrivals}>{data?.arrivals}</div>
                                             <div className={styles.latest}>{data?.latest}</div>
                                             <div className={styles.shipping}>{data?.shipping}</div>
-                                            <a className={styles.shop}>{data?.shop}</a>
+                                            <Link to={"/shop"} className={styles.shop}>{data?.shop}</Link>
                                         </div>
                                     </div>
                                 </SwiperSlide>
@@ -104,15 +104,17 @@ const Home = () => {
                     <div className={styles.productsHeading}>
                         <div className={styles.productsContent}>
                             <div className={styles.productsHeadingTop}>
-                                <a href="" className={styles.bestSeller}>{t('main.homePage.bestsellers')}</a>
+                                <Link to={"/shop"} className={styles.bestSeller}>{t('main.homePage.bestsellers')}</Link>
                             </div>
                             <div className={styles.productsHeadingTop}>
-                                <a href="" className={styles.bestSeller}>{t('main.homePage.newproduct')}</a>
+                                <Link to={"/shop"} className={styles.bestSeller}>{t('main.homePage.newproduct')}</Link>
                             </div>
                         </div>
                         <div className={styles.productsContent}>
-                            <a className={styles.contentItem}
-                               href="">{t('main.homePage.seeall')}<CaretCircleDoubleRight/></a>
+                            <Link to={"/shop"} className={styles.contentItem}>
+                                {t('main.homePage.seeall')}
+                                <CaretCircleDoubleRight/>
+                            </Link>
                         </div>
                     </div>
                     <div className={styles.productsContainer}>
@@ -136,7 +138,7 @@ const Home = () => {
                                 }
                             }}
                         >
-                            {productsData?.slice(5, 10).map((product) => {
+                            {productsData?.slice(0, 6).map((product) => {
                                 return (
                                     <SwiperSlide key={product.id}>
                                         <ProductCard product={product} tallSlide={false}/>
@@ -161,14 +163,14 @@ const Home = () => {
                     <div className={styles.productsHeading}>
                         <div className={styles.productsContent}>
                             <div className={styles.productsHeadingTop}>
-                                <a href="" className={styles.bestSeller}>{t('main.homePage.dealOfTheWeek')}</a>
+                                <Link to={"/shop"} className={styles.bestSeller}>{t('main.homePage.dealOfTheWeek')}</Link>
                                 <Timer/>
                             </div>
                         </div>
                         <div className={styles.productsContent}>
-                            <a className={styles.contentItem} href="">{t('main.homePage.seeall')}
+                            <Link to={"/shop"} className={styles.contentItem} href="">{t('main.homePage.seeall')}
                                 <CaretCircleDoubleRight/>
-                            </a>
+                            </Link>
                         </div>
                     </div>
                     <div className={styles.productsContainer}>
@@ -190,7 +192,7 @@ const Home = () => {
                             }}
 
                         >
-                            {productsData?.slice(4, 10).map((product) => {
+                            {productsData?.slice(6, 10).map((product) => {
                                 return (
                                     <SwiperSlide key={product.id}>
                                         <ProductCard product={product} tallSlide={true} productId={product.id}/>

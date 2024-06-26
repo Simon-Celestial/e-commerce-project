@@ -322,7 +322,8 @@
    "completedYouWill":"You will receive an order confirmation email with details of your order.",
    "completedIfYou":"If you have any questions, contact this number",
    "completedReturnHome":"Return home"
-  }
+  },
+   "pageNotFound": "Page Not Found"
  },
     "footer": {
       "topProducts": "Our store contains only the best and highest quality products from world-class brands. We can offer you anything you can imagine for reasonable price.",

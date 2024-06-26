@@ -316,7 +316,8 @@
       "completedYouWill": "Sifarişinizin detallarını içəren bir sifariş təsdiq e-poçtu alacaqsınız.",
       "completedIfYou": "Əgər sualınız varsa, bu nömrə ilə əlaqə saxlayın",
       "completedReturnHome": "Ana səhifəyə qayıt"
-    }
+    },
+    "pageNotFound": "Səhifə Tapılmadı"
   },
   "footer": {
     "topProducts": "Bizim mağazamız yalnız dünya sinif markalarından gələn ən yaxşı və yüksək keyfiyyətli məhsulları içərir. Sizə təsəvvür edə biləcəyiniz hər şeyi qənaətli qiymətə təklif edə bilərik.",

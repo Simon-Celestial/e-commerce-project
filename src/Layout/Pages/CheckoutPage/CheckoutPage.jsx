@@ -79,7 +79,6 @@ export const CheckoutPage = () => {
         }));
     }, [setFormFields]);
 
-    // DATANI POST ELEMEK ORDERSE
     const handlePostOrder = useCallback(async () => {
         const requestData = {
             firstName: formFields?.firstName.trim(),

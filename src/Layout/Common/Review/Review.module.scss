@@ -1,122 +1,138 @@
 @import "../../../Variables/Variables.module.scss";
 
-.reviewSection{
+.reviewSection {
+  width: 100%;
+  background-color: rgb(243, 243, 243);
+  letter-spacing: 3px;
+  display: flex;
+  padding: 100px 30px;
+
+  .ourReview {
+    max-width: 1400px;
+    margin: 0 auto;
     width: 100%;
-    background-color: rgb(243,243,243);
-    letter-spacing: 3px;
-    display: flex;
-    padding: 100px 30px;
-    .ourReview{
-        max-width: 1400px;
-        margin: 0 auto;
+
+    h1 {
+      font-size: 25px;
+    }
+
+    .reviewSlider {
+      display: flex;
+      gap: 20px;
+      width: 100%;
+      margin-top: 25px;
+
+      .cardWrapper {
+        display: flex;
         width: 100%;
-        h1{
-            font-size: 25px;
-        }
-        .reviewSlider{
-            display: flex;
-            gap: 20px;
-            width: 100%;
-            margin-top: 50px;
-            .cardWrapper {
-                display: flex;
-                width: 100%;
-                padding-bottom: 80px;
-                .reviewSliderBox{
-                    width: 100%;
-                    padding: 40px;
-                    background-color: white;
-                    display: flex;
-                    gap: 50px;
-                    border-radius: 10px;
-                    .reviewSliderLeft{
-                        img{
-                            width: 100px;
-                            height: 100px;
-                            border-radius: 200px;
-                        }
-                    }
-                    .reviewSliderRight{
-                        display: flex;
-                        flex-direction: column;
-                        gap: 10px;
-                        .reviewStar{
-                            display: flex;
-                            gap: 5px;
-                            width: 100%;
-                            margin: 0 0 10px 0;
-                            svg{
-                                font-size: 20px;
-                                color: orange;
-                            }
-                        }
-                        .reviewText{
-                            font-size: 16px;
-                            color: #848484;
-                            display: flex;
-                            flex-direction: column;
-                            gap: 10px;
-                            p {
-                                min-height: 100px;
-                            }
-                            a{
-                                font-size: 17px;
-                                font-weight: 900;
-                                transition: 0.3s;
-                                &:hover{
-                                    color: red;
-                                }
-                            }
-                        }
-                    }
-        
-                }
+        padding-bottom: 80px;
+
+        .reviewSliderBox {
+          width: 100%;
+          padding: 40px;
+          background-color: white;
+          display: flex;
+          gap: 50px;
+          border-radius: 10px;
+
+          .reviewSliderLeft {
+            img {
+              width: 100px;
+              height: 100px;
+              border-radius: 200px;
             }
-            
+          }
+
+          .reviewSliderRight {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+
+            .reviewStar {
+              display: flex;
+              gap: 5px;
+              width: 100%;
+              margin: 0 0 10px 0;
+
+              svg {
+                font-size: 20px;
+                color: orange;
+              }
+            }
+
+            .reviewText {
+              font-size: 16px;
+              color: #848484;
+              display: flex;
+              flex-direction: column;
+              gap: 10px;
+
+              p {
+                min-height: 100px;
+              }
+
+              h2 {
+                font-size: 17px;
+                font-weight: 900;
+                cursor: default;
+                transition: transform $transition;
+
+                &:hover {
+                  transform: scale(1.03);
+                }
+              }
+            }
+          }
 
         }
+      }
+
+
     }
+  }
 }
 
 @media screen and (max-width: 1200px) {
-    .reviewSection {
-        padding: 50px 15px;
-        
-    }
+  .reviewSection {
+    padding: 50px 15px;
+
+  }
 }
 
 @media screen and (max-width: 600px) {
-    .reviewSection {
-        .ourReview {
-            .reviewSlider {
-                .cardWrapper {
-                    .reviewSliderBox {
-                        padding: 25px 15px;
-                        gap: 15px;
-                        justify-content: space-between;
-                    }
-                }
-            }
+  .reviewSection {
+    .ourReview {
+      .reviewSlider {
+        .cardWrapper {
+          .reviewSliderBox {
+            padding: 25px 15px;
+            gap: 15px;
+            justify-content: space-between;
+          }
         }
-        
+      }
     }
+
+  }
 }
+
 @media screen and (max-width: 400px) {
-    .reviewSection {
-        .ourReview {
-            .reviewSlider {
-                .cardWrapper {
-                    .reviewSliderBox {
-                        flex-direction: column;
-                        align-items: center;
-                        .reviewSliderRight {
-                            align-items: center;
-                            text-align: center;
-                        }
-                    }
-                }
+  .reviewSection {
+    .ourReview {
+      .reviewSlider {
+        .cardWrapper {
+          .reviewSliderBox {
+            flex-direction: column;
+            align-items: center;
+
+            .reviewSliderRight {
+              align-items: center;
+              text-align: center;
             }
+          }
         }
-        
+      }
     }
+
+  }
 }

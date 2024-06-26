@@ -80,11 +80,11 @@ const Review = () => {
                             }}
                         >
                             {reviewData?.map(item => (
-                                <SwiperSlide key={item.id}>
+                                <SwiperSlide key={item?.id}>
                                     <div className={styles.cardWrapper}>
                                         <div className={styles.reviewSliderBox} >
                                             <div className={styles.reviewSliderLeft}>
-                                                <img src={item.image} alt="Review" />
+                                                <img src={item?.image} alt="Review" />
                                             </div>
                                             <div className={styles.reviewSliderRight}>
                                                 <div className={styles.reviewStar}>
@@ -93,8 +93,8 @@ const Review = () => {
                                                     ))}
                                                 </div>
                                                 <div className={styles.reviewText}>
-                                                    <p>{item.title}</p>
-                                                    <a href="#">{item.name}</a>
+                                                    <p>{item?.title}</p>
+                                                    <h2>{item?.name}</h2>
                                                 </div>
                                             </div>
                                         </div>

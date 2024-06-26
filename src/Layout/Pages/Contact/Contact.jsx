@@ -20,15 +20,20 @@ const Contact = () => {
         const formData = new FormData(form.current);
         const user_name = formData.get('user_name');
         const user_email = formData.get('user_email');
+        const message_title = formData.get('message_title');
+        const message_content = formData.get('message_content');
+
         const result = await emailjs.sendForm(import.meta.env.VITE_EMAIL_ID, import.meta.env.VITE_MAIN_TEMPLATE_ID, form.current, import.meta.env.VITE_EMAIL_KEY);
         console.log('Email sent:', result.text);
         const autoReplyResult = await emailjs.send(import.meta.env.VITE_EMAIL_ID, import.meta.env.VITE_REPLY_TEMPLATE_ID, {
             user_name,
-            user_email
+            user_email,
+            message_title,
+            message_content
         }, import.meta.env.VITE_EMAIL_KEY);
         console.log('Auto reply sent:', autoReplyResult.text);
         form.current.reset();
-        toast.success(`E-poçt uğurla göndərildi!`, {
+        toast.success(`Your message has been sent successfully!`, {
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: false,
@@ -38,7 +43,7 @@ const Contact = () => {
           transition: Bounce,
       });
     } catch (error) {
-        toast.error(`Mesajı göndərmək alınmadı. Zəhmət olmasa bir az sonra yenə cəhd edin`, {
+        toast.error(`Failed to send message. Please try again later!`, {
             hideProgressBar: false,
             closeOnClick: true,
             pauseOnHover: false,
@@ -95,9 +100,9 @@ const Contact = () => {
                                         <input type='email' name='user_email'
                                                placeholder={t("main.contact.contactEEmail")} required/>
                                     </div>
-                                    <input type='text' name='subject' placeholder={t("main.contact.contactSubject")}
+                                    <input type='text' name='message_title' placeholder={t("main.contact.contactSubject")}
                                            required/>
-                                    <textarea name='message' cols="30" rows="10" width="100%"
+                                    <textarea name='message_content' cols="30" rows="10" width="100%"
                                               placeholder={t("main.contact.contactMessage")} required></textarea>
                                     <button
                                         type='submit'
@@ -120,7 +125,6 @@ const Contact = () => {
                                     }
                                     </button>
                                 </form>
-
                 </div>
               </div>
             </div>

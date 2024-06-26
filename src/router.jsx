@@ -17,7 +17,7 @@ import {AdminLayout} from "./AdminLayout/AdminLayout.jsx";
 import AdminLogin from "./AdminLayout/Pages/AdminLogin/AdminLogin.jsx";
 import AdminPage from "./AdminLayout/Pages/AdminPage/AdminPage.jsx";
 import {AuthContext} from "./Context/AuthContext.jsx";
-import PageNotFound from "./Layout/Common/PageNotFound/PageNotFound.jsx";
+import {PageNotFound} from "./Layout/Pages/PageNotFound/PageNotFound.jsx";
 import {CheckoutPage} from "./Layout/Pages/CheckoutPage/CheckoutPage.jsx";
 import {CompletedOrder} from "./Layout/Pages/CompletedOrder/CompletedOrder.jsx";
 import {AdminOrderSingle} from "./AdminLayout/Pages/AdminOrderSingle/AdminOrderSingle.jsx";
