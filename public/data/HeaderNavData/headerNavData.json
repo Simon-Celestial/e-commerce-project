@@ -1,0 +1,22 @@
+[
+  {
+    "id": "shop",
+    "name": "Shop",
+    "route": "/shop"
+  },
+  {
+    "id": "women",
+    "name": "Women",
+    "route": "/"
+  },
+  {
+    "id": "men",
+    "name": "Men",
+    "route": "/"
+  },
+  {
+    "id": "miscellaneous",
+    "name": "Miscellaneous",
+    "route": null
+  }
+]

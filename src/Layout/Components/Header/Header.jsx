@@ -21,6 +21,7 @@ import {QuickView} from "../../Common/QuickView/QuickView.jsx";
 import {LanguageAndCurrency} from "../../Common/LanguageAndCurrency/LanguageAndCurrency.jsx";
 import {useTranslation} from "react-i18next";
 import sideMenuData from "/public/data/SideMenuData/sideMenuData.json";
+import headerNavData from "/public/data/HeaderNavData/headerNavData.json";
 
 
 const Header = () => {
@@ -53,12 +54,22 @@ const Header = () => {
     const [searchOpen, setSearchOpen] = useState(false);
     const [headerFixed, setHeaderFixed] = useState(false);
     const [sideMenuElemState, setSideMenuElemState] = useState("")
+    const [dropDownState, setDropDownState] = useState("");
+
+    const handleMouseEnter = useCallback((productID) => {
+        setDropDownState(productID)
+    }, [setDropDownState])
+
+    const handleMouseLeave = useCallback(() => {
+        setDropDownState("");
+    }, [setDropDownState]);
+
 
     const handleSideMenuVisible = useCallback((itemID) => {
         setSideMenuElemState(prevState => prevState === itemID ? "" : itemID);
     }, [setSideMenuElemState]);
 
-    const {t,i18n} = useTranslation();
+    const {t, i18n} = useTranslation();
 
 
     useEffect(() => {
@@ -103,16 +114,15 @@ const Header = () => {
     }, []);
 
     const translatedSideMenu = useMemo(() => {
-      if (i18n.language === "en") {
-          return sideMenuData.en
-      } else if (i18n.language === "az") {
-          return sideMenuData.az
-      }
-      else {
-          return sideMenuData.ru
-      }
+        if (i18n.language === "en") {
+            return sideMenuData.en
+        } else if (i18n.language === "az") {
+            return sideMenuData.az
+        } else {
+            return sideMenuData.ru
+        }
 
-    },[i18n.language])
+    }, [i18n.language])
 
     console.log(translatedSideMenu)
 
@@ -136,233 +146,54 @@ const Header = () => {
                                 <List/>
                             </div>
                             <div className={styles.navigation}>
-                                <div className={styles.navEntity}>
-                                    <Link to={'/shop'}>{t('header.shop')}</Link>
-                                    <CaretDown/>
-                                    <div className={`${styles.navDropDown} ${styles.shopDropDown}`}>
-                                        <div className={`${styles.dropDownContent} ${styles.shopDropContent}`}>
-                                            <div className={styles.flex1}>
-                                                <ul>
+                                {headerNavData?.map((nav) => {
+                                    return (
+                                        <div key={nav?.id} className={styles.navEntity}
+                                             onMouseEnter={() => handleMouseEnter(nav?.id)}>
+                                            {nav.id === "miscellaneous" ?
+                                                <>
+                                                    <p>{t('header.miscellaneous')}</p>
+                                                    <CaretDown/>
                                                     <div
-                                                        className={styles.whomen}>{t('header.headerDropDown.womenClothing')}</div>
-                                                    <li>{t('header.women')}</li>
-                                                    <li>{t('header.headerDropDown.coatsAndJackets')}</li>
-                                                    <li>{t('header.headerDropDown.dresses')}</li>
-                                                    <li>{t('header.headerDropDown.hoodiesAndSweatShirts')}</li>
-                                                    <li>{t('header.headerDropDown.jeans')}</li>
-                                                    <li>{t('header.headerDropDown.menClothing')}</li>
-                                                </ul>
-                                                <ul>
-                                                    <div
-                                                        className={styles.whomen}>{t('header.headerDropDown.menClothing')}</div>
-                                                    <li>{t('header.headerDropDown.hoodies')}</li>
-                                                    <li>{t('header.headerDropDown.coatsAndJackets')}</li>
-                                                    <li>{t('header.headerDropDown.pants')}</li>
-                                                    <li>{t('header.headerDropDown.shirts')}</li>
-                                                    <li>{t('header.headerDropDown.shorts')}</li>
-                                                    <li>{t('header.headerDropDown.tShirts')}</li>
-                                                </ul>
-                                                <ul>
-                                                    <div
-                                                        className={styles.whomen}>{t('header.headerDropDown.shopByCollection')}</div>
-                                                    <li>{t('header.headerDropDown.fallCollection')}</li>
-                                                    <li>{t('header.headerDropDown.pastelCollection')}</li>
-                                                    <li>{t('header.headerDropDown.springCollection')}</li>
-                                                    <li>{t('header.headerDropDown.summerCollection')}</li>
-                                                    <li>{t('header.headerDropDown.vintageCollection')}</li>
-                                                    <li>{t('header.headerDropDown.winterCollection')}</li>
-                                                </ul>
-                                                <ul>
-                                                    <div
-                                                        className={styles.whomen}>{t('header.headerDropDown.shopByActivity')}</div>
-                                                    <li>{t('header.headerDropDown.backToSchool')}</li>
-                                                    <li>{t('header.headerDropDown.sportClothing')}</li>
-                                                    <li>{t('header.headerDropDown.vacationAndWedding')}</li>
-                                                    <li>{t('header.headerDropDown.workClothing')}</li>
-                                                    <li>{t('header.headerDropDown.summerClothing')}</li>
-                                                    <li>{t('header.headerDropDown.casualClothing')}</li>
-                                                </ul>
-                                            </div>
-                                            <div className={styles.dropDownimages}>
-                                                <div className={styles.dropDownimages1}>
-                                                    <img
-                                                        src="https://nooni-be87.kxcdn.com/nooni-fashion/wp-content/uploads/2023/05/banner-mega-1-2.jpg"></img>
-                                                    <span>{t('header.headerDropDown.newProduct')}</span>
-                                                    <h1>{t('header.headerDropDown.theBestNewCollection')}</h1>
-                                                </div>
-                                                <div className={styles.dropDownimages1}>
-                                                    <img
-                                                        src="https://nooni-be87.kxcdn.com/nooni-fashion/wp-content/uploads/2023/05/banner-mega-2-2.jpg"></img>
-                                                    <span>{t('header.headerDropDown.enjoyFreeShipping')}</span>
-                                                    <h1>{t('header.headerDropDown.manPickFrom')} $15</h1>
-                                                </div>
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <div className={styles.navEntity}>
-                                    <p>{t('header.women')}</p>
-                                    <CaretDown/>
-                                    <div className={`${styles.navDropDown} ${styles.womenDropDown}`}>
-                                        <div className={styles.dropDownContent}>
-                                            <div className={styles.dropDownFlex}>
-                                                <div className={styles.flex1}>
-                                                    <ul>
-                                                        <div
-                                                            className={styles.whomen}>{t('header.headerDropDown.womenClothing')}</div>
-                                                        <li>{t('header.women')}</li>
-                                                        <li>{t('header.headerDropDown.coatsAndJackets')}</li>
-                                                        <li>{t('header.headerDropDown.dresses')}</li>
-                                                        <li>{t('header.headerDropDown.hoodiesAndSweatShirts')}</li>
-                                                        <li>{t('header.headerDropDown.jeans')}</li>
-                                                        <li>{t('header.headerDropDown.knitWear')}</li>
-                                                    </ul>
-                                                    <ul>
-                                                        <div
-                                                            className={styles.whomen}>{t('header.headerDropDown.menClothing')}</div>
-                                                        <li>{t('header.headerDropDown.coatsAndJackets')}</li>
-                                                        <li>{t('header.headerDropDown.hoodies')}</li>
-                                                        <li>{t('header.headerDropDown.pants')}</li>
-                                                        <li>{t('header.headerDropDown.shirts')}</li>
-                                                        <li>{t('header.headerDropDown.shorts')}</li>
-                                                        <li>{t('header.headerDropDown.tShirts')}</li>
-                                                    </ul>
-                                                    <ul>
-                                                        <div
-                                                            className={styles.whomen}>{t('header.headerDropDown.tShirts')}</div>
-                                                        <li>{t('header.headerDropDown.fallCollection')}</li>
-                                                        <li>{t('header.headerDropDown.pastelCollection')}</li>
-                                                        <li>{t('header.headerDropDown.springCollection')}</li>
-                                                        <li>{t('header.headerDropDown.summerCollection')}</li>
-                                                        <li>{t('header.headerDropDown.vintageCollection')}</li>
-                                                        <li>{t('header.headerDropDown.winterCollection')}</li>
-                                                    </ul>
-                                                    <ul>
-                                                        <div
-                                                            className={styles.whomen}>{t('header.headerDropDown.shopByActivity')}</div>
-                                                        <li>{t('header.headerDropDown.backToSchool')}</li>
-                                                        <li>{t('header.headerDropDown.casualClothing')}</li>
-                                                        <li>{t('header.headerDropDown.summerClothing')}</li>
-                                                        <li>{t('header.headerDropDown.sportClothing')}</li>
-                                                        <li>{t('header.headerDropDown.vacationAndWedding')}</li>
-                                                        <li>{t('header.headerDropDown.workClothing')}</li>
-                                                    </ul>
-                                                </div>
-                                                <div className={styles.flex1}>
-                                                    <ul>
-                                                        <div
-                                                            className={styles.whomen}>{t('header.headerDropDown.shopByBodyFit')}</div>
-                                                        <li>{t('header.headerDropDown.curveAndPlusSize')}</li>
-                                                        <li>{t('header.headerDropDown.maternity')}</li>
-                                                        <li>{t('header.headerDropDown.petite')}</li>
-                                                        <li>{t('header.headerDropDown.tall')}</li>
-                                                    </ul>
-                                                    <ul>
-                                                        <div
-                                                            className={styles.whomen}>{t('header.headerDropDown.topTrending')}</div>
-                                                        <li>{t('header.headerDropDown.fallCollection')}</li>
-                                                        <li>{t('header.headerDropDown.winterCollection')}</li>
-                                                        <li>{t('header.headerDropDown.springCollection')}</li>
-                                                        <li>{t('header.headerDropDown.summerCollection')}</li>
-
-                                                    </ul>
-                                                    <ul>
-                                                        <div
-                                                            className={styles.whomen}>{t('header.headerDropDown.fashionStyle')}</div>
-                                                        <li>{t('header.headerDropDown.18thCentury')}</li>
-                                                        <li>{t('header.headerDropDown.19thCentury')}</li>
-                                                        <li>{t('header.headerDropDown.20thCentury')}</li>
-                                                        <li>{t('header.headerDropDown.21thCentury')}</li>
-                                                    </ul>
-                                                    <ul>
-                                                        <div
-                                                            className={styles.whomen}>{t('header.headerDropDown.newIn')}</div>
-                                                        <li>{t('header.headerDropDown.coatsAndJackets')}</li>
-                                                        <li>{t('header.headerDropDown.dresses')}</li>
-                                                        <li>{t('header.headerDropDown.hoodiesAndSweatShirts')}</li>
-                                                        <li>{t('header.headerDropDown.jeans')}</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className={styles.navEntity}>
-                                    <p>{t('header.men')}</p>
-                                    <CaretDown/>
-                                    <div className={`${styles.navDropDown} ${styles.manDropDown}`}>
-                                        <div className={styles.dropDownContent}>
-                                            <div className={styles.navbarDropdown}>
-                                                <div className={styles.dropDownContentmen}>
-                                                    <div className={styles.flex1}>
-                                                        <ul>
-                                                            <div
-                                                                className={styles.whomen}>{t('header.headerDropDown.menClothing')}</div>
-                                                            <li>{t('header.men')}</li>
-                                                            <li>{t('header.headerDropDown.coatsAndJackets')}</li>
-                                                            <li>{t('header.headerDropDown.hoodiesAndSweatShirts')}</li>
-                                                            <li>{t('header.headerDropDown.pants')}</li>
-                                                            <li>{t('header.headerDropDown.shirts')}</li>
-                                                            <li>{t('header.headerDropDown.shorts')}</li>
-                                                        </ul>
-                                                        <ul>
-                                                            <div
-                                                                className={styles.whomen}>{t('header.headerDropDown.shopByActivity')}</div>
-                                                            <li>{t('header.headerDropDown.backToSchool')}</li>
-                                                            <li>{t('header.headerDropDown.casualClothing')}</li>
-                                                            <li>{t('header.headerDropDown.summerClothing')}</li>
-                                                            <li>{t('header.headerDropDown.sportClothing')}</li>
-                                                            <li>{t('header.headerDropDown.vacationAndWedding')}</li>
-                                                            <li>{t('header.headerDropDown.workClothing')}</li>
-                                                        </ul>
+                                                        className={`${styles.navDropDown} ${styles.miscellaneousDropDown}`}>
+                                                        <div className={styles.miscellaneousContent}>
+                                                            <div className={styles.dropLink}>
+                                                                <Link
+                                                                    to={'/blog'}>{t('header.headerDropDown.blog')}</Link>
+                                                            </div>
+                                                            <div className={styles.dropLink}>
+                                                                <Link
+                                                                    to={'/about'}>{t('header.headerDropDown.about')}</Link>
+                                                            </div>
+                                                            <div className={styles.dropLink}>
+                                                                <Link
+                                                                    to={'/contact'}>{t('header.headerDropDown.contact')}</Link>
+                                                            </div>
+                                                            <div className={styles.dropLink}>
+                                                                <Link
+                                                                    to={"/wishlist"}>{t('header.headerDropDown.wishList')}</Link>
+                                                            </div>
+                                                            <div className={styles.dropLink}>
+                                                                <Link
+                                                                    to={"/basket"}>{t('header.headerDropDown.cart')}</Link>
+                                                            </div>
+                                                            <div className={styles.dropLink}>
+                                                                <Link
+                                                                    to={"/checkout"}>{t('header.headerDropDown.checkout')}</Link>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                    <div className={styles.leftImage}>
-                                                        <img
-                                                            src="https://nooni-be87.kxcdn.com/nooni-fashion/wp-content/uploads/2023/05/banner-mega-3-1.jpg"
-                                                            alt="Image"></img>
-                                                    </div>
-                                                </div>
-                                                <div className={styles.wideImage}>
-                                                    <img
-                                                        src="https://nooni-be87.kxcdn.com/nooni-fashion/wp-content/uploads/2023/05/banner-mega-4-1.jpg"
-                                                        alt="Image"></img>
-                                                </div>
-                                            </div>
+                                                </>
+                                                :
+                                                <>
+                                                    <Link to={nav?.route}>{nav?.name}</Link>
+                                                    <CaretDown/>
+                                                </>
 
+                                            }
                                         </div>
-
-                                    </div>
-                                </div>
-                                <div className={styles.navEntity}>
-                                    <p>{t('header.miscellaneous')}</p>
-                                    <CaretDown/>
-                                    <div className={`${styles.navDropDown} ${styles.kidsDropDown}`}>
-                                        <div className={styles.kidsDropContent}>
-                                            <div className={styles.dropLink}>
-                                                <Link to={'/blog'}>{t('header.headerDropDown.blog')}</Link>
-                                            </div>
-                                            <div className={styles.dropLink}>
-                                                <Link to={'/about'}>{t('header.headerDropDown.about')}</Link>
-                                            </div>
-                                            <div className={styles.dropLink}>
-                                                <Link to={'/contact'}>{t('header.headerDropDown.contact')}</Link>
-                                            </div>
-                                            <div className={styles.dropLink}>
-                                                <Link to={"/wishlist"}>{t('header.headerDropDown.wishList')}</Link>
-                                            </div>
-                                            <div className={styles.dropLink}>
-                                                <Link to={"/basket"}>{t('header.headerDropDown.cart')}</Link>
-                                            </div>
-                                            <div className={styles.dropLink}>
-                                                <Link to={"/checkout"}>{t('header.headerDropDown.checkout')}</Link>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-
+                                    )
+                                })}
                             </div>
                         </div>
                         <Link to="/" className={styles.headerLogo}>
@@ -408,8 +239,6 @@ const Header = () => {
                             </div>
 
                         </div>
-
-
                     </div>
                 </div>
                 <div className={`${styles.basketOverlay} ${basketOpen ? styles.basketVisible : ""}`}>
@@ -489,7 +318,6 @@ const Header = () => {
 
                     </div>
                 </div>
-
                 <div className={`${styles.sideMenuOverlay} ${menuOpen ? styles.overlayVisible : ""}`}>
                     <div className={`${styles.sideMenuWrapper}`}>
                         {translatedSideMenu?.map((menuItem) => {
@@ -500,7 +328,7 @@ const Header = () => {
                                     {menuItem?.options?.length > 0 ?
                                         <CaretRight style={{
                                             transform: sideMenuElemState === menuItem?.id ? "rotate(90deg)" : ""
-                                        }} />
+                                        }}/>
                                         :
                                         null
                                     }
@@ -528,6 +356,228 @@ const Header = () => {
                         </div>
                     </div>
                 </div>
+
+                {/*DROPDOWN HERE*/}
+                {/*SHOP DROPDOWN*/}
+                <div className={`${styles.headerDropDown} ${dropDownState === "shop" ? styles.activeDropDown : null}`}
+                     onMouseLeave={handleMouseLeave}>
+                    <div className={styles.headerDropDownContent}>
+                        <div className={styles.dropDownContainer}>
+                            <div className={styles.dropDownRow}>
+                                <div className={styles.dropDownColumn}>
+                                    <h2>{t('header.headerDropDown.womenClothing')}</h2>
+                                    <Link to={"#"}>{t('header.women')}</Link>
+                                    <Link to={"#"}>{t('header.headerDropDown.coatsAndJackets')}</Link>
+                                    <Link to={"#"}>{t('header.headerDropDown.dresses')}</Link>
+                                    <Link to={"#"}>{t('header.headerDropDown.hoodiesAndSweatShirts')}</Link>
+                                    <Link to={"#"}>{t('header.headerDropDown.jeans')}</Link>
+                                    <Link to={"#"}>{t('header.headerDropDown.knitWear')}</Link>
+                                </div>
+                                <div className={styles.dropDownColumn}>
+                                    <h2>{t('header.headerDropDown.menClothing')}</h2>
+                                    <Link to={"#"}>{t('header.headerDropDown.hoodies')}</Link>
+                                    <Link to={"#"}>{t('header.headerDropDown.coatsAndJackets')}</Link>
+                                    <Link to={"#"}>{t('header.headerDropDown.pants')}</Link>
+                                    <Link to={"#"}>{t('header.headerDropDown.shirts')}</Link>
+                                    <Link to={"#"}>{t('header.headerDropDown.shorts')}</Link>
+                                    <Link to={"#"}>{t('header.headerDropDown.tShirts')}</Link>
+                                </div>
+                                <div className={styles.dropDownColumn}>
+                                    <h2>{t('header.headerDropDown.shopByCollection')}</h2>
+                                    <Link to={"#"}>{t('header.headerDropDown.fallCollection')}</Link>
+                                    <Link to={"#"}>{t('header.headerDropDown.pastelCollection')}</Link>
+                                    <Link to={"#"}>{t('header.headerDropDown.springCollection')}</Link>
+                                    <Link to={"#"}>{t('header.headerDropDown.summerCollection')}</Link>
+                                    <Link to={"#"}>{t('header.headerDropDown.vintageCollection')}</Link>
+                                    <Link to={"#"}>{t('header.headerDropDown.winterCollection')}</Link>
+                                </div>
+                                <div className={styles.dropDownColumn}>
+                                    <h2>{t('header.headerDropDown.shopByActivity')}</h2>
+                                    <Link to={"#"}>{t('header.headerDropDown.backToSchool')}</Link>
+                                    <Link to={"#"}>{t('header.headerDropDown.sportClothing')}</Link>
+                                    <Link to={"#"}>{t('header.headerDropDown.vacationAndWedding')}</Link>
+                                    <Link to={"#"}>{t('header.headerDropDown.workClothing')}</Link>
+                                    <Link to={"#"}>{t('header.headerDropDown.summerClothing')}</Link>
+                                    <Link to={"#"}>{t('header.headerDropDown.casualClothing')}</Link>
+                                </div>
+
+
+                            </div>
+                            <div className={styles.imagesRow}>
+                                <div className={styles.imageContainer}>
+                                    <img src="https://klbtheme.com/clotya/wp-content/uploads/2022/05/banner-22.jpg"
+                                         alt="Image"/>
+                                    <div className={styles.title}>
+                                        <span>{t('header.headerDropDown.newProduct')}</span>
+                                        <h1>{t('header.headerDropDown.theBestNewCollection')}</h1>
+                                    </div>
+                                </div>
+                                <div className={styles.imageContainer}>
+                                    <img src="https://klbtheme.com/clotya/wp-content/uploads/2022/05/banner-23.jpg"
+                                         alt="Image"/>
+                                    <div className={styles.title}>
+                                        <span>{t('header.headerDropDown.enjoyFreeShipping')}</span>
+                                        <h1>{t('header.headerDropDown.manPickFrom')} $15</h1>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {/*WOMEN DROPDOWN*/}
+                <div className={`${styles.headerDropDown} ${dropDownState === "women" ? styles.activeDropDown : null}`}
+                     onMouseLeave={handleMouseLeave}>
+                    <div className={styles.headerDropDownContent}>
+                        <div className={styles.dropDownContainer}>
+                            <div className={styles.dropDownRow}>
+                                <div className={styles.dropDownColumn}>
+                                    <h2>{t('header.headerDropDown.womenClothing')}</h2>
+                                    <Link to={"#"}>{t('header.women')}</Link>
+                                    <Link to={"#"}>{t('header.headerDropDown.coatsAndJackets')}</Link>
+                                    <Link to={"#"}>{t('header.headerDropDown.dresses')}</Link>
+                                    <Link to={"#"}>{t('header.headerDropDown.hoodiesAndSweatShirts')}</Link>
+                                    <Link to={"#"}>{t('header.headerDropDown.jeans')}</Link>
+                                    <Link to={"#"}>{t('header.headerDropDown.knitWear')}</Link>
+                                </div>
+                                <div className={styles.dropDownColumn}>
+                                    <h2>{t('header.headerDropDown.menClothing')}</h2>
+                                    <Link to={"#"}>{t('header.headerDropDown.hoodies')}</Link>
+                                    <Link to={"#"}>{t('header.headerDropDown.coatsAndJackets')}</Link>
+                                    <Link to={"#"}>{t('header.headerDropDown.pants')}</Link>
+                                    <Link to={"#"}>{t('header.headerDropDown.shirts')}</Link>
+                                    <Link to={"#"}>{t('header.headerDropDown.shorts')}</Link>
+                                    <Link to={"#"}>{t('header.headerDropDown.tShirts')}</Link>
+                                </div>
+                                <div className={styles.dropDownColumn}>
+                                    <h2>{t('header.headerDropDown.shopByCollection')}</h2>
+                                    <Link to={"#"}>{t('header.headerDropDown.fallCollection')}</Link>
+                                    <Link to={"#"}>{t('header.headerDropDown.pastelCollection')}</Link>
+                                    <Link to={"#"}>{t('header.headerDropDown.springCollection')}</Link>
+                                    <Link to={"#"}>{t('header.headerDropDown.summerCollection')}</Link>
+                                    <Link to={"#"}>{t('header.headerDropDown.vintageCollection')}</Link>
+                                    <Link to={"#"}>{t('header.headerDropDown.winterCollection')}</Link>
+                                </div>
+                                <div className={styles.dropDownColumn}>
+                                    <h2>{t('header.headerDropDown.shopByActivity')}</h2>
+                                    <Link to={"#"}>{t('header.headerDropDown.backToSchool')}</Link>
+                                    <Link to={"#"}>{t('header.headerDropDown.sportClothing')}</Link>
+                                    <Link to={"#"}>{t('header.headerDropDown.vacationAndWedding')}</Link>
+                                    <Link to={"#"}>{t('header.headerDropDown.workClothing')}</Link>
+                                    <Link to={"#"}>{t('header.headerDropDown.summerClothing')}</Link>
+                                    <Link to={"#"}>{t('header.headerDropDown.casualClothing')}</Link>
+                                </div>
+                            </div>
+                            <div className={styles.dropDownRow}>
+                                <div className={styles.dropDownColumn}>
+                                    <h2>{t('header.headerDropDown.shopByBodyFit')}</h2>
+                                    <Link to={"#"}>{t('header.headerDropDown.curveAndPlusSize')}</Link>
+                                    <Link to={"#"}>{t('header.headerDropDown.maternity')}</Link>
+                                    <Link to={"#"}>{t('header.headerDropDown.dresses')}</Link>
+                                    <Link to={"#"}>{t('header.headerDropDown.petite')}</Link>
+                                    <Link to={"#"}>{t('header.headerDropDown.jeans')}</Link>
+                                    <Link to={"#"}>{t('header.headerDropDown.tall')}</Link>
+                                </div>
+                                <div className={styles.dropDownColumn}>
+                                    <h2>{t('header.headerDropDown.topTrending')}</h2>
+                                    <Link to={"#"}>{t('header.headerDropDown.fallCollection')}</Link>
+                                    <Link to={"#"}>{t('header.headerDropDown.coatsAndJackets')}</Link>
+                                    <Link to={"#"}>{t('header.headerDropDown.winterCollection')}</Link>
+                                    <Link to={"#"}>{t('header.headerDropDown.springCollection')}</Link>
+                                    <Link to={"#"}>{t('header.headerDropDown.summerCollection')}</Link>
+                                    <Link to={"#"}>{t('header.headerDropDown.casualClothing')}</Link>
+                                </div>
+                                <div className={styles.dropDownColumn}>
+                                    <h2>{t('header.headerDropDown.fashionStyle')}</h2>
+                                    <Link to={"#"}>{t('header.headerDropDown.18thCentury')}</Link>
+                                    <Link to={"#"}>{t('header.headerDropDown.19thCentury')}</Link>
+                                    <Link to={"#"}>{t('header.headerDropDown.20thCentury')}</Link>
+                                    <Link to={"#"}>{t('header.headerDropDown.21thCentury')}</Link>
+                                </div>
+                                <div className={styles.dropDownColumn}>
+                                    <h2>{t('header.headerDropDown.newIn')}</h2>
+                                    <Link to={"#"}>{t('header.headerDropDown.coatsAndJackets')}</Link>
+                                    <Link to={"#"}>{t('header.headerDropDown.dresses')}</Link>
+                                    <Link to={"#"}>{t('header.headerDropDown.jeans')}</Link>
+                                    <Link to={"#"}>{t('header.headerDropDown.workClothing')}</Link>
+                                    <Link to={"#"}>{t('header.headerDropDown.hoodiesAndSweatShirts')}</Link>
+                                    <Link to={"#"}>{t('header.headerDropDown.casualClothing')}</Link>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                {/*MEN DROPDOWN*/}
+                <div className={`${styles.headerDropDown} ${dropDownState === "men" ? styles.activeDropDown : null}`}
+                     onMouseLeave={handleMouseLeave}>
+                    <div className={styles.headerDropDownContent}>
+                        <div className={styles.dropDownContainer}>
+                            <div className={styles.imagesRow}>
+                                <div className={styles.imageContainer}>
+                                    <img src="https://klbtheme.com/clotya/wp-content/uploads/2022/04/banner-02.jpg"
+                                         alt="Image"/>
+                                    <div className={styles.title}>
+                                        <span>{t('header.headerDropDown.fashionableClothes')}</span>
+                                        <h1>{t('header.headerDropDown.theWorldBestDesigners')}</h1>
+                                    </div>
+                                </div>
+                                <div className={styles.imageContainer}>
+                                    <img src="https://klbtheme.com/clotya/wp-content/uploads/2022/04/banner-04.jpg"
+                                         alt="Image"/>
+                                    <div className={styles.title}>
+                                        <span>{t('header.headerDropDown.enjoySuperDiscounts')}</span>
+                                        <h1>{t('header.headerDropDown.salesUpTo')} 50%</h1>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className={styles.dropDownRow}>
+                                <div className={styles.dropDownColumn}>
+                                    <h2>{t('header.headerDropDown.womenClothing')}</h2>
+                                    <Link to={"#"}>{t('header.women')}</Link>
+                                    <Link to={"#"}>{t('header.headerDropDown.coatsAndJackets')}</Link>
+                                    <Link to={"#"}>{t('header.headerDropDown.dresses')}</Link>
+                                    <Link to={"#"}>{t('header.headerDropDown.hoodiesAndSweatShirts')}</Link>
+                                    <Link to={"#"}>{t('header.headerDropDown.jeans')}</Link>
+                                    <Link to={"#"}>{t('header.headerDropDown.knitWear')}</Link>
+                                </div>
+                                <div className={styles.dropDownColumn}>
+                                    <h2>{t('header.headerDropDown.menClothing')}</h2>
+                                    <Link to={"#"}>{t('header.headerDropDown.hoodies')}</Link>
+                                    <Link to={"#"}>{t('header.headerDropDown.coatsAndJackets')}</Link>
+                                    <Link to={"#"}>{t('header.headerDropDown.pants')}</Link>
+                                    <Link to={"#"}>{t('header.headerDropDown.shirts')}</Link>
+                                    <Link to={"#"}>{t('header.headerDropDown.shorts')}</Link>
+                                    <Link to={"#"}>{t('header.headerDropDown.tShirts')}</Link>
+                                </div>
+                                <div className={styles.dropDownColumn}>
+                                    <h2>{t('header.headerDropDown.shopByCollection')}</h2>
+                                    <Link to={"#"}>{t('header.headerDropDown.fallCollection')}</Link>
+                                    <Link to={"#"}>{t('header.headerDropDown.pastelCollection')}</Link>
+                                    <Link to={"#"}>{t('header.headerDropDown.springCollection')}</Link>
+                                    <Link to={"#"}>{t('header.headerDropDown.summerCollection')}</Link>
+                                    <Link to={"#"}>{t('header.headerDropDown.vintageCollection')}</Link>
+                                    <Link to={"#"}>{t('header.headerDropDown.winterCollection')}</Link>
+                                </div>
+                                <div className={styles.dropDownColumn}>
+                                    <h2>{t('header.headerDropDown.shopByActivity')}</h2>
+                                    <Link to={"#"}>{t('header.headerDropDown.backToSchool')}</Link>
+                                    <Link to={"#"}>{t('header.headerDropDown.sportClothing')}</Link>
+                                    <Link to={"#"}>{t('header.headerDropDown.vacationAndWedding')}</Link>
+                                    <Link to={"#"}>{t('header.headerDropDown.workClothing')}</Link>
+                                    <Link to={"#"}>{t('header.headerDropDown.summerClothing')}</Link>
+                                    <Link to={"#"}>{t('header.headerDropDown.casualClothing')}</Link>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
             </header>
         </>
     )

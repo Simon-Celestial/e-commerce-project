@@ -166,7 +166,7 @@
                         left: -105px;
                         top: 50%;
                         transform: translateY(-50%);
-                        background-color: red;
+                        background-color: $black-weak;
                         color: white;
                         font-size: 13px;
                         white-space: nowrap;
@@ -197,7 +197,7 @@
 
 
                     &:hover {
-                        background-color: red;
+                        background-color: $black-weak;
                         color: white;
                         &::after {
                             opacity: 1;

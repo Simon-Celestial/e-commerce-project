@@ -14,6 +14,11 @@
     background: white;
     animation: headerTransform 0.3s ease-in-out;
     box-shadow: 0 0 10px gray;
+    .headerDropDown {
+      &.activeDropDown {
+        top: 90px;
+      }
+    }
 
     .headerContent {
       .headerTop {
@@ -28,7 +33,7 @@
             .navEntity {
               .navDropDown {
                 .dropDownContent {
-                  margin-top: 37px;
+                  margin-top: 45px;
                 }
               }
             }
@@ -145,182 +150,16 @@
             // DROPDOWN HERE
             .navDropDown {
               position: absolute;
-              top: 18px;
+              top: 20px;
               width: 100vw;
               pointer-events: none;
               transform: scaleY(0);
               transform-origin: top;
               transition: transform $transition;
-
-              .dropDownContent {
-                display: flex;
-                flex-direction: column;
-                gap: 150px;
-                width: 100%;
-                margin-top: 43px;
-                height: auto;
-                background-color: rgb(255, 255, 255);
-                padding: 50px;
-                box-shadow: 0 0 10px rgba(128, 128, 128, 0.5);
-
-                &.shopDropContent {
-                  gap: 50px;
-                }
-
-                .navbarDropdown {
-                  width: 100%;
-                  display: flex;
-                  gap: 50px;
-                  justify-content: space-between;
-
-                  .dropDownContentmen {
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: space-between;
-                    gap: 45px;
-                    width: 100%;
-
-                    .flex1 {
-                      display: flex;
-                      gap: 150px;
-
-                      ul {
-                        max-width: 200px;
-                      }
-                    }
-
-                    .leftImage {
-                      width: 100%;
-                      height: 260px;
-
-                      img {
-                        height: 100%;
-                        object-fit: cover;
-                        object-position: center;
-                        width: 100%;
-                      }
-                    }
-                  }
-
-                  .wideImage {
-                    width: 100%;
-                    max-width: 815px;
-                    height: 600px;
-
-                    img {
-                      object-position: center;
-                      object-fit: cover;
-                      width: 100%;
-                      height: 100%;
-                    }
-                  }
-                }
-
-                .dropDownimages {
-                  display: flex;
-                  gap: 20px;
-
-                  .dropDownimages1 {
-                    overflow: hidden;
-                    max-width: 845px;
-                    width: 100%;
-                    height: 250px;
-                    position: relative;
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    padding-left: 50px;
-
-                    span {
-                      z-index: 2;
-                      color: white;
-                      pointer-events: none;
-                    }
-
-                    h1 {
-                      z-index: 2;
-                      color: white;
-                      margin-top: 12px;
-                      font-weight: 400;
-                      pointer-events: none;
-                    }
-
-                    img {
-                      position: absolute;
-                      left: 0;
-                      top: 0;
-                      width: 100%;
-                      height: 100%;
-                      transform: scale(1);
-                      transition: transform $transition;
-                      object-fit: cover;
-                      object-position: center;
-
-                      &:hover {
-                        transform: scale(1.1);
-                      }
-                    }
-                  }
-                }
-
-                .flex1 {
-                  display: flex;
-                  gap: 150px;
-                }
-
-                .dropDownFlex {
-                  display: flex;
-                  flex-direction: column;
-                  gap: 40px;
-
-                  .flex1 {
-                    display: flex;
-                    gap: 150px;
-                  }
-                }
-
-                ul {
-                  list-style: none;
-                  display: flex;
-                  flex-direction: column;
-                  gap: 18px;
-                  max-width: 300px;
-                  width: 100%;
-
-                  .whomen {
-                    font-size: 20px;
-                    font-weight: 900;
-                    color: rgba(0, 0, 0, 0.668);
-                  }
-
-                  li {
-                    font-size: 16px;
-                    color: black;
-
-                    &:hover {
-                      color: gray
-                    }
-                  }
-                }
-              }
-
-              &.shopDropDown {
-                left: -110px;
-              }
-
-              &.womenDropDown {
-                left: -196px;
-              }
-
-              &.manDropDown {
-                left: -299.5px;
-              }
-
-              &.kidsDropDown {
-                left: -120px;
+              &.miscellaneousDropDown {
+                left: 0;
                 width: 300px;
-
-                .kidsDropContent {
+                .miscellaneousContent {
                   display: flex;
                   flex-direction: column;
                   width: 100%;
@@ -328,15 +167,12 @@
                   margin-top: 40px;
                   padding: 40px;
                   box-shadow: 0 0 10px rgba(128, 128, 128, 0.5);
-
                   .dropLink {
                     padding: 10px 0;
-
                     a {
                       position: relative;
                       transition: all $transition;
                     }
-
                     &:hover {
                       a {
                         color: gray;
@@ -348,11 +184,9 @@
                 }
               }
             }
-
             svg {
               font-size: 12px;
             }
-
           }
         }
       }
@@ -922,6 +756,104 @@
       font-size: 20px;
     }
   }
+
+  //HEADER DROPDOWN
+  .headerDropDown {
+    width: 100%;
+    display: flex;
+    position: absolute;
+    left: 0;
+    top: 0;
+    justify-content: center;
+    padding: 0 0 50px 0;
+    opacity: 0;
+    transition: opacity $transition,top $transition;
+    pointer-events: none;
+    //opacity: 1;
+
+    &.activeDropDown {
+      top: 147px;
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .headerDropDownContent {
+      width: 100%;
+      border-top: 1px solid rgba(128, 128, 128, 0.3);
+      border-bottom: 1px solid rgba(128, 128, 128, 0.3);
+      background: white;
+      display: flex;
+      justify-content: center;
+      .dropDownContainer {
+        max-width: 1600px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        padding: 0 25px 50px 25px;
+        .dropDownRow {
+          display: flex;
+          width: 100%;
+          justify-content: space-between;
+          gap: 25px;
+          padding: 50px 0 0 0 ;
+          .dropDownColumn {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 250px;
+            h2 {
+              padding-bottom: 10px;
+              color: #525252;
+            }
+            a {
+              transition: color $transition;
+              color: $black-weak;
+              &:hover {
+                color: gray;
+              }
+            }
+
+          }
+
+        }
+        .imagesRow {
+          display: flex;
+          width: 100%;
+          gap: 25px;
+          padding: 50px 0 0 0;
+          .imageContainer {
+            width: 50%;
+            max-height: 300px;
+            position: relative;
+            overflow: hidden;
+            &:hover {
+              img {
+                transform: scale(1.05);
+              }
+            }
+            .title {
+              display: flex;
+              flex-direction: column;
+              position: absolute;
+              left: 50px;
+              top: 50%;
+              transform: translateY(-50%);
+              color: white;
+            }
+
+            img {
+              transition: transform $transition;
+              filter: brightness(60%);
+              width: 100%;
+              height: 100%;
+              object-position: top;
+              object-fit: cover;
+            }
+
+          }
+        }
+      }
+    }
+  }
 }
 
 // MEDIA STYLES
@@ -969,57 +901,42 @@
           .navigation {
             .navEntity {
               .navDropDown {
-                top: 17px;
-
-                &.shopDropDown {
-                  left: -75px;
-
-                  .dropDownContent {
-                    padding: 50px 15px;
-                    margin-top: 35px;
-
-                    ul {
-                      max-width: 200px;
-                    }
-
-                    .flex1 {
-                      gap: 15px;
-                      justify-content: space-between;
-                    }
-                  }
+                top: 13px;
+              }
+            }
+          }
+        }
+      }
+    }
+    .headerDropDown {
+      &.activeDropDown {
+        top: 132px;
+      }
+      .headerDropDownContent {
+        .dropDownContainer {
+          .imagesRow {
+            .imageContainer {
+              .title{
+                left: 25px;
+                h1 {
+                  font-size: 25px;
                 }
-
-                &.womenDropDown {
-                  left: -161px;
-
-                  .dropDownContent {
-                    margin-top: 37px;
-                    padding: 50px 15px;
-
-                    ul {
-                      .whomen {
-                        font-size: 16px;
-                      }
-                    }
-
-                    .dropDownFlex {
-                      .flex1 {
-                        gap: 15px;
-                      }
-                    }
-                  }
+                span {
+                  font-size: 14px;
                 }
-
-                &.manDropDown {
-                  left: -266.5px;
-
-                  .dropDownContent {
-                    padding: 50px 25px;
-                    gap: 15px;
-                    margin-top: 37px;
-
-                  }
-                }
+              }
+            }
+          }
+          .dropDownRow {
+            padding: 25px 0 0 0;
+            .dropDownColumn {
+              width: 225px;
+              gap: 7px;
+              h2 {
+                font-size: 18px;
+              }
+              a {
+                font-size: 15px;
               }
             }
           }
@@ -1031,6 +948,11 @@
 
 @media screen and (max-width: 1024px) {
   .headerWrapper {
+    .headerDropDown {
+      &.activeDropDown {
+        top: 130px;
+      }
+    }
     .headerContent {
       .headerBottom {
         justify-content: start;
@@ -1045,45 +967,9 @@
           order: 2;
 
           .navigation {
+            gap: 20px;
             .navEntity {
               .navDropDown {
-                &.shopDropDown {
-                  left: -210px;
-
-                  .dropDownContent {
-                    .dropDownimages {
-                      display: none;
-                    }
-
-                    ul {
-                      gap: 10px;
-
-                      .whomen {
-                        font-size: 15px;
-                      }
-
-                      li {
-                        font-size: 14px;
-                      }
-                    }
-                  }
-                }
-
-                &.womenDropDown {
-                  left: -297px;
-                }
-
-                &.manDropDown {
-                  left: -400.5px;
-
-                  .dropDownContent {
-                    .navbarDropdown {
-                      .wideImage {
-                        display: none;
-                      }
-                    }
-                  }
-                }
 
               }
             }
@@ -1091,6 +977,7 @@
         }
 
         .headerLogo {
+          min-width: 120px;
           max-width: 120px;
           height: unset;
           order: 1;
@@ -1137,6 +1024,9 @@
         }
       }
     }
+    .headerDropDown{
+      display: none;
+    }
   }
 }
 
@@ -1144,6 +1034,11 @@
   .headerWrapper {
     .sideMenuOverlay {
       .sideMenuWrapper {
+        .closeBtn {
+          svg {
+            font-size: 25px;
+          }
+        }
         .navEntity {
           flex-direction: column;
           position: relative;

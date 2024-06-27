@@ -96,7 +96,9 @@ const ProductCard = ({product, tallSlide, listView, specialStyles}) => {
                         }
                         <div className={styles.heart}>
                             {isProductInWishlist ?
-                                <Heart weight="fill"/>
+                                <Heart weight="fill" style={{
+                                    color: "red"
+                                }}/>
                                 :
                                 <Heart/>
                             }
