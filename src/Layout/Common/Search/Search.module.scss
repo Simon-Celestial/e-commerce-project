@@ -39,6 +39,7 @@
       display: flex;
       width: 100%;
       flex-direction: column;
+      height: 100%;
 
       .heading {
         width: 100%;
@@ -107,8 +108,9 @@
       .resultsContainer {
         width: 100%;
         flex-direction: column;
-        overflow-y: scroll;
-        max-height: 640px;
+        overflow-y: auto;
+        display: flex;
+        height: 100%;
 
         &::-webkit-scrollbar {
           background-color: rgba(128, 128, 128, 0.3);
@@ -188,4 +190,18 @@
     }
   }
 
+}
+
+@media screen and (max-width: 800px) {
+  .searchOverlay {
+      .searchWrapper {
+        max-width: unset;
+        padding: 25px 15px;
+        .searchContent {
+          .searchInputContainer {
+            margin: 15px 0;
+          }
+        }
+      }
+  }
 }

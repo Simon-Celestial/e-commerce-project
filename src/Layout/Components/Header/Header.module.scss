@@ -14,6 +14,7 @@
     background: white;
     animation: headerTransform 0.3s ease-in-out;
     box-shadow: 0 0 10px gray;
+
     .headerDropDown {
       &.activeDropDown {
         top: 90px;
@@ -94,7 +95,7 @@
           align-items: center;
           justify-content: center;
           cursor: pointer;
-          padding-right: 35px;
+          padding-right: 25px;
 
           svg {
             font-size: 25px;
@@ -113,37 +114,34 @@
             cursor: pointer;
             transition: color $transition;
             position: relative;
-
             p {
               position: relative;
-
-              &::after {
-                content: "";
-                width: 100%;
-                height: 0.5px;
-                bottom: -2px;
-                left: 0;
-                background: gray;
-                position: absolute;
-                transform: scaleX(0);
-                transition: transform $transition;
-              }
+              color: black;
+              transition: transform $transition;
             }
-
-
+            a {
+              transition: transform $transition;
+            }
+            svg {
+              font-size: 14px;
+              transition: margin-left $transition;
+            }
             &:hover {
+              a {
+                transform: scale(1.1);
+                color: gray;
+              }
+              svg {
+                margin-left: 5px;
+
+              }
+              p {
+                color: gray;
+                transform: scale(1.1);
+              }
               .navDropDown {
                 transform: scaleY(1);
                 pointer-events: all;
-              }
-
-              p {
-                color: gray;
-
-                &::after {
-                  transform: scaleX(1);
-
-                }
               }
             }
 
@@ -156,9 +154,11 @@
               transform: scaleY(0);
               transform-origin: top;
               transition: transform $transition;
+
               &.miscellaneousDropDown {
                 left: 0;
                 width: 300px;
+
                 .miscellaneousContent {
                   display: flex;
                   flex-direction: column;
@@ -167,12 +167,16 @@
                   margin-top: 40px;
                   padding: 40px;
                   box-shadow: 0 0 10px rgba(128, 128, 128, 0.5);
+
                   .dropLink {
                     padding: 10px 0;
+
                     a {
                       position: relative;
                       transition: all $transition;
+                      color: black;
                     }
+
                     &:hover {
                       a {
                         color: gray;
@@ -184,9 +188,6 @@
                 }
               }
             }
-            svg {
-              font-size: 12px;
-            }
           }
         }
       }
@@ -197,6 +198,7 @@
         justify-content: center;
         max-width: 166px;
         width: 100%;
+
         &:hover {
           img {
             transform: scale(1.05);
@@ -209,7 +211,7 @@
           height: 100%;
           object-fit: cover;
           object-position: center;
-          transition: transform $transition,box-shadow $transition;
+          transition: transform $transition, box-shadow $transition;
 
         }
       }
@@ -369,7 +371,7 @@
       background-color: white;
       display: flex;
       flex-direction: column;
-      padding: 30px;
+      padding: 30px 20px 30px 30px;
 
       .basketHeading {
         display: flex;
@@ -388,6 +390,7 @@
           justify-content: center;
           margin-left: auto;
           transition: transform $transition;
+
           &:hover {
             transform: rotate(360deg) scale(1.1);
           }
@@ -408,8 +411,8 @@
         display: flex;
         flex-direction: column;
         width: 100%;
-        max-height: 350px;
-        overflow-y: scroll;
+        height: 100%;
+        overflow-y: auto;
 
         &::-webkit-scrollbar {
           background-color: rgba(128, 128, 128, 0.200);
@@ -520,7 +523,7 @@
           justify-content: space-between;
           gap: 25px;
           align-items: center;
-          margin-bottom: 8px;
+          margin: 15px 0 10px 0;
 
           p {
             font-size: 20px;
@@ -545,6 +548,7 @@
           font-weight: 600;
           transition: background-color $transition, color $transition, border-color $transition;
           cursor: pointer;
+          border-radius: 10px;
 
           &:nth-child(2) {
             background-color: transparent;
@@ -645,6 +649,7 @@
         justify-content: space-between;
         position: relative;
         cursor: pointer;
+
         svg {
           font-size: 20px;
         }
@@ -729,6 +734,7 @@
         padding: 5px;
         cursor: pointer;
         transition: transform $transition;
+
         &:hover {
           transform: rotate(360deg) scale(1.1);
 
@@ -767,7 +773,7 @@
     justify-content: center;
     padding: 0 0 50px 0;
     opacity: 0;
-    transition: opacity $transition,top $transition;
+    transition: opacity $transition, top $transition;
     pointer-events: none;
     //opacity: 1;
 
@@ -776,6 +782,7 @@
       opacity: 1;
       pointer-events: auto;
     }
+
     .headerDropDownContent {
       width: 100%;
       border-top: 1px solid rgba(128, 128, 128, 0.3);
@@ -783,30 +790,36 @@
       background: white;
       display: flex;
       justify-content: center;
+
       .dropDownContainer {
         max-width: 1600px;
         width: 100%;
         display: flex;
         flex-direction: column;
         padding: 0 25px 50px 25px;
+
         .dropDownRow {
           display: flex;
           width: 100%;
           justify-content: space-between;
           gap: 25px;
-          padding: 50px 0 0 0 ;
+          padding: 50px 0 0 0;
+
           .dropDownColumn {
             display: flex;
             flex-direction: column;
             gap: 15px;
             width: 250px;
+
             h2 {
               padding-bottom: 10px;
               color: #525252;
             }
+
             a {
               transition: color $transition;
               color: $black-weak;
+
               &:hover {
                 color: gray;
               }
@@ -815,21 +828,25 @@
           }
 
         }
+
         .imagesRow {
           display: flex;
           width: 100%;
           gap: 25px;
           padding: 50px 0 0 0;
+
           .imageContainer {
             width: 50%;
             max-height: 300px;
             position: relative;
             overflow: hidden;
+
             &:hover {
               img {
                 transform: scale(1.05);
               }
             }
+
             .title {
               display: flex;
               flex-direction: column;
@@ -891,7 +908,7 @@
       }
 
       .headerBottom {
-        padding: 15px;
+        padding: 15px !important;
 
         .headerButtons {
           max-width: 300px;
@@ -908,33 +925,41 @@
         }
       }
     }
+
     .headerDropDown {
       &.activeDropDown {
         top: 132px;
       }
+
       .headerDropDownContent {
         .dropDownContainer {
           .imagesRow {
             .imageContainer {
-              .title{
+              .title {
                 left: 25px;
+
                 h1 {
                   font-size: 25px;
                 }
+
                 span {
                   font-size: 14px;
                 }
               }
             }
           }
+
           .dropDownRow {
             padding: 25px 0 0 0;
+
             .dropDownColumn {
               width: 225px;
               gap: 7px;
+
               h2 {
                 font-size: 18px;
               }
+
               a {
                 font-size: 15px;
               }
@@ -953,6 +978,7 @@
         top: 130px;
       }
     }
+
     .headerContent {
       .headerBottom {
         justify-content: start;
@@ -967,10 +993,13 @@
           order: 2;
 
           .navigation {
-            gap: 20px;
+            gap: 18px;
+
             .navEntity {
               .navDropDown {
-
+                &.miscellaneousDropDown {
+                  width: 250px;
+                }
               }
             }
           }
@@ -1024,7 +1053,8 @@
         }
       }
     }
-    .headerDropDown{
+
+    .headerDropDown {
       display: none;
     }
   }
@@ -1039,13 +1069,16 @@
             font-size: 25px;
           }
         }
+
         .navEntity {
           flex-direction: column;
           position: relative;
-          >a {
+
+          > a {
             padding-bottom: 5px;
             max-width: 80%;
           }
+
           svg {
             position: absolute;
             right: 0;
@@ -1055,6 +1088,7 @@
             border-radius: 50%;
             font-size: 40px;
           }
+
           .elementDropdown {
             position: static;
             left: unset;
@@ -1064,12 +1098,14 @@
             padding-left: 0;
             width: 100%;
             display: none;
+
             &.elementVisible {
               display: flex;
             }
 
             .dropDownTitle {
               padding: 15px 0 0 0;
+
               a {
                 width: 100%;
                 padding-bottom: 10px;
@@ -1088,8 +1124,10 @@
     .basketOverlay {
       .basketWrapper {
         max-width: 100%;
+        padding: 15px 20px 15px 15px;
       }
     }
+
     .sideMenuOverlay {
       .sideMenuWrapper {
         padding: 50px 25px 0 25px;
@@ -1103,10 +1141,22 @@
   .headerWrapper {
     .headerContent {
       .headerBottom {
+        justify-content: space-between;
+
         .headerNavigation {
           .sideMenu {
             padding-right: 0;
           }
+        }
+
+        .headerButtons {
+          max-width: 150px;
+          margin-left: 0;
+        }
+
+        .headerLogo {
+          max-width: 100px;
+          min-width: unset;
         }
       }
     }

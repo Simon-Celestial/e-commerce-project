@@ -1,22 +1,68 @@
-[
-  {
-    "id": "shop",
-    "name": "Shop",
-    "route": "/shop"
-  },
-  {
-    "id": "women",
-    "name": "Women",
-    "route": "/"
-  },
-  {
-    "id": "men",
-    "name": "Men",
-    "route": "/"
-  },
-  {
-    "id": "miscellaneous",
-    "name": "Miscellaneous",
-    "route": null
-  }
-]
+{
+  "en": [
+    {
+      "id": "shop",
+      "name": "Shop",
+      "route": "/shop"
+    },
+    {
+      "id": "women",
+      "name": "Women",
+      "route": "/"
+    },
+    {
+      "id": "men",
+      "name": "Men",
+      "route": "/"
+    },
+    {
+      "id": "miscellaneous",
+      "name": "Miscellaneous",
+      "route": null
+    }
+  ],
+  "ru": [
+    {
+      "id": "shop",
+      "name": "Магазин",
+      "route": "/shop"
+    },
+    {
+      "id": "women",
+      "name": "Женщины",
+      "route": "/"
+    },
+    {
+      "id": "men",
+      "name": "Мужчины",
+      "route": "/"
+    },
+    {
+      "id": "miscellaneous",
+      "name": "Разное",
+      "route": null
+    }
+  ],
+  "az": [
+    {
+      "id": "shop",
+      "name": "Mağaza",
+      "route": "/shop"
+    },
+    {
+      "id": "women",
+      "name": "Qadınlar",
+      "route": "/"
+    },
+    {
+      "id": "men",
+      "name": "Kişilər",
+      "route": "/"
+    },
+    {
+      "id": "miscellaneous",
+      "name": "Müxtəlif",
+      "route": null
+    }
+  ]
+}

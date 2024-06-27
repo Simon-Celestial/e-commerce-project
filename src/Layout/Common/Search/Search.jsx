@@ -1,9 +1,10 @@
 import styles from "./Search.module.scss";
 import {MagnifyingGlass, ShootingStar, X} from '@phosphor-icons/react';
 import {Link} from "react-router-dom";
-import {useCallback, useContext, useMemo, useState,useEffect} from "react";
+import {useCallback, useContext, useMemo, useState, useEffect} from "react";
 import {DataContext} from "../../../Context/DataContext.jsx";
-import { useTranslation } from "react-i18next";
+import {useTranslation} from "react-i18next";
+
 const getColorForRating = (rating) => {
     if (rating === 0) {
         return "#808080";
@@ -84,33 +85,38 @@ const Search = ({searchOpen, setSearchOpen}) => {
                         </div>
                     </div>
                     <div className={styles.resultsContainer}>
-                        {filteredProducts?.map((product) => {
-                            return (
-                                <div key={product.id} className={styles.resultCard}>
-                                    <Link className={styles.image} to={`/details/${product.id}`}>
-                                        <img
-                                            src={product.frontImage}
-                                            alt="Result Image"/>
-                                    </Link>
-                                    <div className={styles.cardTitle}>
-                                        <Link to={`/details/${product.id}`}>
-                                            {product.title}
+                        {filteredProducts.length === 0 && searchState !== "" ?
+                            <p>No products found...</p>
+                            :
+                            filteredProducts?.map((product) => {
+                                return (
+                                    <div key={product.id} className={styles.resultCard}>
+                                        <Link className={styles.image} to={`/details/${product.id}`}>
+                                            <img
+                                                src={product.frontImage}
+                                                alt="Result Image"/>
                                         </Link>
-                                        <div className={styles.price}>
-                                            {product.regularPrice ? <p>{currencyState === "azn"? "AZN" : "$"} {currencyConverter(product.regularPrice)?.toFixed(2)}</p> : null}
-                                            {currencyState === "azn"? "AZN" : "$"} {currencyConverter(product.salePrice)?.toFixed(2)}
+                                        <div className={styles.cardTitle}>
+                                            <Link to={`/details/${product.id}`}>
+                                                {product.title}
+                                            </Link>
+                                            <div className={styles.price}>
+                                                {product.regularPrice ?
+                                                    <p>{currencyState === "azn" ? "AZN" : "$"} {currencyConverter(product.regularPrice)?.toFixed(2)}</p> : null}
+                                                {currencyState === "azn" ? "AZN" : "$"} {currencyConverter(product.salePrice)?.toFixed(2)}
+                                            </div>
+                                            <div className={styles.rating} style={{
+                                                color: getColorForRating(product.rating)
+                                            }}>
+                                                <ShootingStar weight="fill"/>
+                                                <p>({product.rating})</p>
+                                            </div>
                                         </div>
-                                        <div className={styles.rating} style={{
-                                            color: getColorForRating(product.rating)
-                                        }}>
-                                            <ShootingStar weight="fill"/>
-                                            <p>({product.rating})</p>
-                                        </div>
-                                    </div>
 
-                                </div>
-                            )
-                        })}
+                                    </div>
+                                )
+                            })
+                        }
                     </div>
                 </div>
             </div>

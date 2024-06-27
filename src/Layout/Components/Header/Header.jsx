@@ -71,6 +71,16 @@ const Header = () => {
 
     const {t, i18n} = useTranslation();
 
+    const translatedHeaderNav = useMemo(() => {
+        if (i18n.language === "en") {
+            return headerNavData.en
+        } else if (i18n.language === "ru") {
+            return headerNavData.ru
+        } else {
+            return headerNavData.az
+        }
+    }, [i18n.language]);
+
 
     useEffect(() => {
         const handleScroll = () => {
@@ -146,13 +156,13 @@ const Header = () => {
                                 <List/>
                             </div>
                             <div className={styles.navigation}>
-                                {headerNavData?.map((nav) => {
+                                {translatedHeaderNav?.map((nav) => {
                                     return (
                                         <div key={nav?.id} className={styles.navEntity}
                                              onMouseEnter={() => handleMouseEnter(nav?.id)}>
                                             {nav.id === "miscellaneous" ?
                                                 <>
-                                                    <p>{t('header.miscellaneous')}</p>
+                                                    <p>{nav?.name}</p>
                                                     <CaretDown/>
                                                     <div
                                                         className={`${styles.navDropDown} ${styles.miscellaneousDropDown}`}>

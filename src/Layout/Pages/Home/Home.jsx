@@ -56,7 +56,8 @@ const Home = () => {
         <>
             {
                 productsLoading ?
-                    <Loader/>
+                    // <Loader/>
+                    null
                     :
                     null
             }
