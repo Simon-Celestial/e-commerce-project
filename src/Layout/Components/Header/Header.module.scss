@@ -119,25 +119,18 @@
               color: black;
               transition: transform $transition;
             }
-            a {
-              transition: transform $transition;
-            }
             svg {
               font-size: 14px;
-              transition: margin-left $transition;
+              transition: transform $transition,color $transition;
             }
             &:hover {
-              a {
-                transform: scale(1.1);
-                color: gray;
-              }
-              svg {
-                margin-left: 5px;
-
-              }
               p {
                 color: gray;
+                transform: scale(1.03);
+              }
+              svg {
                 transform: scale(1.1);
+                color: gray;
               }
               .navDropDown {
                 transform: scaleY(1);

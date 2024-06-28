@@ -158,7 +158,7 @@ const Header = () => {
                             <div className={styles.navigation}>
                                 {translatedHeaderNav?.map((nav) => {
                                     return (
-                                        <div key={nav?.id} className={styles.navEntity}
+                                        <Link to={nav?.route} key={nav?.id} className={styles.navEntity}
                                              onMouseEnter={() => handleMouseEnter(nav?.id)}>
                                             {nav.id === "miscellaneous" ?
                                                 <>
@@ -196,12 +196,12 @@ const Header = () => {
                                                 </>
                                                 :
                                                 <>
-                                                    <Link to={nav?.route}>{nav?.name}</Link>
+                                                    <p>{nav?.name}</p>
                                                     <CaretDown/>
                                                 </>
 
                                             }
-                                        </div>
+                                        </Link>
                                     )
                                 })}
                             </div>
