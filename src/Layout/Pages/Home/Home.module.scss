@@ -232,8 +232,9 @@
                     line-height: 1em;
                 }
                 h3 {
-                    line-height: 30px;
+                    line-height: 35px;
                     font-size: 23px;
+                    margin-bottom: 0;
                 }
                 a {
                     color: white;
@@ -252,19 +253,18 @@
     }
 }
 
-@media screen and (max-width: 1600px) {
-    .homeWrapper {
-        .fashionSection {
-            height: 500px;
-        }
-    }
-}
 @media screen and (max-width: 1300px) {
     .homeWrapper {
         .homeSliderSection {
             .sliderCard {
                 height: 600px;
             }
+        }
+        .fashionSection {
+            height: 600px;
+        }
+        .saleSection {
+            background-position: 35% 100%;
         }
     }
 }
@@ -276,17 +276,31 @@
             }
         }
         .fashionSection {
+            height: 500px;
             .fashionContent {
                 p {
                     font-size: 15px;
                 }
                 h2 {
-                    font-size: 45px;
+                    font-size: 32px;
+                    margin-top: 10px;
+                }
+                a {
+                    font-size: 14px;
                 }
             }
         }
         .productsSection {
             padding: 25px 15px;
+            .productsHeading {
+                .productsContent {
+                    .productsHeadingTop {
+                        .bestSeller {
+                            font-size: 15px;
+                        }
+                    }
+                }
+            }
         }
         .saleSection {
             .saleContent {
@@ -296,9 +310,6 @@
                     }
                     span {
                         font-size: 55px;
-                    }
-                    h3 {
-                        line-height: 25px;
                     }
                 }
             }
@@ -322,8 +333,21 @@
             }
         }
         .fashionSection {
-            height: 300px;
+            height: 350px;
         }
+        .productsSection {
+            .productsHeading {
+                .productsContent {
+                    .productsHeadingTop {
+                        .bestSeller {
+                            font-size: 14px;
+                            padding: 10px;
+                        }
+                    }
+                }
+            }
+        }
+
     }
 }
 @media screen and (max-width: 800px) {
@@ -350,9 +374,18 @@
                 height: 100%;
             }
         }
+        .productsSection {
+            .productsHeading {
+                &.timerBlock {
+                flex-direction: column;
+                    align-items: start;
+                }
+            }
+        }
+
     }
 }
-@media screen and (max-width: 726px) {
+@media screen and (max-width: 750px) {
     .homeWrapper {
         .homeSliderSection {
             .sliderCard {
@@ -365,25 +398,6 @@
                         }
                         .latest {
                             font-size: 20px;
-                        }
-                    }
-                }
-            }
-        }
-        .productsSection {
-            .productsHeading {
-                width: 100%;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                .productsContent {
-                    .productsHeadingTop {
-                        a {
-                            font-size: 18px;
-                        }
-                        .bestSeller {
-                            font-size: 18px;
                         }
                     }
                 }
@@ -422,39 +436,52 @@
                 }
             }
         }
-        .fashionSection {
-            height: 250px;
-        }
     }
 }
-
 @media screen and (max-width: 550px) {
     .homeWrapper {
         .productsSection {
             .productsHeading {
+                flex-direction: column;
+                align-items: start;
                 .productsContent {
+                    width: 100%;
+                    flex-direction: column;
+                    align-items: center;
+                    .contentItem {
+                        width: 100%;
+                        text-align: center;
+                        justify-content: center;
+                        border: 2px solid black;
+                        border-radius: 10px;
+                        height: 42px;
+                    }
                     .productsHeadingTop {
-                        flex-direction: column;
+                        width: 100%;
                         a {
                             font-size: 18px;
                         }
                         .bestSeller {
                             font-size: 16px;
                             text-align: center;
+                            width: 100%;
                             &::before {
                                 left: 0;
                             }
                         }
                     }
                 }
+                &.timerBlock {
+                    .productsContent {
+                        .productsHeadingTop {
+                            flex-direction: column;
+                        }
+                    }
+                }
             }
         }
         .fashionSection {
-            height: 220px;
             .fashionContent {
-                p {
-                    font-size: 15px;
-                }
                 h2 {
                     font-size: 25px;
                 }

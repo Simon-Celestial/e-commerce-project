@@ -134,8 +134,6 @@ const Header = () => {
 
     }, [i18n.language])
 
-    console.log(translatedSideMenu)
-
 
     return (
         <>

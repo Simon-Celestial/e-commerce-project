@@ -161,7 +161,7 @@ const Home = () => {
                 </section>
                 {/* PRODUCTS SECTION */}
                 <section className={styles.productsSection}>
-                    <div className={styles.productsHeading}>
+                    <div className={`${styles.productsHeading} ${styles.timerBlock}`}>
                         <div className={styles.productsContent}>
                             <div className={styles.productsHeadingTop}>
                                 <Link to={"/shop"} className={styles.bestSeller}>{t('main.homePage.dealOfTheWeek')}</Link>
