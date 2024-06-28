@@ -42,7 +42,7 @@ const Login = () => {
     const logIn = useCallback(async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.get("https://json-server-g1kt.onrender.com/users");
+            const response = await axios.get("https://json-server-eta-ten.vercel.app/users");
             const users = response.data;
             const userWithEmail = users.find(
                 (userData) =>

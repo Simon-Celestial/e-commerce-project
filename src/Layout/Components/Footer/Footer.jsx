@@ -55,7 +55,7 @@ const Footer = () => {
                         <p>{t('footer.topProducts')}</p>
                     </div>
                     <div className={styles.footerTime}>
-                        <p>{t('footer.tel')}: (234)23-45-666</p>
+                        <p>{t('footer.tel')}: (234) 23-45-666</p>
                         <p>{t('footer.days')}</p>
                         <p>{t('footer.daysTwo')}</p>
                     </div>

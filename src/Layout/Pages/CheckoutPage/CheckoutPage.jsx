@@ -126,7 +126,7 @@ export const CheckoutPage = () => {
         else {
             try {
                 setOrderLoading(true);
-                await axios.post("https://json-server-g1kt.onrender.com/products/", requestData);
+                await axios.post("https://json-server-eta-ten.vercel.app/products/", requestData);
                 setFormFields(defaults);
                 emptyCart();
                 update();

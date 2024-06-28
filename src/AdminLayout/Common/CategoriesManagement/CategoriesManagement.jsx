@@ -28,7 +28,7 @@ export const CategoriesManagement = () => {
     useEffect(() => {
         (async () => {
             try {
-                const response = await axios.get("https://json-server-g1kt.onrender.com/categories");
+                const response = await axios.get("https://json-server-eta-ten.vercel.app/categories");
                 setCategoryData(response.data);
             } catch (error) {
                 console.error('Axios error:', error);
@@ -44,7 +44,7 @@ export const CategoriesManagement = () => {
     const handleDeleteCategory = useCallback(async (id, name) => {
         try {
             setIsUpdating(true);
-            await axios.delete(`https://json-server-g1kt.onrender.com/categories/${id}`);
+            await axios.delete(`https://json-server-eta-ten.vercel.app/categories/${id}`);
             updateCategories();
             toast.success(`${name} uğurla silindi!`, {
                 hideProgressBar: false,
@@ -82,7 +82,7 @@ export const CategoriesManagement = () => {
 
         try {
             setIsUpdating(true);
-            await axios.post("https://json-server-g1kt.onrender.com/categories/", requestData);
+            await axios.post("https://json-server-eta-ten.vercel.app/categories/", requestData);
             toast.success(`${requestData.name} uğurla əlavə etdi`, {
                 hideProgressBar: false,
                 closeOnClick: true,

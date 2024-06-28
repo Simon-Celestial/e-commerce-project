@@ -10,14 +10,13 @@
         .productsContainerBox {
             flex-direction: row;
             .productImage {
-                max-width: 360px;
-                height: 457px;
+                height: 485px;
             }
             .productText {
                 width: 100%;
                 margin: 0;
                 justify-content: center;
-                padding-left: 50px;
+                padding: 25px;
                 a {
                     font-size: 20px;
                 }
@@ -289,5 +288,12 @@
         &.specialImage {
             height: unset!important;
         }
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .productText {
+        padding: 25px 15px!important;
+
     }
 }

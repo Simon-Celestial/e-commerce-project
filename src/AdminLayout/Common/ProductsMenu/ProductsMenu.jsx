@@ -230,7 +230,7 @@ const ProductsMenu = ({setMenuOpen, menuOpen, update, selectedItem, setSelectedI
             setIsUpdating(true);
             if (selectedItem) {
                 await axios.put(
-                    `https://json-server-g1kt.onrender.com/products/${inputState.id}`,
+                    `https://json-server-eta-ten.vercel.app/products/${inputState.id}`,
                     requestData
                 );
                 toast.success(`${requestData.title} uğurla redaktə edildi`, {
@@ -243,7 +243,7 @@ const ProductsMenu = ({setMenuOpen, menuOpen, update, selectedItem, setSelectedI
                     transition: Bounce,
                 });
             } else {
-                await axios.post("https://json-server-g1kt.onrender.com/products/", requestData);
+                await axios.post("https://json-server-eta-ten.vercel.app/products/", requestData);
                 toast.success(`${requestData.title} uğurla əlavə edildi`, {
                     hideProgressBar: false,
                     closeOnClick: true,

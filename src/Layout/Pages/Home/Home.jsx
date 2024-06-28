@@ -55,11 +55,8 @@ const Home = () => {
     return (
         <>
             {
-                productsLoading ?
-                    // <Loader/>
-                    null
-                    :
-                    null
+                productsLoading &&
+                <Loader/>
             }
 
             <Header/>
@@ -151,20 +148,21 @@ const Home = () => {
                 </section>
                 {/* FASHION SECTION */}
                 <section className={styles.fashionSection}>
-                        <img src="https://754969b0.rocketcdn.me/clotya/wp-content/uploads/2022/05/slider-14.jpg"
-                             alt="background"/>
-                        <div className={styles.fashionContent}>
-                            <p>{t('main.homePage.coatjackets')}</p>
-                            <h2>{t('main.homePage.thenewfashion')} <br></br> {t('main.homePage.collection')}</h2>
-                            <Link to={'/shop'}>{t('main.homePage.shopnow')}</Link>
-                        </div>
+                    <img src="https://754969b0.rocketcdn.me/clotya/wp-content/uploads/2022/05/slider-14.jpg"
+                         alt="background"/>
+                    <div className={styles.fashionContent}>
+                        <p>{t('main.homePage.coatjackets')}</p>
+                        <h2>{t('main.homePage.thenewfashion')} <br></br> {t('main.homePage.collection')}</h2>
+                        <Link to={'/shop'}>{t('main.homePage.shopnow')}</Link>
+                    </div>
                 </section>
                 {/* PRODUCTS SECTION */}
                 <section className={styles.productsSection}>
                     <div className={`${styles.productsHeading} ${styles.timerBlock}`}>
                         <div className={styles.productsContent}>
                             <div className={styles.productsHeadingTop}>
-                                <Link to={"/shop"} className={styles.bestSeller}>{t('main.homePage.dealOfTheWeek')}</Link>
+                                <Link to={"/shop"}
+                                      className={styles.bestSeller}>{t('main.homePage.dealOfTheWeek')}</Link>
                                 <Timer/>
                             </div>
                         </div>

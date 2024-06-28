@@ -1,271 +1,348 @@
 @import "../../../Variables/Variables.module.scss";
 
-.shopWrapper{
-    width: 100vw;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    .categorySection{
+.shopWrapper {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  .categorySection {
+    width: 100%;
+    padding-left: 50px;
+    padding-right: 50px;
+
+    .listContainer {
+      max-width: 1500px;
+      margin: 0 auto;
+      padding: 20px;
+
+      .listWrapper {
         width: 100%;
-        padding-left: 50px;
-        padding-right: 50px;
-        .listContainer{
-            max-width: 1500px;
-            margin: 0 auto;
-            padding: 20px;
-            .listWrapper{
-                width: 100%;
-                padding: 10px;
-                display: flex;
-                gap: 25px;
-                flex-wrap: wrap;
-                justify-content: center;
-                .listBox{
-                    max-width: 280px;
-                    width: 100%;
-                    display: flex;
-                    gap: 10px;
-                    padding: 15px;
-                    align-items: center;
-                    
-                  .listImages{
-                    width: 140px;
-                    min-width: 100px;
-                    position: relative;
-                    cursor: pointer;
-                    &:hover::before{
-                        opacity: 1;
-                    }
-                    &::before{
-                        content: '';
-                        width: 100%;
-                        height: 100%;
-                        background-color: rgba(0, 0, 0, 0.481);
-                        position: absolute;
-                        top: 0;
-                        left: 0;
-                        border-radius: 100%;
-                        transition: 0.4s;
-                        opacity: 0;
-                      }
-                    img{
-                      width: 100%;
-                      height: 100%;
-                      border-radius: 100%;
-                      overflow: hidden;
-                    }
-                  }
-                  .listText{
-                    display: flex;
-                    flex-direction: column;
-                    gap: 10px;
-                    h3{
-                        font-size: 19px;
-                    }
-                    p{
-                        font-size: 17px;
-                    }
-                  }
-                }
+        padding: 10px;
+        display: flex;
+        gap: 25px;
+        flex-wrap: wrap;
+        justify-content: center;
+
+        .listBox {
+          max-width: 280px;
+          width: 100%;
+          display: flex;
+          gap: 10px;
+          padding: 15px;
+          align-items: center;
+
+          .listImages {
+            width: 140px;
+            min-width: 100px;
+            position: relative;
+            cursor: pointer;
+
+            &:hover::before {
+              opacity: 1;
             }
+
+            &::before {
+              content: '';
+              width: 100%;
+              height: 100%;
+              background-color: rgba(0, 0, 0, 0.481);
+              position: absolute;
+              top: 0;
+              left: 0;
+              border-radius: 100%;
+              transition: 0.4s;
+              opacity: 0;
+            }
+
+            img {
+              width: 100%;
+              height: 100%;
+              border-radius: 100%;
+              overflow: hidden;
+            }
+          }
+
+          .listText {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+
+            h3 {
+              font-size: 19px;
+            }
+
+            p {
+              font-size: 17px;
+            }
+          }
         }
+      }
     }
-    .productsSection {
+  }
+
+  .productsSection {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    padding: 25px 30px 100px 30px;
+
+    .productsContent {
+      border-top: 1px solid rgba(128, 128, 128, 0.216);
       display: flex;
       width: 100%;
+      padding-top: 25px;
       justify-content: center;
-      padding: 25px 30px 100px 30px;
-      .productsContent {
-        border-top: 1px solid rgba(128, 128, 128, 0.216);
-        display: flex;
-        max-width: 1410px;
+      gap: 25px;
+
+      .filterContainer {
+        max-width: 300px;
         width: 100%;
-        padding-top: 60px;
-        .filterContainer {
-          max-width: 360px;
+        display: flex;
+        flex-direction: column;
+
+        .filterBlock {
           width: 100%;
-          display: flex;
-          padding-right: 30px;
-          flex-direction: column;
-          .filterInpubox{
+
+          .filterTypeInput {
             width: 100%;
-            .filterTypeInput{
-              width: 100%;
-              padding: 20px 30px;
-              background-color: rgb(239,239,239);
-              color: black;
-              font-size: 1em;
-              letter-spacing: inherit;
-              font-weight: 600;
-              font-family: $mainFont;
-            }
-            .filterProductfilter{
-              width: 100%;
-              padding: 30px 20px 45px 20px;
-              &.rangeContainer {
-                padding: 50px 0 45px 0;
-              }
-              .productCategries{
-                display: flex;
-                flex-direction: column;
-                gap: 20px;
-                .cartItem{
-                   list-style: none;
-                   display: flex;
-                   gap: 10px;
-                   font-size: 17px;
-                 }
-              }
-            }
+            padding: 20px 30px;
+            background-color: rgb(239, 239, 239);
+            color: black;
+            font-size: 1em;
+            letter-spacing: inherit;
+            font-weight: 600;
+            font-family: $mainFont;
           }
-          
-        }
-        .productsContainer {
-          max-width: 1050px;
-          width: 100%;
-          display: flex;
-          flex-direction: column;
-          .sortContainer {
-            display: flex;
+
+          .filterBlock {
             width: 100%;
-            height: 40px;
-            margin-bottom: 10px;
-            padding: 5px 20px;
-            .sortBox {
+            padding: 30px 20px 45px 20px;
+
+            &.rangeContainer {
+              padding: 50px 0 45px 0;
+            }
+
+            .productCategories {
               display: flex;
-              gap: 5px;
-              align-items: center;
-              svg {
-                color: black;
-                font-size: 32px;
-                cursor: pointer;
-                &.active {
-                  color: rgba(209,2,2,1);
-                }
-              }
-            }
-          }
-          .productCardsWrapper {
-            display: flex;
-            width: 100%;
-            flex-wrap: wrap;
-            &.listView {
-              flex-wrap: nowrap;
               flex-direction: column;
-              .card {
-                max-width: 100%;
+              gap: 20px;
+
+              .cartItem {
+                list-style: none;
+                display: flex;
+                gap: 10px;
+                font-size: 17px;
               }
             }
-            .noProducts {
-              font-size: 20px;
-              padding: 25px 25px 50px 25px;
-            }
-            .card {
-              display: flex;
-              max-width: 349px;
-              width: 100%;
-              min-width: 300px;
-              margin-bottom: 10px;
-            }
           }
-          .paginationWrapper {
+        }
+
+      }
+
+      .productsContainer {
+        max-width: 1050px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+
+        .sortContainer {
+          display: flex;
+          width: 100%;
+          height: 40px;
+          margin-bottom: 10px;
+          padding: 5px 20px;
+
+          .sortBox {
             display: flex;
-            width: 100%;
-          }
+            gap: 5px;
+            align-items: center;
 
-        }
-      }
-    }
-}
+            svg {
+              color: black;
+              font-size: 32px;
+              cursor: pointer;
 
-@media screen and (max-width:1467px) {
-  .shopWrapper {
-    .productsSection {
-      .productsContent {
-        .filterContainer {
-          max-width: 700px;
-        }
-        .productsContainer {
-          .sortContainer {
-            min-width: 706px;
-          }
-        }
-      }
-    }
-  }
-}
-
-
-@media screen and (max-width:1300px) {
-  .shopWrapper{
-    .categorySection{
-      .listContainer{
-        .listWrapper{
-          .listBox{
-            .listText{
-              h3{
-                font-size: 24px;
-              }
-              p{
-                font-size: 20px;
+              &.active {
+                color: rgba(209, 2, 2, 1);
               }
             }
           }
-          
         }
+
+        .productCardsWrapper {
+          display: flex;
+          width: 100%;
+          flex-wrap: wrap;
+
+          &.listView {
+            flex-wrap: nowrap;
+            flex-direction: column;
+
+            .card {
+              max-width: 100%;
+            }
+          }
+
+          .noProducts {
+            font-size: 20px;
+            padding: 25px 25px 50px 25px;
+          }
+
+          .card {
+            display: flex;
+            max-width: 349px;
+            width: 100%;
+            min-width: 300px;
+            margin-bottom: 10px;
+          }
+        }
+
+        .paginationWrapper {
+          display: flex;
+          width: 100%;
+          padding-left: 15px;
+        }
+
       }
     }
   }
 }
 
-@media screen and (max-width:1160px) {
+@media screen and (max-width: 1450px) {
   .shopWrapper {
     .productsSection {
       .productsContent {
+        gap: 10px;
+
         .filterContainer {
-          max-width: 700px;
-
+          max-width: 250px;
         }
-        .productsContainer {
-          max-width: 350px;
-          .sortContainer {
-            min-width: unset;
-          }
 
+        .productsContainer {
+          max-width: 900px;
+
+          .productCardsWrapper {
+            .card {
+              max-width: 300px;
+            }
+          }
         }
       }
     }
   }
 }
-@media screen and (max-width:800px) {
+
+@media screen and (max-width: 1220px) {
+  .shopWrapper {
+    .productsSection {
+      padding: 25px 15px 80px 15px;
+
+      .productsContent {
+        .productsContainer {
+          max-width: 600px;
+        }
+      }
+    }
+  }
+}
+
+
+@media screen and (max-width: 890px) {
   .shopWrapper {
     .productsSection {
       .productsContent {
         flex-direction: column;
+
+        .filterContainer {
+          max-width: unset;
+
+          .filterBlock {
+            .filterTypeInput {
+              padding: 20px 15px;
+            }
+
+            .filterBlock {
+              padding: 30px 15px 30px 15px;
+
+              &.rangeContainer {
+                padding: 50px 15px 45px 15px;
+              }
+            }
+          }
+
+        }
+
         .productsContainer {
-          max-width: 100%;
-          justify-content: center;
-         .productCardsWrapper {
-          justify-content: center;
-         }
+          max-width: unset;
+
+          .sortContainer {
+            max-width: unset;
+          }
+
+          .productCardsWrapper {
+            justify-content: center;
+
+            .card {
+              max-width: 250px;
+              min-width: unset;
+            }
+          }
 
         }
       }
     }
   }
 }
-@media screen and (max-width:767px) {
+
+@media screen and (max-width: 850px) {
+  .shopWrapper {
+    .productsSection {
+      .productsContent {
+        flex-direction: column;
+
+        .productsContainer {
+          max-width: 100%;
+          justify-content: center;
+
+          .productCardsWrapper {
+            justify-content: center;
+          }
+
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .shopWrapper {
+    .categorySection {
+      padding: 0;
+  .listContainer {
+    padding: 15px 0 0 0 ;
+    .listWrapper {
+      .listBox {
+        max-width: unset;
+      }
+    }
+  }
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
   .shopWrapper {
     .productsSection {
       padding: 25px 15px 50px 15px;
-     
+
       .productsContent {
         .productsContainer {
-         .productCardsWrapper {
-          .card {
-            max-width: unset;
+          .productCardsWrapper {
+            .card {
+              max-width: unset;
+            }
           }
-         }
 
         }
       }

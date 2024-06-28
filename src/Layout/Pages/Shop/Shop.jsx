@@ -42,8 +42,6 @@ const sizeTypes = [
     },
 ];
 
-
-
 const stockStatus = {
     en: [
         { id: "inStock", status: "In stock" },
@@ -255,12 +253,12 @@ const Shop = () => {
                         <div className={styles.productsContent}>
                             <div className={styles.filterContainer}>
                                 {/*STOCK FILTER*/}
-                                <div className={styles.filterInpubox}>
+                                <div className={styles.filterBlock}>
                                     <div className={styles.filterTypeInput}>
                                         {t("main.shop.shopSTOCK")}
                                     </div>
-                                    <div className={styles.filterProductfilter}>
-                                        <ul className={styles.productCategries}>
+                                    <div className={styles.filterBlock}>
+                                        <ul className={styles.productCategories}>
                                             {translatedStock?.map((status) => {
                                                 const productCount = typeFilteredProducts?.filter(item => item.stockStatus === status.id)?.length || 0;
                                                 if (productCount === 0) return <></>
@@ -279,12 +277,12 @@ const Shop = () => {
                                     </div>
                                 </div>
                                 {/*CATEGORY FILTER*/}
-                                <div className={styles.filterInpubox}>
+                                <div className={styles.filterBlock}>
                                     <div className={styles.filterTypeInput}>
                                         {t("main.shop.shopTYPE")}
                                     </div>
-                                    <div className={styles.filterProductfilter}>
-                                        <ul className={styles.productCategries}>
+                                    <div className={styles.filterBlock}>
+                                        <ul className={styles.productCategories}>
                                             {
                                                 allTypeFilters?.map(tf => {
                                                     const filtered = rangeFilteredProducts?.filter(it => it.category === tf)?.length || 0;
@@ -310,11 +308,11 @@ const Shop = () => {
                                     </div>
                                 </div>
                                 {/*PRICE FILTER*/}
-                                <div className={styles.filterInpubox}>
+                                <div className={styles.filterBlock}>
                                     <div className={styles.filterTypeInput}>
                                         {t("main.shop.shopPRICE")}
                                     </div>
-                                    <div className={`${styles.filterProductfilter} ${styles.rangeContainer}`}>
+                                    <div className={`${styles.filterBlock} ${styles.rangeContainer}`}>
                                         <FilterSlider
                                             priceBounds={priceBounds}
                                             setPriceBounds={setPriceBounds}
@@ -324,12 +322,12 @@ const Shop = () => {
                                     </div>
                                 </div>
                                 {/*SIZE FILTER*/}
-                                <div className={styles.filterInpubox}>
+                                <div className={styles.filterBlock}>
                                     <div className={styles.filterTypeInput}>
                                        {t("main.shop.shopSIZE")}
                                     </div>
-                                    <div className={styles.filterProductfilter}>
-                                        <ul className={styles.productCategries}>
+                                    <div className={styles.filterBlock}>
+                                        <ul className={styles.productCategories}>
                                             {sizeTypes?.map((size) => {
                                                 const filtered = stockFilteredProducts?.filter(product =>
                                                     product?.size?.some(_size => _size === size.id)
@@ -375,7 +373,7 @@ const Shop = () => {
 
                                 {/*PAGINATION*/}
                                 <div className={styles.paginationWrapper}>
-                                    <Stack spacing={1}>
+                                    <Stack spacing={2}>
                                         <Pagination
                                             count={Math.ceil(sizeFilteredProducts?.length / itemsPerPage)}
                                             variant="outlined"

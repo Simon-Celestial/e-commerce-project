@@ -61,7 +61,7 @@ const AdminPage = () => {
     useEffect(() => {
         (async () => {
             try {
-                const response = await axios.get("https://json-server-g1kt.onrender.com/products");
+                const response = await axios.get("https://json-server-eta-ten.vercel.app/products");
                 setProductsData(response.data.map(product => ({
                     ...product,
                     stockStatus: product.quantity > 0 ? 'inStock' : 'outOfStock'
@@ -81,7 +81,7 @@ const AdminPage = () => {
     const handleDeleteData = useCallback(async (id, title) => {
         try {
             setIsUpdating(true);
-            await axios.delete(`https://json-server-g1kt.onrender.com/products/${id}`);
+            await axios.delete(`https://json-server-eta-ten.vercel.app/products/${id}`);
             update();
             toast.success(`${title} ugurla silindi!`, {
                 hideProgressBar: false,
