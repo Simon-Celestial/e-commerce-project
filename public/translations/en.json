@@ -146,8 +146,9 @@
   "about":{
     "aboutNooni": "About",
     "aboutAbout": "About",
-    "nooniWas": "TURALLI was established in 2024. It focuses on effective communication and excellence. It thrives on strong connections and continuous improvement.",
-    "aboutHowWe": "HOW WE WORKS",
+    "howDoWeWork": "how do we work",
+    "newManCollection": "New Man Collection",
+    "aboutBoutique": "Founded in 2024, Boutique Brand stands as a testament to innovation and sophistication. Our mission centers around crafting exceptional experiences and fostering meaningful connections. We are driven by a passion for quality and an unwavering commitment to continuous enhancement. With a keen eye for detail and a dedication to excellence, Boutique Brand is where timeless elegance meets modern ingenuity. Join us in our journey of redefining standards and creating lasting impressions.",
     "aboutProductionDesing": "Production Design",
     "aboutIntegerDignissim": "The merit of the arrow is as much as it is. Maecenas are half eros, the course of life laughs at itself, the voluntary is sometimes nothing.",
     "aboutManufacturing": "Manufacturing",
@@ -160,7 +161,7 @@
     "aboutCeoFounder":"CEO & Founder",
     "aboutSaler": "Saler",
     "aboutWeDeliver":"We Deliver Genuine Products",
-    "aboutSedViverra":"Vibrant connections are not ultimate. Focus on key improvements",
+    "aboutConnections":"Vibrant connections are not ultimate. Focus on key improvements",
     "aboutContactUs":"CONTACT US"
   },
   "contact":{

@@ -1,0 +1,81 @@
+{
+  "en" : [
+    {
+      "id": 1,
+      "image": "https://corsen.qodeinteractive.com/wp-content/uploads/2022/09/Shop-list-img-7.jpg",
+      "job": "Graphic Designer",
+      "name": "Adolf Linkoln"
+    },
+    {
+      "id": 2,
+      "image": "https://corsen.qodeinteractive.com/wp-content/uploads/2022/10/Blog-img-4-600x379.jpg",
+      "job": "Marketing Manager",
+      "name": "Miranda Cohen"
+    },
+    {
+      "id": 3,
+      "image": "https://corsen.qodeinteractive.com/wp-content/uploads/2022/10/Blog-img-2-600x379.jpg",
+      "job": "Quality controller",
+      "name": "Vilarisa Luna"
+    },
+    {
+      "id": 4,
+      "image": "https://nooni-be87.kxcdn.com/nooni-fashion/wp-content/uploads/2021/04/team-1.jpg",
+      "job": "CEO & Founder",
+      "name": "John Benedict"
+    }
+
+  ],
+  "ru": [
+    {
+      "id": 1,
+      "image": "https://corsen.qodeinteractive.com/wp-content/uploads/2022/09/Shop-list-img-7.jpg",
+      "job": "Графический дизайнер",
+      "name": "Адольф Линкольн"
+    },
+    {
+      "id": 2,
+      "image": "https://corsen.qodeinteractive.com/wp-content/uploads/2022/10/Blog-img-4-600x379.jpg",
+      "job": "Менеджер по маркетингу",
+      "name": "Миранда Коэн"
+    },
+    {
+      "id": 3,
+      "image": "https://corsen.qodeinteractive.com/wp-content/uploads/2022/10/Blog-img-2-600x379.jpg",
+      "job": "Контролер качества",
+      "name": "Вилариса Луна"
+    },
+    {
+      "id": 4,
+      "image": "https://nooni-be87.kxcdn.com/nooni-fashion/wp-content/uploads/2021/04/team-1.jpg",
+      "job": "Генеральный директор и основатель",
+      "name": "Джон Бенедикт"
+    }
+  ],
+  "az": [
+    {
+      "id": 1,
+      "image": "https://corsen.qodeinteractive.com/wp-content/uploads/2022/09/Shop-list-img-7.jpg",
+      "job": "Grafik dizayner",
+      "name": "Adolf Linkoln"
+    },
+    {
+      "id": 2,
+      "image": "https://corsen.qodeinteractive.com/wp-content/uploads/2022/10/Blog-img-4-600x379.jpg",
+      "job": "Marketinq meneceri",
+      "name": "Miranda Cohen"
+    },
+    {
+      "id": 3,
+      "image": "https://corsen.qodeinteractive.com/wp-content/uploads/2022/10/Blog-img-2-600x379.jpg",
+      "job": "Keyfiyyət nəzarətçisi",
+      "name": "Vilarisa Luna"
+    },
+    {
+      "id": 4,
+      "image": "https://nooni-be87.kxcdn.com/nooni-fashion/wp-content/uploads/2021/04/team-1.jpg",
+      "job": "CEO & Təsisçi",
+      "name": "John Benedict"
+    }
+  ]
+}

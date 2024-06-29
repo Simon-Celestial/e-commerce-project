@@ -143,8 +143,9 @@
     "about": {
       "aboutNooni": "TURALLI Haqqında",
       "aboutAbout": "Haqqında",
-      "nooniWas": " TURALLI 2024-cı ildə təsis edilib. Şirkət effektiv ünsiyyət və mükəmməlliyə fokuslanır. Güclü əlaqələr və davamlı inkişaf üzərində inkişaf edir.",
-      "aboutHowWe": "İŞ PRİNSİPLƏRİMİZ",
+      "howDoWeWork": "biz necə işləyirik",
+      "newManCollection": "Yeni Kişi Kolleksiyası",
+      "aboutBoutique": "2024-cü ildə əsası qoyulan Boutique Brand innovasiya və incəliyin sübutu kimi dayanır. Missiyamız müstəsna təcrübələr yaratmaq və mənalı əlaqələri gücləndirmək ətrafında cəmlənir. Bizi keyfiyyətə olan ehtiras və davamlı təkmilləşdirməyə sarsılmaz sadiqlik idarə edir. Təfərrüata diqqət yetirən və mükəmməlliyə sadiqliyi ilə Butik Brend zamansız zərifliyin müasir ixtiralıqla qovuşduğu yerdir. Standartları yenidən müəyyənləşdirmək və qalıcı təəssürat yaratmaq səyahətimizdə bizə qoşulun.",
       "aboutProductionDesing": "Produksiya Dizaynı",
       "aboutIntegerDignissim": "Oğlanın qaşıntısı o qədər də dəyərlidir. Maecenas yarısı erosdur, həyatın kursu özünə gülməyi bilir, istəyi bəzən heç bir şey deyil.",
       "aboutManufacturing": "İstehsal",
@@ -157,7 +158,7 @@
       "aboutCeoFounder": "CEO & Təsisçi",
       "aboutSaler": "Satıcı",
       "aboutWeDeliver": "Biz Asli Məhsullar Təchiz Edirik",
-      "aboutSedViverra": "Canlı əlaqələr son deyil. Əsas təkmilləşdirmələrə diqqət yetirin.",
+      "aboutConnections": "Canlı əlaqələr son deyil. Əsas təkmilləşdirmələrə diqqət yetirin.",
       "aboutContactUs": "BİZİMLƏ ƏLAQƏ"
     },
     "contact": {

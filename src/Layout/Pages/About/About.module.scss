@@ -1,437 +1,497 @@
 @import "../../../Variables/Variables.module.scss";
 
-.aboutWrapper{
+.aboutMain {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+
+  .topSection {
+    display: flex;
     width: 100%;
-    .aboutContact{
+    flex-direction: column;
+    align-items: center;
+    padding: 25px 15px 75px 15px;
+    .sectionContent {
+      max-width: 1200px;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      p {
+        font-size: 25px;
+        color: gray;
+        line-height: 35px;
+      }
+    }
+  }
+  .imageSection {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+
+    .imageBox {
+      width: 100%;
+      position: relative;
+      max-height: 700px;
+
+      img {
         width: 100%;
-        .aboutContainer{
-         display: flex;
-         flex-direction: column;
-         gap: 80px;
-         .aboutNooni{
+        filter: brightness(70%);
+        height: 100%;
+        object-position: top;
+        object-fit: cover;
+      }
+
+      h1 {
+        position: absolute;
+        left: 50%;
+        font-family: $second-font;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 5;
+        font-size: 80px;
+        color: white;
+        text-transform: uppercase;
+        width: 100%;
+        text-align: center;
+        padding: 0 50px;
+
+      }
+    }
+  }
+  .workSection {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    flex-direction: column;
+    padding: 75px 15px 0 15px;
+
+    .sectionContent {
+      max-width: 1200px;
+      display: flex;
+      width: 100%;
+      gap: 25px;
+      justify-content: space-between;
+
+      .imageBlock {
+        max-width: 587.5px;
+        width: 100%;
+        max-height: 650px;
+
+        img {
+          width: 100%;
+          object-fit: cover;
+          object-position: top;
+          height: 100%;
+        }
+
+      }
+
+      .titleBlock {
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+        max-width: 587.5px;
+        width: 100%;
+        color: $black-weak;
+
+        > h2 {
+          font-size: 35px;
+          color: $black-weak;
+          text-transform: uppercase;
+          margin-bottom: 15px;
+
+        }
+
+        .textBlock {
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          gap: 15px;
+
+          h2 {
+            font-size: 25px;
+          }
+
+          p {
+            font-size: 20px;
+            color: gray;
+          }
+
+        }
+      }
+    }
+  }
+  .teamSection {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    padding: 75px 15px;
+
+    .sectionContent {
+      max-width: 1200px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      h2 {
+        font-size: 30px;
+        color: $black-weak;
+        text-align: center;
+        margin-bottom: 50px;
+        text-transform: uppercase;
+      }
+
+      .teamContainer {
+        display: flex;
+        width: 100%;
+        gap: 25px;
+        justify-content: center;
+
+        .memberBlock {
+          max-width: 275px;
+          width: 100%;
+          display: flex;
+          align-items: center;
+          flex-direction: column;
+          padding: 0 0 25px 0;
+          border-radius: 10px;
+          box-shadow: 0 0 10px rgba(128, 128, 128, 0.3);
+          overflow: hidden;
+          position: relative;
+
+          .memberImg {
             width: 100%;
-            .aboutNooniText{
-                max-width: 1410px;
-                margin: 0 auto;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                flex-direction: column;
-                gap: 20px;
-                h1{
-                    font-size: 48px;
-                    font-family: $mainFont;
-                   }
-                   p{
-                      width: 70%;
-                      font-size: 24px;
-                      text-align: center;
-                      color: rgb(84,84,84,84);
-                      line-height: 40px;
-                   }
+            height: 325px;
+            overflow: hidden;
+
+            .socialIcons {
+              display: flex;
+              gap: 15px;
+              position: absolute;
+              left: 50%;
+              top: 100px;
+              z-index: 3;
+              transform: translateX(-50%);
+              opacity: 0;
+              transition: opacity $transition, top $transition;
+              pointer-events: none;
+
+              a {
+                &:hover {
+                  svg {
+                    transform: scale(1.1) rotate(360deg);
+                    color: #DA6A29;
+
+                  }
+                }
+
+                svg {
+                  transition: transform $transition,color $transition;
+                  color: white;
+                  font-size: 32px;
+                }
+
+              }
             }
+
+            &:hover {
+              .socialIcons {
+                pointer-events: auto;
+                opacity: 1;
+                top: 150px;
+
+              }
+
+              img {
+                filter: brightness(60%);
+                transform: scale(1.1);
+              }
+            }
+
+            img {
+              transition: transform $transition, filter $transition;
+              width: 100%;
+              object-position: top;
+              object-fit: cover;
+              height: 100%;
+            }
+          }
+
+          p {
+            margin: 15px 0;
+            text-align: center;
+            padding: 0 10px;
+          }
+
+          h2 {
+            font-size: 20px;
+            margin: 0;
+            text-align: center;
+            font-family: $second-font;
+
+          }
+        }
+      }
+
+    }
+  }
+  .contactSection {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    background-image: url("https://corsen.qodeinteractive.com/wp-content/uploads/2022/09/error-page-img.jpg");
+    height: 460px;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    .sectionContent {
+      max-width: 1200px;
+      display: flex;
+      width: 100%;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      .sectionTitle {
+        max-width: 800px;
+        display: flex;
+        flex-direction: column;
+        color: white;
+        align-items: center;
+        padding: 0 15px;
+
+        h1 {
+          font-size: 50px;
+          font-family: $second-font;
+          text-align: center;
+        }
+        p {
+          font-size: 20px;
+          text-align: center;
+          margin-top: 5px;
+        }
+        a {
+          background: white;
+          color: $black-weak;
+          font-size: 20px;
+          padding: 10px 25px;
+          border-radius: 10px;
+          margin-top: 25px;
+          white-space: nowrap;
+          text-transform: uppercase;
+          border: 1px solid rgba(128, 128, 128, 0.3);
+          transition: color $transition,background $transition,border-color $transition;
+          &:hover {
+            color: white;
+            background: black;
+            border-color: white;
+          }
+        }
+      }
+
+    }
+  }
+  .sponsorsSection {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    padding: 100px 15px 75px 15px;
+    .sectionContent {
+      display: flex;
+      max-width: 1200px;
+      width: 100%;
+      flex-wrap: wrap;
+      justify-content: center;
+      .sponsorBlock {
+        width: 100%;
+        max-width: 200px;
+        padding: 15px;
+        img {
+          width: 100%;
+          object-fit: cover;
+          object-position: center;
+        }
+      }
+
+    }
+  }
+
+
+}
+
+
+@media screen and (max-width: 1400px) {
+  .aboutMain {
+    .topSection {
+      padding: 15px 15px 50px 15px;
+
+      .sectionContent {
+         p{
+           font-size: 23px;
+
          }
-         .aboutImage{
-            width: 100%;
-            img{
-                width: 100%;
-                height: 705px;
-                object-fit: cover;
-            }
-         }
-         .aboutSection{
-            width: 100%;
-            max-width: 1410px;
-            margin: 0 auto;
-            .sectionContact{
-                width: 100%;
-                display: flex;
-                gap: 50px;
-                .sectionLeft{
-                    width: 100%;
-                    overflow: hidden;
-                    img{
-                        width: 660px;
-                        height: 568px;
-                        transform: scale(1);
-                        transition: 0.3s;
-                        cursor: pointer;
-                        &:hover{
-                            transform: scale(1.3);
-                        }
-                    }
-                }
-                .sectionRight{
-                    width: 100%;
-                    padding: 40px;
-                    .sectionText{
-                        display: flex;
-                        flex-direction: column;
-                        gap: 40px;
-                        h1{
-                            font-size: 25px;
-                            font-family: $mainFont;
-                            letter-spacing: 3px;
-                        }
-                        .textBox{
-                            display: flex;
-                            flex-direction: column;
-                            gap: 20px;
-                            h3{
-                                font-size: 18px;
-                                font-family: $mainFont;
-                            }
-                            p{
-                                font-size: 19px;
-                                font-family: $mainFont;
-                                color: rgb(84,84,84);
-                                font-weight: 600;
-                            }
-                        }
-                    }
-                }
-            }
-            .sectionOut{
-                width: 100%;
-                padding: 40px;
-            }
-            .aboutTeam{
-                width: 100%;
-                .aboutText{
-                    width: 100%;
-                    display: flex;
-                    justify-content: center;    
-                    align-items: center;
-                    margin-top: 35px;
-                    h1{
-                        font-size: 25px;
-                        font-family: $mainFont;
-                        letter-spacing: 2px;
-                    }
-                }
-                .aboutSlider{
-                    width: 100%;
-                    margin-top: 50px;
-                    .aboutSliderWrapper{
-                        width: 100%;
-                        display: flex;
-                        gap: 40px;
-                        justify-content: center;
-                        .aboutCard{
-                            display: flex;
-                            width: 100%;
-                            max-width: 322px;
-                            flex-direction: column;
-                            padding-bottom: 20px;
-                            .cardImage{
-                                width: 100%;
-                                height: 390px;
-                                position: relative;
-                                overflow: hidden;
-                                &:hover .aboutOverley{
-                                    opacity: 1;
-                                }
-                                &:hover img {
-                                    transform: scale(1.2);
-                                }
-                                img{
-                                    width: 100%;
-                                    height: 100%;
-                                    object-fit: cover;
-                                    transition: 0.3s;
-                                }
-                                .aboutOverley{
-                                    width: 100%;
-                                    height: 100%;
-                                    background-color: rgba(0, 0, 0, 0.484);
-                                    position: absolute;
-                                    top: 0;
-                                    left: 0;
-                                    opacity: 0;
-                                    z-index: 100;
-                                    opacity: 0;
-                                    transition: 0.5s;
-                                    display: flex;
-                                    justify-content: center;
-                                    align-items: center;
-                                    gap: 15px;
-                                    z-index: 1;
-                                    i{
-                                        font-size: 23px;
-                                        color: white;
-                                    }
-                                    cursor: pointer;
-                                }
-                             
-                            }
-                            .aboutCardText{
-                                width: 100%;
-                                display: flex;
-                                justify-self: center;
-                                align-items: center;
-                                flex-direction: column;
-                                gap: 20px;
-                                margin-top: 15px;
-                                h3{
-                                    font-size: 14px;
-                                    font-family: $mainFont;
-                                }
-                                p{
-                                    font-size: 24px;
-                                    color: rgb(84,84,84);
-                                    font-family: $mainFont;
-                                    font-weight: 500;
-                                }
-                            }
-                         
-                        }
-                    }
-                }
-            }
-         }
-
-         .aboutContactUs{
-            width: 100%;
-            background-image: url('https://demo.theme-sky.com/nooni-fashion/wp-content/uploads/2023/08/about-2.jpg');
-            height: 460px;
-            background-size: 100%100%;
-            background-attachment: fixed;
-            position: relative;
-            .aboutUsOverlay{
-                width: 100%;
-                height: 100%;
-                background-color: rgba(0, 0, 0, 0.493);
-                position: absolute;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                gap: 20px;
-                .UsText{
-                   text-align: center;
-                   display: flex;
-                   justify-content: center;
-                   align-items: center;
-                   gap: 20px;
-                   flex-direction: column;
-                   button{
-                    padding: 13px;
-                    outline: none;
-                    border: none;
-                    transition: 0.3s;
-                    cursor: pointer;
-                    font-size: 16px;
-                    font-weight: 600;
-                    font-family: $mainFont;
-                    &:hover{
-                        background-color: red;
-                        color: white;
-                    }
-                   }
-                   h1{
-                    font-size: 3em;
-                    color: white;
-                    font-family: $mainFont;
-                    font-weight: 400;
-                   }
-                   p{
-                     line-height: 30px;
-                     font-size: 15px;
-                     color: white;
-                     font-family: $mainFont;
-                   }
-                }
-            }
-         }
-         .companySwapper{
-            width: 100%;
-            padding: 20px;
-            .companySwapperSlider{
-            max-width: 1410px;
-            margin: 0 auto;
-            padding: 40px;
-            display: flex;
-            justify-content: center;
-            .companyBox{
-                width: 206px;
-                height: 110px;
-                img{
-                    width: 100%;
-                }
-            }
-            }
-         }
-        }
+      }
     }
+    .imageSection {
+      .imageBox {
+        max-height: 600px;
+        h1 {
+          font-size: 60px;
+        }
+      }
+    }
+  }
 }
 
-
-@media screen and (max-width:1440px) {
-    .aboutWrapper{
-        .aboutContact{
-            .aboutContainer{
-                .aboutSection{
-                    padding: 20px;
-                }
-            }
+@media screen and (max-width: 1200px) {
+  .aboutMain{
+    .workSection {
+      .sectionContent {
+        max-width: unset;
+        justify-content: center;
+        .titleBlock {
+          max-width: 450px;
         }
-    }
-}
-@media screen and (max-width:1410px) {
-    .aboutWrapper{
-        .aboutContact{
-            .aboutContainer{
-                .aboutSection{
-                    .aboutSlider{
-                        .aboutSliderWrapper{
-                            flex-wrap: wrap;
-                        }
-                    }
-                }
-            }
+        .imageBlock {
+          max-height: 750px;
         }
+      }
     }
+    .teamSection {
+      padding: 50px 15px;
+      .sectionContent {
+        .teamContainer{
+          flex-wrap: wrap;
+        }
+      }
+    }
+  }
 }
 
-@media screen and (max-width:1200px) {
-    .aboutWrapper{
-        .aboutContact{
-            .aboutContainer{
-                .aboutSection{
-                    padding: 20px;
-                    .sectionContact{
-                        flex-direction: column;
-                        .sectionLeft{
-                            width: 100%;
-                            img{
-                                width: 100%;
-                            }
-                        }
-                        .sectionRight{
-                            text-align: center;
-                        }
-                    }
-                    .aboutSlider{
-                        .aboutSliderWrapper{
-                            justify-content: center;
-                            .aboutCard{
-                                width: 500px;
-                            }
-                        }
-                    }
-                }
+@media screen and (max-width: 1000px) {
+  .aboutMain {
+    .topSection {
+      padding: 0 15px 25px 15px;
 
-            }
+      .sectionContent {
+        p{
+          font-size: 20px;
+
         }
+      }
     }
-}
-@media screen and (max-width:1100px) {
-    .aboutWrapper{
-        .aboutContact{
-            .aboutContainer{
-                .aboutSection{
-                    .aboutSlider{
-                        .aboutSliderWrapper{
-                            justify-content: center;
-                            flex-wrap: wrap;
-                            .aboutCard{
-                                width: 100%;
-                            }
-                        }
-                    }
-                }
-            }
+    .imageSection {
+      .imageBox {
+        max-height: 500px;
+        h1 {
+          font-size: 40px;
         }
+      }
     }
+    .teamSection {
+      .sectionContent {
+        h2 {
+          margin-bottom: 25px;
+        }
+      }
+    }
+    .contactSection {
+      .sectionContent {
+        .sectionTitle {
+          h1 {
+            font-size: 32px;
+          }
+          p {
+            margin-top: 20px;
+          }
+          a {
+            font-size: 15px;
+          }
+        }
+      }
+    }
+  }
 }
 
-@media screen and (max-width:900px) {
-    .aboutWrapper{
-        .aboutContact{
-            .aboutContainer{
-                .aboutContactUs{
-                    .aboutOverley{
-                        .UsText{
-                            width: 100%;
-                            h1{
-                                width: 100%;
-                                font-size: 10px;
-                            }
-                            p{
-                                width: 100%;
-                            }
-                        }
-                    }
-                }
-            }
+@media screen and (max-width: 800px) {
+  .aboutMain{
+    .workSection {
+      padding: 25px 0 0 0;
+      .sectionContent {
+        align-items: center;
+        flex-direction: column;
+        .titleBlock {
+          max-width: unset;
+          padding: 0 15px;
         }
+        .imageBlock {
+          max-width: unset;
+          max-height: 500px;
+          overflow: hidden;
+
+        }
+      }
     }
+    .sponsorsSection {
+      padding: 50px 15px 50px 15px;
+    }
+  }
+
 }
 
-@media screen and (max-width:900px) {
-    .aboutWrapper{
-        .aboutContact{
-            .aboutContainer{
-               .companySwapper{
-                .companySwapperSlider{
-                    width: 100%;
-                    flex-wrap: wrap;
-                    gap: 20px;
-                    padding: 0;
-                    .companyBox{
-                        width: 210px;
-                    }
-                }
-               }
-            }
+@media screen and (max-width: 600px) {
+  .aboutMain {
+    .imageSection {
+      .imageBox {
+        max-height: 400px;
+        h1 {
+          font-size: 25px;
         }
+      }
     }
+    .workSection {
+      .sectionContent {
+        .titleBlock {
+          h2 {
+            font-size: 30px;
+            margin: 0;
+            text-align: center;
+          }
+          .textBlock {
+            p{
+              text-align: center;
+            }
+          }
+
+        }
+        .imageBlock {
+          max-height: 350px;
+
+        }
+      }
+    }
+    .contactSection {
+      height: 350px;
+      background-position: 70% 100%;
+    }
+  }
+
 }
-@media screen and (max-width: 724px) {
-    .aboutWrapper {
-        .aboutContact {
-            .aboutContainer {
-                .aboutSection {
-                    .aboutTeam {
-                        .aboutSlider {
-                            .aboutSliderWrapper {
-                                .aboutCard {
-                                    max-width: 450px;
-                                    padding-bottom: 0;
-                                    .cardImage {
-                                        img {
-                                            object-position: top;
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
+
+@media screen and (max-width: 400px) {
+  .aboutMain {
+    .workSection {
+      .sectionContent {
+        .titleBlock {
+          h2 {
+            font-size: 25px;
+          }
         }
+      }
     }
-}
-@media screen and (max-width:430px) {
-    .aboutWrapper{
-        .aboutContact{
-            .aboutContainer{
-               .companySwapper{
-                .companySwapperSlider{
-                    width: 100%;
-                    flex-wrap: wrap;
-                    gap: 20px;
-                    padding: 0;
-                    .companyBox{
-                        width: 100%;
-                        height: 200px;
-                        img{
-                            width: 100%;
-                            height: 100%;
-                        }
-                    }
-                }
-               }
-            }
-        }
-    }
+
+
+  }
+
 }

@@ -1,163 +1,138 @@
-import React from 'react'
 import styles from "./About.module.scss";
 import Header from '../../Components/Header/Header';
 import Footer from '../../Components/Footer/Footer';
 import PageHeading from '../../Common/PageHeading/PageHeading';
-import {TwitterLogo,FacebookLogo,InstagramLogo,LinkedinLogo} from "@phosphor-icons/react";
-import { useTranslation } from "react-i18next";
+import {useTranslation} from "react-i18next";
+import workTitleData from "/public/data/WorkTitleData/workTitleData.json";
+import teamMembersData from "/public/data/TeamMembersData/teamMembersData.json";
+import {useMemo} from "react";
+import sponsorsData from "/public/data/SponsorsData/sponsorsData.json";
+import {Link} from "react-router-dom";
+import {FacebookLogo, InstagramLogo, LinkedinLogo, TwitterLogo} from "@phosphor-icons/react";
+
 
 const About = () => {
-  const {t} = useTranslation();
-  return (
-    <div className={styles.aboutWrapper}>
-        <Header/>
-      <main>
-      <PageHeading title= {t("main.about.aboutAbout")} />
-      <div className={styles.aboutContact}>
-        <div className={styles.aboutContainer}>
-            <section className={styles.aboutNooni}>
-              <div className={styles.aboutNooniText}>
-              <h1>{t("main.about.aboutNooni")}</h1>
-                <p>{t("main.about.nooniWas")}</p>
-              </div>
-            </section>
-            <section className={styles.aboutImage}>
-              <img src='https://demo.theme-sky.com/nooni-fashion/wp-content/uploads/2023/08/about-parallax-1.jpg' alt=''></img>
-            </section>
+    const {t, i18n} = useTranslation();
 
-            <section className={styles.aboutSection}>
-              <div className={styles.sectionContact}>
-              <div className={styles.sectionLeft}>
-              <img src='https://nooni-be87.kxcdn.com/nooni-fashion/wp-content/uploads/2023/08/about-3-1.jpg' alt=''></img>
-              </div>
-              <div className={styles.sectionRight}>
-              <div className={styles.sectionText}>
-                <h1>{t("main.about.aboutHowWe")}</h1>
-                <div className={styles.textBox}>
-                 <h3>{t("main.about.aboutProductionDesing")}</h3>
-                 <p>{t("main.about.aboutIntegerDignissim")}</p>
-                </div>
-                <div className={styles.textBox}>
-                <h3>{t("main.about.aboutManufacturing")}</h3>
-                 <p>{t("main.about.aboutMaecenasSem")}</p>
-                </div>
-                <div className={styles.textBox}>
-                <h3>{t("main.about.aboutMarketing")}</h3>
-                <p>{t("main.about.aboutRutrum")}</p>
-                </div>
-              </div>
-              </div>
-              </div>
-             
-             <div className={styles.aboutTeam}>
-              <div className={styles.aboutText}>
-                <h1>{t("main.about.aboutOurTeam")}</h1>
-              </div>
-              <div className={styles.aboutSlider}>
-                <div className={styles.aboutSliderWrapper}>
-                  <div className={styles.aboutCard}>
-                    <div className={styles.cardImage}>
-                      <img src='https://nooni-be87.kxcdn.com/nooni-fashion/wp-content/uploads/2021/04/team-3.jpg' alt=''></img>
-                      <div className={styles.aboutOverley}>
-                      <TwitterLogo size={30} color='white' />
-                      <FacebookLogo size={30} color='white'/>
-                      <InstagramLogo size={30} color ='white'/>
-                      <LinkedinLogo size={30} color='white' />
-                      </div>
-                    </div>
-                    <div className={styles.aboutCardText}>
-                      <h3>{t("main.about.aboutGraphicDesign")}</h3>
-                      <p>Chris Patterson</p>
-                    </div>
-                  </div> 
-                  <div className={styles.aboutCard}>
-                  <div className={styles.cardImage}>
-                      <img src='https://nooni-be87.kxcdn.com/nooni-fashion/wp-content/uploads/2021/04/team-4.jpg' alt=''></img>
-                      <div className={styles.aboutOverley}>
-                      <TwitterLogo size={30} color='white' />
-                      <FacebookLogo size={30} color='white'/>
-                      <InstagramLogo size={30} color ='white'/>
-                      <LinkedinLogo size={30} color='white' />
-                      </div>
-                    </div>
-                    <div className={styles.aboutCardText}>
-                      <h3>{t("main.about.aboutMarketings")}</h3>
-                      <p>Isabella</p>
-                    </div>
-                  </div>
-                  <div className={styles.aboutCard}>
-                  <div className={styles.cardImage}>
-                      <img src='https://nooni-be87.kxcdn.com/nooni-fashion/wp-content/uploads/2021/04/team-1.jpg' alt=''></img>
-                      <div className={styles.aboutOverley}>
-                      <TwitterLogo size={30} color='white' />
-                      <FacebookLogo size={30} color='white'/>
-                      <InstagramLogo size={30} color ='white'/>
-                      <LinkedinLogo size={30} color='white' />
-                      </div>
-                    </div>
-                    <div className={styles.aboutCardText}>
-                      <h3>{t("main.about.aboutCeoFounder")}</h3>
-                      <p>John Hossain</p>
-                    </div>
-                  </div>
-                  <div className={styles.aboutCard}>
-                  <div className={styles.cardImage}>
-                      <img src='https://nooni-be87.kxcdn.com/nooni-fashion/wp-content/uploads/2021/04/team-2.jpg' alt=''></img>
-                      <div className={styles.aboutOverley}>
-                      <TwitterLogo size={30} color='white' />
-                      <FacebookLogo size={30} color='white'/>
-                      <InstagramLogo size={30} color ='white'/>
-                      <LinkedinLogo size={30} color='white' />
-                      </div>
-                    </div>
-                    <div className={styles.aboutCardText}>
-                      <h3>{t("main.about.aboutSaler")}</h3>
-                      <p>Charlotte</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-             </div>
-            </section>
+    const translatedWorkData = useMemo(() => {
+        if (i18n.language === "en") {
+            return workTitleData.en;
+        } else if (i18n.language === "ru") {
+            return workTitleData.ru;
+        } else if (i18n.language === "az") {
+            return workTitleData.az;
+        }
+    }, [i18n.language, workTitleData]);
 
-            <section className={styles.aboutContactUs}>
-              <div className={styles.aboutUsOverlay}>
-                <div className={styles.UsText}>
-                <h1>{t("main.about.aboutWeDeliver")}</h1>
-                <p>{t("main.about.aboutSedViverra")}</p>
-                <button>{t("main.about.aboutContactUs")}</button>
-                </div>
-              </div>
-            </section>
+    const translatedMembersData = useMemo(() => {
+        if (i18n.language === "en") {
+            return teamMembersData.en;
+        } else if (i18n.language === "ru") {
+            return teamMembersData.ru;
+        } else if (i18n.language === "az") {
+            return teamMembersData.az;
+        }
 
-            <section className={styles.companySwapper}>
-              <div className={styles.companySwapperSlider}>
-                <div className={styles.companyBox}>
-                  <img src='https://nooni-be87.kxcdn.com/nooni-fashion/wp-content/uploads/2023/04/brand-5.png' alt=''></img>
-                </div>
-                <div  className={styles.companyBox}>
-                  <img src='https://nooni-be87.kxcdn.com/nooni-fashion/wp-content/uploads/2023/04/brand-1.png' alt=''></img>
-                </div>
-                <div  className={styles.companyBox}>
-                <img src='https://nooni-be87.kxcdn.com/nooni-fashion/wp-content/uploads/2023/04/brand-6.png' alt=''></img>
-                </div>
-                <div  className={styles.companyBox}>
-                  <img src='https://nooni-be87.kxcdn.com/nooni-fashion/wp-content/uploads/2023/04/brand-2.png' alt=''></img>
-                </div>
-                <div  className={styles.companyBox}>
-                <img src='https://nooni-be87.kxcdn.com/nooni-fashion/wp-content/uploads/2023/04/brand-4.png' alt=''></img>
-                </div>
-                <div  className={styles.companyBox}>
-                <img src='https://nooni-be87.kxcdn.com/nooni-fashion/wp-content/uploads/2023/04/brand-3.png' alt=''></img>
-                </div>
-              </div>
-            </section>
-        </div>
-      </div>
-      </main>
-      <Footer></Footer>
-    </div>
-  )
+    },[teamMembersData,i18n.language])
+    return (
+        <>
+            <Header/>
+            <main className={styles.aboutMain}>
+                <PageHeading title={t("main.about.aboutAbout")}/>
+                <section className={styles.topSection}>
+                    <div className={styles.sectionContent}>
+                        <p>{t("main.about.aboutBoutique")}</p>
+                    </div>
+                </section>
+                <section className={styles.imageSection}>
+                    <div className={styles.imageBox}>
+                        <h1>{t("main.about.newManCollection")}</h1>
+                        <img src="https://corsen.qodeinteractive.com/wp-content/uploads/2022/09/left-home-img-2.jpg"
+                             alt="Wide Picture"/>
+                    </div>
+                </section>
+                <section className={styles.workSection}>
+                    <div className={styles.sectionContent}>
+                        <div className={styles.imageBlock}>
+                            <img src="https://corsen.qodeinteractive.com/wp-content/uploads/2022/09/Shop-list-img-9.jpg"
+                                 alt="Man Image"/>
+                        </div>
+                        <div className={styles.titleBlock}>
+                            <h2>{t("main.about.howDoWeWork")} ?</h2>
+                            {translatedWorkData?.map((workData)=>{
+                                return (
+                                    <div key={workData?.id} className={styles.textBlock}>
+                                        <h2>{workData?.title}</h2>
+                                        <p>{workData?.description}</p>
+                                    </div>
+
+                                )
+                            })}
+                        </div>
+                    </div>
+                </section>
+                <section className={styles.teamSection}>
+                    <div className={styles.sectionContent}>
+                        <h2>{t("main.about.aboutOurTeam")}</h2>
+                        <div className={styles.teamContainer}>
+                            {translatedMembersData?.map((member)=>{
+                                return (
+                                    <div key={member?.id} className={styles.memberBlock}>
+                                        <div className={styles.memberImg}>
+                                            <div className={styles.socialIcons}>
+                                                <Link to={"#"}>
+                                                    <FacebookLogo />
+                                                </Link>
+                                                <Link to={"#"}>
+                                                    <TwitterLogo />
+                                                </Link>
+                                                <Link to={"#"}>
+                                                    <InstagramLogo />
+                                                </Link>
+                                                <Link to={"#"}>
+                                                    <LinkedinLogo />
+                                                </Link>
+                                            </div>
+                                            <img
+                                                src={member?.image}
+                                                alt={member?.name}/>
+                                        </div>
+                                        <p>{member?.job}</p>
+                                        <h2>{member?.name}</h2>
+                                    </div>
+
+                                )
+                            })}
+                        </div>
+                    </div>
+                </section>
+                <section className={styles.contactSection}>
+                 <div className={styles.sectionContent}>
+                     <div className={styles.sectionTitle}>
+                         <h1>{t("main.about.aboutWeDeliver")}</h1>
+                         <p>{t("main.about.aboutConnections")}</p>
+                         <Link to={"/contact"}>{t("main.contact.contactUs")}</Link>
+                     </div>
+                 </div>
+                </section>
+                <section className={styles.sponsorsSection}>
+                    <div className={styles.sectionContent}>
+                        {sponsorsData?.map((sponsor)=> {
+                            return (
+                                <div key={sponsor?.id} className={styles.sponsorBlock}>
+                                    <img
+                                        src={sponsor?.image}
+                                        alt="Sponsor Logo"/>
+                                </div>
+                            )
+                        })}
+
+                    </div>
+                </section>
+            </main>
+            <Footer/>
+        </>
+    )
 }
 
 export default About
