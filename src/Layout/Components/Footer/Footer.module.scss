@@ -131,10 +131,12 @@
 }
 @media screen and (max-width:800px) {
     .footerWrapper{
+        padding: 25px 15px;
+        border-top: 1px solid rgba(128, 128, 128, 0.3);
         .footerContainer{
             display: flex;
             flex-direction: column;
-            padding: 20px;
+            padding: 0;
             .footerLeft{
                 width: 100%;
                 padding: 0;
