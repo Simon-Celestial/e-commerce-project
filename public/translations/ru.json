@@ -162,9 +162,10 @@
       "aboutContactUs": "СВЯЖИТЕСЬ С НАМИ"
     },
     "contact": {
-      "contactGetIn": "Свяжитесь с нами. Отправьте сообщение",
+      "contactGetIn": "Отправьте нам сообщение",
       "contactUs": "Связаться с нами",
       "contactCallUs": "Позвоните нам:",
+      "bakuCity": "Город Баку, Т.Ц Порт Баку",
       "contactWereAvailable": "Мы доступны 24/7, 7 дней в неделю.",
       "contactWriteToUs": "Напишите нам:",
       "contactFillOut": "Заполните нашу форму, и мы свяжемся с вами в течение 24 часов.",

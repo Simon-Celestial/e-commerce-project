@@ -165,9 +165,10 @@
     "aboutContactUs":"CONTACT US"
   },
   "contact":{
-    "contactGetIn":"Get in touch with us. Send us a message",
+    "contactGetIn":"Send us a message",
     "contactUs":"Contact Us",
     "contactCallUs":"Call to Us:",
+    "bakuCity": "Baku City, Port Baku Mall",
     "contactWereAvailable":"We’re available 24/7, 7 days a week.",
     "contactWriteToUs":"Write to Us:",
     "contactFillOut":"Fill out our form and we will contact you within 24 hours.",
