@@ -201,12 +201,12 @@
     },
     "wishlist": {
       "wishlistWishlist": "İstəklər",
-      "wishlistYourCurrently": "Sizin istəkləriniz şu an boşdur. Sizin istəkləriniz şu an boşdur",
+      "wishlistYourCurrently": "Sizin istəkləriniz şu an boşdur.",
       "returnToShop": "Mağazaya qayıt",
       "whishlistProduct": "Məhsul",
-      "whishlistUnit": "Birim qiymət",
-      "whislistStockStatus": "Stok statusu",
-      "whislistAddToCart": "Səbətə əlavə et",
+      "whishlistUnit": "Qiymət",
+      "whislistStockStatus": "Status",
+      "whislistAddToCart": "Əlavə et",
       "whislistDelete": "Sil",
       "whislistShareOn": "Paylaşın:"
     },

@@ -335,7 +335,7 @@ const Header = () => {
                                     <Link to={menuItem?.route}>{menuItem?.name}</Link>
                                     {menuItem?.options?.length > 0 ?
                                         <CaretRight style={{
-                                            transform: sideMenuElemState === menuItem?.id ? "rotate(90deg)" : ""
+                                            transform: sideMenuElemState === menuItem?.id  && window.innerWidth <= 650? "rotate(90deg)" : ""
                                         }}/>
                                         :
                                         null

@@ -28,19 +28,6 @@
 
       .headerBottom {
         padding: 21px 50px;
-
-        .headerNavigation {
-          .navigation {
-            .navEntity {
-              .navDropDown {
-                .dropDownContent {
-                  margin-top: 45px;
-                }
-              }
-            }
-
-          }
-        }
       }
     }
   }
@@ -141,7 +128,7 @@
             // DROPDOWN HERE
             .navDropDown {
               position: absolute;
-              top: 20px;
+              top: 13px;
               width: 100vw;
               pointer-events: none;
               transform: scaleY(0);
@@ -157,7 +144,7 @@
                   flex-direction: column;
                   width: 100%;
                   background-color: white;
-                  margin-top: 40px;
+                  margin-top: 48px;
                   padding: 40px;
                   box-shadow: 0 0 10px rgba(128, 128, 128, 0.5);
 

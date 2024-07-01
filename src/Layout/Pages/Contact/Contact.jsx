@@ -86,7 +86,8 @@ const Contact = () => {
                                     <h4>{t("main.contact.contactHeadquarter")}</h4>
                                     <p>{t("main.contact.contactMondayFriday")} 9:00-20:00</p>
                                     <p>{t("main.contact.contactSaturday")} 11:00 – 15:00</p>
-                                    <a href='https://maps.app.goo.gl/GbgRQfd29DHKNJ6v5' target="_blank">{t("main.contact.bakuCity")}</a>
+                                    <a href='https://maps.app.goo.gl/GbgRQfd29DHKNJ6v5'
+                                       target="_blank">{t("main.contact.bakuCity")}</a>
                                 </div>
                             </div>
                             <div className={styles.containerRight}>

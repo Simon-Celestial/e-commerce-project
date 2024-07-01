@@ -89,16 +89,22 @@
                 .contentItem {
                     font-size: 17px;
                     letter-spacing: 4px;
-                    transition: 0.5s;
+                    transition: color $transition, background $transition;
                     display: inline-flex;
                     align-items: center;
                     gap: 2.5px;
+                    padding: 10px 13px;
+                    border: 2px solid black;
+                    border-radius: 10px;
+                    text-align: center;
+
                     svg {
-                        font-size: 22px;
+                        font-size: 25px;
                         margin-bottom: 2px;
                     }
                     &:hover {
-                        color: orangered;
+                        background: $black-weak;
+                        color: white;
                     }
                 }
                 .productsHeadingTop {
@@ -115,6 +121,7 @@
                         border: 2px solid $black-weak;
                         padding: 13px;
                         border-radius: 10px;
+                        text-align: center;
                         transition: background  $transition,color  $transition;
 
                         &:hover {
@@ -343,7 +350,12 @@
                             font-size: 14px;
                             padding: 10px;
                         }
+
                     }
+                    .contentItem {
+                        padding: 5px 10px;
+                    }
+
                 }
             }
         }
@@ -452,7 +464,7 @@
                         width: 100%;
                         text-align: center;
                         justify-content: center;
-                        border: 2px solid black;
+                        border: 2px solid $black-weak;
                         border-radius: 10px;
                         height: 42px;
                     }

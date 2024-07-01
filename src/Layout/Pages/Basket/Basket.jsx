@@ -1,4 +1,4 @@
-import {useCallback, useContext, useState} from 'react';
+import {useContext} from 'react';
 import styles from "./Basket.module.scss";
 import Header from '../../Components/Header/Header';
 import Footer from '../../Components/Footer/Footer';
@@ -10,9 +10,9 @@ import {DataContext} from '../../../Context/DataContext.jsx';
 import {Truck} from "@phosphor-icons/react";
 import ProductCard from "../../Common/ProductCard/ProductCard.jsx";
 import {Swiper, SwiperSlide} from "swiper/react";
-import { useTranslation } from "react-i18next";
+import {useTranslation} from "react-i18next";
 import SHIPPING_TYPES from "/public/data/ShippingData/shippingData.json";
-import { ShippingPrice } from '../../Common/ShippingPrice/ShippingPrice.jsx';
+import {ShippingPrice} from '../../Common/ShippingPrice/ShippingPrice.jsx';
 
 
 export const Basket = () => {
@@ -36,9 +36,8 @@ export const Basket = () => {
     } = useContext(DataContext);
 
 
-
     return (
-        <div className={styles.basketWrapper}>
+        <>
             <Header/>
             <main className={styles.basketContainer}>
                 <PageHeading title={t("main.basket.basketShoppingCart")}></PageHeading>
@@ -53,7 +52,7 @@ export const Basket = () => {
                         </div>
                         :
                         <>
-                            <div className={styles.basketContact}>
+                            <div className={styles.basketProducts}>
                                 <div className={styles.basketCardsWrapper}>
                                     <div className={`${styles.tableRow} ${styles.topRow}`}>
                                         <div className={`${styles.product} ${styles.cell}`}>
@@ -69,7 +68,7 @@ export const Basket = () => {
                                             {t("main.basket.basketSubtotal")}
                                         </div>
                                         <div className={`${styles.delete} ${styles.cell}`}>
-                                           {t("main.basket.basketDelete")}
+                                            {t("main.basket.basketDelete")}
                                         </div>
                                     </div>
                                     {cartItems?.map((product) => {
@@ -82,7 +81,7 @@ export const Basket = () => {
                                                     </Link>
                                                 </div>
                                                 <div className={`${styles.price} ${styles.cell}`}>
-                                                    <b>{currencyState === "azn"? "AZN" : "$"} {currencyConverter(product.salePrice)?.toFixed(2)}</b>
+                                                    <b>{currencyState === "azn" ? "AZN" : "$"} {currencyConverter(product.salePrice)?.toFixed(2)}</b>
                                                 </div>
                                                 <div className={`${styles.quantity} ${styles.cell}`}>
                                                     <div className={styles.basketButton}>
@@ -101,7 +100,7 @@ export const Basket = () => {
 
                                                 </div>
                                                 <div className={`${styles.subtotal} ${styles.cell}`}>
-                                                    <b>{currencyState === "azn"? "AZN" : "$"} {(currencyConverter(product.salePrice) * product.count).toFixed(2)}</b>
+                                                    <b>{currencyState === "azn" ? "AZN" : "$"} {(currencyConverter(product.salePrice) * product.count).toFixed(2)}</b>
                                                 </div>
                                                 <div className={`${styles.delete} ${styles.cell}`}>
                                                     <div className={styles.deleteBtn}
@@ -113,7 +112,8 @@ export const Basket = () => {
                                         )
                                     })}
 
-                                    <div className={styles.emptyShop} onClick={emptyCart}>{t("main.basket.basketEmptyCart")}</div>
+                                    <div className={styles.emptyShop}
+                                         onClick={emptyCart}>{t("main.basket.basketEmptyCart")}</div>
 
                                 </div>
                                 <div className={styles.productContactRight}>
@@ -121,12 +121,12 @@ export const Basket = () => {
                                         <h1>{t("main.basket.basketCartTotals")}</h1>
                                         <div className={styles.subtotalPirce}>
                                             <h2>{t("main.basket.basketSubtotal")}</h2>
-                                            <p>{currencyState === "azn"? "AZN" : "$"} {currencyConverter(calculateSubtotal)?.toFixed(2)}</p>
+                                            <p>{currencyState === "azn" ? "AZN" : "$"} {currencyConverter(calculateSubtotal)?.toFixed(2)}</p>
                                         </div>
                                         <div className={styles.shippingBox}>
                                             <h2>Shipping</h2>
                                             <div className={styles.shippingCalulate}>
-                                                <ShippingPrice />
+                                                <ShippingPrice/>
                                                 <div className={styles.flatText}>
                                                     <p>{t("main.basket.ShippingOptions")}</p>
                                                 </div>
@@ -139,17 +139,17 @@ export const Basket = () => {
                                         </div>
                                         <div className={styles.totalCart}>
                                             <h2>{t("main.basket.basketTotal")}</h2>
-                                            <p>{currencyState === "azn"? "AZN" : "$"} {
+                                            <p>{currencyState === "azn" ? "AZN" : "$"} {
                                                 currencyState === "azn"
                                                     ?
-                                                    (currencyConverter(calculateSubtotal) + SHIPPING_TYPES.en?.find(({ id }) => id === shippingTypeId)?.price * 1.7)?.toFixed(2)
+                                                    (currencyConverter(calculateSubtotal) + SHIPPING_TYPES.en?.find(({id}) => id === shippingTypeId)?.price * 1.7)?.toFixed(2)
                                                     :
-                                                    (currencyConverter(calculateSubtotal) + SHIPPING_TYPES.en?.find(({ id }) => id === shippingTypeId)?.price)?.toFixed(2)
+                                                    (currencyConverter(calculateSubtotal) + SHIPPING_TYPES.en?.find(({id}) => id === shippingTypeId)?.price)?.toFixed(2)
                                             }
                                             </p>
                                         </div>
                                         <Link to={"/checkout"} className={styles.totalButton}>
-                                           {t("main.basket.basketProceed")}
+                                            {t("main.basket.basketProceed")}
                                         </Link>
                                     </div>
                                 </div>
@@ -195,7 +195,7 @@ export const Basket = () => {
                 }
             </main>
             <Footer/>
-        </div>
+        </>
     );
 };
 

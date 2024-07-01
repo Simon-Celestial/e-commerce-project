@@ -51,7 +51,7 @@ const Wishlist = () => {
                 {wishListItems?.length < 1 ?
                     <div className={styles.wishlistEmpty}>
                         <img src="/images/heart.png" alt="Heart"/>
-                        <p>{t("main.wishlist.wishlistYourCurrently")}.</p>
+                        <p>{t("main.wishlist.wishlistYourCurrently")}</p>
                         <Link to="/shop">
                           {t("main.wishlist.returnToShop")}
                         </Link>

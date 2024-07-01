@@ -206,7 +206,7 @@
   },
   "wishlist":{
     "wishlistWishlist":"Wishlist",
-    "wishlistYourCurrently":"Your wishlist is currently emptyYour wishlist is currently empty",
+    "wishlistYourCurrently":"Your wishlist is currently empty...",
     "returnToShop":"Return to Shop",
     "whishlistProduct": "Product",
     "whishlistUnit": "Unit price",

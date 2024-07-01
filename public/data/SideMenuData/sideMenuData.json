@@ -80,39 +80,24 @@
       ]
     },
     {
-      "id": "product",
-      "name": "Product",
-      "route": "/shop",
+      "id": "miscellaneous",
+      "name": "Miscellaneous",
+      "route": null,
       "options": [
         {
           "id": 1,
-          "name": "Option 1",
-          "route": "/option1"
+          "name": "Basket",
+          "route": "/basket"
         },
         {
           "id": 2,
-          "name": "Option 2",
-          "route": "/option2"
+          "name": "Wishlist",
+          "route": "/wishlist"
         },
         {
           "id": 3,
-          "name": "Option 3",
-          "route": "/option3"
-        },
-        {
-          "id": 4,
-          "name": "Option 4",
-          "route": "/option4"
-        },
-        {
-          "id": 5,
-          "name": "Option 5",
-          "route": "/option5"
-        },
-        {
-          "id": 6,
-          "name": "Option 6",
-          "route": "/option6"
+          "name": "Checkout",
+          "route": "/checkout"
         }
       ]
     },
@@ -237,39 +222,24 @@
       ]
     },
     {
-      "id": "product",
-      "name": "Продукт",
-      "route": "/shop",
+      "id": "miscellaneous",
+      "name": "Разное",
+      "route": null,
       "options": [
         {
           "id": 1,
-          "name": "Опция 1",
-          "route": "/option1"
+          "name": "Корзина",
+          "route": "/basket"
         },
         {
           "id": 2,
-          "name": "Опция 2",
-          "route": "/option2"
+          "name": "Список желаний",
+          "route": "/wishlist"
         },
         {
           "id": 3,
-          "name": "Опция 3",
-          "route": "/option3"
-        },
-        {
-          "id": 4,
-          "name": "Опция 4",
-          "route": "/option4"
-        },
-        {
-          "id": 5,
-          "name": "Опция 5",
-          "route": "/option5"
-        },
-        {
-          "id": 6,
-          "name": "Опция 6",
-          "route": "/option6"
+          "name": "Оформить заказ",
+          "route": "/checkout"
         }
       ]
     },
@@ -394,39 +364,24 @@
       ]
     },
     {
-      "id": "product",
-      "name": "Məhsul",
-      "route": "/shop",
+      "id": "miscellaneous",
+      "name": "Müxtəlif",
+      "route": null,
       "options": [
         {
           "id": 1,
-          "name": "Seçim 1",
-          "route": "/option1"
+          "name": "Səbət",
+          "route": "/basket"
         },
         {
           "id": 2,
-          "name": "Seçim 2",
-          "route": "/option2"
+          "name": "İstək Siyahısı",
+          "route": "/wishlist"
         },
         {
           "id": 3,
-          "name": "Seçim 3",
-          "route": "/option3"
-        },
-        {
-          "id": 4,
-          "name": "Seçim 4",
-          "route": "/option4"
-        },
-        {
-          "id": 5,
-          "name": "Seçim 5",
-          "route": "/option5"
-        },
-        {
-          "id": 6,
-          "name": "Seçim 6",
-          "route": "/option6"
+          "name": "Ödəniş",
+          "route": "/checkout"
         }
       ]
     },
