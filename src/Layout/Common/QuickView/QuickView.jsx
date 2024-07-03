@@ -25,11 +25,13 @@ const handleCloseQuickView = useCallback(()=> {
                     <div className={styles.closeBtn} onClick={handleCloseQuickView}>
                         <X/>
                     </div>
-                    {selectedProduct?.map((product) => {
-                        return (
-                            <SingleProductCard key={product.id} product={product} quickView={true}/>
-                        )
-                    })}
+                    <div className={styles.overFlow}>
+                        {selectedProduct?.map((product) => {
+                            return (
+                                <SingleProductCard key={product.id} product={product} quickView={true}/>
+                            )
+                        })}
+                    </div>
                 </div>
             </div>
         </>

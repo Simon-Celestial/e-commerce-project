@@ -348,7 +348,7 @@
       max-height: 600px;
       max-width: 100%;
       &.quickView {
-        max-height: 400px;
+        max-height: unset;
       }
     }
     .descriptionBlock{

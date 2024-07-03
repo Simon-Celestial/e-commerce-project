@@ -1,4 +1,5 @@
 @import "../../../Variables/Variables.module.scss";
+
 .pageWrapper {
     display: flex;
     width: 100vw;
@@ -57,14 +58,14 @@
                     input{
                         width: 100%;
                         padding: 15px;
-                        border: none;
                         outline: none;
                         border: 1px solid rgba(128, 128, 128, 0.575);
+                        border-radius: 5px;
                     }
                 }
                 .submitButton{
-                    width: 100%     ;
-                    background-color: black;
+                    width: 100%;
+                    background-color: $black-weak;
                     padding: 14px;
                     color: white;
                     display: flex;
@@ -76,9 +77,9 @@
                     border: none;
                     outline: none;
                     transition: 0.3s;
+                    border-radius: 10px;
                     &:hover{
-                        background-color: red;
-                        color: white;
+                        background-color: gray;
                     }
                 }
                 .redirect {
@@ -100,6 +101,45 @@
                 }
             }
         }
-
     }
 }
+
+@media screen and (max-width: 1000px) {
+    .pageWrapper {
+        .pageContent {
+            .formContainer {
+                max-width: 400px;
+                padding: 50px;
+                form {
+                .submitButton {
+                    padding: 10px;
+                }
+                    .redirect {
+                        padding: 10px 0;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .pageWrapper {
+        .pageContent {
+            .formContainer {
+                max-width: 290px;
+                padding: 50px 25px;
+                border-radius: 10px;
+                form {
+                    .submitButton {
+                        padding: 10px;
+                    }
+                    .redirect {
+                        padding: 10px 0;
+                    }
+                }
+            }
+        }
+    }
+}
+

@@ -5,7 +5,7 @@
   left: 0;
   top: 0;
   width: 100vw;
-  min-height: 100vh;
+  height: 100vh;
   background-color: rgba(0, 0, 0, 0.8);
   z-index: 999;
   align-items: center;
@@ -49,23 +49,24 @@
   }
 }
 
-@media screen and (max-width: 1400px) {
+@media screen and (max-width: 1200px) {
   .quickViewOverlay {
     .quickViewContent {
-      max-width: 800px;
-      overflow-y: scroll;
-      height: 100%;
+      max-width: 750px;
+      padding: 15px;
 
     }
   }
 }
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 800px) {
   .quickViewOverlay {
-    height: 100%;
     .quickViewContent {
       max-width: 100%;
       height: 100%;
-      padding: 25px;
+      .overFlow {
+        height: 100%;
+        overflow-y: auto;
+      }
     }
   }
 }

@@ -101,7 +101,7 @@ export const SingleProductCard = ({product,quickView}) => {
                             <p>({product?.rating})</p>
                         </div>
                         <div className={styles.stockBlock}>
-                            {t("main.singleProduct.singleStock")}: {product?.quantity > 1 ? <p>{t("main.singleProduct.singleInStock")}</p> : <p style={{
+                            {t("main.singleProduct.singleStock")} {product?.quantity > 1 ? <p>{t("main.singleProduct.singleInStock")}</p> : <p style={{
                             color: "red"
                         }}>{t("main.singleProduct.singleOutStock")}</p>}
                         </div>
