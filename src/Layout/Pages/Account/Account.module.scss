@@ -11,7 +11,7 @@
     width: 100%;
     max-width: 1000px;
     display: flex;
-    padding: 50px 0;
+    padding: 50px 15px;
 
     .userInfoWrapper {
       width: 100%;
@@ -60,4 +60,29 @@
       }
     }
   }
+}
+
+@media screen and (max-width: 800px) {
+.accountWrapper {
+  .accountContent {
+    padding: 25px 15px 75px 15px;
+    .userInfoWrapper {
+      flex-direction: column;
+      .actions {
+        max-width: 100%;
+        padding: 25px;
+        border-bottom: 2px solid gray;
+      }
+      .info {
+        padding: 25px;
+        .infoBlock {
+          p {
+            font-size: 16px;
+          }
+        }
+      }
+
+    }
+  }
+}
 }

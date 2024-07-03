@@ -5,7 +5,7 @@
   left: 0;
   top: 0;
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   background-color: rgba(0, 0, 0, 0.8);
   z-index: 999;
   align-items: center;
@@ -35,6 +35,7 @@
       position: absolute;
       right: 0;
       top: 0;
+      z-index: 5;
       font-size: 25px;
       transition: background-color $transition;
       &:hover {
@@ -45,5 +46,26 @@
   &.visible {
     opacity: 1;
     pointer-events: auto;
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  .quickViewOverlay {
+    .quickViewContent {
+      max-width: 800px;
+      overflow-y: scroll;
+      height: 100%;
+
+    }
+  }
+}
+@media screen and (max-width: 1000px) {
+  .quickViewOverlay {
+    height: 100%;
+    .quickViewContent {
+      max-width: 100%;
+      height: 100%;
+      padding: 25px;
+    }
   }
 }

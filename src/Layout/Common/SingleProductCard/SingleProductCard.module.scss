@@ -173,18 +173,19 @@
         font-size: 14px;
         font-weight: 800;
         height: 50px;
-        background-color: black;
+        background-color: $black-weak;
         color: white;
         border: 1px solid black;
         cursor: pointer;
+        border-radius: 10px;
         transition:
                 background-color $transition,
                 border-color $transition,
                 color $transition;
 
         &:hover {
-          background-color: #d10202;
-          border-color: #d10202;
+          background-color: gray;
+          border-color: gray;
         }
 
         &:nth-child(2) {
@@ -193,6 +194,7 @@
 
           &:hover {
             color: #d10202;
+            border-color: red;
           }
         }
       }
@@ -268,10 +270,17 @@
 
 @media  screen and (max-width:1400px) {
   .detailsContent{
-    padding: 40px;
+    .imageBlock {
+      max-height: 700px;
+    }
     .descriptionBlock{
-      width: 100%;
-      max-width: 500px;
+      padding-left: 25px;
+      h1 {
+        padding-right: 40px;
+      }
+      .priceBlock {
+        font-size: 20px;
+      }
     }
   }
 
@@ -279,36 +288,87 @@
 
 @media  screen and (max-width:1200px) {
   .detailsContent{
-    flex-direction: column;
-    gap: 40px;
-    padding: 40px;
-    .imageBlock{
-      width: 100%;
-      max-width: 100%;
+    .imageBlock {
+      max-height: 600px;
     }
     .descriptionBlock{
-      width: 100%;
-      max-width: 100%;
-      padding: 40px;
-    }
+      h1 {
+        font-size: 23px;
+      }
+      .priceBlock {
+        margin-top: 25px;
 
+      }
+      .miscellaneousBlock {
+        flex-direction: column;
+        align-items: start;
+        .options {
+          flex-direction: column;
+          align-items: start;
+          gap: 10px;
+          margin-bottom: 10px;
+        }
+      }
+
+    }
   }
+
 }
 
-@media  screen and (max-width:500px) {
+@media  screen and (max-width:1000px) {
   .detailsContent{
-    flex-direction: column;
-    gap: 40px;
-    padding: 0;
-    .imageBlock{
-      width: 100%;
-      max-width: 100%;
+    .imageBlock {
+      max-height: 560px;
     }
     .descriptionBlock{
-      width: 100%;
-      max-width: 100%;
-    }
+      h1 {
+        font-size: 22px;
+      }
+      .priceBlock {
+        margin-top: 25px;
+        flex-direction: column;
+        align-items: start;
+      }
+      .buttonsBlock {
+        .button {
+          height: 40px;
+        }
+      }
 
+    }
   }
 
+}
+
+@media  screen and (max-width:800px) {
+  .detailsContent{
+    flex-direction: column;
+    gap: 25px;
+    .imageBlock {
+      max-height: 600px;
+      max-width: 100%;
+      &.quickView {
+        max-height: 400px;
+      }
+    }
+    .descriptionBlock{
+      max-width: 100%;
+      padding: 0;
+      h1 {
+        font-size: 22px;
+      }
+    }
+  }
+
+}
+
+
+
+@media  screen and (max-width:600px) {
+  .detailsContent{
+    .imageBlock{
+    }
+    .descriptionBlock{
+    }
+  }
 }

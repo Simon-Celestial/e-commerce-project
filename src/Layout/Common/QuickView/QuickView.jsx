@@ -27,7 +27,7 @@ const handleCloseQuickView = useCallback(()=> {
                     </div>
                     {selectedProduct?.map((product) => {
                         return (
-                            <SingleProductCard key={product.id} product={product}/>
+                            <SingleProductCard key={product.id} product={product} quickView={true}/>
                         )
                     })}
                 </div>

@@ -7,7 +7,7 @@ import {BasketContext} from "../../../Context/BasketContext.jsx";
 import {WishListContext} from "../../../Context/WishListContext.jsx";
 import {DataContext} from "../../../Context/DataContext.jsx";
 import { useTranslation } from "react-i18next";
-export const SingleProductCard = ({product}) => {
+export const SingleProductCard = ({product,quickView}) => {
     const {t} = useTranslation();
     const {
         addToCart,
@@ -54,7 +54,7 @@ export const SingleProductCard = ({product}) => {
 
     return (
             <div className={styles.detailsContent}>
-                <div className={styles.imageBlock}>
+                <div className={`${styles.imageBlock} ${quickView ? styles.quickView : null}`}>
                     <div className={styles.zoomBtn} onClick={handleMagnifyingImg}>
                         <MagnifyingGlassPlus/>
                     </div>
