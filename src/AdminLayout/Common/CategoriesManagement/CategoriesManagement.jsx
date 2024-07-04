@@ -46,13 +46,13 @@ export const CategoriesManagement = () => {
             setIsUpdating(true);
             await axios.delete(`https://json-server-eta-ten.vercel.app/categories/${id}`);
             updateCategories();
-            toast.success(`${name} uğurla silindi!`, {
+            toast.success(`${name} deleted successfully!`, {
                 hideProgressBar: false,
                 closeOnClick: true,
                 pauseOnHover: false,
                 draggable: true,
                 progress: undefined,
-                theme: "colored",
+                theme: "dark",
                 transition: Bounce,
             });
         } catch (error) {
@@ -68,7 +68,7 @@ export const CategoriesManagement = () => {
         };
 
         if (requestData.name === "") {
-            toast.error('Kateqoriya adı boş olmamalıdır', {
+            toast.error('The category name must not be empty', {
                 hideProgressBar: false,
                 closeOnClick: true,
                 pauseOnHover: false,
@@ -83,7 +83,7 @@ export const CategoriesManagement = () => {
         try {
             setIsUpdating(true);
             await axios.post("https://json-server-eta-ten.vercel.app/categories/", requestData);
-            toast.success(`${requestData.name} uğurla əlavə etdi`, {
+            toast.success(`${requestData.name} added successfully`, {
                 hideProgressBar: false,
                 closeOnClick: true,
                 pauseOnHover: false,
@@ -95,7 +95,7 @@ export const CategoriesManagement = () => {
             updateCategories();
             setCategory(defaults);
         } catch (error) {
-            toast.error('Kateqoriya əlavə edərkən xəta baş verdi', {
+            toast.error('An error occurred while adding a category', {
                 hideProgressBar: false,
                 closeOnClick: true,
                 pauseOnHover: false,

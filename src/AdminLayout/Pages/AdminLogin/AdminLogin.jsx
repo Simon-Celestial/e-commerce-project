@@ -44,35 +44,35 @@ const AdminLogin = () => {
             if (adminWithEmail && adminWithPassword) {
                 localStorage.setItem("token", JSON.stringify(adminToken));
                 setToken(localStorage.getItem("token"));
-                toast.success(`Hesabınıza uğurla daxil oldunuz.`, {
+                toast.success(`You have successfully logged into your account`, {
                     hideProgressBar: false,
                     closeOnClick: true,
                     pauseOnHover: false,
                     draggable: true,
                     progress: undefined,
-                    theme: "colored",
+                    theme: "dark",
                     transition: Bounce,
                 });
                 navigate("/admin/dashboard");
             } else if(!adminWithEmail) {
-                toast.error(`Belə hesab mövcud deyil.`, {
+                toast.error(`No such account exists`, {
                     hideProgressBar: false,
                     closeOnClick: true,
                     pauseOnHover: false,
                     draggable: true,
                     progress: undefined,
-                    theme: "colored",
+                    theme: "dark",
                     transition: Bounce,
                 });
             }
             else if(!adminWithPassword) {
-                toast.error(`Bu hesab üçün şifrə yanlışdır.`, {
+                toast.error(`The password for this account is incorrect`, {
                     hideProgressBar: false,
                     closeOnClick: true,
                     pauseOnHover: false,
                     draggable: true,
                     progress: undefined,
-                    theme: "colored",
+                    theme: "dark",
                     transition: Bounce,
                 });
             }

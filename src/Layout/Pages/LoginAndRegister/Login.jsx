@@ -54,36 +54,36 @@ const Login = () => {
             );
             if (userWithEmail && userPassword) {
                 localStorage.setItem("user", JSON.stringify({email: userWithEmail.userEmail}));
-                toast.success(`Hesabınıza uğurla daxil oldunuz.`, {
+                toast.success(`You have successfully logged into your account`, {
                     hideProgressBar: false,
                     closeOnClick: true,
                     pauseOnHover: false,
                     draggable: true,
                     progress: undefined,
-                    theme: "colored",
+                    theme: "dark",
                     transition: Bounce,
                 });
                 fetchUserName();
                 navigate("/home");
             } else if(!userWithEmail) {
-                toast.error(`Belə hesab mövcud deyil.`, {
+                toast.error(`No such account exists`, {
                     hideProgressBar: false,
                     closeOnClick: true,
                     pauseOnHover: false,
                     draggable: true,
                     progress: undefined,
-                    theme: "colored",
+                    theme: "dark",
                     transition: Bounce,
                 });
             }
             else if(!userPassword) {
-                toast.error(`Bu hesab üçün şifrə yanlışdır.`, {
+                toast.error(`The password for this account is incorrect`, {
                     hideProgressBar: false,
                     closeOnClick: true,
                     pauseOnHover: false,
                     draggable: true,
                     progress: undefined,
-                    theme: "colored",
+                    theme: "dark",
                     transition: Bounce,
                 });
             }

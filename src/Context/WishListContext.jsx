@@ -31,7 +31,7 @@ export const WishListContextProvider = ({children}) => {
                     pauseOnHover: false,
                     draggable: true,
                     progress: undefined,
-                    theme: "colored",
+                    theme: "dark",
                     transition: Bounce,
                 });
                 return [...prev, product];
@@ -42,7 +42,7 @@ export const WishListContextProvider = ({children}) => {
                     pauseOnHover: false,
                     draggable: true,
                     progress: undefined,
-                    theme: "colored",
+                    theme: "dark",
                     transition: Bounce,
                 });
                 const updatedWishlist = [...prev];
@@ -59,7 +59,7 @@ export const WishListContextProvider = ({children}) => {
             pauseOnHover: false,
             draggable: true,
             progress: undefined,
-            theme: "colored",
+            theme: "dark",
             transition: Bounce
         });
         setWishListItems(prev => prev.filter(item => item.id !== productId));

@@ -83,13 +83,13 @@ const AdminPage = () => {
             setIsUpdating(true);
             await axios.delete(`https://json-server-eta-ten.vercel.app/products/${id}`);
             update();
-            toast.success(`${title} ugurla silindi!`, {
+            toast.success(`${title} deleted successfully!`, {
                 hideProgressBar: false,
                 closeOnClick: true,
                 pauseOnHover: false,
                 draggable: true,
                 progress: undefined,
-                theme: "colored",
+                theme: "dark",
                 transition: Bounce,
             });
         } catch (error) {

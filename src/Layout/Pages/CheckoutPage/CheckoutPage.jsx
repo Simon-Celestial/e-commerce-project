@@ -102,7 +102,7 @@ export const CheckoutPage = () => {
             !requestData.districtArea ||
             !requestData.streetAddress
         ) {
-            toast.error('Bütün tələb olunan sahələri duzgun doldurun', {
+            toast.error('Fill in all required fields correctly!', {
                 hideProgressBar: false,
                 closeOnClick: true,
                 pauseOnHover: false,
@@ -113,7 +113,7 @@ export const CheckoutPage = () => {
             });
         }
         else if (!/^\+994\d{9}$/.test(requestData.phoneNumber)) {
-            toast.error('Nömrəni "+994XXXXXXXXX" formatında daxil edin', {
+            toast.error('Enter the number in the format "+994XXXXXXXXX"', {
                 hideProgressBar: false,
                 closeOnClick: true,
                 pauseOnHover: false,
@@ -132,7 +132,7 @@ export const CheckoutPage = () => {
                 update();
                 navigate("/order-completed");
             } catch (error) {
-                toast.error('Məhsul əlavə edərkən xəta baş verdi', {
+                toast.error('An error occurred while adding a product', {
                     hideProgressBar: false,
                     closeOnClick: true,
                     pauseOnHover: false,

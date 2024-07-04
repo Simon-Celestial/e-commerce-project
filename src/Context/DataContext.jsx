@@ -64,13 +64,13 @@ export const DataContextProvider = ({
         localStorage.removeItem("user");
         setAccess(false);
         setAccountDetails(null);
-        toast.success(`Hesabınızdan çıxmısız.`, {
+        toast.success(`You are logged out`, {
             hideProgressBar: false,
             closeOnClick: true,
             pauseOnHover: false,
             draggable: true,
             progress: undefined,
-            theme: "colored",
+            theme: "dark",
             transition: Bounce,
         });
     }, [setAccess, setAccountDetails])

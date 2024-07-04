@@ -42,7 +42,7 @@ export const BasketContextProvider = ({children}) => {
                     pauseOnHover: false,
                     draggable: true,
                     progress: undefined,
-                    theme: "colored",
+                    theme: "dark",
                     transition: Bounce,
                 });
                 return prev.map(item =>
@@ -56,7 +56,7 @@ export const BasketContextProvider = ({children}) => {
                     pauseOnHover: false,
                     draggable: true,
                     progress: undefined,
-                    theme: "colored",
+                    theme: "dark",
                     transition: Bounce,
                 });
                 return [...prev];
@@ -67,7 +67,7 @@ export const BasketContextProvider = ({children}) => {
                     pauseOnHover: false,
                     draggable: true,
                     progress: undefined,
-                    theme: "colored",
+                    theme: "dark",
                     transition: Bounce,
                 });
                 return [...prev, {...product, count: 1}];
@@ -83,7 +83,7 @@ export const BasketContextProvider = ({children}) => {
             pauseOnHover: false,
             draggable: true,
             progress: undefined,
-            theme: "colored",
+            theme: "dark",
             transition: Bounce
         });
 
@@ -112,7 +112,7 @@ export const BasketContextProvider = ({children}) => {
             pauseOnHover: false,
             draggable: true,
             progress: undefined,
-            theme: "colored",
+            theme: "dark",
             transition: Bounce
         });
     }, []);

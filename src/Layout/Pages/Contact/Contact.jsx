@@ -38,7 +38,7 @@ const Contact = () => {
                 pauseOnHover: false,
                 draggable: true,
                 progress: undefined,
-                theme: "colored",
+                theme: "dark",
                 transition: Bounce,
             });
         } catch (error) {
@@ -48,7 +48,7 @@ const Contact = () => {
                 pauseOnHover: false,
                 draggable: true,
                 progress: undefined,
-                theme: "colored",
+                theme: "dark",
                 transition: Bounce,
             });
             console.log('Error:', error.text);

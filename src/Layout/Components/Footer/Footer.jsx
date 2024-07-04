@@ -26,7 +26,7 @@ const Footer = () => {
                 pauseOnHover: false,
                 draggable: true,
                 progress: undefined,
-                theme: 'colored',
+                theme: 'dark',
                 transition: Bounce,
             });
             return;
@@ -39,7 +39,7 @@ const Footer = () => {
             pauseOnHover: false,
             draggable: true,
             progress: undefined,
-            theme: 'colored',
+            theme: 'dark',
             transition: Bounce,
         });
     }, [inputState]);

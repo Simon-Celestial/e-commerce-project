@@ -48,13 +48,13 @@ const Register = () => {
             const data = response.data;
             let serverEmail = data.find((userData) => userData.userEmail === user.userEmail);
             if (serverEmail) {
-                toast.error(`Belə hesab artıq mövcuddur.`, {
+                toast.error(`Such an account already exists`, {
                     hideProgressBar: false,
                     closeOnClick: true,
                     pauseOnHover: false,
                     draggable: true,
                     progress: undefined,
-                    theme: "colored",
+                    theme: "dark",
                     transition: Bounce,
                 });
             } else {
@@ -64,13 +64,13 @@ const Register = () => {
                             "Content-Type": "application/json",
                         },
                     });
-                    toast.success(`Uğurla qeydiyyatdan keçmisiz`, {
+                    toast.success(`You have successfully registered`, {
                         hideProgressBar: false,
                         closeOnClick: true,
                         pauseOnHover: false,
                         draggable: true,
                         progress: undefined,
-                        theme: "colored",
+                        theme: "dark",
                         transition: Bounce,
                     });
                     navigate("/login");
@@ -81,13 +81,13 @@ const Register = () => {
                         userPhone: ""
                     });
                 } else {
-                    toast.error(`Şifrə ən azı altı simvoldan ibarət olmalıdır və şifrə təsdiqi ilə uyğun olmalıdır.`, {
+                    toast.error(`The password must contain at least six characters and must match the password confirmation`, {
                         hideProgressBar: false,
                         closeOnClick: true,
                         pauseOnHover: false,
                         draggable: true,
                         progress: undefined,
-                        theme: "colored",
+                        theme: "dark",
                         transition: Bounce,
                     });
                 }

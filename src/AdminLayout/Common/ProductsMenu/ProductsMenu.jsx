@@ -141,14 +141,14 @@ const ProductsMenu = ({setMenuOpen, menuOpen, update, selectedItem, setSelectedI
         const file = e.target.files[0];
         e.target.value = '';
         if (file.size > 1000 * 1000 * 150) {
-            toast.error(`Şəkil çox böyükdür`,
+            toast.error(`The picture is too big`,
                 {
                     hideProgressBar: false,
                     closeOnClick: true,
                     pauseOnHover: false,
                     draggable: true,
                     progress: undefined,
-                    theme: "colored",
+                    theme: "dark",
                     transition: Bounce,
                 }
             );
@@ -156,14 +156,14 @@ const ProductsMenu = ({setMenuOpen, menuOpen, update, selectedItem, setSelectedI
             return;
         }
         if (file.size < 1000 * 5) {
-            toast.error(`Şəkil çox kiçikdir`,
+            toast.error(`The picture is too small`,
                 {
                     hideProgressBar: false,
                     closeOnClick: true,
                     pauseOnHover: false,
                     draggable: true,
                     progress: undefined,
-                    theme: "colored",
+                    theme: "dark",
                     transition: Bounce,
                 }
             );
@@ -215,7 +215,7 @@ const ProductsMenu = ({setMenuOpen, menuOpen, update, selectedItem, setSelectedI
             requestData.size.length === 0 ||
             !requestData.frontImage
         ) {
-            toast.error('Bütün tələb olunan sahələri doldurun', {
+            toast.error('Fill in all required fields', {
                 hideProgressBar: false,
                 closeOnClick: true,
                 pauseOnHover: false,
@@ -233,7 +233,7 @@ const ProductsMenu = ({setMenuOpen, menuOpen, update, selectedItem, setSelectedI
                     `https://json-server-eta-ten.vercel.app/products/${inputState.id}`,
                     requestData
                 );
-                toast.success(`${requestData.title} uğurla redaktə edildi`, {
+                toast.success(`${requestData.title} edited successfully`, {
                     hideProgressBar: false,
                     closeOnClick: true,
                     pauseOnHover: false,
@@ -244,7 +244,7 @@ const ProductsMenu = ({setMenuOpen, menuOpen, update, selectedItem, setSelectedI
                 });
             } else {
                 await axios.post("https://json-server-eta-ten.vercel.app/products/", requestData);
-                toast.success(`${requestData.title} uğurla əlavə edildi`, {
+                toast.success(`${requestData.title} edited successfully`, {
                     hideProgressBar: false,
                     closeOnClick: true,
                     pauseOnHover: false,
@@ -257,7 +257,7 @@ const ProductsMenu = ({setMenuOpen, menuOpen, update, selectedItem, setSelectedI
             update();
             handleMenuClose();
         } catch (error) {
-            toast.error('Məhsul əlavə edərkən xəta baş verdi', {
+            toast.error('An error occurred while adding a product', {
                 hideProgressBar: false,
                 closeOnClick: true,
                 pauseOnHover: false,
