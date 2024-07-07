@@ -12,7 +12,7 @@ h3 {
   gap: 25px;
   width: 100%;
   max-width: 300px;
-  margin: 80px auto;
+  margin: 40px auto 100px auto;
 
   img {
     max-width: 100px;
@@ -23,18 +23,19 @@ h3 {
   }
 
   p {
-    font-size: 17px;
+    font-size: 22px;
     text-align: center;
   }
 
   a {
     width: 100%;
-    background: black;
+    background: $black-weak;
     color: white;
     text-align: center;
     padding: 15px 0;
     font-size: 18px;
     transition: background $transition;
+    border-radius: 10px;
     &:hover {
       background: gray;
 

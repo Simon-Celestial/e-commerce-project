@@ -275,6 +275,7 @@
       "searchEnterProduct": "Введите название продукта"
     },
     "checkout": {
+      "checkOut": "Оплата",
       "billingDetails": "Данные для оплаты",
       "checkoutFristName": "Имя",
       "checkoutLastName": "Фамилия",

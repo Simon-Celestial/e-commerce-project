@@ -45,7 +45,7 @@ export const Basket = () => {
                     cartItems?.length < 1 ?
                         <div className={styles.cartEmpty}>
                             <img src="/images/emptyCart.png" alt="Cart Empty"/>
-                            <p>{t("main.basket.basketYourCart")}</p>
+                            <p>{t("main.basket.basketYourCart")}..</p>
                             <Link to="/shop">
                                 {t("main.basket.basketReturnToShop")}
                             </Link>

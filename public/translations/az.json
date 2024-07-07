@@ -275,6 +275,7 @@
       "searchEnterProduct": "Məhsul adını daxil edin"
     },
     "checkout": {
+      "checkOut": "Ödəniş",
       "billingDetails": "Ödəniş Məlumatları",
       "checkoutFristName": "Ad",
       "checkoutLastName": "Soyad",
